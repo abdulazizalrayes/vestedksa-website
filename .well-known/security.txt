@@ -1,0 +1,3 @@
+Contact: hello@vestedksa.com
+Preferred-Languages: en
+Canonical: https://vestedksa.com/.well-known/security.txt
