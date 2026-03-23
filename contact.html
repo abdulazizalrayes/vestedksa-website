@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with Vested KSA. Whether you're exploring Saudi Arabia or ready to launch, we're here to help. Contact us today.">
+  <meta property="og:title" content="Contact | Vested KSA">
+  <meta property="og:description" content="Whether you're exploring Saudi Arabia or ready to launch, we're here to help.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vestedksa.com/contact">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact | Vested KSA">
+  <meta name="twitter:description" content="Whether you're exploring Saudi Arabia or ready to launch, we're here to help.">
+  <title>Contact | Vested KSA</title>
+  <link rel="canonical" href="https://vestedksa.com/contact">
+
+  <!-- Performance and theme meta tags -->
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #6E6E73;
+      background-color: #FFFFFF;
+      line-height: 1.6;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    nav .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav .logo {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1D1D1F;
+      text-decoration: none;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      list-style: none;
+    }
+
+    nav .nav-links a {
+      color: #1D1D1F;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav .nav-links a:hover {
+      color: #0071E3;
+    }
+
+    nav .cta-link {
+      color: #0071E3;
+      font-weight: 600;
+    }
+
+    nav .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    nav .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: #1D1D1F;
+      transition: all 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      nav .nav-links {
+        display: none;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        backdrop-filter: blur(20px);
+      }
+
+      nav .nav-links.active {
+        display: flex;
+      }
+
+      nav .hamburger {
+        display: flex;
+      }
+
+      nav .nav-links a {
+        padding: 12px 0;
+        border-bottom: 1px solid #F5F5F7;
+      }
+    }
+
+    /* Main sections */
+    section {
+      animation: fadeIn 0.8s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 140px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #FFFFFF 0%, #FAFAFA 100%);
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 6vw, 72px);
+      font-weight: 700;
+      color: #1D1D1F;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero .subtitle {
+      font-size: 18px;
+      color: #86868B;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    /* Generic section */
+    .section {
+      padding: 140px 20px;
+    }
+
+    /* Contact Section */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-form h2 {
+      font-size: 28px;
+      font-weight: 600;
+      color: #1D1D1F;
+      margin-bottom: 32px;
+      line-height: 1.3;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #1D1D1F;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #E5E5EA;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      color: #1D1D1F;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #0071E3;
+      box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #86868B;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 12px 24px;
+      background: #0071E3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: opacity 0.3s;
+      margin-top: 8px;
+    }
+
+    .submit-button:hover {
+      opacity: 0.9;
+    }
+
+    .submit-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .success-message {
+      display: none;
+      background: #F0F9FF;
+      border: 1px solid #0071E3;
+      color: #0071E3;
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    .contact-info {
+      background: #FAFAFA;
+      padding: 40px;
+      border-radius: 12px;
+      height: fit-content;
+    }
+
+    .contact-info h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1D1D1F;
+      margin-bottom: 24px;
+    }
+
+    .contact-item {
+      margin-bottom: 28px;
+    }
+
+    .contact-item p {
+      font-size: 14px;
+      color: #6E6E73;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .contact-item a {
+      color: #0071E3;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
+
+    .contact-item a:hover {
+      opacity: 0.7;
+    }
+
+    .response-time {
+      background: #F5F5F7;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #6E6E73;
+      margin-top: 24px;
+    }
+
+    .response-time strong {
+      color: #1D1D1F;
+    }
+
+    /* Call Section */
+    .call-section {
+      margin-top: 60px;
+      padding-top: 60px;
+      border-top: 1px solid #F5F5F7;
+    }
+
+    .call-section p {
+      font-size: 16px;
+      color: #6E6E73;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .contact-info {
+        order: -1;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #F5F5F7;
+      padding-top: 80px;
+      padding-bottom: 40px;
+    }
+
+    footer .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .footer-col h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1D1D1F;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-col p {
+      font-size: 13px;
+      color: #6E6E73;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 13px;
+      color: #6E6E73;
+      text-decoration: none;
+      margin-bottom: 12px;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+      color: #0071E3;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .footer-social a {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+    }
+
+    .footer-social svg {
+      width: 100%;
+      height: 100%;
+      fill: #6E6E73;
+      transition: fill 0.3s;
+    }
+
+    .footer-social a:hover svg {
+      fill: #0071E3;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #E5E5EA;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #86868B;
+    }
+
+    .footer-bottom a {
+      color: #86868B;
+      text-decoration: none;
+      margin-left: 20px;
+      transition: color 0.3s;
+    }
+
+    .footer-bottom a:hover {
+      color: #0071E3;
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+
+      .footer-bottom a {
+        margin-left: 0;
+        margin: 0 10px;
+      }
+    }
+
+    /* Cookie Consent */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.9);
+      color: #FFFFFF;
+      padding: 20px;
+      z-index: 999;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .cookie-banner.show {
+      display: flex;
+    }
+
+    .cookie-banner p {
+      font-size: 14px;
+      margin: 0;
+      flex: 1;
+    }
+
+    .cookie-banner button {
+      background: #0071E3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: opacity 0.3s;
+    }
+
+    .cookie-banner button:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      .cookie-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cookie-banner button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">Vested</a>
+      <ul class="nav-links">
+        <li><a href="/why-saudi.html">Why Saudi</a></li>
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/ethics.html">Ethics</a></li>
+        <li><a href="/insights.html">Insights</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/contact.html" class="cta-link">Get Started</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Get in touch.</h1>
+      <p class="subtitle">Whether you're exploring Saudi Arabia or ready to launch, we're here to help.</p>
+    </div>
+  </section>
+
+  <!-- Contact Form & Info -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+        <div class="contact-form">
+          <h2>Send us a message</h2>
+          <form id="contactForm" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="company">Company Name</label>
+              <input type="text" id="company" name="company" required>
+            </div>
+
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input type="text" id="country" name="country" placeholder="e.g., United States" required>
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service Interest</label>
+              <select id="service" name="service" required>
+                <option value="">Select a service...</option>
+                <option value="formation">Company Formation</option>
+                <option value="operations">Operations</option>
+                <option value="hr">People & HR</option>
+                <option value="finance">Finance</option>
+                <option value="legal">Legal</option>
+                <option value="workspace">Workspace</option>
+                <option value="outsourcing">Full Outsourcing</option>
+                <option value="unsure">Not sure yet</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us about your plans..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Send message</button>
+            <div class="success-message" id="successMessage">
+              Thank you for reaching out. We'll be in touch within 24 hours.
+            </div>
+          </form>
+        </div>
+
+        <div class="contact-info">
+          <h3>Contact Details</h3>
+
+          <div class="contact-item">
+            <p><strong>Email</strong></p>
+            <a href="mailto:hello@vestedksa.com">hello@vestedksa.com</a>
+          </div>
+
+          <div class="contact-item">
+            <p><strong>Phone</strong></p>
+            <p><!-- PLACEHOLDER: Phone number to be added --></p>
+          </div>
+
+          <div class="contact-item">
+            <p><strong>Location</strong></p>
+            <p>Tahliyah St, Olaya<br>
+            Riyadh, Saudi Arabia</p>
+          </div>
+
+          <div class="response-time">
+            <strong>Response time:</strong> We respond within 24 hours.
+          </div>
+
+          <div class="call-section">
+            <p>Prefer to schedule a call? Email us directly and we'll arrange a time that works for you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Vested</h3>
+          <p>We help international companies establish, operate, and scale in Saudi Arabia. From formation to accounting to full operations outsourcing, we handle everything that isn't your core business.</p>
+          <div class="footer-social">
+            <a href="https://linkedin.com/company/vestedksa" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.047-8.842 0-9.769h3.554v1.383c.43-.665 1.199-1.61 2.920-1.61 2.135 0 3.753 1.395 3.753 4.402v5.594zM5.337 5.433c-1.144 0-1.915-.759-1.915-1.71 0-.955.77-1.71 1.954-1.71 1.185 0 1.915.755 1.915 1.71 0 .951-.73 1.71-1.954 1.71zm1.946 14.019H3.391V9.683h3.892v9.769zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+            </a>
+            <a href="https://twitter.com/vestedksa" aria-label="X (Twitter)">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417a9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Company</h3>
+          <a href="/why-saudi.html">Why Saudi</a>
+          <a href="/services.html">Services</a>
+          <a href="/ethics.html">Ethics</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <a href="/insights.html">Insights</a>
+          <a href="/faq.html">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <a href="mailto:hello@vestedksa.com">hello@vestedksa.com</a>
+          <p style="margin-top: 10px;">Tahliyah St, Olaya<br>
+          Riyadh, Saudi Arabia</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Vest KSA Co. All rights reserved.</span>
+        <div>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p>We use analytics to understand how you use our site and improve your experience.</p>
+    <button onclick="acceptCookies()">Accept</button>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    // Cookie consent
+    function acceptCookies() {
+      localStorage.setItem('cookies-accepted', 'true');
+      document.getElementById('cookieBanner').classList.remove('show');
+    }
+
+    function initCookieBanner() {
+      if (!localStorage.getItem('cookies-accepted')) {
+        document.getElementById('cookieBanner').classList.add('show');
+      }
+    }
+
+    // Form submission
+    function handleFormSubmit(event) {
+      event.preventDefault();
+
+      const form = document.getElementById('contactForm');
+      const successMessage = document.getElementById('successMessage');
+      const button = form.querySelector('.submit-button');
+
+      // Get form data
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+
+      // Disable button and show loading state
+      button.disabled = true;
+      button.textContent = 'Sending...';
+
+      // Simulate form submission (in production, this would be sent to a backend)
+      setTimeout(() => {
+        // Show success message
+        successMessage.classList.add('show');
+
+        // Reset form
+        form.reset();
+
+        // Re-enable button
+        button.disabled = false;
+        button.textContent = 'Send message';
+
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          successMessage.classList.remove('show');
+        }, 5000);
+      }, 800);
+    }
+
+    // Form validation with visual feedback
+    const inputs = document.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('blur', function() {
+        if (this.value.trim() === '' && this.hasAttribute('required')) {
+          this.style.borderColor = '#E5E5EA';
+        }
+      });
+    });
+
+    initCookieBanner();
+
+    // Smooth scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeIn 0.8s ease-in forwards';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Vested KSA",
+    "description": "Get in touch with Vested KSA. Whether you're exploring Saudi Arabia or ready to launch, we're here to help.",
+    "url": "https://vestedksa.com/contact",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Vested KSA",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://vestedksa.com/logo.png"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Support",
+        "email": "hello@vestedksa.com",
+        "areaServed": "SA"
+      }
+    }
+  }
+  </script>
+</body>
+</html>
