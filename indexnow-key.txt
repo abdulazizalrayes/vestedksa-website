@@ -1,0 +1,12 @@
+REPLACE-WITH-YOUR-INDEXNOW-KEY
+
+This file contains your IndexNow API key for notifying search engines when your content changes.
+
+Instructions:
+1. Sign up at https://www.indexnow.org
+2. Get your unique API key
+3. Replace REPLACE-WITH-YOUR-INDEXNOW-KEY with your actual key
+4. Implement IndexNow API calls in your website update process
+5. This key should be kept confidential
+
+IndexNow helps Bing, Yandex, and other search engines discover content updates faster than traditional crawling.
