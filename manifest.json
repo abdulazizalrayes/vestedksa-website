@@ -1,0 +1,10 @@
+{
+  "name": "Vested KSA",
+  "short_name": "Vested",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1D1D1F",
+  "description": "Vested KSA helps foreign companies enter and operate in Saudi Arabia.",
+  "icons": []
+}
