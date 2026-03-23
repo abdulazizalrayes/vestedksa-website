@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vested KSA operates with international-standard governance. We are transparent, ethical, and auditable. Trust is built on clear policies and consistent action.">
+  <meta property="og:title" content="Ethics & Governance | Vested KSA">
+  <meta property="og:description" content="How we operate. What we stand for. The standards we hold ourselves to.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vestedksa.com/ethics">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ethics & Governance | Vested KSA">
+  <meta name="twitter:description" content="How we operate. What we stand for. The standards we hold ourselves to.">
+  <title>Ethics & Governance | Vested KSA</title>
+  <link rel="canonical" href="https://vestedksa.com/ethics">
+
+  <!-- Performance and theme meta tags -->
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #6E6E73;
+      background-color: #FFFFFF;
+      line-height: 1.6;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    nav .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav .logo {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1D1D1F;
+      text-decoration: none;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      list-style: none;
+    }
+
+    nav .nav-links a {
+      color: #1D1D1F;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav .nav-links a:hover {
+      color: #0071E3;
+    }
+
+    nav .cta-link {
+      color: #0071E3;
+      font-weight: 600;
+    }
+
+    nav .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    nav .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: #1D1D1F;
+      transition: all 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      nav .nav-links {
+        display: none;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        backdrop-filter: blur(20px);
+      }
+
+      nav .nav-links.active {
+        display: flex;
+      }
+
+      nav .hamburger {
+        display: flex;
+      }
+
+      nav .nav-links a {
+        padding: 12px 0;
+        border-bottom: 1px solid #F5F5F7;
+      }
+    }
+
+    /* Main sections */
+    section {
+      animation: fadeIn 0.8s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 140px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #FFFFFF 0%, #FAFAFA 100%);
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 6vw, 72px);
+      font-weight: 700;
+      color: #1D1D1F;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero .subtitle {
+      font-size: 18px;
+      color: #86868B;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    /* Generic section */
+    .section {
+      padding: 140px 20px;
+    }
+
+    .section h2 {
+      font-size: clamp(36px, 5vw, 48px);
+      font-weight: 700;
+      color: #1D1D1F;
+      margin-bottom: 40px;
+      line-height: 1.2;
+    }
+
+    .section-intro {
+      font-size: 18px;
+      color: #6E6E73;
+      max-width: 900px;
+      margin-bottom: 60px;
+      line-height: 1.8;
+    }
+
+    .section h3 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #1D1D1F;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .section p {
+      font-size: 16px;
+      color: #6E6E73;
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    /* Framework Grid */
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin: 60px 0;
+    }
+
+    .framework-card {
+      background: #F5F5F7;
+      padding: 40px;
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+
+    .framework-card:hover {
+      background: #FAFAFA;
+      transform: translateY(-4px);
+    }
+
+    .framework-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1D1D1F;
+      margin: 0 0 16px 0;
+    }
+
+    .framework-card p {
+      font-size: 14px;
+      color: #6E6E73;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Two column layout */
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin: 60px 0;
+    }
+
+    .two-column h3 {
+      margin-top: 0;
+    }
+
+    @media (max-width: 768px) {
+      .two-column {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .checklist {
+      list-style: none;
+      margin: 20px 0;
+    }
+
+    .checklist li {
+      padding: 12px 0 12px 30px;
+      position: relative;
+      color: #6E6E73;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .checklist li:before {
+      content: "â";
+      position: absolute;
+      left: 0;
+      color: #0071E3;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    /* Highlight box */
+    .highlight-box {
+      background: #F5F5F7;
+      padding: 40px;
+      border-radius: 12px;
+      border-left: 4px solid #0071E3;
+      margin: 40px 0;
+    }
+
+    .highlight-box p {
+      margin: 0;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: #F5F5F7;
+      padding: 120px 20px;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: #1D1D1F;
+      margin-bottom: 20px;
+    }
+
+    .cta-link {
+      display: inline-block;
+      color: #0071E3;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: opacity 0.3s;
+    }
+
+    .cta-link:hover {
+      opacity: 0.7;
+    }
+
+    /* Footer */
+    footer {
+      background: #F5F5F7;
+      padding-top: 80px;
+      padding-bottom: 40px;
+    }
+
+    footer .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .footer-col h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1D1D1F;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-col p {
+      font-size: 13px;
+      color: #6E6E73;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 13px;
+      color: #6E6E73;
+      text-decoration: none;
+      margin-bottom: 12px;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+      color: #0071E3;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .footer-social a {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+    }
+
+    .footer-social svg {
+      width: 100%;
+      height: 100%;
+      fill: #6E6E73;
+      transition: fill 0.3s;
+    }
+
+    .footer-social a:hover svg {
+      fill: #0071E3;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #E5E5EA;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #86868B;
+    }
+
+    .footer-bottom a {
+      color: #86868B;
+      text-decoration: none;
+      margin-left: 20px;
+      transition: color 0.3s;
+    }
+
+    .footer-bottom a:hover {
+      color: #0071E3;
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+
+      .footer-bottom a {
+        margin-left: 0;
+        margin: 0 10px;
+      }
+    }
+
+    /* Cookie Consent */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.9);
+      color: #FFFFFF;
+      padding: 20px;
+      z-index: 999;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .cookie-banner.show {
+      display: flex;
+    }
+
+    .cookie-banner p {
+      font-size: 14px;
+      margin: 0;
+      flex: 1;
+    }
+
+    .cookie-banner button {
+      background: #0071E3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: opacity 0.3s;
+    }
+
+    .cookie-banner button:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      .cookie-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cookie-banner button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">Vested</a>
+      <ul class="nav-links">
+        <li><a href="/why-saudi.html">Why Saudi</a></li>
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/ethics.html">Ethics</a></li>
+        <li><a href="/insights.html">Insights</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/contact.html" class="cta-link">Get Started</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Ethics &amp; Governance.</h1>
+      <p class="subtitle">How we operate. What we stand for. The standards we hold ourselves to.</p>
+    </div>
+  </section>
+
+  <!-- Governance Framework -->
+  <section class="section">
+    <div class="container">
+      <h2>Our Governance Framework</h2>
+      <p class="section-intro">Vested operates with internationally aligned governance. Every process is documented, every transaction is auditable, and every client engagement is held to the highest ethical standards. We understand that international companies entering Saudi Arabia need more than good intentions, they need proof. That's why we build trust through transparency, clear policies, and rigorous compliance.</p>
+
+      <div class="two-column">
+        <div>
+          <h3>Why This Matters</h3>
+          <p>International companies, especially those from the EU and North America, conduct due diligence on their partners. You need to know who you're working with, what standards they operate under, and what happens if something goes wrong. We don't ask you to trust us blindly. We provide documentation, audit reports, references, and full transparency into our operations.</p>
+          <p>Our governance isn't theoretical, it's operational. Every team member is trained on compliance. Every transaction is logged. Every client relationship is documented. This isn't bureaucracy; it's professionalism at scale.</p>
+        </div>
+        <div>
+          <h3>What You Get</h3>
+          <ul class="checklist">
+            <li>Full commercial registration and business license</li>
+            <li>Audited financial statements (available upon request)</li>
+            <li>ISO-aligned compliance certifications</li>
+            <li>Clear conflict-of-interest policies</li>
+            <li>Documented security and data protection protocols</li>
+            <li>Anti-bribery and anti-corruption commitment</li>
+            <li>Client references and due diligence documentation</li>
+            <li>Quarterly compliance reports to clients</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code of Conduct -->
+  <section class="section" style="background: #FAFAFA;">
+    <div class="container">
+      <h2>Code of Conduct</h2>
+      <p class="section-intro">Our code of conduct applies to every employee, contractor, and partner. It's non-negotiable.</p>
+
+      <div class="framework-grid">
+        <div class="framework-card">
+          <h3>Anti-Bribery & Anti-Corruption</h3>
+          <p>We comply with the UK Bribery Act, US FCPA, and Saudi anti-corruption laws. No bribes. No facilitation payments. No circumventing rules. If it's not clean, we don't do it.</p>
+        </div>
+        <div class="framework-card">
+          <h3>Conflict of Interest</h3>
+          <p>We disclose all potential conflicts. If a team member has a financial interest in a decision, they recuse themselves. We document everything.</p>
+        </div>
+        <div class="framework-card">
+          <h3>Fair Dealing</h3>
+          <p>We treat clients, partners, and employees fairly. We don't engage in deceptive practices. We honor commitments. We admit mistakes and correct them.</p>
+        </div>
+        <div class="framework-card">
+          <h3>Whistleblower Protection</h3>
+          <p>Employees and contractors can report misconduct confidentially, without fear of retaliation. This is essential for maintaining integrity.</p>
+        </div>
+        <div class="framework-card">
+          <h3>Zero Tolerance for Fraud</h3>
+          <p>Any employee or partner engaged in fraud is immediately terminated and reported to relevant authorities. We don't hide problems.</p>
+        </div>
+        <div class="framework-card">
+          <h3>Professional Excellence</h3>
+          <p>Our team is trained, certified, and experienced. We don't cut corners. We maintain high standards because it's the right thing to do.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Financial Transparency -->
+  <section class="section">
+    <div class="container">
+      <h2>Financial Transparency</h2>
+      <p class="section-intro">Your money is yours. We are custodians, not owners. Here's how we protect it.</p>
+
+      <div class="highlight-box">
+        <p><strong>Every client gets a dedicated account ledger.</strong> Monthly, we provide detailed reporting of all transactions, fees, and activities. No surprises. No hidden costs. Open-book operations.</p>
+      </div>
+
+      <div class="framework-grid">
+        <div class="framework-card">
+          <h3>Segregated Client Funds</h3>
+          <p>Client funds are held in segregated bank accounts, separate from Vested's operational accounts. In the event of insolvency (which won't happen, but hypothetically), client funds are protected.</p>
+        </div>
+        <div class="framework-card">
+          <h3>Monthly Reporting</h3>
+          <p>Every client receives a monthly statement showing all deposits, expenses, transactions, and balances. You always know where your money is.</p>
+        </div>
+        <div class="framework-card">
+          <h3>Annual Audits</h3>
+          <p>Our financial statements are audited annually by SOCPA-approved auditors. The results are available to clients upon request.</p>
+        </div>
+        <div class="framework-card">
+          <h3>Clear Fee Structure</h3>
+          <p>All fees are quoted upfront and in writing. No surprise charges. No "miscellaneous" line items. What we quote is what you pay.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Framework -->
+  <section class="section" style="background: #FAFAFA;">
+    <div class="container">
+      <h2>Compliance Framework</h2>
+      <p class="section-intro">We operate under Saudi law, international best practices, and client contractual requirements. Compliance isn't optional, it's foundational.</p>
+
+      <h3>Saudi Regulatory Compliance</h3>
+      <p>We comply with all Saudi regulators: the Ministry of Investment (MISA), the Zakat, Tax & Customs Authority (ZATCA), the Ministry of Human Resources, and the General Organization for Social Insurance (GOSI). Our legal team monitors regulatory changes continuously.</p>
+
+      <h3>International Standards</h3>
+      <p>We align with ISO 27001 (information security), GDPR principles (data protection), and international anti-money laundering standards. If your company operates globally, we ensure your Saudi operations meet your global compliance standards.</p>
+
+      <h3>AML & KYC Procedures</h3>
+      <p>We conduct Anti-Money Laundering and Know-Your-Customer checks on all clients and partners. We maintain transaction records. We report suspicious activity when required by law.</p>
+
+      <h3>Data Protection & Privacy</h3>
+      <p>We protect client data using industry-standard encryption and access controls. We comply with GDPR, PDPA (Saudi), and other data protection laws. We conduct regular security audits.</p>
+
+      <h3>Regular Internal Audits</h3>
+      <p>Our compliance team conducts quarterly internal audits of operations, finances, and processes. Issues are documented and resolved. Findings are shared with clients upon request.</p>
+    </div>
+  </section>
+
+  <!-- Due Diligence -->
+  <section class="section">
+    <div class="container">
+      <h2>We Welcome Due Diligence</h2>
+      <p class="section-intro">If you're a serious company considering engaging with us, we encourage you to vet us thoroughly. We provide everything you need to make an informed decision.</p>
+
+      <div class="highlight-box">
+        <p>We provide prospective clients with: company registration documents, commercial license, audited financial statements, compliance certificates, references from existing clients, and detailed governance and conflict-of-interest policies. Ask. We'll provide.</p>
+      </div>
+
+      <h3>What You Can Request</h3>
+      <ul class="checklist">
+        <li>Commercial registration and business license (CR)</li>
+        <li>Proof of SOCPA audit by approved auditor</li>
+        <li>List of insurance coverage (liability, professional indemnity)</li>
+        <li>Certification of MISA registration and good standing</li>
+        <li>References from existing clients in your sector</li>
+        <li>Detailed organizational chart and key personnel backgrounds</li>
+        <li>ISO or equivalent compliance certifications</li>
+        <li>Security and data protection policies</li>
+        <li>Anti-bribery and conflict-of-interest policies</li>
+        <li>Client service level agreement templates</li>
+      </ul>
+
+      <h3>How to Conduct Due Diligence</h3>
+      <p>Email hello@vestedksa.com with your due diligence request. Include what information you need and your timeline. We'll respond within 24 hours. We treat your due diligence seriously, not as an obstacle, but as validation that you're making the right choice.</p>
+    </div>
+  </section>
+
+  <!-- Reporting Standards -->
+  <section class="section" style="background: #FAFAFA;">
+    <div class="container">
+      <h2>What Clients Receive</h2>
+      <p class="section-intro">Transparency is built into our operations. Here's what you get, every month.</p>
+
+      <div class="framework-grid">
+        <div class="framework-card">
+          <h3>Monthly Operations Report</h3>
+          <p>Summary of activities, milestones, key decisions, and updates on all services provided. This is your window into what we're doing for you.</p>
+        </div>
+        <div class="framework-card">
+          <h3>Financial Statements</h3>
+          <p>Detailed ledger of all transactions, expenses, and balances. Every penny accounted for.</p>
+        </div>
+        <div class="framework-card">
+          <h3>Compliance Status</h3>
+          <p>Are we compliant with all applicable laws? We tell you. If there's a risk or gap, we flag it immediately and propose solutions.</p>
+        </div>
+        <div class="framework-card">
+          <h3>HR Dashboard</h3>
+          <p>For clients using our people services: headcount, turnover, salary ranges, training completed, and compliance status.</p>
+        </div>
+        <div class="framework-card">
+          <h3>Milestone Tracking</h3>
+          <p>Are we on schedule? On budget? We track it and report it. You always know where you stand.</p>
+        </div>
+        <div class="framework-card">
+          <h3>Ad-Hoc Reporting</h3>
+          <p>Need a special report for your board or auditors? We provide it. Transparency is the default, not an exception.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Have questions about our governance?</h2>
+      <a href="/contact.html" class="cta-link">Contact us â</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Vested</h3>
+          <p>We help international companies establish, operate, and scale in Saudi Arabia. From formation to accounting to full operations outsourcing, we handle everything that isn't your core business.</p>
+          <div class="footer-social">
+            <a href="https://linkedin.com/company/vestedksa" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.047-8.842 0-9.769h3.554v1.383c.43-.665 1.199-1.61 2.920-1.61 2.135 0 3.753 1.395 3.753 4.402v5.594zM5.337 5.433c-1.144 0-1.915-.759-1.915-1.71 0-.955.77-1.71 1.954-1.71 1.185 0 1.915.755 1.915 1.71 0 .951-.73 1.71-1.954 1.71zm1.946 14.019H3.391V9.683h3.892v9.769zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+            </a>
+            <a href="https://twitter.com/vestedksa" aria-label="X (Twitter)">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417a9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Company</h3>
+          <a href="/why-saudi.html">Why Saudi</a>
+          <a href="/services.html">Services</a>
+          <a href="/ethics.html">Ethics</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <a href="/insights.html">Insights</a>
+          <a href="/faq.html">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <a href="mailto:hello@vestedksa.com">hello@vestedksa.com</a>
+          <p style="margin-top: 10px;">Tahliyah St, Olaya<br>
+          Riyadh, Saudi Arabia</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Vest KSA Co. All rights reserved.</span>
+        <div>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p>We use analytics to understand how you use our site and improve your experience.</p>
+    <button onclick="acceptCookies()">Accept</button>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    // Cookie consent
+    function acceptCookies() {
+      localStorage.setItem('cookies-accepted', 'true');
+      document.getElementById('cookieBanner').classList.remove('show');
+    }
+
+    function initCookieBanner() {
+      if (!localStorage.getItem('cookies-accepted')) {
+        document.getElementById('cookieBanner').classList.add('show');
+      }
+    }
+
+    initCookieBanner();
+
+    // Smooth scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeIn 0.8s ease-in forwards';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Ethics & Governance",
+    "description": "Vested KSA operates with international-standard governance. We are transparent, ethical, and auditable.",
+    "url": "https://vestedksa.com/ethics",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Vested KSA",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://vestedksa.com/logo.png"
+      }
+    }
+  }
+  </script>
+</body>
+</html>
