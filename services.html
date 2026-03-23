@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive operational and business support services for international companies establishing operations in Saudi Arabia.">
+    <meta name="canonical" href="https://vestedksa.com/services">
+
+    <!-- Performance and theme meta tags -->
+    <meta name="theme-color" content="#FFFFFF">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Services - Vested KSA">
+    <meta property="og:description" content="End-to-end operational support for international companies in Saudi Arabia. Formation, HR, finance, legal, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vestedksa.com/services">
+    <meta property="og:image" content="https://vestedksa.com/og-image.jpg">
+
+    <title>Services - Vested KSA</title>
+
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #6E6E73;
+            background-color: #FFFFFF;
+            line-height: 1.6;
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #1D1D1F;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1D1D1F;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1D1D1F;
+            margin-bottom: 1rem;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1D1D1F;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            color: #6E6E73;
+            margin-bottom: 1.25rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #1D1D1F;
+            font-weight: 600;
+        }
+
+        a {
+            color: #0071E3;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #F5F5F7;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1D1D1F;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #6E6E73;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1D1D1F;
+        }
+
+        .nav-links a.active {
+            color: #1D1D1F;
+            font-weight: 500;
+        }
+
+        .nav-cta {
+            background-color: #0071E3;
+            color: #FFFFFF !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-cta:hover {
+            opacity: 0.85;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 5%;
+            background-color: #FFFFFF;
+            text-align: center;
+        }
+
+        .hero h1 {
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            font-size: 3.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #86868B;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        /* Section Spacing */
+        section {
+            padding: 140px 5%;
+        }
+
+        section.alt-bg {
+            background-color: #FAFAFA;
+        }
+
+        section.light-bg {
+            background-color: #F5F5F7;
+        }
+
+        /* Services Overview */
+        .overview {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .overview p {
+            font-size: 1.1rem;
+            color: #6E6E73;
+            line-height: 1.9;
+        }
+
+        /* Service Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background-color: #FFFFFF;
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid #F5F5F7;
+            transition: all 0.3s ease;
+        }
+
+        section.light-bg .service-card {
+            background-color: #FFFFFF;
+        }
+
+        .service-card:hover {
+            border-color: #E5E5E7;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card h3 {
+            color: #1D1D1F;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .service-section {
+            margin-bottom: 2rem;
+        }
+
+        .service-section h4 {
+            color: #1D1D1F;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-section p {
+            color: #6E6E73;
+            line-height: 1.8;
+        }
+
+        .service-detail {
+            color: #86868B;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-badge {
+            display: inline-block;
+            background-color: #F5F5F7;
+            color: #1D1D1F;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .compliance-note {
+            background-color: #FAFAFA;
+            padding: 1.5rem;
+            border-left: 3px solid #0071E3;
+            border-radius: 4px;
+            margin-top: 1.5rem;
+        }
+
+        .compliance-note p {
+            margin: 0;
+            color: #6E6E73;
+            font-size: 0.95rem;
+        }
+
+        /* How Engagement Works */
+        .engagement-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .engagement-step {
+            text-align: center;
+        }
+
+        .engagement-step h4 {
+            color: #1D1D1F;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .engagement-step p {
+            color: #6E6E73;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: #0071E3;
+            color: #FFFFFF;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: #F5F5F7;
+            padding: 120px 5%;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: #1D1D1F;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #0071E3;
+            color: #FFFFFF;
+            padding: 0.9rem 2.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+
+        .email-link {
+            color: #0071E3;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #FAFAFA;
+            padding: 4rem 5%;
+            border-top: 1px solid #F5F5F7;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1D1D1F;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: #6E6E73;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #1D1D1F;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #E5E5E7;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 0.85rem;
+            color: #86868B;
+        }
+
+        .footer-bottom a {
+            color: #86868B;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 80px 5%;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .service-card {
+                padding: 2rem;
+            }
+
+            .engagement-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.8rem;
+            }
+
+            .nav-logo {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 60px 5%;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cookie Consent */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #FAFAFA;
+            padding: 1.5rem 5%;
+            border-top: 1px solid #E5E5E7;
+            display: none;
+            z-index: 200;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #6E6E73;
+        }
+
+        .cookie-banner.show {
+            display: flex;
+        }
+
+        .cookie-text {
+            flex: 1;
+            margin-right: 2rem;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+            white-space: nowrap;
+        }
+
+        .cookie-btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .cookie-accept {
+            background-color: #0071E3;
+            color: #FFFFFF;
+        }
+
+        .cookie-accept:hover {
+            opacity: 0.85;
+        }
+
+        .cookie-decline {
+            background-color: #E5E5E7;
+            color: #1D1D1F;
+        }
+
+        .cookie-decline:hover {
+            background-color: #D5D5D7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">Vested</div>
+        <ul class="nav-links">
+            <li><a href="index.html">About</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="why-saudi.html">Why Saudi</a></li>
+            <li><a href="ethics.html">Ethics</a></li>
+            <li><a href="insights.html">Insights</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html" class="nav-cta">Get Started</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Our services.</h1>
+        <p>End-to-end operational support for international companies in Saudi Arabia. One partner. Every function covered.</p>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="alt-bg">
+        <div class="container">
+            <div class="overview">
+                <p>We handle everything that isn't your core business: formation, people, finance, legal, workspace, and day-to-day operations. You focus on growth. We handle the rest.</p>
+                <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #E5E5E7; font-size: 1.1rem; color: #1D1D1F; font-weight: 500;">Every engagement is tailored to your needs. Build a fully dedicated in-house team through Vested, or access our services on demand as your business requires. You choose the model, we deliver the execution.</p>
+            </div>
+            <div style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid #E5E5E7;">
+                <h3 style="font-size: 1.5rem; font-weight: 600; color: #1D1D1F; margin-bottom: 1.5rem;">The Advantage of Scale</h3>
+                <p style="font-size: 1.05rem; color: #6E6E73; line-height: 1.75; margin-bottom: 1.25rem;">Because we manage operations for dozens of companies across Saudi Arabia, we've built deep relationships with service providers, landlords, government liaisons, auditors, and vendors.</p>
+                <p style="font-size: 1.05rem; color: #6E6E73; line-height: 1.75; margin-bottom: 1.25rem;">From office leases and staff accommodation to legal services, insurance, and government processing, we secure better terms because we bring repeat business and trusted relationships to every negotiation. Our clients consistently pay less for higher-quality services than they would sourcing independently.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Individual Services -->
+    <section>
+        <div class="container">
+            <div class="services-grid">
+                <!-- Service 1: Company Formation -->
+                <div class="service-card">
+                    <h3>Company Formation & Setup</h3>
+
+                    <div class="service-section">
+                        <h4>What we do</h4>
+                        <p class="service-detail">
+                            MISA licensing, Commercial Registration (CR), foreign-owned entity structuring (LLC, branch, representative office), Articles of Association, Memorandum of Association, Chamber of Commerce registration, and municipal licensing. We navigate every regulatory requirement to get your legal entity live.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>How we do it</h4>
+                        <p class="service-detail">
+                            You're assigned a dedicated formation specialist who manages every step. Weekly progress updates keep you informed. We handle all document management, submissions, and follow-ups with government agencies, so you don't have to.
+                        </p>
+                    </div>
+
+                    <div class="timeline-badge">4-6 weeks from engagement to operational entity</div>
+
+                    <div class="service-section">
+                        <h4>What's included</h4>
+                        <p class="service-detail">
+                            Initial regulatory assessment and entity structure recommendation, all MISA licensing and CR documentation preparation and filing, Articles and Memorandum of Association drafting, Chamber of Commerce registration and municipal licensing, government liaison and follow-ups, document management and filing archive, post-formation compliance checklist.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 2: Full Operational Outsourcing -->
+                <div class="service-card">
+                    <h3>Full Operational Outsourcing</h3>
+
+                    <div class="service-section">
+                        <h4>What we do</h4>
+                        <p class="service-detail">
+                            Complete non-core operations management: admin, procurement, vendor management, logistics coordination, facility management, mail handling, and government relations (PRO services). We become the backbone that keeps your operation running smoothly.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>Why it matters</h4>
+                        <p class="service-detail">
+                            Eliminate the need to build an operations team from scratch. We become your back office on day one, handling everything from vendor negotiations to regulatory reporting, so your core team stays focused on business development.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>How it works</h4>
+                        <p class="service-detail">
+                            You get a dedicated operations manager as your single point of contact. Monthly reporting and SLA-backed service levels ensure accountability and transparency. From daily admin to annual compliance, we've got it covered.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 3: People & HR -->
+                <div class="service-card">
+                    <h3>People & HR</h3>
+
+                    <div class="service-section">
+                        <h4>What we do</h4>
+                        <p class="service-detail">
+                            Recruitment, employment contracts, payroll processing, GOSI registration, Saudization compliance, annual leave management, end-of-service calculations, employee accommodation, transportation, work permits and visas (iqama processing). Every aspect of your workforce, fully managed.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>Why it matters</h4>
+                        <p class="service-detail">
+                            Saudi labor law is specific and strictly enforced. We ensure full compliance while handling every detail of your workforce, so you avoid costly violations and your team stays focused on delivering results.
+                        </p>
+                    </div>
+
+                    <div class="compliance-note">
+                        <p><strong>Compliance Coverage:</strong> Saudization ratios, Nitaqat system status, WPS (Wage Protection System) compliance, and ongoing labor law updates.</p>
+                    </div>
+                </div>
+
+                <!-- Service 4: Accounting & Finance -->
+                <div class="service-card">
+                    <h3>Accounting & Finance</h3>
+
+                    <div class="service-section">
+                        <h4>What we do</h4>
+                        <p class="service-detail">
+                            Bookkeeping, financial reporting, VAT filing, Zakat returns, invoicing, accounts payable/receivable, payroll accounting, audit preparation, and liaison with SOCPA-approved auditors. Accounting software setup and management included.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>Standards</h4>
+                        <p class="service-detail">
+                            All financial operations comply with IFRS and SOCPA standards. Your financials are audit-ready from day one.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>Reporting</h4>
+                        <p class="service-detail">
+                            Monthly financial statements, quarterly reviews, and annual audit-ready packages delivered on schedule. We integrate with ZAKAT and GAZT systems for seamless compliance reporting.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 5: Legal & Compliance -->
+                <div class="service-card">
+                    <h3>Legal & Compliance</h3>
+
+                    <div class="service-section">
+                        <h4>What we do</h4>
+                        <p class="service-detail">
+                            Legal entity structuring advice, regulatory compliance monitoring, contract review, employment law guidance, commercial dispute advisory, intellectual property registration, anti-money laundering (AML) compliance, and data protection advisory.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>Governance</h4>
+                        <p class="service-detail">
+                            We operate with internationally aligned governance frameworks: documented processes, clear accountability, and audit trails. Every decision is documented and traceable.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>Partners</h4>
+                        <p class="service-detail">
+                            We work with approved legal firms and auditors across Saudi Arabia, providing you with access to expertise without the overhead of building your own legal team.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 6: Workspace & Facilities -->
+                <div class="service-card">
+                    <h3>Workspace & Facilities</h3>
+
+                    <div class="service-section">
+                        <h4>What we do</h4>
+                        <p class="service-detail">
+                            Office search and selection, fit-out and furnishing, IT infrastructure setup, reception and admin staffing, maintenance and facility management, executive accommodation, airport transfers, and transportation coordination.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>Flexibility</h4>
+                        <p class="service-detail">
+                            From serviced offices to full custom buildouts, we match your workspace to your stage and budget. Whether you're scaling up or establishing your first Saudi location, we find and manage the right space.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 7: Support Services & Logistics -->
+                <div class="service-card">
+                    <h3>Support Services & Logistics</h3>
+
+                    <div class="service-section">
+                        <h4>Office Management & Facilities</h4>
+                        <p class="service-detail">
+                            Office cleaning and maintenance, utility management (electricity, water, telecom), office consumables and supplies, mail and courier handling, and day-to-day operational support to keep your workspace running seamlessly.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>Executive Hospitality & Transportation</h4>
+                        <p class="service-detail">
+                            Meet and greet services for visiting executives at the airport, ground transportation to accommodation or the office, dedicated drivers and vehicle arrangements, hotel and accommodation booking for staff and management, and trip coordination for business travel within Saudi Arabia.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>Visa & Government Services</h4>
+                        <p class="service-detail">
+                            Work visa and iqama processing, visit visa coordination, Chamber of Commerce document attestation, ministry attestations, and all government-related paperwork and follow-ups handled on your behalf.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>Specialized Registrations</h4>
+                        <p class="service-detail">
+                            Depending on your industry, we handle registrations with SFDA (Saudi Food and Drug Authority), CITC (Communications, Space and Technology Commission), SASO (Saudi Standards, Metrology and Quality Organization), customs clearance setup, and any other sector-specific regulatory body. We identify what's required for your business and ensure every registration is completed accurately and on time.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>Additional Support</h4>
+                        <p class="service-detail">
+                            Translation and document legalization, Saudization advisory and Nitaqat management, insurance procurement (medical, vehicle, property), bank account opening coordination, and any operational requirement unique to your business. If it's non-core, we handle it.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 8: Vendor Registration -->
+                <div class="service-card">
+                    <h3>Vendor Registration & Market Access</h3>
+
+                    <div class="service-section">
+                        <h4>What we do</h4>
+                        <p class="service-detail">
+                            We register your company as an approved vendor with Saudi Arabia's largest enterprises and government-backed entities. This opens the door to procurement opportunities, tender participation, and direct business relationships with the organizations driving the Kingdom's economic transformation.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>Key Registrations</h4>
+                        <p class="service-detail">
+                            Saudi Aramco vendor registration, SABIC supplier qualification, PIF (Public Investment Fund) portfolio companies including Diriyah Gate, Red Sea Global, Qiddiya, ROSHN, and others. Telecom operators (STC, Mobily, Zain), NEOM, and other giga-project procurement platforms. We manage the full application process, documentation, qualification requirements, and follow-ups.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>Why it matters</h4>
+                        <p class="service-detail">
+                            Vendor registration with major Saudi entities can take months and requires deep knowledge of each organization's qualification criteria. We handle the entire process so you can start bidding on contracts and building relationships from day one. Many of our clients have secured their first Saudi contract within months of registration.
+                        </p>
+                    </div>
+
+                    <div class="service-section">
+                        <h4>Government Procurement</h4>
+                        <p class="service-detail">
+                            Registration with Etimad (the national government procurement platform), Ministry of Finance vendor qualification, and other public sector procurement systems. We ensure your company meets all eligibility requirements and is positioned to participate in government tenders.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How Engagement Works -->
+    <section class="light-bg">
+        <div class="container">
+            <h2 style="text-align: center;">How Engagement Works</h2>
+            <div class="engagement-grid">
+                <div class="engagement-step">
+                    <div class="step-number">1</div>
+                    <h4>Consultation</h4>
+                    <p>We understand your business, goals, and timeline. No cookie-cutter approach, just a real conversation about what you need.</p>
+                </div>
+                <div class="engagement-step">
+                    <div class="step-number">2</div>
+                    <h4>Custom Proposal</h4>
+                    <p>Tailored service package with clear scope, deliverables, and pricing. You know exactly what you're getting and when.</p>
+                </div>
+                <div class="engagement-step">
+                    <div class="step-number">3</div>
+                    <h4>Launch</h4>
+                    <p>We execute while you focus on your core business. Dedicated point of contact, regular updates, and full transparency throughout.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Let's scope your Saudi operation.</h2>
+        <a href="contact.html" class="cta-button">Get a custom proposal â</a>
+        <p>
+            Questions? Reach out: <a href="mailto:hello@vestedksa.com" class="email-link">hello@vestedksa.com</a>
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="index.html">About</a></li>
+                    <li><a href="ethics.html">Ethics</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services.html">Formation</a></li>
+                    <li><a href="services.html">Operations</a></li>
+                    <li><a href="services.html">HR & People</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="insights.html">Insights</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="why-saudi.html">Why Saudi</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="mailto:hello@vestedksa.com">Email</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Vest KSA Co. All rights reserved.</p>
+            <div>
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-text">
+            We use cookies to enhance your experience and analyze site performance. By continuing, you agree to our <a href="#">privacy policy</a>.
+        </div>
+        <div class="cookie-buttons">
+            <button class="cookie-btn cookie-decline" onclick="handleCookieDecline()">Decline</button>
+            <button class="cookie-btn cookie-accept" onclick="handleCookieAccept()">Accept</button>
+        </div>
+    </div>
+
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Vested KSA",
+        "description": "End-to-end operational support for international companies in Saudi Arabia",
+        "url": "https://vestedksa.com",
+        "email": "hello@vestedksa.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "SA"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Saudi Arabia"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Company Formation & Setup",
+        "description": "MISA licensing, Commercial Registration, entity structuring, and regulatory compliance for foreign companies in Saudi Arabia",
+        "areaServed": {
+            "@type": "Country",
+            "name": "Saudi Arabia"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Full Operational Outsourcing",
+        "description": "Complete non-core operations management including admin, procurement, facility management, and government relations",
+        "areaServed": {
+            "@type": "Country",
+            "name": "Saudi Arabia"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "People & HR",
+        "description": "Recruitment, payroll, GOSI registration, Saudization compliance, and workforce management services",
+        "areaServed": {
+            "@type": "Country",
+            "name": "Saudi Arabia"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Accounting & Finance",
+        "description": "Bookkeeping, financial reporting, VAT filing, audit preparation, and IFRS/SOCPA compliant accounting services",
+        "areaServed": {
+            "@type": "Country",
+            "name": "Saudi Arabia"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Legal & Compliance",
+        "description": "Entity structuring, regulatory compliance, contract review, AML compliance, and intellectual property services",
+        "areaServed": {
+            "@type": "Country",
+            "name": "Saudi Arabia"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Workspace & Facilities",
+        "description": "Office space selection, fit-out, IT infrastructure, reception services, and facility management",
+        "areaServed": {
+            "@type": "Country",
+            "name": "Saudi Arabia"
+        }
+    }
+    </script>
+
+    <!-- JavaScript -->
+    <script>
+        // Cookie Consent Management
+        function initCookieConsent() {
+            const consentKey = 'vested-ksa-cookie-consent';
+            const consent = localStorage.getItem(consentKey);
+
+            if (!consent) {
+                document.getElementById('cookieBanner').classList.add('show');
+            }
+        }
+
+        function handleCookieAccept() {
+            localStorage.setItem('vested-ksa-cookie-consent', 'accepted');
+            document.getElementById('cookieBanner').classList.remove('show');
+            // Initialize analytics or tracking scripts here
+        }
+
+        function handleCookieDecline() {
+            localStorage.setItem('vested-ksa-cookie-consent', 'declined');
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initCookieConsent();
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+
+        // Accessibility: Update active nav link based on current page
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath ||
+                    (currentPath === '/' && link.getAttribute('href') === 'index.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
