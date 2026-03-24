@@ -9,6 +9,10 @@
     {
       "src": "**/*.{txt,xml,json}",
       "use": "@vercel/static"
+    },
+    {
+      "src": "**/*.{png,jpg,jpeg,gif,svg,ico,webp,woff,woff2}",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
