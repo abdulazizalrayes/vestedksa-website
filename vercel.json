@@ -17,6 +17,46 @@
   ],
   "routes": [
     {
+      "src": "/index.html",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/about.html",
+      "dest": "/about.html"
+    },
+    {
+      "src": "/services.html",
+      "dest": "/services.html"
+    },
+    {
+      "src": "/why-saudi.html",
+      "dest": "/why-saudi.html"
+    },
+    {
+      "src": "/ethics.html",
+      "dest": "/ethics.html"
+    },
+    {
+      "src": "/insights.html",
+      "dest": "/insights.html"
+    },
+    {
+      "src": "/faq.html",
+      "dest": "/faq.html"
+    },
+    {
+      "src": "/contact.html",
+      "dest": "/contact.html"
+    },
+    {
+      "src": "/privacy.html",
+      "dest": "/privacy.html"
+    },
+    {
+      "src": "/terms.html",
+      "dest": "/terms.html"
+    },
+    {
       "src": "/",
       "dest": "/index.html"
     },
