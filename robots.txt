@@ -1,5 +1,9 @@
-User-agent: *
+ser-agent: *
 Allow: /
+
+# Content Signals (https://contentsignals.org/)
+Content-Signal: search=yes, ai-train=yes, ai-input=yes
+
 Sitemap: https://vestedksa.com/sitemap.xml
 
 # AI Crawlers
