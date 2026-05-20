@@ -1,173 +1,6 @@
 {
-  "version": 2,
-  "name": "vestedksa-website",
-  "builds": [
-    {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "**/*.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.{txt,xml,json,md}",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.{png,jpg,jpeg,gif,svg,ico,webp,woff,woff2}",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/contact",
-      "dest": "/api/contact.js"
-    },
-    {
-      "src": "/index\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/"
-      }
-    },
-    {
-      "src": "/about\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/about"
-      }
-    },
-    {
-      "src": "/services\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/services"
-      }
-    },
-    {
-      "src": "/why-saudi\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/why-saudi"
-      }
-    },
-    {
-      "src": "/ethics\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/ethics"
-      }
-    },
-    {
-      "src": "/insights\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/insights"
-      }
-    },
-    {
-      "src": "/faq\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/faq"
-      }
-    },
-    {
-      "src": "/contact\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/contact"
-      }
-    },
-    {
-      "src": "/privacy\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/privacy"
-      }
-    },
-    {
-      "src": "/terms\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/terms"
-      }
-    },
-    {
-      "src": "/blog/?",
-      "status": 308,
-      "headers": {
-        "Location": "/insights"
-      }
-    },
-    {
-      "src": "/cookies/?",
-      "status": 308,
-      "headers": {
-        "Location": "/privacy"
-      }
-    },
-    {
-      "src": "/",
-      "has": [
-        {
-          "type": "header",
-          "key": "accept",
-          "value": ".*text/markdown.*"
-        }
-      ],
-      "headers": {
-        "Content-Type": "text/markdown; charset=utf-8",
-        "Vary": "Accept"
-      },
-      "dest": "/llms-full.md"
-    },
-    {
-      "src": "/",
-      "headers": {
-        "Link": "</llms.txt>; rel=\"alternate\"; type=\"text/markdown\", </llms-full.md>; rel=\"alternate\"; type=\"text/markdown\"",
-        "Vary": "Accept"
-      },
-      "dest": "/index.html"
-    },
-    {
-      "src": "/about/?",
-      "dest": "/about.html"
-    },
-    {
-      "src": "/services/?",
-      "dest": "/services.html"
-    },
-    {
-      "src": "/why-saudi/?",
-      "dest": "/why-saudi.html"
-    },
-    {
-      "src": "/ethics/?",
-      "dest": "/ethics.html"
-    },
-    {
-      "src": "/insights/?",
-      "dest": "/insights.html"
-    },
-    {
-      "src": "/faq/?",
-      "dest": "/faq.html"
-    },
-    {
-      "src": "/contact/?",
-      "dest": "/contact.html"
-    },
-    {
-      "src": "/privacy/?",
-      "dest": "/privacy.html"
-    },
-    {
-      "src": "/terms/?",
-      "dest": "/terms.html"
-    }
-  ],
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*)",
@@ -178,62 +11,44 @@
         },
         {
           "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
+          "value": "SAMEORIGIN"
         },
         {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
         },
         {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
-        },
-        {
           "key": "Strict-Transport-Security",
-          "value": "max-age=31536000; includeSubDomains; preload"
+          "value": "max-age=63072000; includeSubDomains; preload"
         }
       ]
     },
     {
-      "source": "/(.*)\\.(js|css|ico|png|jpg|jpeg|gif|svg|woff|woff2)",
+      "source": "/",
       "headers": [
         {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "key": "Link",
+          "value": "</.well-known/api-catalog>; rel=\"api-catalog\"; type=\"application/linkset+json\", </llms.txt>; rel=\"service-doc\"; type=\"text/plain\", </sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\"; type=\"application/json\", </.well-known/mcp/server-card.json>; rel=\"mcp-server-card\"; type=\"application/json\""
         }
       ]
     },
     {
-      "source": "/(.*)\\.(html)",
+      "source": "/.well-known/api-catalog",
       "headers": [
         {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
+          "key": "Content-Type",
+          "value": "application/linkset+json; charset=utf-8"
         }
       ]
     },
     {
-      "source": "/assets/(.*)",
+      "source": "/index.md",
       "headers": [
         {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/(.*\\.(?:ico|png|jpg|jpeg|gif|svg|webp|woff|woff2))",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
         }
       ]
     }
-  ],
-  "trailingSlash": false
+  ]
 }
