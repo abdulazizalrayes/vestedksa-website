@@ -3,11 +3,15 @@
   "name": "vestedksa-website",
   "builds": [
     {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
+    },
+    {
       "src": "**/*.html",
       "use": "@vercel/static"
     },
     {
-      "src": "**/*.{txt,xml,json}",
+      "src": "**/*.{txt,xml,json,md}",
       "use": "@vercel/static"
     },
     {
@@ -17,43 +21,150 @@
   ],
   "routes": [
     {
+      "src": "/api/contact",
+      "dest": "/api/contact.js"
+    },
+    {
+      "src": "/index\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/"
+      }
+    },
+    {
+      "src": "/about\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/about"
+      }
+    },
+    {
+      "src": "/services\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/services"
+      }
+    },
+    {
+      "src": "/why-saudi\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/why-saudi"
+      }
+    },
+    {
+      "src": "/ethics\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/ethics"
+      }
+    },
+    {
+      "src": "/insights\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/insights"
+      }
+    },
+    {
+      "src": "/faq\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/faq"
+      }
+    },
+    {
+      "src": "/contact\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/contact"
+      }
+    },
+    {
+      "src": "/privacy\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/privacy"
+      }
+    },
+    {
+      "src": "/terms\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/terms"
+      }
+    },
+    {
+      "src": "/blog/?",
+      "status": 308,
+      "headers": {
+        "Location": "/insights"
+      }
+    },
+    {
+      "src": "/cookies/?",
+      "status": 308,
+      "headers": {
+        "Location": "/privacy"
+      }
+    },
+    {
       "src": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "headers": {
+        "Content-Type": "text/markdown; charset=utf-8",
+        "Vary": "Accept"
+      },
+      "dest": "/llms-full.md"
+    },
+    {
+      "src": "/",
+      "headers": {
+        "Link": "</llms.txt>; rel=\"alternate\"; type=\"text/markdown\", </llms-full.md>; rel=\"alternate\"; type=\"text/markdown\"",
+        "Vary": "Accept"
+      },
       "dest": "/index.html"
     },
     {
-      "src": "/about",
+      "src": "/about/?",
       "dest": "/about.html"
     },
     {
-      "src": "/services",
+      "src": "/services/?",
       "dest": "/services.html"
     },
     {
-      "src": "/why-saudi",
+      "src": "/why-saudi/?",
       "dest": "/why-saudi.html"
     },
     {
-      "src": "/ethics",
+      "src": "/ethics/?",
       "dest": "/ethics.html"
     },
     {
-      "src": "/insights",
+      "src": "/insights/?",
       "dest": "/insights.html"
     },
     {
-      "src": "/faq",
+      "src": "/faq/?",
       "dest": "/faq.html"
     },
     {
-      "src": "/contact",
+      "src": "/contact/?",
       "dest": "/contact.html"
     },
     {
-      "src": "/privacy",
+      "src": "/privacy/?",
       "dest": "/privacy.html"
     },
     {
-      "src": "/terms",
+      "src": "/terms/?",
       "dest": "/terms.html"
     }
   ],
