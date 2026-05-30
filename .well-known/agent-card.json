@@ -1,0 +1,40 @@
+{
+  "name": "Vested KSA Public Website",
+  "description": "Public information and lead intake surface for Vested KSA, an operations partner for international companies entering Saudi Arabia.",
+  "url": "https://vestedksa.com",
+  "provider": {
+    "name": "Vested KSA",
+    "url": "https://vestedksa.com"
+  },
+  "version": "2026-05-30",
+  "defaultInputModes": ["text/plain", "text/html"],
+  "defaultOutputModes": ["text/plain", "text/markdown", "application/json"],
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "skills": [
+    {
+      "id": "saudi-market-entry-guidance",
+      "name": "Saudi market entry guidance",
+      "description": "Explain Vested KSA services, fit, entry models, and first-90-day Saudi operating plan considerations.",
+      "tags": ["Saudi Arabia", "market entry", "operations", "company formation", "compliance"],
+      "examples": [
+        "What does Vested KSA do for a foreign company entering Saudi Arabia?",
+        "Which Saudi market-entry model should a services company evaluate first?",
+        "What should be prepared before setting up operations in Riyadh?"
+      ]
+    },
+    {
+      "id": "lead-routing",
+      "name": "Lead routing",
+      "description": "Direct qualified prospects to the Vested KSA contact form, email, or Saudi market-entry checklist.",
+      "tags": ["lead intake", "contact", "checklist"],
+      "examples": [
+        "How can I contact Vested KSA?",
+        "Where can I download the Saudi market-entry checklist?"
+      ]
+    }
+  ]
+}

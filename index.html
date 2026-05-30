@@ -17,7 +17,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Vested KSA | Operations Partner in Saudi Arabia">
     <meta name="twitter:description" content="Enter Saudi Arabia. We handle everything else.">
-    <meta name="twitter:image" content="https://vestedksa.com/twitter-image.png">
+    <meta name="twitter:image" content="https://vestedksa.com/og-image.png">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://vestedksa.com/">
@@ -35,15 +35,61 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7STG2HDV42"></script>
+    <!-- Analytics bootstrap -->
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-7STG2HDV42');
+        function gtag(){window.dataLayer.push(arguments);}
+
+        function loadAnalyticsScripts() {
+            if (window.__vestedAnalyticsLoaded) return;
+            window.__vestedAnalyticsLoaded = true;
+
+            var gtagScript = document.createElement('script');
+            gtagScript.async = true;
+            gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-7STG2HDV42';
+            document.head.appendChild(gtagScript);
+
+            gtag('js', new Date());
+            gtag('config', 'G-7STG2HDV42');
+
+            window.dataLayer.push({
+                'gtm.start': Date.now(),
+                event: 'gtm.js',
+            });
+
+            var gtmScript = document.createElement('script');
+            gtmScript.async = true;
+            gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WL2FN4PR';
+            document.head.appendChild(gtmScript);
+
+            ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
+                window.removeEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
+            });
+        }
+
+        function triggerAnalyticsLoad() {
+            loadAnalyticsScripts();
+        }
+
+        var passiveOnceOptions = { passive: true, once: true };
+
+        ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
+            window.addEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
+        });
+
+        window.addEventListener('load', () => {
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(loadAnalyticsScripts, { timeout: 2500 });
+            } else {
+                setTimeout(loadAnalyticsScripts, 1500);
+            }
+        }, { once: true });
     </script>
 
     <!-- Schema.org Structured Data -->
@@ -258,6 +304,15 @@
             margin: 0 auto 50px;
         }
 
+        .hero-actions,
+        .final-cta-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
         .hero-cta {
             display: inline-block;
             color: #0071E3;
@@ -269,6 +324,19 @@
 
         .hero-cta:hover {
             opacity: 0.8;
+        }
+
+        .secondary-cta {
+            display: inline-block;
+            color: #1D1D1F;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .secondary-cta:hover {
+            opacity: 0.72;
         }
 
         .scroll-indicator {
@@ -518,6 +586,43 @@
             line-height: 1.6;
         }
 
+        .launch-plan {
+            background-color: #FAFAFA;
+            padding: 140px 20px 110px;
+        }
+
+        .launch-plan-container {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .launch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 56px;
+        }
+
+        .launch-item {
+            background: #FFFFFF;
+            border: 1px solid #E5E5E7;
+            border-radius: 8px;
+            padding: 32px;
+        }
+
+        .launch-item h3 {
+            color: #1D1D1F;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .launch-item p {
+            color: #6E6E73;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
         /* Why Vested Section */
         .why-vested {
             padding: 160px 20px 120px;
@@ -673,7 +778,6 @@
             text-decoration: none;
             font-size: 17px;
             font-weight: 500;
-            margin-bottom: 40px;
             transition: opacity 0.3s ease;
         }
 
@@ -687,6 +791,7 @@
             text-decoration: none;
             font-size: 17px;
             font-weight: 500;
+            margin-top: 32px;
             transition: color 0.3s ease;
         }
 
@@ -904,10 +1009,17 @@
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="manifest" href="/manifest.json">
     <link rel="alternate" hreflang="en" href="https://vestedksa.com/">
+    <link rel="alternate" hreflang="ar" href="https://vestedksa.com/ar/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://vestedksa.com/zh/">
     <link rel="alternate" hreflang="x-default" href="https://vestedksa.com/">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script src="/language-switcher.js" defer></script>
     </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL2FN4PR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:#3b82f6;color:#fff;padding:8px 16px;z-index:10000;transition:top 0.3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
     <!-- Navigation -->
     <nav>
@@ -948,7 +1060,10 @@
         <h1>Enter Saudi Arabia.</h1>
         <p class="subtitle">We handle everything else.</p>
         <p>Vested is your operations partner in Saudi Arabia. Whether you need a fully dedicated in-house team or flexible services on demand, we set up, run, and manage your non-core business so you can focus entirely on growth.</p>
-        <a href="/contact" class="hero-cta">Talk to us →</a>
+        <div class="hero-actions">
+            <a href="/contact" class="hero-cta">Book a market-entry call →</a>
+            <a href="/ksa-entry-checklist.txt" class="secondary-cta" download>Download the KSA entry checklist</a>
+        </div>
         <div class="scroll-indicator">
             <div class="scroll-indicator-line"></div>
         </div>
@@ -1056,6 +1171,31 @@
         </div>
     </section>
 
+    <!-- Launch Plan Section -->
+    <section class="launch-plan">
+        <div class="launch-plan-container">
+            <h2 class="section-title">What gets handled in the first 90 days.</h2>
+            <div class="launch-grid">
+                <div class="launch-item">
+                    <h3>Entry structure</h3>
+                    <p>We clarify whether you need an entity, branch, partner model, or managed operating presence before money is committed.</p>
+                </div>
+                <div class="launch-item">
+                    <h3>Operational setup</h3>
+                    <p>Licensing, address, banking readiness, vendors, workspace, IT, document control, and launch calendar move in one coordinated plan.</p>
+                </div>
+                <div class="launch-item">
+                    <h3>Local execution</h3>
+                    <p>We manage the practical Saudi details: follow-ups, registrations, supplier coordination, HR basics, and reporting rhythm.</p>
+                </div>
+                <div class="launch-item">
+                    <h3>Governance control</h3>
+                    <p>Decision rights, approvals, records, payment controls, and compliance expectations are defined before operations scale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Why Vested Section -->
     <section class="why-vested">
         <h2 class="section-title">Built on trust. Run with transparency.</h2>
@@ -1114,7 +1254,10 @@
     <!-- Final CTA Section -->
     <section class="final-cta">
         <h2>Ready to enter Saudi Arabia?</h2>
-        <a href="/contact" class="final-cta-link">Schedule a consultation →</a>
+        <div class="final-cta-actions">
+            <a href="/contact" class="final-cta-link">Schedule a consultation →</a>
+            <a href="/ksa-entry-checklist.txt" class="secondary-cta" download>Download checklist</a>
+        </div>
         <a href="mailto:hello@vestedksa.com" class="final-cta-email">hello@vestedksa.com</a>
     </section>
 
@@ -1184,6 +1327,14 @@
     </div>
 
     <script>
+        function pushDataLayerEvent(eventName, payload = {}) {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event: eventName, ...payload });
+            if (typeof window.gtag === 'function') {
+                window.gtag('event', eventName, payload);
+            }
+        }
+
         // Navigation
         const hamburger = document.querySelector('.hamburger');
         const mobileMenu = document.querySelector('.mobile-menu');
@@ -1201,40 +1352,25 @@
             });
         });
 
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.service-card, .step, .launch-item, .differentiator, .result-card').forEach((element) => {
+                observer.observe(element);
             });
-        }, observerOptions);
-
-        // Observe service cards
-        document.querySelectorAll('.service-card').forEach(card => {
-            observer.observe(card);
-        });
-
-        // Observe step items
-        document.querySelectorAll('.step').forEach(step => {
-            observer.observe(step);
-        });
-
-        // Observe differentiators
-        document.querySelectorAll('.differentiator').forEach(diff => {
-            observer.observe(diff);
-        });
-
-        // Observe result cards
-        document.querySelectorAll('.result-card').forEach(card => {
-            observer.observe(card);
-        });
+        }
 
         // Cookie Consent
         const cookieBanner = document.getElementById('cookieBanner');
@@ -1252,7 +1388,9 @@
         cookieAccept.addEventListener('click', () => {
             localStorage.setItem('cookieConsent', 'accepted');
             cookieBanner.classList.remove('show');
-            window.dataLayer.push({'event': 'gtag.config', 'config': {'G-7STG2HDV42': {'anonymize_ip': false}}});
+            pushDataLayerEvent('cookie_consent_update', {
+                consent_status: 'accepted',
+            });
         });
 
         cookieDecline.addEventListener('click', () => {
@@ -1262,6 +1400,30 @@
 
         // Show banner on load
         window.addEventListener('load', showCookieBanner);
+        window.addEventListener('load', () => {
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(initScrollAnimations, { timeout: 1500 });
+            } else {
+                setTimeout(initScrollAnimations, 600);
+            }
+        }, { once: true });
+
+        window.addEventListener('load', () => {
+            pushDataLayerEvent('view_key_page', {
+                page_type: 'home',
+                page_path: window.location.pathname,
+            });
+        });
+
+        document.querySelectorAll('a[href="/contact"], a[href="mailto:hello@vestedksa.com"]').forEach((link) => {
+            link.addEventListener('click', () => {
+                pushDataLayerEvent('cta_click', {
+                    page_type: 'home',
+                    destination: link.getAttribute('href'),
+                    cta_text: (link.textContent || '').trim(),
+                });
+            });
+        });
 
         // Set active nav link
         function setActiveNav() {

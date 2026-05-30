@@ -6,5 +6,26 @@
   "background_color": "#ffffff",
   "theme_color": "#1D1D1F",
   "description": "Vested KSA helps foreign companies enter and operate in Saudi Arabia.",
-  "icons": []
+  "shortcuts": [
+    {
+      "name": "Contact Vested",
+      "short_name": "Contact",
+      "url": "/contact",
+      "description": "Start a Saudi market-entry conversation with Vested KSA."
+    },
+    {
+      "name": "Saudi Entry Checklist",
+      "short_name": "Checklist",
+      "url": "/ksa-entry-checklist.txt",
+      "description": "Download the Saudi market-entry readiness checklist."
+    }
+  ],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
 }

@@ -1,0 +1,81 @@
+{
+  "name": "Vested KSA",
+  "url": "https://vestedksa.com",
+  "primaryLanguage": "en",
+  "availableLanguages": [
+    {
+      "code": "en",
+      "name": "English",
+      "url": "https://vestedksa.com/"
+    },
+    {
+      "code": "ar",
+      "name": "Arabic",
+      "url": "https://vestedksa.com/ar/"
+    },
+    {
+      "code": "zh-Hans",
+      "name": "Simplified Chinese",
+      "url": "https://vestedksa.com/zh/"
+    }
+  ],
+  "audience": [
+    "International companies entering Saudi Arabia",
+    "Foreign founders and regional leaders evaluating Saudi market entry",
+    "Companies needing managed local operations before building a full in-house team"
+  ],
+  "services": [
+    {
+      "name": "Saudi market entry planning",
+      "url": "https://vestedksa.com/",
+      "description": "Entry structure, launch model, first-90-day operating plan, and readiness checklist."
+    },
+    {
+      "name": "Company formation and setup",
+      "url": "https://vestedksa.com/services",
+      "description": "MISA licensing, Commercial Registration, Chamber of Commerce, entity setup, and post-formation compliance readiness."
+    },
+    {
+      "name": "Operational outsourcing",
+      "url": "https://vestedksa.com/services",
+      "description": "Administrative operations, procurement, vendor coordination, facilities, registrations, logistics, and local execution management."
+    },
+    {
+      "name": "People and HR",
+      "url": "https://vestedksa.com/services",
+      "description": "Recruitment coordination, payroll, employment contracts, Saudization readiness, visas, GOSI, and employee onboarding support."
+    },
+    {
+      "name": "Finance and compliance",
+      "url": "https://vestedksa.com/services",
+      "description": "VAT, Zakat, bookkeeping, financial reporting, audit preparation, payment controls, and SOCPA-aligned workflows."
+    },
+    {
+      "name": "Workspace and supplier readiness",
+      "url": "https://vestedksa.com/services",
+      "description": "Office search, fit-out coordination, IT setup, transportation, accommodation, vendor onboarding, and procurement controls."
+    }
+  ],
+  "leadMagnets": [
+    {
+      "name": "Saudi Market Entry Checklist",
+      "language": "en",
+      "url": "https://vestedksa.com/ksa-entry-checklist.txt"
+    },
+    {
+      "name": "قائمة دخول السوق السعودي",
+      "language": "ar",
+      "url": "https://vestedksa.com/ksa-entry-checklist-ar.txt"
+    },
+    {
+      "name": "沙特市场进入清单",
+      "language": "zh-Hans",
+      "url": "https://vestedksa.com/ksa-entry-checklist-zh.txt"
+    }
+  ],
+  "contact": {
+    "email": "hello@vestedksa.com",
+    "url": "https://vestedksa.com/contact",
+    "location": "Riyadh, Saudi Arabia"
+  }
+}

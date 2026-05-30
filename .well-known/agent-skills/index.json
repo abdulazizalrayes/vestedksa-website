@@ -1,0 +1,15 @@
+{
+  "name": "Vested KSA Agent Skills",
+  "description": "Machine-readable public skills for understanding Vested KSA services and routing Saudi market-entry inquiries.",
+  "url": "https://vestedksa.com/.well-known/agent-skills/index.json",
+  "skills": [
+    {
+      "id": "saudi-market-entry-guidance",
+      "name": "Saudi Market Entry Guidance",
+      "description": "Use when a user asks how Vested KSA helps international companies enter, establish, or operate in Saudi Arabia.",
+      "url": "https://vestedksa.com/.well-known/agent-skills/saudi-market-entry-guidance.md",
+      "input_modes": ["text/plain"],
+      "output_modes": ["text/markdown"]
+    }
+  ]
+}

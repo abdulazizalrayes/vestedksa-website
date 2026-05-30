@@ -23,13 +23,56 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7STG2HDV42"></script>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </noscript>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-7STG2HDV42');
+    function gtag(){window.dataLayer.push(arguments);}
+
+    function loadAnalyticsScripts() {
+      if (window.__vestedAnalyticsLoaded) return;
+      window.__vestedAnalyticsLoaded = true;
+
+      const gtagScript = document.createElement('script');
+      gtagScript.async = true;
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-7STG2HDV42';
+      document.head.appendChild(gtagScript);
+
+      gtag('js', new Date());
+      gtag('config', 'G-7STG2HDV42');
+
+      window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+
+      const gtmScript = document.createElement('script');
+      gtmScript.async = true;
+      gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WL2FN4PR';
+      document.head.appendChild(gtmScript);
+
+      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
+        window.removeEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
+      });
+    }
+
+    function triggerAnalyticsLoad() {
+      loadAnalyticsScripts();
+    }
+
+    const passiveOnceOptions = { passive: true, once: true };
+
+    ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
+      window.addEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
+    });
+
+    window.addEventListener('load', () => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadAnalyticsScripts, { timeout: 2500 });
+      } else {
+        setTimeout(loadAnalyticsScripts, 1500);
+      }
+    }, { once: true });
   </script>
   <style>
     * {
@@ -337,6 +380,13 @@
       font-size: 14px;
     }
 
+    .read-more.unavailable {
+      color: #86868B;
+      cursor: default;
+      pointer-events: none;
+      text-decoration: none;
+    }
+
     /* Newsletter Section */
     .newsletter-section {
       background: #F5F5F7;
@@ -631,8 +681,13 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
         <meta property="og:image" content="https://vestedksa.com/og-image.png">
         <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vestedksa.com"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://vestedksa.com/insights"}]}</script>
+    <script src="/language-switcher.js" defer></script>
     </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL2FN4PR"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
     <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:#3b82f6;color:#fff;padding:8px 16px;z-index:10000;transition:top 0.3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
   <!-- Navigation -->
   <nav>
@@ -671,8 +726,7 @@
           <span class="article-tag">MARKET ENTRY</span>
           <h3>The Complete Guide to Setting Up a Business in Saudi Arabia (2026)</h3>
           <p>Everything you need to know about establishing a legal entity in Saudi Arabia, from business registration to licensing to your first hire. We've distilled 10 years of experience into this comprehensive guide covering legal structures, timeline, costs, and common mistakes.</p>
-          <!-- PLACEHOLDER: This is a placeholder article. Actual guide content would be detailed and comprehensive. -->
-          <a href="#" class="read-more">Read the full guide →</a>
+          <span class="read-more unavailable">Publication pending</span>
         </div>
       </div>
     </div>
@@ -689,8 +743,8 @@
             <span class="article-tag">COMPLIANCE</span>
             <h3>Understanding Saudization: What International Companies Need to Know</h3>
             <p class="summary">The Nitaqat system requires companies to employ Saudi nationals. Here's how it works, what it means for your workforce, and how to achieve compliance.</p>
-            <span class="date">Placeholder - Article pending publication</span>
-            <a href="#" class="read-more">Read →</a>
+            <span class="date">Article pending publication</span>
+            <span class="read-more unavailable">Available soon</span>
           </div>
         </div>
 
@@ -699,8 +753,8 @@
             <span class="article-tag">FINANCE</span>
             <h3>VAT and Zakat in Saudi Arabia: A Practical Guide</h3>
             <p class="summary">Understanding Saudi Arabia's tax system. VAT rates, exemptions, Zakat implications for foreign-owned entities, and how to stay compliant.</p>
-            <span class="date">Placeholder - Article pending publication</span>
-            <a href="#" class="read-more">Read →</a>
+            <span class="date">Article pending publication</span>
+            <span class="read-more unavailable">Available soon</span>
           </div>
         </div>
 
@@ -709,8 +763,8 @@
             <span class="article-tag">LEGAL</span>
             <h3>Choosing the Right Legal Structure for Your Saudi Entity</h3>
             <p class="summary">LLC vs. branch office vs. representative office. We break down the pros, cons, and implications of each structure for different business models.</p>
-            <span class="date">Placeholder - Article pending publication</span>
-            <a href="#" class="read-more">Read →</a>
+            <span class="date">Article pending publication</span>
+            <span class="read-more unavailable">Available soon</span>
           </div>
         </div>
 
@@ -719,8 +773,8 @@
             <span class="article-tag">PLANNING</span>
             <h3>The Cost of Market Entry: What to Budget For</h3>
             <p class="summary">A realistic breakdown of setup costs, licensing, legal compliance, staffing, office space, and operational expenses for the first 12 months.</p>
-            <span class="date">Placeholder - Article pending publication</span>
-            <a href="#" class="read-more">Read →</a>
+            <span class="date">Article pending publication</span>
+            <span class="read-more unavailable">Available soon</span>
           </div>
         </div>
 
@@ -729,8 +783,8 @@
             <span class="article-tag">OPPORTUNITY</span>
             <h3>Saudi Arabia's Giga-Projects: Opportunities for Foreign Companies</h3>
             <p class="summary">NEOM, The Line, Red Sea Project, and Diriyah Gate represent $500+ billion in spending. Here's where companies are finding contracts and opportunities.</p>
-            <span class="date">Placeholder - Article pending publication</span>
-            <a href="#" class="read-more">Read →</a>
+            <span class="date">Article pending publication</span>
+            <span class="read-more unavailable">Available soon</span>
           </div>
         </div>
 
@@ -739,8 +793,8 @@
             <span class="article-tag">PEOPLE</span>
             <h3>Navigating Saudi Labor Law: A Guide for International Employers</h3>
             <p class="summary">Employment contracts, benefits, termination, work permits, and worker rights in Saudi Arabia. What every employer needs to know.</p>
-            <span class="date">Placeholder - Article pending publication</span>
-            <a href="#" class="read-more">Read →</a>
+            <span class="date">Article pending publication</span>
+            <span class="read-more unavailable">Available soon</span>
           </div>
         </div>
       </div>
@@ -778,7 +832,7 @@
           <h3>Vested</h3>
           <p>We help international companies establish, operate, and scale in Saudi Arabia. From formation to accounting to full operations outsourcing, we handle everything that isn't your core business.</p>
           <div class="footer-social">
-            <a href="https://linkedin.com/company/vestedksa" aria-label="LinkedIn">
+            <a href="https://linkedin.com/company/vested-ksa" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.047-8.842 0-9.769h3.554v1.383c.43-.665 1.199-1.61 2.920-1.61 2.135 0 3.753 1.395 3.753 4.402v5.594zM5.337 5.433c-1.144 0-1.915-.759-1.915-1.71 0-.955.77-1.71 1.954-1.71 1.185 0 1.915.755 1.915 1.71 0 .951-.73 1.71-1.954 1.71zm1.946 14.019H3.391V9.683h3.892v9.769zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
             </a>
             <a href="https://twitter.com/vestedksa" aria-label="X (Twitter)">
@@ -848,20 +902,28 @@
       event.target.reset();
     }
 
-    initCookieBanner();
+    function initScrollAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeIn 0.8s ease-in forwards';
+          }
+        });
+      }, { threshold: 0.1 });
 
-    // Smooth scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = 'fadeIn 0.8s ease-in forwards';
-        }
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
       });
-    }, { threshold: 0.1 });
+    }
 
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
+    initCookieBanner();
+    window.addEventListener('load', () => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(initScrollAnimations, { timeout: 1500 });
+      } else {
+        setTimeout(initScrollAnimations, 600);
+      }
+    }, { once: true });
   </script>
 
   <!-- Schema.org Structured Data -->
@@ -877,7 +939,7 @@
       "name": "Vested KSA",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://vestedksa.com/logo.png"
+        "url": "https://vestedksa.com/og-image.png"
       }
     }
   }

@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "vestedksa-website",
   "builds": [
     {
       "src": "api/**/*.js",
@@ -8,6 +7,10 @@
     },
     {
       "src": "**/*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "language-switcher.js",
       "use": "@vercel/static"
     },
     {
@@ -29,6 +32,20 @@
       "status": 308,
       "headers": {
         "Location": "/"
+      }
+    },
+    {
+      "src": "/ar/index\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/ar/"
+      }
+    },
+    {
+      "src": "/zh/index\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/zh/"
       }
     },
     {
@@ -126,10 +143,18 @@
     {
       "src": "/",
       "headers": {
-        "Link": "</llms.txt>; rel=\"alternate\"; type=\"text/markdown\", </llms-full.md>; rel=\"alternate\"; type=\"text/markdown\"",
+        "Link": "</llms.txt>; rel=\"alternate\"; type=\"text/markdown\", </llms-full.md>; rel=\"alternate\"; type=\"text/markdown\", </service-pages.json>; rel=\"service-desc\"; type=\"application/json\", </.well-known/agent-card.json>; rel=\"agent-card\"; type=\"application/json\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\"; type=\"application/json\"",
         "Vary": "Accept"
       },
       "dest": "/index.html"
+    },
+    {
+      "src": "/ar/?",
+      "dest": "/ar/index.html"
+    },
+    {
+      "src": "/zh/?",
+      "dest": "/zh/index.html"
     },
     {
       "src": "/about/?",
