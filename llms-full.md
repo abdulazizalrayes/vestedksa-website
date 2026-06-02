@@ -12,6 +12,7 @@ Vested KSA is a Saudi Arabia operations partner for international companies ente
 - Ethics and governance: https://vestedksa.com/ethics
 - FAQ: https://vestedksa.com/faq
 - Contact: https://vestedksa.com/contact
+- Saudi Market Entry Guide 2026: https://vestedksa.com/insights/ksa-market-entry-guide-2026
 
 ## Core Services
 
@@ -43,6 +44,10 @@ Typical early work includes choosing the entry structure, preparing entity and l
 - Saudi Market Entry Checklist: https://vestedksa.com/ksa-entry-checklist.txt
 - Arabic checklist: https://vestedksa.com/ksa-entry-checklist-ar.txt
 - Simplified Chinese checklist: https://vestedksa.com/ksa-entry-checklist-zh.txt
+
+## Guides
+
+- Saudi Market Entry Guide 2026: practical guidance on entry structure, licensing readiness, banking, tax, HR, workspace, vendors, governance, and first-90-day execution.
 
 ## Key Facts
 

@@ -19,6 +19,7 @@ Vested KSA helps international companies establish and operate in Saudi Arabia. 
 - Arabic homepage: https://vestedksa.com/ar/
 - Simplified Chinese homepage: https://vestedksa.com/zh/
 - Services: https://vestedksa.com/services
+- Saudi Market Entry Guide 2026: https://vestedksa.com/insights/ksa-market-entry-guide-2026
 - FAQ: https://vestedksa.com/faq
 - Contact: https://vestedksa.com/contact
 - English checklist: https://vestedksa.com/ksa-entry-checklist.txt
