@@ -63,8 +63,10 @@
       link.dataset.vestedTracked = 'true';
       link.addEventListener('click', () => {
         const href = link.getAttribute('href') || '';
+        const isEmail = href.startsWith('mailto:');
         const isChecklist = href.includes('ksa-entry-checklist') || link.hasAttribute('download');
-        reportEvent(isChecklist ? 'checklist_download_click' : 'lead_cta_click', {
+        const eventName = isChecklist ? 'checklist_download_click' : isEmail ? 'email_click' : 'lead_cta_click';
+        reportEvent(eventName, {
           page_locale: currentLocale,
           page_path: currentPath || '/',
           destination: href,
