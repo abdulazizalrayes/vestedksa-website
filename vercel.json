@@ -91,6 +91,48 @@
       }
     },
     {
+      "src": "/insights/foreign-ownership-saudi-arabia\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/insights/foreign-ownership-saudi-arabia"
+      }
+    },
+    {
+      "src": "/insights/misa-licensing-commercial-registration-saudi-arabia\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/insights/misa-licensing-commercial-registration-saudi-arabia"
+      }
+    },
+    {
+      "src": "/insights/vat-zakat-saudi-arabia\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/insights/vat-zakat-saudi-arabia"
+      }
+    },
+    {
+      "src": "/insights/regional-headquarters-rhq-saudi-arabia\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/insights/regional-headquarters-rhq-saudi-arabia"
+      }
+    },
+    {
+      "src": "/insights/saudi-vendor-registration-aramco-pif\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/insights/saudi-vendor-registration-aramco-pif"
+      }
+    },
+    {
+      "src": "/insights/saudization-nitaqat-hr-saudi-arabia\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/insights/saudization-nitaqat-hr-saudi-arabia"
+      }
+    },
+    {
       "src": "/faq\\.html",
       "status": 308,
       "headers": {
@@ -186,6 +228,30 @@
     {
       "src": "/insights/ksa-market-entry-guide-2026/?",
       "dest": "/insights/ksa-market-entry-guide-2026.html"
+    },
+    {
+      "src": "/insights/foreign-ownership-saudi-arabia/?",
+      "dest": "/insights/foreign-ownership-saudi-arabia.html"
+    },
+    {
+      "src": "/insights/misa-licensing-commercial-registration-saudi-arabia/?",
+      "dest": "/insights/misa-licensing-commercial-registration-saudi-arabia.html"
+    },
+    {
+      "src": "/insights/vat-zakat-saudi-arabia/?",
+      "dest": "/insights/vat-zakat-saudi-arabia.html"
+    },
+    {
+      "src": "/insights/regional-headquarters-rhq-saudi-arabia/?",
+      "dest": "/insights/regional-headquarters-rhq-saudi-arabia.html"
+    },
+    {
+      "src": "/insights/saudi-vendor-registration-aramco-pif/?",
+      "dest": "/insights/saudi-vendor-registration-aramco-pif.html"
+    },
+    {
+      "src": "/insights/saudization-nitaqat-hr-saudi-arabia/?",
+      "dest": "/insights/saudization-nitaqat-hr-saudi-arabia.html"
     },
     {
       "src": "/faq/?",

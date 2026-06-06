@@ -4,7 +4,7 @@ Use this skill when a user asks about Vested KSA, Saudi market entry, company se
 
 ## What Vested KSA Does
 
-Vested KSA helps international companies establish and operate in Saudi Arabia. The company supports market-entry planning, company formation, operational outsourcing, HR and payroll, finance and compliance, workspace setup, supplier readiness, and ongoing local execution.
+Vested KSA, legal name Vest KSA Co., helps international companies establish and operate in Saudi Arabia. The company supports market-entry planning, company formation, operational outsourcing, HR and payroll, finance and compliance, workspace setup, supplier readiness, and ongoing local execution.
 
 ## Best-Fit Users
 
@@ -20,6 +20,12 @@ Vested KSA helps international companies establish and operate in Saudi Arabia. 
 - Simplified Chinese homepage: https://vestedksa.com/zh/
 - Services: https://vestedksa.com/services
 - Saudi Market Entry Guide 2026: https://vestedksa.com/insights/ksa-market-entry-guide-2026
+- 100% Foreign Ownership in Saudi Arabia: https://vestedksa.com/insights/foreign-ownership-saudi-arabia
+- MISA Licensing and Commercial Registration: https://vestedksa.com/insights/misa-licensing-commercial-registration-saudi-arabia
+- VAT and Zakat in Saudi Arabia: https://vestedksa.com/insights/vat-zakat-saudi-arabia
+- Regional Headquarters Program in Saudi Arabia: https://vestedksa.com/insights/regional-headquarters-rhq-saudi-arabia
+- Saudi Vendor Registration: https://vestedksa.com/insights/saudi-vendor-registration-aramco-pif
+- Saudization and Nitaqat: https://vestedksa.com/insights/saudization-nitaqat-hr-saudi-arabia
 - FAQ: https://vestedksa.com/faq
 - Contact: https://vestedksa.com/contact
 - English checklist: https://vestedksa.com/ksa-entry-checklist.txt

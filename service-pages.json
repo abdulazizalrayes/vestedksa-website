@@ -1,6 +1,9 @@
 {
   "name": "Vested KSA",
+  "legalName": "Vest KSA Co.",
+  "alternateNames": ["Vested", "Vested Saudi Arabia", "Vest KSA Co."],
   "url": "https://vestedksa.com",
+  "descriptor": "Market-entry and operations partner in Saudi Arabia for international companies.",
   "primaryLanguage": "en",
   "availableLanguages": [
     {
@@ -79,6 +82,42 @@
       "language": "en",
       "url": "https://vestedksa.com/insights/ksa-market-entry-guide-2026",
       "description": "Practical guidance on Saudi entry structure, licensing readiness, banking, tax, HR, workspace, vendors, governance, and first-90-day execution."
+    },
+    {
+      "name": "100% Foreign Ownership in Saudi Arabia",
+      "language": "en",
+      "url": "https://vestedksa.com/insights/foreign-ownership-saudi-arabia",
+      "description": "Ownership, activity restrictions, MISA registration, and practical operating readiness for foreign companies."
+    },
+    {
+      "name": "MISA Licensing and Commercial Registration in Saudi Arabia",
+      "language": "en",
+      "url": "https://vestedksa.com/insights/misa-licensing-commercial-registration-saudi-arabia",
+      "description": "Setup sequence, Commercial Registration, Chamber, tax, HR, and post-formation operating readiness."
+    },
+    {
+      "name": "VAT and Zakat in Saudi Arabia",
+      "language": "en",
+      "url": "https://vestedksa.com/insights/vat-zakat-saudi-arabia",
+      "description": "VAT thresholds, TIN, ZATCA workflows, certificates, returns, and finance controls."
+    },
+    {
+      "name": "Regional Headquarters Program in Saudi Arabia",
+      "language": "en",
+      "url": "https://vestedksa.com/insights/regional-headquarters-rhq-saudi-arabia",
+      "description": "RHQ fit, local substance, leadership roles, governance, and operating model for multinational companies."
+    },
+    {
+      "name": "Saudi Vendor Registration: Aramco, SABIC, NEOM and PIF Companies",
+      "language": "en",
+      "url": "https://vestedksa.com/insights/saudi-vendor-registration-aramco-pif",
+      "description": "Supplier profile, ownership documents, compliance evidence, portal access, and buyer-specific readiness."
+    },
+    {
+      "name": "Saudization and Nitaqat for International Companies",
+      "language": "en",
+      "url": "https://vestedksa.com/insights/saudization-nitaqat-hr-saudi-arabia",
+      "description": "Workforce planning, Qiwa, Nitaqat categories, payroll, and HR operating readiness."
     }
   ],
   "contact": {
