@@ -3,6 +3,9 @@
   "legalName": "Vest KSA Co.",
   "alternateNames": ["Vested", "Vested Saudi Arabia", "Vest KSA Co."],
   "url": "https://vestedksa.com",
+  "sameAs": [
+    "https://www.linkedin.com/company/vested-ksa/"
+  ],
   "descriptor": "Market-entry and operations partner in Saudi Arabia for international companies.",
   "primaryLanguage": "en",
   "availableLanguages": [

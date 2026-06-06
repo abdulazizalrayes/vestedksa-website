@@ -24,6 +24,7 @@ Vested KSA, legal name Vest KSA Co., is a market-entry and operations partner in
 - Chinese checklist: https://vestedksa.com/ksa-entry-checklist-zh.txt
 - Service data: https://vestedksa.com/service-pages.json
 - Agent card: https://vestedksa.com/.well-known/agent-card.json
+- LinkedIn: https://www.linkedin.com/company/vested-ksa/
 
 ## Contact
 

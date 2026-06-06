@@ -73,6 +73,7 @@ Typical early work includes choosing the entry structure, preparing entity and l
 - Email: hello@vestedksa.com
 - Location: Riyadh, Kingdom of Saudi Arabia
 - Website: https://vestedksa.com
+- LinkedIn: https://www.linkedin.com/company/vested-ksa/
 
 ## Machine-Readable Discovery
 

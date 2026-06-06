@@ -4,7 +4,10 @@
   "url": "https://vestedksa.com",
   "provider": {
     "name": "Vested KSA",
-    "url": "https://vestedksa.com"
+    "url": "https://vestedksa.com",
+    "sameAs": [
+      "https://www.linkedin.com/company/vested-ksa/"
+    ]
   },
   "version": "2026-06-06",
   "defaultInputModes": ["text/plain", "text/html"],
