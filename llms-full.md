@@ -5,8 +5,8 @@ Vested KSA, legal name Vest KSA Co., is a Saudi Arabia market-entry and operatio
 ## Primary Site
 
 - English: https://vestedksa.com/
-- Arabic: https://vestedksa.com/ar/
-- Simplified Chinese: https://vestedksa.com/zh/
+- Arabic: https://vestedksa.com/ar
+- Simplified Chinese: https://vestedksa.com/zh
 - Services: https://vestedksa.com/services
 - Why Saudi Arabia: https://vestedksa.com/why-saudi
 - Ethics and governance: https://vestedksa.com/ethics

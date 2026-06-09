@@ -24,7 +24,7 @@
       if (currentLocale !== 'en') return '/';
       return currentPath || '/';
     }
-    return `/${locale}/`;
+    return `/${locale}`;
   }
 
   function buildSwitcher(context) {

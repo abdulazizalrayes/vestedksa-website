@@ -38,14 +38,14 @@
       "src": "/ar/index\\.html",
       "status": 308,
       "headers": {
-        "Location": "/ar/"
+        "Location": "/ar"
       }
     },
     {
       "src": "/zh/index\\.html",
       "status": 308,
       "headers": {
-        "Location": "/zh/"
+        "Location": "/zh"
       }
     },
     {
