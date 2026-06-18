@@ -1,0 +1,49 @@
+Vested KSA - Saudi Vendor Registration Evidence Pack
+
+Use this checklist before applying to Saudi customer, supplier, tender, or procurement portals.
+
+Company Identity
+
+- Commercial Registration or foreign parent-company registration evidence.
+- Legal name in English and Arabic, if applicable.
+- Ownership chart and authorized signatory details.
+- National address, office address, and primary Saudi contact.
+- Chamber, MISA, municipal, sector, or other license details where applicable.
+
+Tax and Finance
+
+- Tax Identification Number.
+- VAT registration certificate or VAT status explanation.
+- Zakat/tax certificate workflow and owner.
+- Bank account details and bank confirmation letter, when available.
+- Invoice template and purchase-order handling process.
+
+Compliance and Governance
+
+- Anti-bribery and anti-corruption policy.
+- Conflict-of-interest policy.
+- Data protection and confidentiality controls.
+- Health, safety, quality, and ESG policies where required by the buyer.
+- Insurance certificates, if relevant.
+
+Capability and Commercial Materials
+
+- Company profile and short capability statement.
+- Service/product categories mapped to the buyer's procurement taxonomy.
+- Project references or anonymized experience summaries.
+- Local delivery model and Saudi operating contacts.
+- Arabic translation of key profile material if needed.
+
+Portal Operations
+
+- Portal owner and backup owner.
+- Username, renewal, certificate-expiry, and document-update calendar.
+- Record of submitted versions and buyer feedback.
+- Follow-up cadence and escalation path.
+
+Vested KSA Operating Principle
+
+Vendor registration is market-access infrastructure. It does not guarantee work, but it prevents avoidable delays when an RFI, RFQ, tender, or customer onboarding request appears.
+
+Contact: hello@vestedksa.com
+Website: https://vestedksa.com

@@ -16,6 +16,7 @@ Vested KSA, legal name Vest KSA Co., is a Saudi Arabia market-entry and operatio
 - 100% Foreign Ownership in Saudi Arabia: https://vestedksa.com/insights/foreign-ownership-saudi-arabia
 - MISA Licensing and Commercial Registration: https://vestedksa.com/insights/misa-licensing-commercial-registration-saudi-arabia
 - VAT and Zakat in Saudi Arabia: https://vestedksa.com/insights/vat-zakat-saudi-arabia
+- Saudi E-Invoicing and Finance Controls: https://vestedksa.com/insights/saudi-e-invoicing-operating-controls
 - Regional Headquarters Program in Saudi Arabia: https://vestedksa.com/insights/regional-headquarters-rhq-saudi-arabia
 - Saudi Vendor Registration: https://vestedksa.com/insights/saudi-vendor-registration-aramco-pif
 - Saudization and Nitaqat: https://vestedksa.com/insights/saudization-nitaqat-hr-saudi-arabia
@@ -50,6 +51,9 @@ Typical early work includes choosing the entry structure, preparing entity and l
 - Saudi Market Entry Checklist: https://vestedksa.com/ksa-entry-checklist.txt
 - Arabic checklist: https://vestedksa.com/ksa-entry-checklist-ar.txt
 - Simplified Chinese checklist: https://vestedksa.com/ksa-entry-checklist-zh.txt
+- 90-Day Saudi Launch Plan: https://vestedksa.com/ksa-90-day-launch-plan.txt
+- Saudi Vendor Registration Evidence Pack: https://vestedksa.com/ksa-vendor-registration-pack.txt
+- Partner Due Diligence Request List: https://vestedksa.com/ksa-due-diligence-request-list.txt
 
 ## Guides
 
@@ -57,6 +61,7 @@ Typical early work includes choosing the entry structure, preparing entity and l
 - 100% Foreign Ownership in Saudi Arabia: ownership, activity restrictions, MISA registration, and practical operating readiness.
 - MISA Licensing and Commercial Registration in Saudi Arabia: setup sequence, CR, Chamber, tax, HR, and post-formation readiness.
 - VAT and Zakat in Saudi Arabia: VAT thresholds, TIN, ZATCA workflows, certificates, returns, and finance controls.
+- Saudi E-Invoicing and Finance Controls: invoice workflows, ZATCA e-invoicing readiness, approval records, document ownership, and finance operating controls.
 - Regional Headquarters Program in Saudi Arabia: RHQ fit, local substance, leadership roles, governance, and operating model.
 - Saudi Vendor Registration: Aramco, SABIC, NEOM, Red Sea Global, PIF portfolio company, and supplier pack readiness.
 - Saudization and Nitaqat: workforce planning, Qiwa, Nitaqat categories, payroll, and HR operating readiness.
@@ -78,5 +83,6 @@ Typical early work includes choosing the entry structure, preparing entity and l
 ## Machine-Readable Discovery
 
 - Service pages JSON: https://vestedksa.com/service-pages.json
+- Entity profile: https://vestedksa.com/.well-known/entity-profile.json
 - Agent card: https://vestedksa.com/.well-known/agent-card.json
 - Agent skills index: https://vestedksa.com/.well-known/agent-skills/index.json

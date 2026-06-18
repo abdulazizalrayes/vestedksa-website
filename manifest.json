@@ -18,6 +18,12 @@
       "short_name": "Checklist",
       "url": "/ksa-entry-checklist.txt",
       "description": "Download the Saudi market-entry readiness checklist."
+    },
+    {
+      "name": "90-Day Saudi Launch Plan",
+      "short_name": "Launch Plan",
+      "url": "/ksa-90-day-launch-plan.txt",
+      "description": "Download the 90-day Saudi launch planning sheet."
     }
   ],
   "icons": [

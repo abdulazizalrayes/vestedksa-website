@@ -9,7 +9,7 @@
       "https://www.linkedin.com/company/vested-ksa/"
     ]
   },
-  "version": "2026-06-06",
+  "version": "2026-06-18",
   "defaultInputModes": ["text/plain", "text/html"],
   "defaultOutputModes": ["text/plain", "text/markdown", "application/json"],
   "capabilities": {
@@ -28,17 +28,19 @@
         "Which Saudi market-entry model should a services company evaluate first?",
         "What should be prepared before setting up operations in Riyadh?",
         "Where is the Saudi Market Entry Guide 2026?",
-        "Where can I read about MISA licensing, VAT and Zakat, RHQ, vendor registration, or Saudization?"
+        "Where can I read about MISA licensing, VAT and Zakat, e-invoicing, RHQ, vendor registration, or Saudization?"
       ]
     },
     {
       "id": "lead-routing",
       "name": "Lead routing",
-      "description": "Direct qualified prospects to the Vested KSA contact form, email, or Saudi market-entry checklist.",
-      "tags": ["lead intake", "contact", "checklist"],
+      "description": "Direct qualified prospects to the Vested KSA contact form, email, Saudi market-entry checklist, launch plan, vendor evidence pack, or due-diligence request list.",
+      "tags": ["lead intake", "contact", "checklist", "launch plan", "vendor registration", "due diligence"],
       "examples": [
         "How can I contact Vested KSA?",
         "Where can I download the Saudi market-entry checklist?",
+        "Where can I download the 90-day Saudi launch plan?",
+        "Where can I download the vendor registration evidence pack?",
         "Where can I read the Saudi market-entry guide library?"
       ]
     }

@@ -70,6 +70,30 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://vestedksa.com/ksa-90-day-launch-plan.txt</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vestedksa.com/ksa-vendor-registration-pack.txt</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vestedksa.com/ksa-due-diligence-request-list.txt</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vestedksa.com/.well-known/entity-profile.json</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://vestedksa.com/services</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/services" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/services" />
@@ -130,6 +154,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/insights/vat-zakat-saudi-arabia" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/insights/vat-zakat-saudi-arabia" />
     <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vestedksa.com/insights/saudi-e-invoicing-operating-controls</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/insights/saudi-e-invoicing-operating-controls" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/insights/saudi-e-invoicing-operating-controls" />
+    <lastmod>2026-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

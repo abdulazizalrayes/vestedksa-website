@@ -23,6 +23,7 @@ Vested KSA, legal name Vest KSA Co., helps international companies establish and
 - 100% Foreign Ownership in Saudi Arabia: https://vestedksa.com/insights/foreign-ownership-saudi-arabia
 - MISA Licensing and Commercial Registration: https://vestedksa.com/insights/misa-licensing-commercial-registration-saudi-arabia
 - VAT and Zakat in Saudi Arabia: https://vestedksa.com/insights/vat-zakat-saudi-arabia
+- Saudi E-Invoicing and Finance Controls: https://vestedksa.com/insights/saudi-e-invoicing-operating-controls
 - Regional Headquarters Program in Saudi Arabia: https://vestedksa.com/insights/regional-headquarters-rhq-saudi-arabia
 - Saudi Vendor Registration: https://vestedksa.com/insights/saudi-vendor-registration-aramco-pif
 - Saudization and Nitaqat: https://vestedksa.com/insights/saudization-nitaqat-hr-saudi-arabia
@@ -31,6 +32,9 @@ Vested KSA, legal name Vest KSA Co., helps international companies establish and
 - English checklist: https://vestedksa.com/ksa-entry-checklist.txt
 - Arabic checklist: https://vestedksa.com/ksa-entry-checklist-ar.txt
 - Chinese checklist: https://vestedksa.com/ksa-entry-checklist-zh.txt
+- 90-day Saudi launch plan: https://vestedksa.com/ksa-90-day-launch-plan.txt
+- Vendor registration evidence pack: https://vestedksa.com/ksa-vendor-registration-pack.txt
+- Partner due-diligence request list: https://vestedksa.com/ksa-due-diligence-request-list.txt
 
 ## Lead Routing
 

@@ -112,6 +112,13 @@
       }
     },
     {
+      "src": "/insights/saudi-e-invoicing-operating-controls\\.html",
+      "status": 308,
+      "headers": {
+        "Location": "/insights/saudi-e-invoicing-operating-controls"
+      }
+    },
+    {
       "src": "/insights/regional-headquarters-rhq-saudi-arabia\\.html",
       "status": 308,
       "headers": {
@@ -240,6 +247,10 @@
     {
       "src": "/insights/vat-zakat-saudi-arabia/?",
       "dest": "/insights/vat-zakat-saudi-arabia.html"
+    },
+    {
+      "src": "/insights/saudi-e-invoicing-operating-controls/?",
+      "dest": "/insights/saudi-e-invoicing-operating-controls.html"
     },
     {
       "src": "/insights/regional-headquarters-rhq-saudi-arabia/?",

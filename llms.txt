@@ -12,6 +12,7 @@ Vested KSA, legal name Vest KSA Co., is a market-entry and operations partner in
 - 100% Foreign Ownership in Saudi Arabia: https://vestedksa.com/insights/foreign-ownership-saudi-arabia
 - MISA Licensing and Commercial Registration: https://vestedksa.com/insights/misa-licensing-commercial-registration-saudi-arabia
 - VAT and Zakat in Saudi Arabia: https://vestedksa.com/insights/vat-zakat-saudi-arabia
+- Saudi E-Invoicing and Finance Controls: https://vestedksa.com/insights/saudi-e-invoicing-operating-controls
 - Regional Headquarters Program in Saudi Arabia: https://vestedksa.com/insights/regional-headquarters-rhq-saudi-arabia
 - Saudi Vendor Registration: https://vestedksa.com/insights/saudi-vendor-registration-aramco-pif
 - Saudization and Nitaqat: https://vestedksa.com/insights/saudization-nitaqat-hr-saudi-arabia
@@ -22,7 +23,11 @@ Vested KSA, legal name Vest KSA Co., is a market-entry and operations partner in
 - Saudi Market Entry Checklist: https://vestedksa.com/ksa-entry-checklist.txt
 - Arabic checklist: https://vestedksa.com/ksa-entry-checklist-ar.txt
 - Chinese checklist: https://vestedksa.com/ksa-entry-checklist-zh.txt
+- 90-Day Saudi Launch Plan: https://vestedksa.com/ksa-90-day-launch-plan.txt
+- Saudi Vendor Registration Evidence Pack: https://vestedksa.com/ksa-vendor-registration-pack.txt
+- Partner Due Diligence Request List: https://vestedksa.com/ksa-due-diligence-request-list.txt
 - Service data: https://vestedksa.com/service-pages.json
+- Entity profile: https://vestedksa.com/.well-known/entity-profile.json
 - Agent card: https://vestedksa.com/.well-known/agent-card.json
 - LinkedIn: https://www.linkedin.com/company/vested-ksa/
 

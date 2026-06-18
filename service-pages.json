@@ -69,6 +69,21 @@
       "url": "https://vestedksa.com/ksa-entry-checklist.txt"
     },
     {
+      "name": "90-Day Saudi Launch Plan",
+      "language": "en",
+      "url": "https://vestedksa.com/ksa-90-day-launch-plan.txt"
+    },
+    {
+      "name": "Saudi Vendor Registration Evidence Pack",
+      "language": "en",
+      "url": "https://vestedksa.com/ksa-vendor-registration-pack.txt"
+    },
+    {
+      "name": "Partner Due Diligence Request List",
+      "language": "en",
+      "url": "https://vestedksa.com/ksa-due-diligence-request-list.txt"
+    },
+    {
       "name": "قائمة دخول السوق السعودي",
       "language": "ar",
       "url": "https://vestedksa.com/ksa-entry-checklist-ar.txt"
@@ -103,6 +118,12 @@
       "language": "en",
       "url": "https://vestedksa.com/insights/vat-zakat-saudi-arabia",
       "description": "VAT thresholds, TIN, ZATCA workflows, certificates, returns, and finance controls."
+    },
+    {
+      "name": "Saudi E-Invoicing and Finance Controls",
+      "language": "en",
+      "url": "https://vestedksa.com/insights/saudi-e-invoicing-operating-controls",
+      "description": "Invoice workflows, ZATCA e-invoicing readiness, approval records, document ownership, and finance operating controls."
     },
     {
       "name": "Regional Headquarters Program in Saudi Arabia",
