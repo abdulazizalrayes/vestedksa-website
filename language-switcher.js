@@ -137,12 +137,16 @@
 
     const navContainer = document.querySelector('.nav-container');
     const simpleNav = document.querySelector('header nav');
+    const legacyNavContainer = document.querySelector('body > nav .container');
 
     if (navContainer && !navContainer.querySelector('.vested-language-switcher')) {
       const hamburger = navContainer.querySelector('.hamburger');
       navContainer.insertBefore(buildSwitcher('desktop'), hamburger || null);
     } else if (simpleNav && !simpleNav.querySelector('.vested-language-switcher')) {
       simpleNav.appendChild(buildSwitcher('desktop'));
+    } else if (legacyNavContainer && !legacyNavContainer.querySelector('.vested-language-switcher')) {
+      const navLinks = legacyNavContainer.querySelector('.nav-links');
+      legacyNavContainer.insertBefore(buildSwitcher('desktop'), navLinks || null);
     }
 
     const mobileMenu = document.querySelector('.mobile-menu');

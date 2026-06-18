@@ -301,6 +301,15 @@
       min-height: 140px;
     }
 
+    .form-honeypot {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      overflow: hidden;
+    }
+
     .form-group input::placeholder,
     .form-group textarea::placeholder {
       color: #86868B;
@@ -656,6 +665,11 @@
         <div class="contact-form">
           <h2>Send us a message</h2>
           <form id="contactForm" onsubmit="handleFormSubmit(event)">
+            <div class="form-honeypot" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" required>
@@ -802,12 +816,12 @@
 
     // Cookie consent
     function acceptCookies() {
-      localStorage.setItem('cookies-accepted', 'true');
+      localStorage.setItem('cookieConsent', 'accepted');
       document.getElementById('cookieBanner').classList.remove('show');
     }
 
     function initCookieBanner() {
-      if (!localStorage.getItem('cookies-accepted')) {
+      if (!localStorage.getItem('cookieConsent')) {
         document.getElementById('cookieBanner').classList.add('show');
       }
     }

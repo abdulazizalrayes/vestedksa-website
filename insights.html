@@ -894,12 +894,12 @@
 
     // Cookie consent
     function acceptCookies() {
-      localStorage.setItem('cookies-accepted', 'true');
+      localStorage.setItem('cookieConsent', 'accepted');
       document.getElementById('cookieBanner').classList.remove('show');
     }
 
     function initCookieBanner() {
-      if (!localStorage.getItem('cookies-accepted')) {
+      if (!localStorage.getItem('cookieConsent')) {
         document.getElementById('cookieBanner').classList.add('show');
       }
     }
