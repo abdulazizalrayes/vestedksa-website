@@ -3,6 +3,7 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
+const { EventEmitter } = require("node:events");
 
 const root = path.resolve(__dirname, "..");
 const requiredFiles = [
@@ -147,8 +148,109 @@ const vercel = read("vercel.json");
 });
 ok("Vercel routes expose MCP and API catalog");
 
-if (process.exitCode) {
-  process.exit(process.exitCode);
+function callMcp(payload) {
+  return new Promise((resolve, reject) => {
+    const handler = require(path.join(root, "api", "mcp.js"));
+    const req = new EventEmitter();
+    req.method = "POST";
+    req.url = "/api/mcp";
+    req.headers = { "content-type": "application/json", "user-agent": "agent-readiness-validator" };
+    req.destroy = reject;
+
+    const res = {
+      statusCode: 200,
+      headers: {},
+      setHeader(name, value) {
+        this.headers[name.toLowerCase()] = value;
+      },
+      end(body) {
+        try {
+          resolve({
+            statusCode: this.statusCode,
+            body: body ? JSON.parse(body) : null,
+          });
+        } catch (error) {
+          reject(error);
+        }
+      },
+    };
+
+    handler(req, res).catch(reject);
+    process.nextTick(() => {
+      req.emit("data", JSON.stringify(payload));
+      req.emit("end");
+    });
+  });
 }
 
-console.log("Agent readiness validation passed.");
+async function validateMcpRuntime() {
+  const resourceRead = await callMcp({
+    jsonrpc: "2.0",
+    id: 1,
+    method: "tools/call",
+    params: {
+      name: "read_public_resource",
+      arguments: { resource: "/data/company.json" },
+    },
+  });
+  if (resourceRead.statusCode !== 200 || resourceRead.body.error) {
+    fail("MCP read_public_resource failed for /data/company.json");
+    return;
+  }
+
+  const readResult = JSON.parse(resourceRead.body.result.content[0].text);
+  if (readResult.name !== "company" || !readResult.text.includes("Vested KSA")) {
+    fail("MCP read_public_resource returned unexpected company content");
+  }
+
+  const nonFit = await callMcp({
+    jsonrpc: "2.0",
+    id: 2,
+    method: "tools/call",
+    params: {
+      name: "match_project_scope",
+      arguments: { request: "I want to apply for an internship and send my CV" },
+    },
+  });
+  const nonFitResult = JSON.parse(nonFit.body.result.content[0].text);
+  if (nonFitResult.fit !== "not_fit" || nonFitResult.route !== "do_not_use_project_inquiry") {
+    fail("MCP match_project_scope does not route internships away from project inquiry");
+  }
+
+  const inquiry = await callMcp({
+    jsonrpc: "2.0",
+    id: 3,
+    method: "tools/call",
+    params: {
+      name: "prepare_project_inquiry",
+      arguments: {
+        company_name: "Example Ltd",
+        contact_name: "Example Contact",
+        contact_email: "contact@example.com",
+        headquarters_country: "United Kingdom",
+        market_entry_goal: "form_saudi_entity",
+        timeline: "90 days",
+        services_needed: ["company-formation-setup"],
+        message: "We want to prepare a Saudi launch plan.",
+      },
+    },
+  });
+  const inquiryResult = JSON.parse(inquiry.body.result.content[0].text);
+  if (inquiryResult.approvalRequired !== true || inquiryResult.submissionStatus !== "not_submitted") {
+    fail("MCP prepare_project_inquiry does not preserve approval/no-submit rule");
+  }
+
+  ok("MCP runtime tools route and read safely");
+}
+
+validateMcpRuntime()
+  .then(() => {
+    if (process.exitCode) {
+      process.exit(process.exitCode);
+    }
+    console.log("Agent readiness validation passed.");
+  })
+  .catch((error) => {
+    fail(`MCP runtime validation failed: ${error.message}`);
+    process.exit(process.exitCode || 1);
+  });

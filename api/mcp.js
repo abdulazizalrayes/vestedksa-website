@@ -80,15 +80,41 @@ function readJsonResource(name) {
   return JSON.parse(fs.readFileSync(path.join(DATA_ROOT, file), "utf8"));
 }
 
+function normalizePublicResourceName(value) {
+  const input = String(value || "").trim();
+  if (!input) return "";
+
+  const withoutOrigin = input.replace(/^https?:\/\/(?:www\.)?vestedksa\.com/i, "");
+  const withoutLeadingSlash = withoutOrigin.replace(/^\/+/, "");
+
+  if (withoutLeadingSlash.startsWith("data/")) {
+    const dataName = withoutLeadingSlash.replace(/^data\//, "").replace(/\.json$/i, "");
+    return RESOURCE_FILES[dataName] ? dataName : "";
+  }
+
+  if (withoutLeadingSlash.startsWith(".well-known/")) {
+    const wellKnownAliases = {
+      ".well-known/agent-card.json": "agent-card",
+      ".well-known/api-catalog": "api-catalog",
+      ".well-known/api-catalog.json": "api-catalog",
+      ".well-known/mcp/server-card.json": "mcp-server-card",
+    };
+    return wellKnownAliases[withoutLeadingSlash] || "";
+  }
+
+  return withoutLeadingSlash.replace(/\.json$/i, "");
+}
+
 function readTextResource(name) {
-  const file = PUBLIC_RESOURCE_ALIASES[name] || path.join(DATA_ROOT, RESOURCE_FILES[name] || "");
+  const resourceName = normalizePublicResourceName(name);
+  const file = PUBLIC_RESOURCE_ALIASES[resourceName] || (RESOURCE_FILES[resourceName] ? path.join(DATA_ROOT, RESOURCE_FILES[resourceName]) : "");
   if (!file || !fs.existsSync(file)) {
     const error = new Error(`Unknown public resource: ${name}`);
     error.statusCode = 404;
     throw error;
   }
   return {
-    name,
+    name: resourceName,
     contentType: file.endsWith(".json") ? "application/json" : file.endsWith(".md") ? "text/markdown" : "text/plain",
     text: fs.readFileSync(file, "utf8"),
   };
