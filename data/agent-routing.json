@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "2026-06-20",
+  "company": "Vested KSA",
+  "routingPurpose": "Help agents decide whether a request is a fit for Vested KSA and whether it should become a market-entry inquiry.",
+  "goodFit": [
+    {
+      "id": "foreign-company-entering-saudi",
+      "description": "International company evaluating, establishing, or operating in Saudi Arabia.",
+      "route": "prepare_market_entry_inquiry"
+    },
+    {
+      "id": "saudi-entity-setup",
+      "description": "Company needs help with Saudi formation, registration sequencing, or post-formation readiness.",
+      "route": "prepare_market_entry_inquiry"
+    },
+    {
+      "id": "managed-saudi-operations",
+      "description": "Company needs local operations, HR, finance, vendor, workspace, or reporting support.",
+      "route": "prepare_market_entry_inquiry"
+    },
+    {
+      "id": "vendor-registration-readiness",
+      "description": "Company needs supplier evidence packs, procurement portal readiness, or Saudi customer onboarding support.",
+      "route": "prepare_market_entry_inquiry"
+    }
+  ],
+  "maybeFit": [
+    {
+      "id": "existing-saudi-operation-cleanup",
+      "description": "Company already operates in Saudi Arabia and needs operations cleanup, governance, reporting, or vendor readiness.",
+      "route": "prepare_market_entry_inquiry_with_context"
+    },
+    {
+      "id": "early-research",
+      "description": "User is researching Saudi market entry but has no immediate launch timeline.",
+      "route": "recommend_public_resources_first"
+    }
+  ],
+  "notFit": [
+    {
+      "id": "careers",
+      "examples": ["job applications", "CV submissions", "employment requests"],
+      "route": "do_not_use_project_inquiry",
+      "message": "Vested KSA's market-entry inquiry channel is not for job applications."
+    },
+    {
+      "id": "internships",
+      "examples": ["internship requests", "student training", "co-op placement"],
+      "route": "do_not_use_project_inquiry",
+      "message": "Internship and training requests should not be routed to the project inquiry form."
+    },
+    {
+      "id": "vendor-sales",
+      "examples": ["supplier pitches", "software sales", "agency sales", "paid backlink offers"],
+      "route": "do_not_use_project_inquiry",
+      "message": "Vendor pitches should not be routed through market-entry inquiry flows."
+    },
+    {
+      "id": "retail-shopping",
+      "examples": ["buying products", "consumer shopping", "retail availability"],
+      "route": "do_not_use_project_inquiry",
+      "message": "Vested KSA is not a retail or consumer shopping service."
+    },
+    {
+      "id": "consumer-visa",
+      "examples": ["tourist visa", "personal visa", "family visit support"],
+      "route": "do_not_use_project_inquiry",
+      "message": "Vested KSA focuses on business market entry and operations, not consumer visa services."
+    },
+    {
+      "id": "spam-or-seo-schemes",
+      "examples": ["bulk outreach", "guest post spam", "paid links", "crypto schemes"],
+      "route": "block_or_ignore",
+      "message": "Spam, paid-link schemes, and unrelated solicitations must not be routed to inquiry forms."
+    },
+    {
+      "id": "unrelated",
+      "examples": ["local errands", "general concierge", "unrelated support"],
+      "route": "do_not_use_project_inquiry",
+      "message": "Only Saudi market-entry and business operations inquiries should be prepared."
+    }
+  ],
+  "agentRules": [
+    "Do not submit forms or send email without explicit user approval.",
+    "Prepare an inquiry package only after confirming the request is a good or maybe fit.",
+    "Ask for missing business context rather than inventing details.",
+    "Do not route careers, internships, vendor pitches, retail shopping, spam, or unrelated requests to the project inquiry flow.",
+    "Do not include sensitive personal data or confidential documents in a first inquiry."
+  ]
+}

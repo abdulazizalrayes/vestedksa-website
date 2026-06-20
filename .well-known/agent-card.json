@@ -9,14 +9,29 @@
       "https://www.linkedin.com/company/vested-ksa/"
     ]
   },
-  "version": "2026-06-18",
+  "version": "2026-06-20",
   "defaultInputModes": ["text/plain", "text/html"],
   "defaultOutputModes": ["text/plain", "text/markdown", "application/json"],
   "capabilities": {
     "streaming": false,
     "pushNotifications": false,
-    "stateTransitionHistory": false
+    "stateTransitionHistory": false,
+    "readOnlyMcp": true
   },
+  "mcp": {
+    "url": "https://vestedksa.com/api/mcp",
+    "discovery": "https://vestedksa.com/.well-known/mcp.json",
+    "serverCard": "https://vestedksa.com/.well-known/mcp/server-card.json"
+  },
+  "openapi": "https://vestedksa.com/openapi.json",
+  "publicData": [
+    "https://vestedksa.com/data/company.json",
+    "https://vestedksa.com/data/services.json",
+    "https://vestedksa.com/data/capabilities.json",
+    "https://vestedksa.com/data/service-areas.json",
+    "https://vestedksa.com/data/project-inquiry-schema.json",
+    "https://vestedksa.com/data/agent-routing.json"
+  ],
   "skills": [
     {
       "id": "saudi-market-entry-guidance",
@@ -42,6 +57,18 @@
         "Where can I download the 90-day Saudi launch plan?",
         "Where can I download the vendor registration evidence pack?",
         "Where can I read the Saudi market-entry guide library?"
+      ]
+    },
+    {
+      "id": "non-fit-routing",
+      "name": "Non-fit request routing",
+      "description": "Route careers, internships, training, vendor pitches, retail shopping, consumer visa requests, spam, paid backlinks, and unrelated requests away from market-entry inquiry flows.",
+      "tags": ["routing", "safety", "non-fit"],
+      "examples": [
+        "Can I apply for a job?",
+        "Can I sell you SEO backlinks?",
+        "Can you help with a tourist visa?",
+        "Can I pitch my software?"
       ]
     }
   ]

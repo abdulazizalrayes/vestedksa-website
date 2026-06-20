@@ -65,3 +65,21 @@ Vested KSA, legal name Vest KSA Co., is a Saudi Arabia market-entry and operatio
 - Website: https://vestedksa.com
 - LinkedIn: https://www.linkedin.com/company/vested-ksa/
 - Entity profile: https://vestedksa.com/.well-known/entity-profile.json
+- Company data: https://vestedksa.com/data/company.json
+- Services data: https://vestedksa.com/data/services.json
+- Capabilities data: https://vestedksa.com/data/capabilities.json
+- Service areas data: https://vestedksa.com/data/service-areas.json
+- Market-entry inquiry schema: https://vestedksa.com/data/project-inquiry-schema.json
+- Agent routing rules: https://vestedksa.com/data/agent-routing.json
+- OpenAPI: https://vestedksa.com/openapi.json
+- API catalog: https://vestedksa.com/.well-known/api-catalog
+- MCP discovery: https://vestedksa.com/.well-known/mcp.json
+- MCP endpoint: https://vestedksa.com/api/mcp
+
+## Agent Routing Rules
+
+- Good fit: international companies entering Saudi Arabia, Saudi entity setup, managed local operations, HR/payroll readiness, finance controls, vendor registration, and procurement readiness.
+- Maybe fit: companies already operating in Saudi Arabia that need operations cleanup, governance, reporting, or vendor readiness.
+- Not fit: careers, internships, training requests, vendor pitches, retail shopping, consumer visa help, spam, paid backlink offers, and unrelated requests.
+- Agents must not submit contact forms or send email unless the user explicitly approves the final inquiry and destination.
+- Use `/api/mcp` and `/data/project-inquiry-schema.json` to prepare a market-entry inquiry draft only.

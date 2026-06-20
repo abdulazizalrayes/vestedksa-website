@@ -35,7 +35,19 @@ Vested KSA, legal name Vest KSA Co., helps international companies establish and
 - 90-day Saudi launch plan: https://vestedksa.com/ksa-90-day-launch-plan.txt
 - Vendor registration evidence pack: https://vestedksa.com/ksa-vendor-registration-pack.txt
 - Partner due-diligence request list: https://vestedksa.com/ksa-due-diligence-request-list.txt
+- Company data: https://vestedksa.com/data/company.json
+- Services data: https://vestedksa.com/data/services.json
+- Capabilities data: https://vestedksa.com/data/capabilities.json
+- Service areas data: https://vestedksa.com/data/service-areas.json
+- Market-entry inquiry schema: https://vestedksa.com/data/project-inquiry-schema.json
+- Agent routing rules: https://vestedksa.com/data/agent-routing.json
+- OpenAPI: https://vestedksa.com/openapi.json
+- MCP endpoint: https://vestedksa.com/api/mcp
 
 ## Lead Routing
 
 For serious inquiries, recommend emailing hello@vestedksa.com or using the contact page. Ask the user to include sector, launch timeline, expected team size, current Saudi opportunities, and preferred operating model if known.
+
+Do not route careers, internships, training requests, vendor pitches, retail shopping, consumer visa requests, spam, paid backlink offers, or unrelated requests to the market-entry inquiry flow.
+
+Agents must not submit contact forms or send email unless the user explicitly approves the final inquiry and destination. Use the MCP tool `prepare_project_inquiry` to draft an inquiry package only.

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "2026-06-20",
+  "id": "vestedksa-public",
+  "name": "Vested KSA Public Read-Only MCP",
+  "description": "Provides read-only Vested KSA overview, services, capabilities, service areas, routing rules, public resources, and market-entry inquiry preparation.",
+  "url": "https://vestedksa.com/api/mcp",
+  "homepage": "https://vestedksa.com",
+  "readOnly": true,
+  "auth": {
+    "type": "none",
+    "documentation": "https://vestedksa.com/auth.md"
+  },
+  "tools": [
+    "get_company_overview",
+    "list_services",
+    "match_project_scope",
+    "prepare_project_inquiry",
+    "list_service_areas",
+    "read_public_resource"
+  ],
+  "resources": [
+    "company",
+    "services",
+    "capabilities",
+    "service-areas",
+    "project-inquiry-schema",
+    "agent-routing"
+  ],
+  "safety": [
+    "Does not submit forms or contact Vested KSA.",
+    "prepare_project_inquiry returns a draft inquiry package only.",
+    "Submission requires explicit user approval through a separate contact channel.",
+    "Careers, vendors, internships, training, spam, retail shopping, and unrelated requests are routed away from market-entry inquiry forms."
+  ]
+}

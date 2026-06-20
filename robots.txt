@@ -1,25 +1,37 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /private
+Disallow: /internal
+Disallow: /.vercel
+Disallow: /api/contact
 Sitemap: https://vestedksa.com/sitemap.xml
 
 # AI Crawlers
 User-agent: GPTBot
 Allow: /
+Disallow: /api/contact
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /api/contact
 
 User-agent: CCBot
 Allow: /
+Disallow: /api/contact
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /api/contact
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /api/contact
 
 User-agent: Bytespider
 Allow: /
+Disallow: /api/contact
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /api/contact

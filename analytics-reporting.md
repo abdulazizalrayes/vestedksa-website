@@ -35,6 +35,8 @@ Review these dimensions and metrics every month:
 - Checklist downloads by page path and source.
 - Email clicks and contact-form starts compared with successful submissions.
 - Search Console queries, impressions, clicks, average position, and indexed pages.
+- Vercel log hits for `/llms.txt`, `/openapi.json`, `/data/`, `/.well-known/`, and `/api/mcp`.
+- MCP tool-call counts by tool name from privacy-safe server logs.
 
 ## Recommended Segments
 
@@ -50,3 +52,17 @@ Review these dimensions and metrics every month:
 - Review country and language demand before adding more localized content.
 - Check that the sitemap is submitted and key pages remain indexed in Search Console.
 - Confirm the top lead sources are represented in next month's content and outreach plan.
+- Review Vercel logs for AI crawler/resource reads and MCP usage.
+- Run `node scripts/validate-agent-readiness.js` after major content or routing updates.
+
+## Agent And AI Referral Checks
+
+Use these operational checks until a dedicated approved logging sink is added:
+
+- Vercel logs containing `agent_readiness_event`.
+- Vercel logs where path contains `/api/mcp`.
+- Vercel logs where path contains `/llms.txt`, `/openapi.json`, `/data/`, or `/.well-known/`.
+- GA4 referral/source reports for AI assistants and agent browsers.
+- Search Console URL inspection for `llms.txt`, `openapi.json`, `/data/company.json`, and guide pages.
+
+Do not log full prompts, personal information, private inquiry details, IDs, bank data, passports, or confidential documents.

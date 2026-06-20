@@ -28,6 +28,17 @@
       "dest": "/api/contact.js"
     },
     {
+      "src": "/api/mcp",
+      "dest": "/api/mcp.js"
+    },
+    {
+      "src": "/.well-known/api-catalog/?",
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "dest": "/.well-known/api-catalog.json"
+    },
+    {
       "src": "/index\\.html",
       "status": 308,
       "headers": {
@@ -199,7 +210,7 @@
     {
       "src": "/",
       "headers": {
-        "Link": "</llms.txt>; rel=\"alternate\"; type=\"text/markdown\", </llms-full.md>; rel=\"alternate\"; type=\"text/markdown\", </service-pages.json>; rel=\"service-desc\"; type=\"application/json\", </.well-known/agent-card.json>; rel=\"agent-card\"; type=\"application/json\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\"; type=\"application/json\"",
+        "Link": "</llms.txt>; rel=\"alternate\"; type=\"text/markdown\", </llms-full.md>; rel=\"alternate\"; type=\"text/markdown\", </openapi.json>; rel=\"service-desc\"; type=\"application/vnd.oai.openapi+json\", </.well-known/api-catalog>; rel=\"service-desc\"; type=\"application/json\", </.well-known/mcp.json>; rel=\"mcp-discovery\"; type=\"application/json\", </.well-known/agent-card.json>; rel=\"agent-card\"; type=\"application/json\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\"; type=\"application/json\"",
         "Vary": "Accept"
       },
       "dest": "/index.html"

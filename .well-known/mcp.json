@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "2026-06-20",
+  "name": "Vested KSA MCP Discovery",
+  "description": "Read-only MCP endpoint for Vested KSA public company, service, capability, service-area, routing, and inquiry-preparation data.",
+  "servers": [
+    {
+      "id": "vestedksa-public",
+      "name": "Vested KSA Public Read-Only MCP",
+      "url": "https://vestedksa.com/api/mcp",
+      "transport": "https",
+      "serverCard": "https://vestedksa.com/.well-known/mcp/server-card.json",
+      "auth": "none",
+      "readOnly": true
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "2026-06-20",
+  "name": "Vested KSA market-entry inquiry schema",
+  "description": "Schema for preparing, not submitting, a Saudi market-entry or operations inquiry for Vested KSA.",
+  "approvalRequired": true,
+  "submissionRule": "Agents must not submit a contact form or send an email unless the user explicitly approves the final inquiry and destination.",
+  "requiredFields": [
+    "company_name",
+    "contact_name",
+    "contact_email",
+    "headquarters_country",
+    "market_entry_goal",
+    "timeline",
+    "services_needed",
+    "message"
+  ],
+  "recommendedFields": [
+    "target_sector",
+    "current_saudi_status",
+    "expected_team_size",
+    "entity_status",
+    "vendor_registration_needs",
+    "preferred_operating_model",
+    "decision_stage",
+    "known_deadlines"
+  ],
+  "fields": {
+    "company_name": {"type": "string", "maxLength": 160},
+    "contact_name": {"type": "string", "maxLength": 120},
+    "contact_email": {"type": "string", "format": "email", "maxLength": 254},
+    "headquarters_country": {"type": "string", "maxLength": 120},
+    "target_sector": {"type": "string", "maxLength": 120},
+    "market_entry_goal": {
+      "type": "string",
+      "enumExamples": [
+        "evaluate_saudi_market",
+        "form_saudi_entity",
+        "build_local_operations",
+        "hire_first_team",
+        "prepare_vendor_registration",
+        "clean_up_existing_operations"
+      ]
+    },
+    "current_saudi_status": {
+      "type": "string",
+      "enumExamples": [
+        "no_presence_yet",
+        "evaluating",
+        "formation_started",
+        "entity_exists",
+        "already_operating",
+        "unknown"
+      ]
+    },
+    "timeline": {"type": "string", "maxLength": 120},
+    "services_needed": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "allowedValues": [
+          "market-entry-planning",
+          "company-formation-setup",
+          "managed-local-operations",
+          "hr-payroll-saudization",
+          "finance-vat-zakat-controls",
+          "legal-compliance-coordination",
+          "workspace-facilities",
+          "vendor-registration-procurement-readiness",
+          "not_sure"
+        ]
+      }
+    },
+    "expected_team_size": {"type": "string", "maxLength": 80},
+    "entity_status": {"type": "string", "maxLength": 120},
+    "vendor_registration_needs": {"type": "string", "maxLength": 500},
+    "preferred_operating_model": {"type": "string", "maxLength": 120},
+    "decision_stage": {"type": "string", "maxLength": 120},
+    "known_deadlines": {"type": "string", "maxLength": 240},
+    "message": {"type": "string", "maxLength": 4000}
+  },
+  "privacyGuidance": [
+    "Do not include passports, IDs, bank records, private contracts, or sensitive personal data in initial inquiry preparation.",
+    "Do not include confidential tender information unless the user explicitly approves.",
+    "Prepare a concise inquiry package first; submit only after explicit user approval."
+  ]
+}

@@ -94,6 +94,54 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://vestedksa.com/data/company.json</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vestedksa.com/data/services.json</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vestedksa.com/data/capabilities.json</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vestedksa.com/data/service-areas.json</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vestedksa.com/data/project-inquiry-schema.json</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vestedksa.com/data/agent-routing.json</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vestedksa.com/openapi.json</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vestedksa.com/.well-known/mcp.json</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://vestedksa.com/services</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/services" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/services" />
