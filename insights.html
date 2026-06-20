@@ -242,6 +242,117 @@
       font-weight: 400;
     }
 
+    .hub-section {
+      padding: 100px 20px 80px;
+      background: #FFFFFF;
+    }
+
+    .hub-header {
+      max-width: 1280px;
+      margin: 0 auto 44px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 56px;
+      align-items: end;
+    }
+
+    .hub-header h2 {
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.08;
+      color: #1D1D1F;
+      letter-spacing: 0;
+      margin: 0;
+    }
+
+    .hub-header p {
+      color: #6E6E73;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .hub-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+    }
+
+    .hub-primary,
+    .hub-topic {
+      border: 1px solid #E5E5E7;
+      border-radius: 8px;
+      background: #FFFFFF;
+      padding: 32px;
+    }
+
+    .hub-primary {
+      min-height: 330px;
+      display: grid;
+      align-content: space-between;
+      gap: 34px;
+    }
+
+    .hub-primary h3 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.12;
+      color: #1D1D1F;
+      margin-bottom: 16px;
+    }
+
+    .hub-primary p,
+    .hub-topic p {
+      color: #6E6E73;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .hub-topic-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .hub-topic h3 {
+      font-size: 18px;
+      color: #1D1D1F;
+      margin-bottom: 8px;
+    }
+
+    .stage-grid {
+      max-width: 1280px;
+      margin: 36px auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stage-card {
+      border: 1px solid #E5E5E7;
+      border-radius: 8px;
+      background: #FAFAFA;
+      padding: 22px;
+      min-height: 180px;
+    }
+
+    .stage-card strong {
+      display: block;
+      color: #0071E3;
+      font-size: 13px;
+      margin-bottom: 30px;
+    }
+
+    .stage-card h3 {
+      font-size: 18px;
+      color: #1D1D1F;
+      margin-bottom: 8px;
+    }
+
+    .stage-card p {
+      color: #6E6E73;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
     /* Generic section */
     .section {
       padding: 140px 20px;
@@ -321,6 +432,12 @@
       .featured-article {
         grid-template-columns: 1fr;
         padding: 40px 20px;
+      }
+
+      .hub-header,
+      .hub-grid,
+      .stage-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -724,8 +841,62 @@
   <!-- Hero -->
   <section id="main-content" class="hero">
     <div class="container">
-      <h1>Insights.</h1>
-      <p class="subtitle">Guides, analysis, and updates for international companies entering Saudi Arabia.</p>
+      <h1>Saudi Launch Readiness Center.</h1>
+      <p class="subtitle">Decision guides, planning tools, and operating checklists for international companies entering Saudi Arabia.</p>
+    </div>
+  </section>
+
+  <!-- Decision Hub -->
+  <section class="hub-section">
+    <div class="hub-header">
+      <h2>Move from market interest to operating readiness.</h2>
+      <p>The guide library is organized around the decisions buyers actually need to make: structure, licensing, finance, people, vendor access, and first-90-day execution.</p>
+    </div>
+    <div class="hub-grid">
+      <div class="hub-primary">
+        <div>
+          <span class="article-tag">START HERE</span>
+          <h3>The Saudi market-entry guide library, organized by launch stage.</h3>
+          <p>Use the main guide to orient the full setup path, then move into focused guides for ownership, MISA licensing, VAT/Zakat, e-invoicing controls, RHQ, vendor registration, and Saudization.</p>
+        </div>
+        <a class="read-more" href="/insights/ksa-market-entry-guide-2026">Start with the complete guide →</a>
+      </div>
+      <div class="hub-topic-list">
+        <div class="hub-topic">
+          <h3>Banking and finance controls</h3>
+          <p>Prepare invoice, tax, approval, vendor, and headquarters reporting workflows before the first Saudi transaction.</p>
+        </div>
+        <div class="hub-topic">
+          <h3>First employee readiness</h3>
+          <p>Plan employment, payroll, GOSI, Qiwa, Saudization, and local HR records before hiring starts.</p>
+        </div>
+        <div class="hub-topic">
+          <h3>Entity vs branch decision</h3>
+          <p>Compare entry models before choosing a setup path, customer onboarding route, or local operating layer.</p>
+        </div>
+      </div>
+    </div>
+    <div class="stage-grid">
+      <div class="stage-card">
+        <strong>01</strong>
+        <h3>Evaluate</h3>
+        <p>Ownership, activity, sector restrictions, and Saudi opportunity fit.</p>
+      </div>
+      <div class="stage-card">
+        <strong>02</strong>
+        <h3>Form</h3>
+        <p>MISA, CR, Chamber, tax, HR, national address, and banking readiness.</p>
+      </div>
+      <div class="stage-card">
+        <strong>03</strong>
+        <h3>Operate</h3>
+        <p>Payroll, finance controls, suppliers, office, records, and reporting cadence.</p>
+      </div>
+      <div class="stage-card">
+        <strong>04</strong>
+        <h3>Access</h3>
+        <p>Vendor profiles, procurement portals, customer evidence packs, and tender readiness.</p>
+      </div>
     </div>
   </section>
 

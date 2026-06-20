@@ -348,17 +348,29 @@
             position: relative;
             isolation: isolate;
             overflow: hidden;
-            min-height: min(760px, calc(100svh - 96px));
+            min-height: min(820px, calc(100svh - 72px));
             margin: 0;
             padding: clamp(112px, 14vh, 148px) 20px clamp(68px, 8vh, 92px);
             text-align: left;
             background:
-                linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.94) 42%, rgba(255, 255, 255, 0.62) 62%, rgba(255, 255, 255, 0.14) 100%),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.58) 48%, rgba(0, 0, 0, 0.22) 100%),
                 url('/assets/hero-market-entry-2026.jpg') center right / cover no-repeat;
-            border-bottom: 1px solid #E5E5E7;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
             display: flex;
             flex-direction: column;
             justify-content: center;
+        }
+
+        .hero-eyebrow {
+            width: min(100%, 660px);
+            margin-left: max(20px, calc((100vw - 1120px) / 2));
+            margin-right: auto;
+            margin-bottom: 18px;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
 
         .hero > h1,
@@ -375,21 +387,21 @@
             font-weight: 700;
             letter-spacing: 0;
             line-height: 1.1;
-            color: #1D1D1F;
+            color: #FFFFFF;
             margin-bottom: 20px;
         }
 
         .hero .subtitle {
             font-size: clamp(28px, 5vw, 40px);
             font-weight: 400;
-            color: #4A4A50;
+            color: rgba(255, 255, 255, 0.84);
             margin-bottom: 34px;
             letter-spacing: 0;
         }
 
         .hero p {
             font-size: 19px;
-            color: #4F4F56;
+            color: rgba(255, 255, 255, 0.78);
             line-height: 1.7;
             margin-top: 0;
             margin-bottom: 38px;
@@ -455,6 +467,52 @@
             transform: translateY(-1px);
         }
 
+        .hero .secondary-cta {
+            color: #FFFFFF;
+            border-color: rgba(255, 255, 255, 0.36);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hero .secondary-cta:hover {
+            color: #1D1D1F;
+            background: #FFFFFF;
+            border-color: #FFFFFF;
+        }
+
+        .hero-decision-strip {
+            width: min(1120px, calc(100% - 40px));
+            margin: clamp(56px, 8vh, 86px) auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .hero-decision {
+            padding: 24px;
+            border-right: 1px solid rgba(255, 255, 255, 0.16);
+        }
+
+        .hero-decision:last-child {
+            border-right: 0;
+        }
+
+        .hero-decision strong {
+            display: block;
+            color: #FFFFFF;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .hero-decision p {
+            color: rgba(255, 255, 255, 0.74);
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
         .scroll-indicator {
             position: absolute;
             left: 50%;
@@ -493,6 +551,75 @@
             font-size: 17px;
             color: #86868B;
             max-width: 100%;
+        }
+
+        .entry-paths {
+            padding: 120px 20px 40px;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .entry-paths-header {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+            gap: 48px;
+            align-items: end;
+            margin-bottom: 42px;
+        }
+
+        .entry-paths-header h2 {
+            font-size: clamp(36px, 5vw, 52px);
+            line-height: 1.1;
+            color: #1D1D1F;
+            letter-spacing: 0;
+        }
+
+        .entry-paths-header p {
+            color: #6E6E73;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .entry-path-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .entry-path {
+            min-height: 240px;
+            border: 1px solid #E5E5E7;
+            border-radius: 8px;
+            background: #FFFFFF;
+            padding: 28px;
+            color: inherit;
+            text-decoration: none;
+            transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .entry-path:hover {
+            border-color: #C7C7CC;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.06);
+        }
+
+        .entry-path-number {
+            color: #0071E3;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 44px;
+        }
+
+        .entry-path h3 {
+            font-size: 22px;
+            color: #1D1D1F;
+            margin-bottom: 12px;
+        }
+
+        .entry-path p {
+            color: #6E6E73;
+            font-size: 15px;
+            line-height: 1.7;
         }
 
         /* What We Do Section */
@@ -1183,6 +1310,21 @@
             .scroll-indicator {
                 display: none;
             }
+
+            .hero-decision-strip,
+            .entry-path-grid,
+            .entry-paths-header {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-decision {
+                border-right: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+            }
+
+            .hero-decision:last-child {
+                border-bottom: 0;
+            }
         }
     </style>
 
@@ -1237,12 +1379,27 @@
 
     <!-- Hero Section -->
     <section id="main-content" class="hero">
-        <h1>Enter Saudi Arabia.</h1>
-        <p class="subtitle">We handle everything else.</p>
-        <p>Vested KSA is your market-entry and operations partner in Saudi Arabia. Whether you need a fully dedicated in-house team or flexible services on demand, we set up, run, and manage your non-core business so you can focus entirely on growth.</p>
+        <p class="hero-eyebrow">Saudi market-entry and local operations</p>
+        <h1>Your Saudi operation, built before the first mistake.</h1>
+        <p class="subtitle">Set up, operate, and scale with one accountable local partner.</p>
+        <p>For international companies entering Saudi Arabia, Vested designs the setup path, operating controls, vendor readiness, and local execution layer so leadership can move with clarity.</p>
         <div class="hero-actions">
-            <a href="/contact" class="hero-cta">Book a market-entry call →</a>
-            <a href="/ksa-entry-checklist.txt" class="secondary-cta" download>Download the KSA entry checklist</a>
+            <a href="/contact" class="hero-cta">Scope my Saudi launch →</a>
+            <a href="/ksa-90-day-launch-plan.txt" class="secondary-cta" download>View the 90-day plan</a>
+        </div>
+        <div class="hero-decision-strip" aria-label="Saudi entry decision paths">
+            <div class="hero-decision">
+                <strong>Need an entity?</strong>
+                <p>Confirm activity, ownership, licensing, tax, HR, and banking dependencies.</p>
+            </div>
+            <div class="hero-decision">
+                <strong>Need operations?</strong>
+                <p>Build the local admin, finance, HR, supplier, and reporting rhythm.</p>
+            </div>
+            <div class="hero-decision">
+                <strong>Need market access?</strong>
+                <p>Prepare vendor profiles, procurement portals, and customer evidence packs.</p>
+            </div>
         </div>
         <div class="scroll-indicator">
             <div class="scroll-indicator-line"></div>
@@ -1252,6 +1409,31 @@
     <!-- Trusted By Section -->
     <section class="trusted-by">
         <p>Built for international companies entering and operating in Saudi Arabia</p>
+    </section>
+
+    <!-- Entry Paths Section -->
+    <section class="entry-paths">
+        <div class="entry-paths-header">
+            <h2>Three entry paths. One accountable operating partner.</h2>
+            <p>Start with the model that matches your stage: launch planning, managed operations, or a targeted workstream such as formation, vendor registration, finance controls, or hiring.</p>
+        </div>
+        <div class="entry-path-grid">
+            <a href="/contact" class="entry-path">
+                <div class="entry-path-number">01</div>
+                <h3>Launch Sprint</h3>
+                <p>Entry model, timeline, risk map, document path, and first 90-day operating plan before committing major local spend.</p>
+            </a>
+            <a href="/services" class="entry-path">
+                <div class="entry-path-number">02</div>
+                <h3>Managed Operations</h3>
+                <p>Local execution across HR, finance, suppliers, workspace, reporting, and government follow-ups.</p>
+            </a>
+            <a href="/services" class="entry-path">
+                <div class="entry-path-number">03</div>
+                <h3>Targeted Workstream</h3>
+                <p>Focused support for formation, vendor registration, finance controls, hiring readiness, or Saudi customer onboarding.</p>
+            </a>
+        </div>
     </section>
 
     <!-- What We Do Section -->
