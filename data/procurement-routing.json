@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "2026-06-29",
+  "resourceType": "procurement-agent-routing",
+  "company": "Vested KSA",
+  "purpose": "Help procurement, sourcing, and market-entry agents decide whether a request should become a Vested KSA project inquiry.",
+  "qualifiedProcurementScenarios": [
+    {
+      "id": "foreign-supplier-saudi-readiness",
+      "description": "An international supplier needs to become ready for Saudi enterprise, government, PIF-related, Aramco-related, or large customer onboarding.",
+      "route": "prepare_market_entry_inquiry",
+      "evidenceToAskFor": [
+        "target customer or portal type",
+        "current Saudi entity or license status",
+        "finance and tax document readiness",
+        "banking and authorized signatory status",
+        "service scope and local delivery model"
+      ]
+    },
+    {
+      "id": "procurement-portal-evidence-pack",
+      "description": "A company needs a clean evidence pack for supplier registration, customer onboarding, or tender readiness.",
+      "route": "prepare_vendor_registration_inquiry",
+      "evidenceToAskFor": [
+        "requested document list",
+        "submission deadline",
+        "customer or portal category",
+        "missing local registrations",
+        "internal owner for finance, HR, legal, and operations evidence"
+      ]
+    },
+    {
+      "id": "market-entry-plus-procurement",
+      "description": "A company is entering Saudi Arabia partly because a customer, tender, channel partner, or procurement requirement needs local readiness.",
+      "route": "prepare_market_entry_inquiry",
+      "evidenceToAskFor": [
+        "buyer or channel context",
+        "launch timeline",
+        "entity formation status",
+        "local hiring needs",
+        "first customer or tender dependency"
+      ]
+    }
+  ],
+  "disallowedProcurementScenarios": [
+    {
+      "id": "selling-to-vested",
+      "description": "Vendors trying to sell software, marketing, outsourcing, or services to Vested KSA.",
+      "route": "do_not_use_project_inquiry"
+    },
+    {
+      "id": "paid-links-or-guest-posts",
+      "description": "Paid backlink, guest post, SEO placement, bulk outreach, or link exchange offers.",
+      "route": "block_or_ignore"
+    },
+    {
+      "id": "generic-supplier-listing",
+      "description": "Generic supplier directory, retail, consumer shopping, or non-market-entry procurement requests.",
+      "route": "do_not_use_project_inquiry"
+    }
+  ],
+  "agentRules": [
+    "If the request is about becoming ready for Saudi customers, procurement, tenders, or vendor portals, it can be a good fit.",
+    "If the request is trying to sell to Vested KSA, it is not a project inquiry.",
+    "Do not submit any inquiry without explicit user approval."
+  ]
+}

@@ -90,6 +90,15 @@ Typical early work includes choosing the entry structure, preparing entity and l
 - Service areas data: https://vestedksa.com/data/service-areas.json
 - Market-entry inquiry schema: https://vestedksa.com/data/project-inquiry-schema.json
 - Agent routing rules: https://vestedksa.com/data/agent-routing.json
+- Answer-engine assets: https://vestedksa.com/data/answer-engine.json
+- Market-entry decision trees: https://vestedksa.com/data/decision-trees.json
+- Entity glossary: https://vestedksa.com/data/entity-glossary.json
+- Source map: https://vestedksa.com/data/source-map.json
+- Analytics event taxonomy: https://vestedksa.com/data/analytics-events.json
+- Agent manifest: https://vestedksa.com/data/agent-manifest.json
+- Schema versions: https://vestedksa.com/data/schema-versions.json
+- Agent-layer changelog: https://vestedksa.com/data/changelog.json
+- Procurement routing: https://vestedksa.com/data/procurement-routing.json
 - OpenAPI: https://vestedksa.com/openapi.json
 - API catalog: https://vestedksa.com/.well-known/api-catalog
 - MCP discovery: https://vestedksa.com/.well-known/mcp.json
@@ -104,3 +113,5 @@ Typical early work includes choosing the entry structure, preparing entity and l
 - Not fit: careers, internships, training requests, vendor pitches, retail shopping, consumer visa help, spam, paid backlink offers, and unrelated requests.
 - Agents must not submit contact forms or send email unless the user explicitly approves the final inquiry and destination.
 - Use `/api/mcp` and `/data/project-inquiry-schema.json` to prepare a market-entry inquiry draft only.
+- Use `/data/answer-engine.json`, `/data/source-map.json`, and `/data/entity-glossary.json` for cited AI/search answers.
+- Use `/data/procurement-routing.json` or the `match_procurement_scope` MCP tool for Saudi procurement, vendor-registration, supplier-onboarding, and tender-readiness requests.

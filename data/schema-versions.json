@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "2026-06-29",
+  "resourceType": "schema-version-registry",
+  "company": "Vested KSA",
+  "apiLayerVersion": "2.0.0",
+  "resources": [
+    {"path": "/data/company.json", "schemaVersion": "2026-06-20", "stability": "stable"},
+    {"path": "/data/services.json", "schemaVersion": "2026-06-20", "stability": "stable"},
+    {"path": "/data/capabilities.json", "schemaVersion": "2026-06-20", "stability": "stable"},
+    {"path": "/data/service-areas.json", "schemaVersion": "2026-06-20", "stability": "stable"},
+    {"path": "/data/project-inquiry-schema.json", "schemaVersion": "2026-06-20", "stability": "stable"},
+    {"path": "/data/agent-routing.json", "schemaVersion": "2026-06-20", "stability": "stable"},
+    {"path": "/data/answer-engine.json", "schemaVersion": "2026-06-29", "stability": "stable"},
+    {"path": "/data/decision-trees.json", "schemaVersion": "2026-06-29", "stability": "stable"},
+    {"path": "/data/entity-glossary.json", "schemaVersion": "2026-06-29", "stability": "stable"},
+    {"path": "/data/source-map.json", "schemaVersion": "2026-06-29", "stability": "stable"},
+    {"path": "/data/analytics-events.json", "schemaVersion": "2026-06-29", "stability": "stable"},
+    {"path": "/data/procurement-routing.json", "schemaVersion": "2026-06-29", "stability": "stable"},
+    {"path": "/data/agent-manifest.json", "schemaVersion": "2026-06-29", "stability": "stable"},
+    {"path": "/data/changelog.json", "schemaVersion": "2026-06-29", "stability": "stable"}
+  ],
+  "versioningRules": [
+    "Patch updates may clarify copy, add examples, or add non-breaking fields.",
+    "Minor updates may add new resources, tools, event names, or routing categories.",
+    "Major updates are required for breaking schema changes or removed fields.",
+    "Existing public resources should remain available whenever possible."
+  ]
+}

@@ -14,6 +14,15 @@ Public structured data:
 - `/data/service-areas.json`
 - `/data/project-inquiry-schema.json`
 - `/data/agent-routing.json`
+- `/data/answer-engine.json`
+- `/data/decision-trees.json`
+- `/data/entity-glossary.json`
+- `/data/source-map.json`
+- `/data/analytics-events.json`
+- `/data/agent-manifest.json`
+- `/data/schema-versions.json`
+- `/data/changelog.json`
+- `/data/procurement-routing.json`
 
 Discovery:
 
@@ -29,6 +38,7 @@ Discovery:
 - `/.well-known/agent-skills/index.json`
 - `/openapi.json`
 - `/auth.md`
+- `/docs/advanced-analytics-playbook.md`
 
 MCP/API:
 
@@ -57,10 +67,30 @@ Validation:
 - `prepare_project_inquiry`
 - `list_service_areas`
 - `read_public_resource`
+- `get_answer_engine_assets`
+- `get_market_entry_decision_trees`
+- `get_entity_glossary`
+- `get_agent_manifest`
+- `match_procurement_scope`
 
 `/openapi.json` documents public data endpoints, MCP, and the contact endpoint.
 
 `/auth.md` explains that public read-only endpoints require no auth, while contact submission requires explicit user approval.
+
+## V2 Agent/API Layer
+
+Version `2.0.0` adds:
+
+- answer blocks and citation guidance for AEO/GEO through `/data/answer-engine.json`
+- market-entry decision trees through `/data/decision-trees.json`
+- canonical entity language through `/data/entity-glossary.json`
+- topic-to-source mapping through `/data/source-map.json`
+- privacy-safe analytics event taxonomy through `/data/analytics-events.json`
+- a public agent manifest through `/data/agent-manifest.json`
+- schema registry and changelog through `/data/schema-versions.json` and `/data/changelog.json`
+- procurement and vendor-registration routing through `/data/procurement-routing.json`
+
+V1 resources remain available. V2 is additive and should not break existing agents.
 
 ## MCP Safety Rules
 
@@ -100,6 +130,7 @@ Suggested checks:
 - Vercel logs filtered by `/llms.txt`, `/openapi.json`, and `/data/`.
 - GA4 referrals containing AI tools or assistant browsers.
 - Search Console pages for `/llms.txt`, `/openapi.json`, `/data/`, and guide URLs.
+- `/docs/advanced-analytics-playbook.md` for the monthly operating process.
 
 ## Testing Commands
 
@@ -112,7 +143,7 @@ node scripts/validate-agent-readiness.js
 Check JSON and build:
 
 ```bash
-node -e "['openapi.json','data/company.json','data/services.json','data/capabilities.json','data/service-areas.json','data/project-inquiry-schema.json','data/agent-routing.json','.well-known/agent-card.json','.well-known/mcp.json','.well-known/mcp/server-card.json'].forEach(f=>JSON.parse(require('fs').readFileSync(f,'utf8')))"
+node -e "['openapi.json','data/company.json','data/services.json','data/capabilities.json','data/service-areas.json','data/project-inquiry-schema.json','data/agent-routing.json','data/answer-engine.json','data/decision-trees.json','data/entity-glossary.json','data/source-map.json','data/analytics-events.json','data/agent-manifest.json','data/schema-versions.json','data/changelog.json','data/procurement-routing.json','.well-known/agent-card.json','.well-known/mcp.json','.well-known/mcp/server-card.json'].forEach(f=>JSON.parse(require('fs').readFileSync(f,'utf8')))"
 vercel build
 ```
 
@@ -121,6 +152,9 @@ Live endpoint checks after deploy:
 ```bash
 curl -I https://vestedksa.com/data/company.json
 curl -I https://vestedksa.com/openapi.json
+curl -I https://vestedksa.com/data/answer-engine.json
+curl -I https://vestedksa.com/data/agent-manifest.json
+curl -I https://vestedksa.com/data/procurement-routing.json
 curl -I https://vestedksa.com/.well-known/api-catalog
 curl -I https://vestedksa.com/.well-known/mcp.json
 curl -I https://vestedksa.com/api/mcp
@@ -141,6 +175,14 @@ curl -s https://vestedksa.com/api/mcp \
 curl -s https://vestedksa.com/api/mcp \
   -H 'Content-Type: application/json' \
   -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"prepare_project_inquiry","arguments":{"company_name":"Example Ltd","contact_name":"Example Contact","contact_email":"contact@example.com","headquarters_country":"United Kingdom","market_entry_goal":"form_saudi_entity","timeline":"90 days","services_needed":["company-formation-setup","finance-vat-zakat-controls"],"message":"We want to prepare a Saudi launch plan."}}}'
+
+curl -s https://vestedksa.com/api/mcp \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"get_answer_engine_assets","arguments":{}}}'
+
+curl -s https://vestedksa.com/api/mcp \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"match_procurement_scope","arguments":{"request":"We need Aramco supplier registration and a Saudi vendor evidence pack"}}}'
 ```
 
 ## What To Copy To Other Companies
@@ -156,6 +198,7 @@ Copy the structure, not the facts:
 - `/api/mcp.js`
 - `scripts/validate-agent-readiness.js`
 - this documentation structure
+- `/docs/advanced-analytics-playbook.md`
 
 Before using it for another company, replace:
 

@@ -54,6 +54,8 @@ Review these dimensions and metrics every month:
 - Confirm the top lead sources are represented in next month's content and outreach plan.
 - Review Vercel logs for AI crawler/resource reads and MCP usage.
 - Run `node scripts/validate-agent-readiness.js` after major content or routing updates.
+- Review `/data/analytics-events.json` for the approved event taxonomy before adding or renaming events.
+- Review `/docs/advanced-analytics-playbook.md` during monthly Search Console and GA4 reporting.
 
 ## Agent And AI Referral Checks
 
@@ -62,6 +64,7 @@ Use these operational checks until a dedicated approved logging sink is added:
 - Vercel logs containing `agent_readiness_event`.
 - Vercel logs where path contains `/api/mcp`.
 - Vercel logs where path contains `/llms.txt`, `/openapi.json`, `/data/`, or `/.well-known/`.
+- Vercel logs where path contains `/data/answer-engine.json`, `/data/source-map.json`, `/data/agent-manifest.json`, or `/data/procurement-routing.json`.
 - GA4 referral/source reports for AI assistants and agent browsers.
 - Search Console URL inspection for `llms.txt`, `openapi.json`, `/data/company.json`, and guide pages.
 

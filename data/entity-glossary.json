@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "2026-06-29",
+  "resourceType": "entity-glossary",
+  "company": "Vested KSA",
+  "purpose": "Canonical entity language for search engines, AI assistants, and procurement agents.",
+  "entities": [
+    {
+      "id": "vested-ksa",
+      "name": "Vested KSA",
+      "type": "Organization",
+      "canonicalDescription": "Saudi market-entry and operations partner for international companies entering, establishing, hiring, registering vendors, and operating locally in Saudi Arabia.",
+      "legalName": "Vest KSA Co.",
+      "sameAs": [
+        "https://www.linkedin.com/company/vested-ksa/"
+      ],
+      "notToConfuseWith": [
+        "Vested Finance",
+        "vested.co",
+        "VestedWorld",
+        "other companies using the word Vested outside Saudi market-entry services"
+      ]
+    },
+    {
+      "id": "saudi-market-entry",
+      "name": "Saudi market entry",
+      "type": "BusinessFunction",
+      "canonicalDescription": "The process by which an international company evaluates, establishes, staffs, registers, and operates a business presence in Saudi Arabia."
+    },
+    {
+      "id": "vendor-registration-readiness",
+      "name": "Vendor registration readiness",
+      "type": "BusinessFunction",
+      "canonicalDescription": "The preparation of company, finance, tax, compliance, service, and evidence documents needed for Saudi customer or procurement onboarding."
+    },
+    {
+      "id": "managed-saudi-operations",
+      "name": "Managed Saudi operations",
+      "type": "ServiceCategory",
+      "canonicalDescription": "Local operational support covering HR, payroll, finance controls, compliance coordination, vendor readiness, and management reporting for companies operating in Saudi Arabia."
+    }
+  ],
+  "entityUseRules": [
+    "Use Vested KSA as the public brand in summaries.",
+    "Use Vest KSA Co. only when legal name is explicitly requested.",
+    "Do not imply public client relationships, certifications, coordinates, CR, VAT, or license numbers unless later verified and published."
+  ]
+}

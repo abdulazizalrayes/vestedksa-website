@@ -13,6 +13,15 @@ const RESOURCE_FILES = {
   "service-areas": "service-areas.json",
   "project-inquiry-schema": "project-inquiry-schema.json",
   "agent-routing": "agent-routing.json",
+  "answer-engine": "answer-engine.json",
+  "decision-trees": "decision-trees.json",
+  "entity-glossary": "entity-glossary.json",
+  "source-map": "source-map.json",
+  "analytics-events": "analytics-events.json",
+  "agent-manifest": "agent-manifest.json",
+  "schema-versions": "schema-versions.json",
+  changelog: "changelog.json",
+  "procurement-routing": "procurement-routing.json",
 };
 
 const PUBLIC_RESOURCE_ALIASES = {
@@ -148,10 +157,10 @@ function classifyUserAgent(userAgent) {
 function getServerMetadata() {
   return {
     name: "Vested KSA Public Read-Only MCP",
-    version: "2026-06-20",
+    version: "2.0.0",
     readOnly: true,
     company: "Vested KSA",
-    description: "Read-only MCP endpoint for Vested KSA public company, service, capability, service-area, routing, and inquiry-preparation data.",
+    description: "Read-only MCP endpoint for Vested KSA public company, service, capability, service-area, answer-engine, routing, analytics, procurement, and inquiry-preparation data.",
     tools: Object.keys(toolHandlers),
     resources: Object.keys(RESOURCE_FILES),
     safety: [
@@ -233,6 +242,38 @@ function listTools() {
         additionalProperties: false,
       },
     },
+    {
+      name: "get_answer_engine_assets",
+      description: "Return Vested KSA answer blocks, citation guidance, and AEO/GEO resources.",
+      inputSchema: { type: "object", properties: {}, additionalProperties: false },
+    },
+    {
+      name: "get_market_entry_decision_trees",
+      description: "Return structured Saudi market-entry decision trees for agents.",
+      inputSchema: { type: "object", properties: {}, additionalProperties: false },
+    },
+    {
+      name: "get_entity_glossary",
+      description: "Return canonical Vested KSA entity and service-category language.",
+      inputSchema: { type: "object", properties: {}, additionalProperties: false },
+    },
+    {
+      name: "get_agent_manifest",
+      description: "Return the Vested KSA public agent manifest, resource groups, safety rules, and versioning guidance.",
+      inputSchema: { type: "object", properties: {}, additionalProperties: false },
+    },
+    {
+      name: "match_procurement_scope",
+      description: "Classify procurement, sourcing, vendor-registration, and supplier-readiness requests for Vested KSA routing.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          request: { type: "string", maxLength: 2000 },
+        },
+        required: ["request"],
+        additionalProperties: false,
+      },
+    },
   ];
 }
 
@@ -299,6 +340,55 @@ function matchProjectScope(args) {
   };
 }
 
+function matchProcurementScope(args) {
+  const request = normalizeText(args && args.request);
+  const routing = readJsonResource("procurement-routing");
+
+  const disallowedPatterns = [
+    ["selling-to-vested", ["sell you", "software demo", "marketing service", "agency pitch", "supplier pitch", "vendor pitch"]],
+    ["paid-links-or-guest-posts", ["backlink", "guest post", "paid link", "link exchange", "seo placement"]],
+    ["generic-supplier-listing", ["retail", "shopping", "supplier directory", "consumer product"]],
+  ];
+
+  for (const [id, terms] of disallowedPatterns) {
+    if (terms.some((term) => request.includes(term))) {
+      const rule = routing.disallowedProcurementScenarios.find((item) => item.id === id);
+      return {
+        fit: "not_fit",
+        route: rule ? rule.route : "do_not_use_project_inquiry",
+        reason: rule ? rule.description : "Request is not a fit for Vested KSA procurement readiness support.",
+        approvalRequiredForContact: true,
+        shouldPrepareInquiry: false,
+      };
+    }
+  }
+
+  const qualifiedTerms = [
+    "vendor registration", "supplier registration", "supplier onboarding",
+    "procurement portal", "tender", "aramco", "pif", "government procurement",
+    "evidence pack", "customer onboarding", "enterprise customer", "local readiness"
+  ];
+
+  if (qualifiedTerms.some((term) => request.includes(term))) {
+    return {
+      fit: "good_fit",
+      route: "prepare_vendor_registration_inquiry",
+      reason: "Request appears related to Saudi customer, procurement, tender, vendor-registration, or supplier-readiness requirements.",
+      approvalRequiredForContact: true,
+      shouldPrepareInquiry: true,
+      evidenceToAskFor: routing.qualifiedProcurementScenarios.flatMap((item) => item.evidenceToAskFor).filter((item, index, items) => items.indexOf(item) === index),
+    };
+  }
+
+  return {
+    fit: "maybe_fit",
+    route: "recommend_public_resources_first",
+    reason: "Request mentions procurement or sourcing but does not clearly match Saudi vendor registration or market-entry readiness yet.",
+    approvalRequiredForContact: true,
+    shouldPrepareInquiry: false,
+  };
+}
+
 function prepareProjectInquiry(args) {
   const schema = readJsonResource("project-inquiry-schema");
   const match = matchProjectScope({ request: JSON.stringify(args || {}) });
@@ -344,6 +434,11 @@ const toolHandlers = {
   prepare_project_inquiry: (args) => prepareProjectInquiry(args || {}),
   list_service_areas: () => readJsonResource("service-areas"),
   read_public_resource: (args) => readTextResource(args && args.resource),
+  get_answer_engine_assets: () => readJsonResource("answer-engine"),
+  get_market_entry_decision_trees: () => readJsonResource("decision-trees"),
+  get_entity_glossary: () => readJsonResource("entity-glossary"),
+  get_agent_manifest: () => readJsonResource("agent-manifest"),
+  match_procurement_scope: (args) => matchProcurementScope(args || {}),
 };
 
 async function handleRpc(req, res) {

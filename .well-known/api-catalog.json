@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "2026-06-20",
+  "schemaVersion": "2026-06-29",
   "name": "Vested KSA Public API Catalog",
-  "description": "Public read-only data, discovery, and agent endpoints for Vested KSA.",
+  "description": "Public read-only data, discovery, answer-engine, analytics, versioning, and agent endpoints for Vested KSA.",
   "baseUrl": "https://vestedksa.com",
   "openapi": "https://vestedksa.com/openapi.json",
   "auth": "https://vestedksa.com/auth.md",
@@ -16,7 +16,16 @@
     "https://vestedksa.com/data/capabilities.json",
     "https://vestedksa.com/data/service-areas.json",
     "https://vestedksa.com/data/project-inquiry-schema.json",
-    "https://vestedksa.com/data/agent-routing.json"
+    "https://vestedksa.com/data/agent-routing.json",
+    "https://vestedksa.com/data/answer-engine.json",
+    "https://vestedksa.com/data/decision-trees.json",
+    "https://vestedksa.com/data/entity-glossary.json",
+    "https://vestedksa.com/data/source-map.json",
+    "https://vestedksa.com/data/analytics-events.json",
+    "https://vestedksa.com/data/agent-manifest.json",
+    "https://vestedksa.com/data/schema-versions.json",
+    "https://vestedksa.com/data/changelog.json",
+    "https://vestedksa.com/data/procurement-routing.json"
   ],
   "notes": [
     "Public data endpoints are read-only.",

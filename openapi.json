@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Vested KSA Public Agent API",
-    "version": "2026-06-20",
-    "description": "Public read-only data, MCP, and approved contact documentation for Vested KSA. Vested KSA is a Saudi market-entry and operations partner for international companies."
+    "version": "2.0.0",
+    "description": "Public read-only data, answer-engine resources, analytics taxonomy, schema versioning, MCP, and approved contact documentation for Vested KSA. Vested KSA is a Saudi market-entry and operations partner for international companies."
   },
   "servers": [
     {
@@ -51,6 +51,69 @@
         "summary": "Get agent routing rules",
         "operationId": "getAgentRoutingRules",
         "responses": {"200": {"description": "Routing rules for fit and non-fit requests"}}
+      }
+    },
+    "/data/answer-engine.json": {
+      "get": {
+        "summary": "Get AEO/GEO answer-engine assets",
+        "operationId": "getAnswerEngineAssets",
+        "responses": {"200": {"description": "Concise answer blocks, citation policy, and answer-engine guidance"}}
+      }
+    },
+    "/data/decision-trees.json": {
+      "get": {
+        "summary": "Get market-entry decision trees",
+        "operationId": "getDecisionTrees",
+        "responses": {"200": {"description": "Structured Saudi market-entry and inquiry-fit decision trees"}}
+      }
+    },
+    "/data/entity-glossary.json": {
+      "get": {
+        "summary": "Get canonical entity glossary",
+        "operationId": "getEntityGlossary",
+        "responses": {"200": {"description": "Canonical entity and service-category language for Vested KSA"}}
+      }
+    },
+    "/data/source-map.json": {
+      "get": {
+        "summary": "Get source map for high-intent buyer questions",
+        "operationId": "getSourceMap",
+        "responses": {"200": {"description": "Topic-to-source mapping for cited search and AI answers"}}
+      }
+    },
+    "/data/analytics-events.json": {
+      "get": {
+        "summary": "Get privacy-safe analytics event taxonomy",
+        "operationId": "getAnalyticsEvents",
+        "responses": {"200": {"description": "Event names, funnel stages, privacy rules, and monthly analytics questions"}}
+      }
+    },
+    "/data/agent-manifest.json": {
+      "get": {
+        "summary": "Get Vested KSA public agent manifest",
+        "operationId": "getAgentManifest",
+        "responses": {"200": {"description": "Resource groups, versioning, discovery order, MCP rules, and safety guidance"}}
+      }
+    },
+    "/data/schema-versions.json": {
+      "get": {
+        "summary": "Get schema version registry",
+        "operationId": "getSchemaVersions",
+        "responses": {"200": {"description": "Schema versions and stability status for public data resources"}}
+      }
+    },
+    "/data/changelog.json": {
+      "get": {
+        "summary": "Get public agent-layer changelog",
+        "operationId": "getAgentLayerChangelog",
+        "responses": {"200": {"description": "Public changelog for agent/API layer changes"}}
+      }
+    },
+    "/data/procurement-routing.json": {
+      "get": {
+        "summary": "Get procurement and vendor-readiness routing rules",
+        "operationId": "getProcurementRouting",
+        "responses": {"200": {"description": "Procurement, vendor-registration, supplier-onboarding, and non-fit vendor-pitch routing rules"}}
       }
     },
     "/api/mcp": {

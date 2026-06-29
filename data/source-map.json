@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "2026-06-29",
+  "resourceType": "source-map",
+  "company": "Vested KSA",
+  "purpose": "Map high-intent buyer questions to Vested KSA public resources for cited answers and agent workflows.",
+  "topics": [
+    {
+      "id": "company-overview",
+      "queries": [
+        "what is Vested KSA",
+        "Vested KSA Saudi market entry",
+        "Saudi operations partner for foreign companies"
+      ],
+      "primarySources": [
+        "/data/company.json",
+        "/about",
+        "/services"
+      ]
+    },
+    {
+      "id": "foreign-ownership",
+      "queries": [
+        "100% foreign ownership Saudi Arabia",
+        "can foreign company own Saudi entity",
+        "Saudi foreign investment setup"
+      ],
+      "primarySources": [
+        "/insights/foreign-ownership-saudi-arabia",
+        "/insights/misa-licensing-commercial-registration-saudi-arabia"
+      ]
+    },
+    {
+      "id": "misa-cr",
+      "queries": [
+        "MISA license Saudi Arabia",
+        "commercial registration Saudi Arabia foreign company",
+        "Saudi company formation for foreign investors"
+      ],
+      "primarySources": [
+        "/insights/misa-licensing-commercial-registration-saudi-arabia",
+        "/services"
+      ]
+    },
+    {
+      "id": "vendor-registration",
+      "queries": [
+        "Saudi vendor registration",
+        "Aramco supplier registration readiness",
+        "PIF vendor onboarding Saudi Arabia"
+      ],
+      "primarySources": [
+        "/insights/saudi-vendor-registration-aramco-pif",
+        "/ksa-vendor-registration-pack.txt"
+      ]
+    },
+    {
+      "id": "hr-payroll",
+      "queries": [
+        "Saudi payroll setup",
+        "Saudization Nitaqat foreign company",
+        "HR operations Saudi Arabia"
+      ],
+      "primarySources": [
+        "/insights/saudization-nitaqat-hr-saudi-arabia",
+        "/data/services.json"
+      ]
+    }
+  ]
+}

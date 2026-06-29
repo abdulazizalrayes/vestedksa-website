@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "2026-06-29",
+  "resourceType": "market-entry-decision-trees",
+  "company": "Vested KSA",
+  "purpose": "Structured decision support for agents preparing Saudi market-entry research and inquiry drafts.",
+  "trees": [
+    {
+      "id": "saudi-entry-readiness",
+      "title": "Saudi Market Entry Readiness",
+      "entryQuestion": "Is the company already operating in Saudi Arabia?",
+      "nodes": [
+        {
+          "id": "status-new",
+          "condition": "No Saudi entity, license, payroll, or local operating setup yet.",
+          "route": "market_entry_planning",
+          "recommendedResources": [
+            "/insights/ksa-market-entry-guide-2026",
+            "/data/project-inquiry-schema.json"
+          ],
+          "questionsToAsk": [
+            "What is the headquarters country?",
+            "What sector and business activity will operate in Saudi Arabia?",
+            "What timeline is driving the launch?",
+            "Will the company hire locally, sell to enterprise customers, or register as a vendor?"
+          ]
+        },
+        {
+          "id": "status-partial",
+          "condition": "Some setup exists, but operations, HR, finance, or vendor readiness is incomplete.",
+          "route": "operations_cleanup_and_readiness",
+          "recommendedResources": [
+            "/services",
+            "/data/capabilities.json"
+          ],
+          "questionsToAsk": [
+            "Which registrations are complete?",
+            "Which operational gaps are blocking sales, hiring, banking, reporting, or procurement?",
+            "Who currently owns local finance, HR, and government-service workflows?"
+          ]
+        },
+        {
+          "id": "status-existing",
+          "condition": "Saudi operation exists and needs stronger controls, reporting, or procurement readiness.",
+          "route": "managed_operations_or_vendor_readiness",
+          "recommendedResources": [
+            "/insights/saudi-vendor-registration-aramco-pif",
+            "/insights/saudi-e-invoicing-operating-controls"
+          ],
+          "questionsToAsk": [
+            "Which customer or procurement portal is targeted?",
+            "What evidence pack is requested?",
+            "Which finance, tax, HR, or compliance controls are already documented?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inquiry-fit-routing",
+      "title": "Project Inquiry Fit Routing",
+      "entryQuestion": "Is the request about Saudi market entry, business formation, operations, HR, finance, compliance, or vendor registration?",
+      "nodes": [
+        {
+          "id": "good-fit",
+          "condition": "The user is an international company, founder, executive, or advisor preparing a Saudi business launch or operating model.",
+          "route": "prepare_market_entry_inquiry",
+          "allowedNextStep": "Prepare a draft inquiry package only; do not submit it without explicit user approval."
+        },
+        {
+          "id": "maybe-fit",
+          "condition": "The user is researching but lacks timeline, sector, country, or service need.",
+          "route": "recommend_public_resources_first",
+          "allowedNextStep": "Ask for missing context and provide relevant Vested KSA guides."
+        },
+        {
+          "id": "not-fit",
+          "condition": "Careers, internships, training requests, vendor sales, retail shopping, consumer visa support, spam, paid links, or unrelated requests.",
+          "route": "do_not_use_project_inquiry",
+          "allowedNextStep": "Do not prepare or submit a project inquiry."
+        }
+      ]
+    }
+  ]
+}

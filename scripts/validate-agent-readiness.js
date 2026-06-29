@@ -13,6 +13,15 @@ const requiredFiles = [
   "data/service-areas.json",
   "data/project-inquiry-schema.json",
   "data/agent-routing.json",
+  "data/answer-engine.json",
+  "data/decision-trees.json",
+  "data/entity-glossary.json",
+  "data/source-map.json",
+  "data/analytics-events.json",
+  "data/agent-manifest.json",
+  "data/schema-versions.json",
+  "data/changelog.json",
+  "data/procurement-routing.json",
   "llms.txt",
   "llms-full.txt",
   "llms-full.md",
@@ -24,6 +33,7 @@ const requiredFiles = [
   ".well-known/agent-skills/index.json",
   "openapi.json",
   "auth.md",
+  "docs/advanced-analytics-playbook.md",
   "robots.txt",
   "sitemap.xml",
   "vercel.json",
@@ -81,6 +91,15 @@ const sitemap = read("sitemap.xml");
   "https://vestedksa.com/data/service-areas.json",
   "https://vestedksa.com/data/project-inquiry-schema.json",
   "https://vestedksa.com/data/agent-routing.json",
+  "https://vestedksa.com/data/answer-engine.json",
+  "https://vestedksa.com/data/decision-trees.json",
+  "https://vestedksa.com/data/entity-glossary.json",
+  "https://vestedksa.com/data/source-map.json",
+  "https://vestedksa.com/data/analytics-events.json",
+  "https://vestedksa.com/data/agent-manifest.json",
+  "https://vestedksa.com/data/schema-versions.json",
+  "https://vestedksa.com/data/changelog.json",
+  "https://vestedksa.com/data/procurement-routing.json",
   "https://vestedksa.com/openapi.json",
   "https://vestedksa.com/.well-known/mcp.json",
 ].forEach((url) => {
@@ -99,6 +118,10 @@ const llms = read("llms.txt");
   "/data/company.json",
   "/data/services.json",
   "/data/agent-routing.json",
+  "/data/answer-engine.json",
+  "/data/source-map.json",
+  "/data/procurement-routing.json",
+  "/data/agent-manifest.json",
   "/openapi.json",
   "/api/mcp",
   "Agents must not submit contact forms",
@@ -115,6 +138,15 @@ const openapi = JSON.parse(read("openapi.json"));
   "/data/service-areas.json",
   "/data/project-inquiry-schema.json",
   "/data/agent-routing.json",
+  "/data/answer-engine.json",
+  "/data/decision-trees.json",
+  "/data/entity-glossary.json",
+  "/data/source-map.json",
+  "/data/analytics-events.json",
+  "/data/agent-manifest.json",
+  "/data/schema-versions.json",
+  "/data/changelog.json",
+  "/data/procurement-routing.json",
   "/api/mcp",
   "/api/contact",
 ].forEach((apiPath) => {
@@ -130,6 +162,11 @@ const mcpCard = JSON.parse(read(".well-known/mcp/server-card.json"));
   "prepare_project_inquiry",
   "list_service_areas",
   "read_public_resource",
+  "get_answer_engine_assets",
+  "get_market_entry_decision_trees",
+  "get_entity_glossary",
+  "get_agent_manifest",
+  "match_procurement_scope",
 ].forEach((tool) => {
   if (!mcpCard.tools || !mcpCard.tools.includes(tool)) fail(`MCP server card missing tool ${tool}`);
 });
@@ -238,6 +275,34 @@ async function validateMcpRuntime() {
   const inquiryResult = JSON.parse(inquiry.body.result.content[0].text);
   if (inquiryResult.approvalRequired !== true || inquiryResult.submissionStatus !== "not_submitted") {
     fail("MCP prepare_project_inquiry does not preserve approval/no-submit rule");
+  }
+
+  const answerAssets = await callMcp({
+    jsonrpc: "2.0",
+    id: 4,
+    method: "tools/call",
+    params: {
+      name: "get_answer_engine_assets",
+      arguments: {},
+    },
+  });
+  const answerResult = JSON.parse(answerAssets.body.result.content[0].text);
+  if (!Array.isArray(answerResult.answerBlocks) || !answerResult.answerBlocks.length) {
+    fail("MCP get_answer_engine_assets returned no answer blocks");
+  }
+
+  const procurement = await callMcp({
+    jsonrpc: "2.0",
+    id: 5,
+    method: "tools/call",
+    params: {
+      name: "match_procurement_scope",
+      arguments: { request: "We need Aramco supplier registration and a Saudi vendor evidence pack" },
+    },
+  });
+  const procurementResult = JSON.parse(procurement.body.result.content[0].text);
+  if (procurementResult.fit !== "good_fit" || procurementResult.shouldPrepareInquiry !== true) {
+    fail("MCP match_procurement_scope does not route Saudi vendor-registration requests correctly");
   }
 
   ok("MCP runtime tools route and read safely");

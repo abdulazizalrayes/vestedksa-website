@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "2026-06-20",
+  "schemaVersion": "2026-06-29",
   "id": "vestedksa-public",
   "name": "Vested KSA Public Read-Only MCP",
-  "description": "Provides read-only Vested KSA overview, services, capabilities, service areas, routing rules, public resources, and market-entry inquiry preparation.",
+  "description": "Provides read-only Vested KSA overview, services, capabilities, service areas, AEO/GEO answer assets, decision trees, routing rules, procurement routing, public resources, and market-entry inquiry preparation.",
   "url": "https://vestedksa.com/api/mcp",
   "homepage": "https://vestedksa.com",
   "readOnly": true,
@@ -16,7 +16,12 @@
     "match_project_scope",
     "prepare_project_inquiry",
     "list_service_areas",
-    "read_public_resource"
+    "read_public_resource",
+    "get_answer_engine_assets",
+    "get_market_entry_decision_trees",
+    "get_entity_glossary",
+    "get_agent_manifest",
+    "match_procurement_scope"
   ],
   "resources": [
     "company",
@@ -24,7 +29,16 @@
     "capabilities",
     "service-areas",
     "project-inquiry-schema",
-    "agent-routing"
+    "agent-routing",
+    "answer-engine",
+    "decision-trees",
+    "entity-glossary",
+    "source-map",
+    "analytics-events",
+    "agent-manifest",
+    "schema-versions",
+    "changelog",
+    "procurement-routing"
   ],
   "safety": [
     "Does not submit forms or contact Vested KSA.",

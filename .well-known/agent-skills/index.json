@@ -1,6 +1,6 @@
 {
   "name": "Vested KSA Agent Skills",
-  "description": "Machine-readable public skills for understanding Vested KSA services, official-source Saudi market-entry guides, inquiry preparation, and non-fit routing.",
+  "description": "Machine-readable public skills for understanding Vested KSA services, official-source Saudi market-entry guides, AEO/GEO answer resources, procurement routing, inquiry preparation, and non-fit routing.",
   "url": "https://vestedksa.com/.well-known/agent-skills/index.json",
   "skills": [
     {
@@ -14,10 +14,26 @@
     {
       "id": "vestedksa-read-only-mcp",
       "name": "Vested KSA Read-Only MCP",
-      "description": "Use the public read-only MCP endpoint for company overview, services, capabilities, service areas, routing rules, public resources, and inquiry preparation.",
+      "description": "Use the public read-only MCP endpoint for company overview, services, capabilities, service areas, answer-engine assets, procurement routing, public resources, and inquiry preparation.",
       "url": "https://vestedksa.com/api/mcp",
       "input_modes": ["application/json"],
       "output_modes": ["application/json"]
+    },
+    {
+      "id": "vestedksa-answer-engine",
+      "name": "Vested KSA Answer Engine Assets",
+      "description": "Use Vested KSA answer blocks, source maps, decision trees, and entity glossary for cited AI/search answers.",
+      "url": "https://vestedksa.com/data/answer-engine.json",
+      "input_modes": ["text/plain", "application/json"],
+      "output_modes": ["text/markdown", "application/json"]
+    },
+    {
+      "id": "vestedksa-procurement-routing",
+      "name": "Vested KSA Procurement Routing",
+      "description": "Use for Saudi procurement, vendor registration, supplier onboarding, tender readiness, and non-fit vendor-pitch routing.",
+      "url": "https://vestedksa.com/data/procurement-routing.json",
+      "input_modes": ["text/plain", "application/json"],
+      "output_modes": ["text/markdown", "application/json"]
     }
   ]
 }
