@@ -108,10 +108,16 @@ const sitemap = read("sitemap.xml");
 ok("sitemap includes agent-readiness resources");
 
 const robots = read("robots.txt");
-["GPTBot", "ClaudeBot", "PerplexityBot", "/api/contact"].forEach((token) => {
+["Googlebot", "GPTBot", "ClaudeBot", "PerplexityBot", "/api/contact"].forEach((token) => {
   if (!robots.includes(token)) fail(`robots.txt missing ${token}`);
 });
 ok("robots includes crawler and private/contact guidance");
+
+const contactApi = read("api/contact.js");
+if (!contactApi.includes("X-Robots-Tag") || !contactApi.includes("noindex")) {
+  fail("api/contact.js missing X-Robots-Tag noindex guidance");
+}
+ok("contact API declares noindex for crawlers");
 
 const llms = read("llms.txt");
 [

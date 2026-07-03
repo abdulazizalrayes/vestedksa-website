@@ -1,3 +1,10 @@
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /private
+Disallow: /internal
+Disallow: /.vercel
+
 User-agent: *
 Allow: /
 Disallow: /admin

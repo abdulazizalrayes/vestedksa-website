@@ -302,6 +302,7 @@ async function sendLeadAlertEmail(record) {
 }
 
 module.exports = async function handler(req, res) {
+  res.setHeader("X-Robots-Tag", "noindex, nofollow, noarchive");
   setCorsHeaders(req, res);
 
   if (req.method === "OPTIONS") {
