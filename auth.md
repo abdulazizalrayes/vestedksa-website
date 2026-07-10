@@ -2,6 +2,31 @@
 
 Public discovery and read-only data endpoints do not require authentication.
 
+## Agent Registration
+
+Vested KSA does not currently support agent registration, delegated agent accounts, OAuth client registration, agent-issued API keys, or scoped agent credentials.
+
+Agents can use the public read-only resources without registering. Agents must not submit contact forms, send email, or contact Vested KSA unless the user explicitly approves the final inquiry and destination.
+
+## Supported Agent Registration Flows
+
+- `anonymous`: not required for public read-only resources
+- `identity_assertion`: not supported
+- `user_claimed`: not supported
+- `oauth_client_registration`: not supported
+
+## Agent Scopes
+
+- `public:read`: available without authentication for public discovery, structured data, OpenAPI, MCP metadata, and read-only MCP tools
+- `contact:prepare`: available through read-only MCP inquiry preparation; does not submit anything
+- `contact:submit`: not available to autonomous agents; requires explicit user approval through the website contact flow
+
+## Agent Registration Endpoints
+
+Vested KSA does not publish `/agent-auth`, `/agent-auth/claim`, `/agent-auth/claim/complete`, or dynamic OAuth client registration endpoints.
+
+If agent registration is added in the future, this file will be updated with the registration endpoint, supported identity types, scopes, claim ceremony, credential expiry, and revocation process.
+
 ## Public Read-Only Endpoints
 
 - `/data/company.json`

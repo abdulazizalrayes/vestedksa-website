@@ -170,6 +170,9 @@ const authMd = read("auth.md");
 if (!/^#\s+Auth\.md\b/m.test(authMd)) {
   fail("auth.md missing Auth.md H1 heading");
 }
+if (!/Agent Registration/.test(authMd) || !/Supported Agent Registration Flows/.test(authMd)) {
+  fail("auth.md missing agent registration guidance");
+}
 ok("auth.md has expected Auth.md heading");
 
 const agentCard = JSON.parse(read(".well-known/agent-card.json"));
