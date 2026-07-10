@@ -108,7 +108,7 @@ const sitemap = read("sitemap.xml");
 ok("sitemap includes agent-readiness resources");
 
 const robots = read("robots.txt");
-["Googlebot", "GPTBot", "ClaudeBot", "PerplexityBot", "/api/contact"].forEach((token) => {
+["Googlebot", "GPTBot", "ClaudeBot", "PerplexityBot", "/api/contact", "Content-Signal"].forEach((token) => {
   if (!robots.includes(token)) fail(`robots.txt missing ${token}`);
 });
 ok("robots includes crawler and private/contact guidance");
@@ -159,6 +159,24 @@ const openapi = JSON.parse(read("openapi.json"));
   if (!openapi.paths || !openapi.paths[apiPath]) fail(`openapi missing ${apiPath}`);
 });
 ok("OpenAPI includes data, MCP, and contact endpoints");
+
+const apiCatalog = JSON.parse(read(".well-known/api-catalog.json"));
+if (!Array.isArray(apiCatalog.linkset) || apiCatalog.linkset.length === 0) {
+  fail("API catalog missing RFC 9264 linkset array");
+}
+ok("API catalog includes RFC 9264 linkset array");
+
+const authMd = read("auth.md");
+if (!/^#\s+Auth\.md\b/m.test(authMd)) {
+  fail("auth.md missing Auth.md H1 heading");
+}
+ok("auth.md has expected Auth.md heading");
+
+const agentCard = JSON.parse(read(".well-known/agent-card.json"));
+if (!Array.isArray(agentCard.supportedInterfaces) || agentCard.supportedInterfaces.length === 0) {
+  fail("agent-card.json missing supportedInterfaces");
+}
+ok("agent card lists supported interfaces");
 
 const mcpCard = JSON.parse(read(".well-known/mcp/server-card.json"));
 [

@@ -13,6 +13,7 @@ Disallow: /internal
 Disallow: /.vercel
 Disallow: /api/contact
 Sitemap: https://vestedksa.com/sitemap.xml
+Content-Signal: ai-train=no, search=yes, ai-input=yes
 
 # AI Crawlers
 User-agent: GPTBot

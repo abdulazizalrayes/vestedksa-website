@@ -1,4 +1,4 @@
-# Vested KSA Public API Authentication
+# Auth.md - Vested KSA Public API Authentication
 
 Public discovery and read-only data endpoints do not require authentication.
 

@@ -18,6 +18,22 @@
     "stateTransitionHistory": false,
     "readOnlyMcp": true
   },
+  "supportedInterfaces": [
+    {
+      "name": "Vested KSA Read-Only MCP",
+      "protocol": "mcp",
+      "transport": "https",
+      "url": "https://vestedksa.com/api/mcp",
+      "description": "Read-only MCP-style JSON-RPC endpoint for public company, service, answer-engine, routing, procurement, and inquiry-preparation data."
+    },
+    {
+      "name": "Vested KSA OpenAPI",
+      "protocol": "openapi",
+      "transport": "https",
+      "url": "https://vestedksa.com/openapi.json",
+      "description": "OpenAPI description for public data endpoints, MCP, and explicitly approved contact submission."
+    }
+  ],
   "mcp": {
     "url": "https://vestedksa.com/api/mcp",
     "discovery": "https://vestedksa.com/.well-known/mcp.json",

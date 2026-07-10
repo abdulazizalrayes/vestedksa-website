@@ -27,6 +27,49 @@
     "https://vestedksa.com/data/changelog.json",
     "https://vestedksa.com/data/procurement-routing.json"
   ],
+  "linkset": [
+    {
+      "anchor": "https://vestedksa.com/",
+      "alternate": [
+        {
+          "href": "https://vestedksa.com/llms.txt",
+          "type": "text/markdown"
+        },
+        {
+          "href": "https://vestedksa.com/llms-full.md",
+          "type": "text/markdown"
+        }
+      ],
+      "service-desc": [
+        {
+          "href": "https://vestedksa.com/openapi.json",
+          "type": "application/vnd.oai.openapi+json"
+        },
+        {
+          "href": "https://vestedksa.com/.well-known/api-catalog",
+          "type": "application/linkset+json"
+        }
+      ],
+      "mcp-discovery": [
+        {
+          "href": "https://vestedksa.com/.well-known/mcp.json",
+          "type": "application/json"
+        }
+      ],
+      "agent-card": [
+        {
+          "href": "https://vestedksa.com/.well-known/agent-card.json",
+          "type": "application/json"
+        }
+      ],
+      "agent-skills": [
+        {
+          "href": "https://vestedksa.com/.well-known/agent-skills/index.json",
+          "type": "application/json"
+        }
+      ]
+    }
+  ],
   "notes": [
     "Public data endpoints are read-only.",
     "The contact endpoint can submit information only when a user explicitly approves.",
