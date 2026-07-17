@@ -236,6 +236,9 @@ if (!rewrites.some((rewrite) => rewrite.source === "/" && rewrite.destination ==
 if (!headers.some((header) => header.source === "/:path*" && header.headers.some((item) => item.key === "X-Content-Type-Options"))) {
   fail("vercel.json missing global security headers");
 }
+if (!headers.some((header) => header.source === "/" && header.headers.some((item) => item.key === "X-Content-Type-Options"))) {
+  fail("vercel.json missing root-page security headers");
+}
 if (!headers.some((header) => header.source === "/" && header.headers.some((item) => item.key === "Link" && item.value.includes("/.well-known/mcp.json")))) {
   fail("vercel.json missing root agent-discovery Link header");
 }
