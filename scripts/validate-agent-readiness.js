@@ -207,10 +207,54 @@ for (const file of htmlFiles) {
 ok("core HTML pages include canonical and robots meta");
 
 const vercel = read("vercel.json");
-["/api/mcp", "/.well-known/api-catalog"].forEach((route) => {
-  if (!vercel.includes(route)) fail(`vercel.json missing route ${route}`);
-});
-ok("Vercel routes expose MCP and API catalog");
+let vercelConfig;
+try {
+  vercelConfig = JSON.parse(vercel);
+} catch (error) {
+  fail(`vercel.json is invalid JSON: ${error.message}`);
+  vercelConfig = {};
+}
+
+if (Object.prototype.hasOwnProperty.call(vercelConfig, "builds")) {
+  fail("vercel.json still uses legacy builds");
+}
+if (Object.prototype.hasOwnProperty.call(vercelConfig, "routes")) {
+  fail("vercel.json still uses legacy routes");
+}
+if (vercelConfig.cleanUrls !== true) {
+  fail("vercel.json must keep cleanUrls enabled for extensionless canonical URLs");
+}
+const rewrites = Array.isArray(vercelConfig.rewrites) ? vercelConfig.rewrites : [];
+const headers = Array.isArray(vercelConfig.headers) ? vercelConfig.headers : [];
+const redirects = Array.isArray(vercelConfig.redirects) ? vercelConfig.redirects : [];
+if (!rewrites.some((rewrite) => rewrite.source === "/.well-known/api-catalog" && rewrite.destination === "/.well-known/api-catalog.json")) {
+  fail("vercel.json missing API catalog rewrite");
+}
+if (!rewrites.some((rewrite) => rewrite.source === "/" && rewrite.destination === "/llms-full.md")) {
+  fail("vercel.json missing markdown content-negotiation rewrite");
+}
+if (!headers.some((header) => header.source === "/:path*" && header.headers.some((item) => item.key === "X-Content-Type-Options"))) {
+  fail("vercel.json missing global security headers");
+}
+if (!headers.some((header) => header.source === "/" && header.headers.some((item) => item.key === "Link" && item.value.includes("/.well-known/mcp.json")))) {
+  fail("vercel.json missing root agent-discovery Link header");
+}
+if (!redirects.some((redirect) => redirect.source === "/:path*" && redirect.destination === "https://vestedksa.com/:path*" && redirect.permanent === true)) {
+  fail("vercel.json missing permanent www-to-apex redirect");
+}
+ok("Vercel config uses modern redirects, rewrites, headers, and clean URLs");
+
+const vercelIgnore = read(".vercelignore");
+if (!/^CLAUDE\.md$/m.test(vercelIgnore)) {
+  fail(".vercelignore must exclude CLAUDE.md from public deployments");
+}
+if (!/^README\.md$/m.test(vercelIgnore)) {
+  fail(".vercelignore must exclude README.md from public deployments");
+}
+if (!/^scripts\/$/m.test(vercelIgnore)) {
+  fail(".vercelignore must exclude internal scripts from public deployments");
+}
+ok("Vercel ignores internal instructions, repo README, and scripts");
 
 function callMcp(payload) {
   return new Promise((resolve, reject) => {

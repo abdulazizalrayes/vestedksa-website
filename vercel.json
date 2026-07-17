@@ -1,199 +1,55 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "builds": [
+  "framework": null,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "functions": {
+    "api/*.js": {
+      "maxDuration": 10
+    }
+  },
+  "redirects": [
     {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.vestedksa.com"
+        }
+      ],
+      "destination": "https://vestedksa.com/:path*",
+      "permanent": true
     },
     {
-      "src": "**/*.html",
-      "use": "@vercel/static"
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
     },
     {
-      "src": "language-switcher.js",
-      "use": "@vercel/static"
+      "source": "/ar/index.html",
+      "destination": "/ar",
+      "permanent": true
     },
     {
-      "src": "**/*.{txt,xml,json,md}",
-      "use": "@vercel/static"
+      "source": "/zh/index.html",
+      "destination": "/zh",
+      "permanent": true
     },
     {
-      "src": "**/*.{png,jpg,jpeg,gif,svg,ico,webp,woff,woff2}",
-      "use": "@vercel/static"
+      "source": "/blog",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
+      "source": "/cookies",
+      "destination": "/privacy",
+      "permanent": true
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/contact",
-      "dest": "/api/contact.js"
-    },
-    {
-      "src": "/api/mcp",
-      "dest": "/api/mcp.js"
-    },
-    {
-      "src": "/.well-known/api-catalog/?",
-      "headers": {
-        "Content-Type": "application/linkset+json; charset=utf-8"
-      },
-      "dest": "/.well-known/api-catalog.json"
-    },
-    {
-      "src": "/index\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/"
-      }
-    },
-    {
-      "src": "/ar/index\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/ar"
-      }
-    },
-    {
-      "src": "/zh/index\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/zh"
-      }
-    },
-    {
-      "src": "/about\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/about"
-      }
-    },
-    {
-      "src": "/services\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/services"
-      }
-    },
-    {
-      "src": "/why-saudi\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/why-saudi"
-      }
-    },
-    {
-      "src": "/ethics\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/ethics"
-      }
-    },
-    {
-      "src": "/insights\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/insights"
-      }
-    },
-    {
-      "src": "/insights/ksa-market-entry-guide-2026\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/insights/ksa-market-entry-guide-2026"
-      }
-    },
-    {
-      "src": "/insights/foreign-ownership-saudi-arabia\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/insights/foreign-ownership-saudi-arabia"
-      }
-    },
-    {
-      "src": "/insights/misa-licensing-commercial-registration-saudi-arabia\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/insights/misa-licensing-commercial-registration-saudi-arabia"
-      }
-    },
-    {
-      "src": "/insights/vat-zakat-saudi-arabia\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/insights/vat-zakat-saudi-arabia"
-      }
-    },
-    {
-      "src": "/insights/saudi-e-invoicing-operating-controls\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/insights/saudi-e-invoicing-operating-controls"
-      }
-    },
-    {
-      "src": "/insights/regional-headquarters-rhq-saudi-arabia\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/insights/regional-headquarters-rhq-saudi-arabia"
-      }
-    },
-    {
-      "src": "/insights/saudi-vendor-registration-aramco-pif\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/insights/saudi-vendor-registration-aramco-pif"
-      }
-    },
-    {
-      "src": "/insights/saudization-nitaqat-hr-saudi-arabia\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/insights/saudization-nitaqat-hr-saudi-arabia"
-      }
-    },
-    {
-      "src": "/faq\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/faq"
-      }
-    },
-    {
-      "src": "/contact\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/contact"
-      }
-    },
-    {
-      "src": "/privacy\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/privacy"
-      }
-    },
-    {
-      "src": "/terms\\.html",
-      "status": 308,
-      "headers": {
-        "Location": "/terms"
-      }
-    },
-    {
-      "src": "/blog/?",
-      "status": 308,
-      "headers": {
-        "Location": "/insights"
-      }
-    },
-    {
-      "src": "/cookies/?",
-      "status": 308,
-      "headers": {
-        "Location": "/privacy"
-      }
-    },
-    {
-      "src": "/",
+      "source": "/",
       "has": [
         {
           "type": "header",
@@ -201,100 +57,16 @@
           "value": ".*text/markdown.*"
         }
       ],
-      "headers": {
-        "Content-Type": "text/markdown; charset=utf-8",
-        "Vary": "Accept"
-      },
-      "dest": "/llms-full.md"
+      "destination": "/llms-full.md"
     },
     {
-      "src": "/",
-      "headers": {
-        "Link": "</llms.txt>; rel=\"alternate\"; type=\"text/markdown\", </llms-full.md>; rel=\"alternate\"; type=\"text/markdown\", </openapi.json>; rel=\"service-desc\"; type=\"application/vnd.oai.openapi+json\", </.well-known/api-catalog>; rel=\"service-desc\"; type=\"application/linkset+json\", </.well-known/mcp.json>; rel=\"mcp-discovery\"; type=\"application/json\", </.well-known/agent-card.json>; rel=\"agent-card\"; type=\"application/json\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\"; type=\"application/json\"",
-        "Vary": "Accept"
-      },
-      "dest": "/index.html"
-    },
-    {
-      "src": "/ar/?",
-      "dest": "/ar/index.html"
-    },
-    {
-      "src": "/zh/?",
-      "dest": "/zh/index.html"
-    },
-    {
-      "src": "/about/?",
-      "dest": "/about.html"
-    },
-    {
-      "src": "/services/?",
-      "dest": "/services.html"
-    },
-    {
-      "src": "/why-saudi/?",
-      "dest": "/why-saudi.html"
-    },
-    {
-      "src": "/ethics/?",
-      "dest": "/ethics.html"
-    },
-    {
-      "src": "/insights/?",
-      "dest": "/insights.html"
-    },
-    {
-      "src": "/insights/ksa-market-entry-guide-2026/?",
-      "dest": "/insights/ksa-market-entry-guide-2026.html"
-    },
-    {
-      "src": "/insights/foreign-ownership-saudi-arabia/?",
-      "dest": "/insights/foreign-ownership-saudi-arabia.html"
-    },
-    {
-      "src": "/insights/misa-licensing-commercial-registration-saudi-arabia/?",
-      "dest": "/insights/misa-licensing-commercial-registration-saudi-arabia.html"
-    },
-    {
-      "src": "/insights/vat-zakat-saudi-arabia/?",
-      "dest": "/insights/vat-zakat-saudi-arabia.html"
-    },
-    {
-      "src": "/insights/saudi-e-invoicing-operating-controls/?",
-      "dest": "/insights/saudi-e-invoicing-operating-controls.html"
-    },
-    {
-      "src": "/insights/regional-headquarters-rhq-saudi-arabia/?",
-      "dest": "/insights/regional-headquarters-rhq-saudi-arabia.html"
-    },
-    {
-      "src": "/insights/saudi-vendor-registration-aramco-pif/?",
-      "dest": "/insights/saudi-vendor-registration-aramco-pif.html"
-    },
-    {
-      "src": "/insights/saudization-nitaqat-hr-saudi-arabia/?",
-      "dest": "/insights/saudization-nitaqat-hr-saudi-arabia.html"
-    },
-    {
-      "src": "/faq/?",
-      "dest": "/faq.html"
-    },
-    {
-      "src": "/contact/?",
-      "dest": "/contact.html"
-    },
-    {
-      "src": "/privacy/?",
-      "dest": "/privacy.html"
-    },
-    {
-      "src": "/terms/?",
-      "dest": "/terms.html"
+      "source": "/.well-known/api-catalog",
+      "destination": "/.well-known/api-catalog.json"
     }
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "headers": [
         {
           "key": "X-Content-Type-Options",
@@ -323,7 +95,49 @@
       ]
     },
     {
-      "source": "/(.*)\\.(js|css|ico|png|jpg|jpeg|gif|svg|woff|woff2)",
+      "source": "/",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "</llms.txt>; rel=\"alternate\"; type=\"text/markdown\", </llms-full.md>; rel=\"alternate\"; type=\"text/markdown\", </openapi.json>; rel=\"service-desc\"; type=\"application/vnd.oai.openapi+json\", </.well-known/api-catalog>; rel=\"service-desc\"; type=\"application/linkset+json\", </.well-known/mcp.json>; rel=\"mcp-discovery\"; type=\"application/json\", </.well-known/agent-card.json>; rel=\"agent-card\"; type=\"application/json\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\"; type=\"application/json\""
+        },
+        {
+          "key": "Vary",
+          "value": "Accept"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Vary",
+          "value": "Accept"
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/api-catalog",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/linkset+json; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(js|css|ico|png|jpg|jpeg|gif|svg|webp|woff|woff2)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -332,25 +146,7 @@
       ]
     },
     {
-      "source": "/(.*)\\.(html)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
-    },
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/(.*\\.(?:ico|png|jpg|jpeg|gif|svg|webp|woff|woff2))",
+      "source": "/assets/:path*",
       "headers": [
         {
           "key": "Cache-Control",
@@ -358,6 +154,5 @@
         }
       ]
     }
-  ],
-  "trailingSlash": false
+  ]
 }
