@@ -1,60 +1,118 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vested KSA | Operations Partner in Saudi Arabia</title>
-    <meta name="description" content="Vested is your operations partner in Saudi Arabia. We set up, run, and manage your non-core business so you can focus entirely on growth.">
+    <title>Vested KSA | Market-Entry & Operations Partner in Saudi Arabia</title>
+    <meta name="description" content="Vested KSA is a market-entry and operations partner in Saudi Arabia for international companies setting up, hiring, registering vendors, and running local back-office operations.">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Vested KSA | Operations Partner in Saudi Arabia">
-    <meta property="og:description" content="Enter Saudi Arabia. We handle everything else.">
+    <meta property="og:title" content="Vested KSA | Market-Entry & Operations Partner in Saudi Arabia">
+    <meta property="og:description" content="A Saudi market-entry and operations partner for international companies.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vestedksa.com/">
     <meta property="og:image" content="https://vestedksa.com/og-image.png">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ar_SA">
+    <meta property="og:locale:alternate" content="zh_CN">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Vested KSA | Operations Partner in Saudi Arabia">
-    <meta name="twitter:description" content="Enter Saudi Arabia. We handle everything else.">
-    <meta name="twitter:image" content="https://vestedksa.com/twitter-image.png">
+    <meta name="twitter:title" content="Vested KSA | Market-Entry & Operations Partner in Saudi Arabia">
+    <meta name="twitter:description" content="A Saudi market-entry and operations partner for international companies.">
+    <meta name="twitter:image" content="https://vestedksa.com/og-image.png">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://vestedksa.com/">
 
-    <!-- Google Search Console verification - replace with actual code -->
+    <!-- Google Search Console verification -->
     <meta name="google-site-verification" content="i-LLBKDZ22hMvxi-mo7506okUq1IlniTM73DpDK439Y">
-
-    <!-- Bing Webmaster verification - replace with actual code -->
 
     <!-- Performance and theme meta tags -->
     <meta name="theme-color" content="#FFFFFF">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <link rel="preload" as="image" href="/assets/hero-market-entry-2026.jpg" fetchpriority="high">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7STG2HDV42"></script>
+    <!-- Analytics bootstrap -->
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-7STG2HDV42');
+        function gtag(){window.dataLayer.push(arguments);}
+
+        function loadAnalyticsScripts() {
+            if (window.__vestedAnalyticsLoaded) return;
+            window.__vestedAnalyticsLoaded = true;
+
+            var gtagScript = document.createElement('script');
+            gtagScript.async = true;
+            gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-7STG2HDV42';
+            document.head.appendChild(gtagScript);
+
+            gtag('js', new Date());
+            gtag('config', 'G-7STG2HDV42');
+
+            window.dataLayer.push({
+                'gtm.start': Date.now(),
+                event: 'gtm.js',
+            });
+
+            var gtmScript = document.createElement('script');
+            gtmScript.async = true;
+            gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WL2FN4PR';
+            document.head.appendChild(gtmScript);
+
+            ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
+                window.removeEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
+            });
+        }
+
+        function triggerAnalyticsLoad() {
+            loadAnalyticsScripts();
+        }
+
+        var passiveOnceOptions = { passive: true, once: true };
+
+        ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
+            window.addEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
+        });
+
+        window.addEventListener('load', () => {
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(loadAnalyticsScripts, { timeout: 2500 });
+            } else {
+                setTimeout(loadAnalyticsScripts, 1500);
+            }
+        }, { once: true });
     </script>
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
+        "@type": "ProfessionalService",
+        "@id": "https://vestedksa.com/#organization",
         "name": "Vested KSA",
-        "description": "Operations partner in Saudi Arabia",
+        "legalName": "Vest KSA Co.",
+        "alternateName": [
+            "Vested",
+            "Vest KSA Co.",
+            "Vested Saudi Arabia"
+        ],
+        "slogan": "Market-entry and operations partner in Saudi Arabia",
+        "description": "Vested KSA is a market-entry and operations partner in Saudi Arabia for international companies setting up, hiring, registering vendors, and running local back-office operations.",
         "url": "https://vestedksa.com",
-        "telephone": "+966-XX-XXXX-XXXX",
+        "inLanguage": "en",
+        "image": "https://vestedksa.com/og-image.png",
+        "logo": "https://vestedksa.com/favicon.svg",
         "email": "hello@vestedksa.com",
         "address": {
             "@type": "PostalAddress",
@@ -62,9 +120,69 @@
             "addressLocality": "Riyadh",
             "addressCountry": "SA"
         },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Saudi Arabia"
+        },
         "foundingDate": "2024",
+        "knowsLanguage": [
+            "en",
+            "ar",
+            "zh-Hans"
+        ],
+        "founder": [
+            {
+                "@type": "Person",
+                "name": "Abdulkareem Alrammah",
+                "jobTitle": "CEO"
+            },
+            {
+                "@type": "Person",
+                "name": "Abdulaziz Khalid",
+                "jobTitle": "VP"
+            }
+        ],
+        "knowsAbout": [
+            "Saudi market entry",
+            "Company formation in Saudi Arabia",
+            "MISA licensing",
+            "Operational outsourcing",
+            "Saudi HR and payroll",
+            "VAT and Zakat compliance",
+            "Vendor registration"
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Saudi market-entry and operations services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Company formation and setup",
+                        "areaServed": "Saudi Arabia"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Operational outsourcing",
+                        "areaServed": "Saudi Arabia"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "HR, payroll, finance, and compliance support",
+                        "areaServed": "Saudi Arabia"
+                    }
+                }
+            ]
+        },
         "sameAs": [
-            "https://linkedin.com/company/vested-ksa",
+            "https://www.linkedin.com/company/vested-ksa/",
             "https://twitter.com/vestedksa"
         ]
     }
@@ -121,7 +239,7 @@
             font-weight: 600;
             color: #1D1D1F;
             text-decoration: none;
-            letter-spacing: -0.5px;
+            letter-spacing: 0;
         }
 
         .nav-links {
@@ -227,53 +345,181 @@
 
         /* Hero Section */
         .hero {
-            padding: 160px 20px 120px;
-            max-width: 980px;
-            margin: 0 auto;
-            text-align: center;
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            min-height: min(820px, calc(100svh - 72px));
+            margin: 0;
+            padding: clamp(112px, 14vh, 148px) 20px clamp(68px, 8vh, 92px);
+            text-align: left;
+            background:
+                linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.58) 48%, rgba(0, 0, 0, 0.22) 100%),
+                url('/assets/hero-market-entry-2026.jpg') center right / cover no-repeat;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-eyebrow {
+            width: min(100%, 660px);
+            margin-left: max(20px, calc((100vw - 1120px) / 2));
+            margin-right: auto;
+            margin-bottom: 18px;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .hero > h1,
+        .hero > .subtitle,
+        .hero > p,
+        .hero > .hero-actions {
+            width: min(100%, 660px);
+            margin-left: max(20px, calc((100vw - 1120px) / 2));
+            margin-right: auto;
         }
 
         .hero h1 {
-            font-size: clamp(48px, 8vw, 72px);
+            font-size: clamp(52px, 7.4vw, 80px);
             font-weight: 700;
-            letter-spacing: -0.025em;
+            letter-spacing: 0;
             line-height: 1.1;
-            color: #1D1D1F;
+            color: #FFFFFF;
             margin-bottom: 20px;
         }
 
         .hero .subtitle {
             font-size: clamp(28px, 5vw, 40px);
             font-weight: 400;
-            color: #86868B;
-            margin-bottom: 40px;
-            letter-spacing: -0.015em;
+            color: rgba(255, 255, 255, 0.84);
+            margin-bottom: 34px;
+            letter-spacing: 0;
         }
 
         .hero p {
             font-size: 19px;
-            color: #6E6E73;
+            color: rgba(255, 255, 255, 0.78);
             line-height: 1.7;
-            max-width: 680px;
-            margin: 0 auto 50px;
+            margin-top: 0;
+            margin-bottom: 38px;
+        }
+
+        .hero-actions,
+        .final-cta-actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .final-cta-actions {
+            justify-content: center;
         }
 
         .hero-cta {
-            display: inline-block;
-            color: #0071E3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 13px 22px;
+            border-radius: 8px;
+            background: #0071E3;
+            border: 1px solid #0071E3;
+            color: #FFFFFF;
             text-decoration: none;
-            font-size: 17px;
-            font-weight: 500;
-            transition: opacity 0.3s ease;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            box-shadow: 0 16px 34px rgba(0, 113, 227, 0.2);
+            transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
         }
 
         .hero-cta:hover {
-            opacity: 0.8;
+            background: #005BB5;
+            box-shadow: 0 18px 38px rgba(0, 113, 227, 0.24);
+            transform: translateY(-1px);
+        }
+
+        .secondary-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 13px 22px;
+            border-radius: 8px;
+            border: 1px solid #D2D2D7;
+            background: rgba(255, 255, 255, 0.78);
+            color: #1D1D1F;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+        }
+
+        .secondary-cta:hover {
+            background: #FFFFFF;
+            border-color: #B9B9BF;
+            transform: translateY(-1px);
+        }
+
+        .hero .secondary-cta {
+            color: #FFFFFF;
+            border-color: rgba(255, 255, 255, 0.36);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hero .secondary-cta:hover {
+            color: #1D1D1F;
+            background: #FFFFFF;
+            border-color: #FFFFFF;
+        }
+
+        .hero-decision-strip {
+            width: min(1120px, calc(100% - 40px));
+            margin: clamp(56px, 8vh, 86px) auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .hero-decision {
+            padding: 24px;
+            border-right: 1px solid rgba(255, 255, 255, 0.16);
+        }
+
+        .hero-decision:last-child {
+            border-right: 0;
+        }
+
+        .hero-decision strong {
+            display: block;
+            color: #FFFFFF;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .hero-decision p {
+            color: rgba(255, 255, 255, 0.74);
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
         }
 
         .scroll-indicator {
-            margin-top: 80px;
-            animation: float 3s ease-in-out infinite;
+            position: absolute;
+            left: 50%;
+            bottom: 26px;
+            margin-top: 0;
+            animation: none;
+            transform: translateX(-50%);
         }
 
         .scroll-indicator-line {
@@ -307,6 +553,75 @@
             max-width: 100%;
         }
 
+        .entry-paths {
+            padding: 120px 20px 40px;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .entry-paths-header {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+            gap: 48px;
+            align-items: end;
+            margin-bottom: 42px;
+        }
+
+        .entry-paths-header h2 {
+            font-size: clamp(36px, 5vw, 52px);
+            line-height: 1.1;
+            color: #1D1D1F;
+            letter-spacing: 0;
+        }
+
+        .entry-paths-header p {
+            color: #6E6E73;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .entry-path-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .entry-path {
+            min-height: 240px;
+            border: 1px solid #E5E5E7;
+            border-radius: 8px;
+            background: #FFFFFF;
+            padding: 28px;
+            color: inherit;
+            text-decoration: none;
+            transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .entry-path:hover {
+            border-color: #C7C7CC;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.06);
+        }
+
+        .entry-path-number {
+            color: #0071E3;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 44px;
+        }
+
+        .entry-path h3 {
+            font-size: 22px;
+            color: #1D1D1F;
+            margin-bottom: 12px;
+        }
+
+        .entry-path p {
+            color: #6E6E73;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
         /* What We Do Section */
         .services-preview {
             padding: 160px 20px 120px;
@@ -317,7 +632,7 @@
         .section-title {
             font-size: clamp(36px, 5vw, 48px);
             font-weight: 600;
-            letter-spacing: -0.02em;
+            letter-spacing: 0;
             text-align: center;
             margin-bottom: 80px;
             color: #1D1D1F;
@@ -369,7 +684,7 @@
             font-size: 20px;
             font-weight: 600;
             margin-bottom: 12px;
-            letter-spacing: -0.015em;
+            letter-spacing: 0;
         }
 
         .service-card p {
@@ -410,7 +725,7 @@
         .opportunity-title {
             font-size: clamp(36px, 5vw, 48px);
             font-weight: 600;
-            letter-spacing: -0.02em;
+            letter-spacing: 0;
             margin-bottom: 60px;
             color: #1D1D1F;
         }
@@ -433,7 +748,7 @@
             font-weight: 700;
             color: #1D1D1F;
             margin-bottom: 8px;
-            letter-spacing: -0.02em;
+            letter-spacing: 0;
         }
 
         .stat-label {
@@ -501,7 +816,7 @@
             font-weight: 700;
             color: #E5E5E7;
             margin-bottom: 20px;
-            letter-spacing: -0.02em;
+            letter-spacing: 0;
         }
 
         .step h3 {
@@ -509,12 +824,49 @@
             font-weight: 600;
             color: #1D1D1F;
             margin-bottom: 12px;
-            letter-spacing: -0.015em;
+            letter-spacing: 0;
         }
 
         .step p {
             font-size: 17px;
             color: #6E6E73;
+            line-height: 1.6;
+        }
+
+        .launch-plan {
+            background-color: #FAFAFA;
+            padding: 140px 20px 110px;
+        }
+
+        .launch-plan-container {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .launch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 56px;
+        }
+
+        .launch-item {
+            background: #FFFFFF;
+            border: 1px solid #E5E5E7;
+            border-radius: 8px;
+            padding: 32px;
+        }
+
+        .launch-item h3 {
+            color: #1D1D1F;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .launch-item p {
+            color: #6E6E73;
+            font-size: 17px;
             line-height: 1.6;
         }
 
@@ -554,7 +906,7 @@
             font-weight: 600;
             color: #1D1D1F;
             margin-bottom: 16px;
-            letter-spacing: -0.015em;
+            letter-spacing: 0;
         }
 
         .differentiator p {
@@ -662,23 +1014,33 @@
         .final-cta h2 {
             font-size: clamp(36px, 5vw, 48px);
             font-weight: 600;
-            letter-spacing: -0.02em;
+            letter-spacing: 0;
             margin-bottom: 40px;
             color: #1D1D1F;
         }
 
         .final-cta-link {
-            display: inline-block;
-            color: #0071E3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 13px 22px;
+            border-radius: 8px;
+            background: #0071E3;
+            border: 1px solid #0071E3;
+            color: #FFFFFF;
             text-decoration: none;
-            font-size: 17px;
-            font-weight: 500;
-            margin-bottom: 40px;
-            transition: opacity 0.3s ease;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            box-shadow: 0 16px 34px rgba(0, 113, 227, 0.16);
+            transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
         }
 
         .final-cta-link:hover {
-            opacity: 0.8;
+            background: #005BB5;
+            box-shadow: 0 18px 38px rgba(0, 113, 227, 0.2);
+            transform: translateY(-1px);
         }
 
         .final-cta-email {
@@ -687,6 +1049,7 @@
             text-decoration: none;
             font-size: 17px;
             font-weight: 500;
+            margin-top: 32px;
             transition: color 0.3s ease;
         }
 
@@ -724,7 +1087,7 @@
             font-weight: 600;
             color: #1D1D1F;
             margin-bottom: 20px;
-            letter-spacing: -0.01em;
+            letter-spacing: 0;
         }
 
         .footer-col-wordmark {
@@ -732,7 +1095,7 @@
             font-weight: 600;
             color: #1D1D1F;
             margin-bottom: 12px;
-            letter-spacing: -0.5px;
+            letter-spacing: 0;
         }
 
         .footer-col-desc {
@@ -899,16 +1262,86 @@
         .cookie-decline:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
+
+        @media (max-width: 767px) {
+            .hero {
+                min-height: calc(100svh - 104px);
+                padding: 92px 20px 76px;
+                justify-content: flex-start;
+                background:
+                    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.9) 48%, rgba(255, 255, 255, 0.76) 100%),
+                    url('/assets/hero-market-entry-2026.jpg') 58% center / cover no-repeat;
+            }
+
+            .hero > h1,
+            .hero > .subtitle,
+            .hero > p,
+            .hero > .hero-actions {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .hero h1 {
+                font-size: clamp(42px, 12vw, 58px);
+            }
+
+            .hero .subtitle {
+                font-size: clamp(24px, 7vw, 34px);
+                margin-bottom: 26px;
+            }
+
+            .hero p {
+                font-size: 17px;
+                margin-bottom: 30px;
+            }
+
+            .hero-actions,
+            .final-cta-actions {
+                align-items: stretch;
+                gap: 12px;
+            }
+
+            .hero-cta,
+            .secondary-cta,
+            .final-cta-link {
+                width: 100%;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+
+            .hero-decision-strip,
+            .entry-path-grid,
+            .entry-paths-header {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-decision {
+                border-right: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+            }
+
+            .hero-decision:last-child {
+                border-bottom: 0;
+            }
+        }
     </style>
 
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="manifest" href="/manifest.json">
     <link rel="alternate" hreflang="en" href="https://vestedksa.com/">
+    <link rel="alternate" hreflang="ar" href="https://vestedksa.com/ar">
+    <link rel="alternate" hreflang="zh-Hans" href="https://vestedksa.com/zh">
     <link rel="alternate" hreflang="x-default" href="https://vestedksa.com/">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-        <script src="/webmcp.js" defer></script>
-</head>
+    <script src="/language-switcher.js" defer></script>
+    </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL2FN4PR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:#3b82f6;color:#fff;padding:8px 16px;z-index:10000;transition:top 0.3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
     <!-- Navigation -->
     <nav>
@@ -946,10 +1379,28 @@
 
     <!-- Hero Section -->
     <section id="main-content" class="hero">
-        <h1>Enter Saudi Arabia.</h1>
-        <p class="subtitle">We handle everything else.</p>
-        <p>Vested is your operations partner in Saudi Arabia. Whether you need a fully dedicated in-house team or flexible services on demand, we set up, run, and manage your non-core business so you can focus entirely on growth.</p>
-        <a href="/contact" class="hero-cta">Talk to us →</a>
+        <p class="hero-eyebrow">Saudi market-entry and local operations</p>
+        <h1>Your Saudi operation, built before the first mistake.</h1>
+        <p class="subtitle">Set up, operate, and scale with one accountable local partner.</p>
+        <p>For international companies entering Saudi Arabia, Vested designs the setup path, operating controls, vendor readiness, and local execution layer so leadership can move with clarity.</p>
+        <div class="hero-actions">
+            <a href="/contact" class="hero-cta">Scope my Saudi launch →</a>
+            <a href="/ksa-90-day-launch-plan.txt" class="secondary-cta" download>View the 90-day plan</a>
+        </div>
+        <div class="hero-decision-strip" aria-label="Saudi entry decision paths">
+            <div class="hero-decision">
+                <strong>Need an entity?</strong>
+                <p>Confirm activity, ownership, licensing, tax, HR, and banking dependencies.</p>
+            </div>
+            <div class="hero-decision">
+                <strong>Need operations?</strong>
+                <p>Build the local admin, finance, HR, supplier, and reporting rhythm.</p>
+            </div>
+            <div class="hero-decision">
+                <strong>Need market access?</strong>
+                <p>Prepare vendor profiles, procurement portals, and customer evidence packs.</p>
+            </div>
+        </div>
         <div class="scroll-indicator">
             <div class="scroll-indicator-line"></div>
         </div>
@@ -957,7 +1408,32 @@
 
     <!-- Trusted By Section -->
     <section class="trusted-by">
-        <p>Trusted by 50+ international companies entering Saudi Arabia</p>
+        <p>Built for international companies entering and operating in Saudi Arabia</p>
+    </section>
+
+    <!-- Entry Paths Section -->
+    <section class="entry-paths">
+        <div class="entry-paths-header">
+            <h2>Three entry paths. One accountable operating partner.</h2>
+            <p>Start with the model that matches your stage: launch planning, managed operations, or a targeted workstream such as formation, vendor registration, finance controls, or hiring.</p>
+        </div>
+        <div class="entry-path-grid">
+            <a href="/contact" class="entry-path">
+                <div class="entry-path-number">01</div>
+                <h3>Launch Sprint</h3>
+                <p>Entry model, timeline, risk map, document path, and first 90-day operating plan before committing major local spend.</p>
+            </a>
+            <a href="/services" class="entry-path">
+                <div class="entry-path-number">02</div>
+                <h3>Managed Operations</h3>
+                <p>Local execution across HR, finance, suppliers, workspace, reporting, and government follow-ups.</p>
+            </a>
+            <a href="/services" class="entry-path">
+                <div class="entry-path-number">03</div>
+                <h3>Targeted Workstream</h3>
+                <p>Focused support for formation, vendor registration, finance controls, hiring readiness, or Saudi customer onboarding.</p>
+            </a>
+        </div>
     </section>
 
     <!-- What We Do Section -->
@@ -1057,6 +1533,31 @@
         </div>
     </section>
 
+    <!-- Launch Plan Section -->
+    <section class="launch-plan">
+        <div class="launch-plan-container">
+            <h2 class="section-title">What gets handled in the first 90 days.</h2>
+            <div class="launch-grid">
+                <div class="launch-item">
+                    <h3>Entry structure</h3>
+                    <p>We clarify whether you need an entity, branch, partner model, or managed operating presence before money is committed.</p>
+                </div>
+                <div class="launch-item">
+                    <h3>Operational setup</h3>
+                    <p>Licensing, address, banking readiness, vendors, workspace, IT, document control, and launch calendar move in one coordinated plan.</p>
+                </div>
+                <div class="launch-item">
+                    <h3>Local execution</h3>
+                    <p>We manage the practical Saudi details: follow-ups, registrations, supplier coordination, HR basics, and reporting rhythm.</p>
+                </div>
+                <div class="launch-item">
+                    <h3>Governance control</h3>
+                    <p>Decision rights, approvals, records, payment controls, and compliance expectations are defined before operations scale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Why Vested Section -->
     <section class="why-vested">
         <h2 class="section-title">Built on trust. Run with transparency.</h2>
@@ -1083,31 +1584,31 @@
 
     <!-- Client Results Section -->
     <section class="client-results">
-        <h2 class="section-title">Real results from real clients.</h2>
+        <h2 class="section-title">Operating outcomes we manage toward.</h2>
         <div class="results-grid">
             <div class="result-card">
-                <div class="company-type">Global Tech</div>
+                <div class="company-type">Setup planning</div>
                 <div class="stat">
-                    <div class="stat-value">8 weeks</div>
-                    <div class="stat-label">to market entry</div>
+                    <div class="stat-value">4-8 weeks</div>
+                    <div class="stat-label">for a practical launch plan</div>
                 </div>
-                <p class="quote">"Vested handled everything. We landed on day one, fully operational."</p>
+                <p class="quote">Entity path, licensing dependencies, banking, HR, vendor readiness, and launch calendar are mapped before local execution begins.</p>
             </div>
             <div class="result-card">
-                <div class="company-type">Professional Services</div>
+                <div class="company-type">Operating ownership</div>
                 <div class="stat">
-                    <div class="stat-value">30 people</div>
-                    <div class="stat-label">hired and managed</div>
+                    <div class="stat-value">1 accountable owner</div>
+                    <div class="stat-label">for Saudi follow-through</div>
                 </div>
-                <p class="quote">"Their compliance knowledge saved us months of risk exposure."</p>
+                <p class="quote">One operating lead coordinates HR, payroll, suppliers, office, document records, and weekly executive reporting.</p>
             </div>
             <div class="result-card">
-                <div class="company-type">Industrial Manufacturing</div>
+                <div class="company-type">Audit readiness</div>
                 <div class="stat">
-                    <div class="stat-value">100%</div>
-                    <div class="stat-label">regulatory compliant</div>
+                    <div class="stat-value">No unmanaged gaps</div>
+                    <div class="stat-label">in the operating rhythm</div>
                 </div>
-                <p class="quote">"Zero surprises. We focused on scaling, they managed everything else."</p>
+                <p class="quote">Approval trails, payment controls, registrations, and document records are managed so headquarters can review the Saudi presence clearly.</p>
             </div>
         </div>
     </section>
@@ -1115,7 +1616,11 @@
     <!-- Final CTA Section -->
     <section class="final-cta">
         <h2>Ready to enter Saudi Arabia?</h2>
-        <a href="/contact" class="final-cta-link">Schedule a consultation →</a>
+        <div class="final-cta-actions">
+            <a href="/contact" class="final-cta-link">Schedule a consultation →</a>
+            <a href="/ksa-entry-checklist.txt" class="secondary-cta" download>Download checklist</a>
+            <a href="/ksa-90-day-launch-plan.txt" class="secondary-cta" download>Download 90-day launch plan</a>
+        </div>
         <a href="mailto:hello@vestedksa.com" class="final-cta-email">hello@vestedksa.com</a>
     </section>
 
@@ -1127,7 +1632,7 @@
                     <div class="footer-col-wordmark">Vested</div>
                     <p class="footer-col-desc">Operations partner in Saudi Arabia.</p>
                     <div class="social-icons">
-                        <a href="https://linkedin.com/company/vested-ksa" aria-label="LinkedIn" title="LinkedIn">
+                        <a href="https://www.linkedin.com/company/vested-ksa/" aria-label="LinkedIn" title="LinkedIn">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.439-.103.25-.129.599-.129.949v5.417h-3.554s.047-8.787 0-9.703h3.554v1.374c.43-.664 1.199-1.608 2.925-1.608 2.136 0 3.74 1.393 3.74 4.391v5.546zM5.337 8.855c-1.144 0-1.915-.758-1.915-1.704 0-.951.77-1.707 1.972-1.707 1.2 0 1.913.756 1.938 1.704 0 .946-.738 1.707-1.995 1.707zm1.946 11.597H3.392V9.749h3.891v10.703zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
                             </svg>
@@ -1185,6 +1690,14 @@
     </div>
 
     <script>
+        function pushDataLayerEvent(eventName, payload = {}) {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event: eventName, ...payload });
+            if (typeof window.gtag === 'function') {
+                window.gtag('event', eventName, payload);
+            }
+        }
+
         // Navigation
         const hamburger = document.querySelector('.hamburger');
         const mobileMenu = document.querySelector('.mobile-menu');
@@ -1202,40 +1715,25 @@
             });
         });
 
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.service-card, .step, .launch-item, .differentiator, .result-card').forEach((element) => {
+                observer.observe(element);
             });
-        }, observerOptions);
-
-        // Observe service cards
-        document.querySelectorAll('.service-card').forEach(card => {
-            observer.observe(card);
-        });
-
-        // Observe step items
-        document.querySelectorAll('.step').forEach(step => {
-            observer.observe(step);
-        });
-
-        // Observe differentiators
-        document.querySelectorAll('.differentiator').forEach(diff => {
-            observer.observe(diff);
-        });
-
-        // Observe result cards
-        document.querySelectorAll('.result-card').forEach(card => {
-            observer.observe(card);
-        });
+        }
 
         // Cookie Consent
         const cookieBanner = document.getElementById('cookieBanner');
@@ -1253,7 +1751,9 @@
         cookieAccept.addEventListener('click', () => {
             localStorage.setItem('cookieConsent', 'accepted');
             cookieBanner.classList.remove('show');
-            window.dataLayer.push({'event': 'gtag.config', 'config': {'G-7STG2HDV42': {'anonymize_ip': false}}});
+            pushDataLayerEvent('cookie_consent_update', {
+                consent_status: 'accepted',
+            });
         });
 
         cookieDecline.addEventListener('click', () => {
@@ -1263,6 +1763,30 @@
 
         // Show banner on load
         window.addEventListener('load', showCookieBanner);
+        window.addEventListener('load', () => {
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(initScrollAnimations, { timeout: 1500 });
+            } else {
+                setTimeout(initScrollAnimations, 600);
+            }
+        }, { once: true });
+
+        window.addEventListener('load', () => {
+            pushDataLayerEvent('view_key_page', {
+                page_type: 'home',
+                page_path: window.location.pathname,
+            });
+        });
+
+        document.querySelectorAll('a[href="/contact"], a[href="mailto:hello@vestedksa.com"]').forEach((link) => {
+            link.addEventListener('click', () => {
+                pushDataLayerEvent('cta_click', {
+                    page_type: 'home',
+                    destination: link.getAttribute('href'),
+                    cta_text: (link.textContent || '').trim(),
+                });
+            });
+        });
 
         // Set active nav link
         function setActiveNav() {

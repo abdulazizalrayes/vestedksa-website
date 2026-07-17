@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Comprehensive operational and business support services for international companies establishing operations in Saudi Arabia.">
-    <meta name="canonical" href="https://vestedksa.com/services">
-
     <!-- Performance and theme meta tags -->
     <meta name="theme-color" content="#FFFFFF">
     <meta name="google-site-verification" content="i-LLBKDZ22hMvxi-mo7506okUq1IlniTM73DpDK439Y">
@@ -20,20 +18,66 @@
 
     <title>Services - Vested KSA</title>
 
-    <!-- Google Analytics GA4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7STG2HDV42"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7STG2HDV42');
-    </script>
-
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+
+    <!-- Analytics bootstrap -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){window.dataLayer.push(arguments);}
+
+      function loadAnalyticsScripts() {
+        if (window.__vestedAnalyticsLoaded) return;
+        window.__vestedAnalyticsLoaded = true;
+
+        const gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-7STG2HDV42';
+        document.head.appendChild(gtagScript);
+
+        gtag('js', new Date());
+        gtag('config', 'G-7STG2HDV42');
+
+        window.dataLayer.push({
+          'gtm.start': Date.now(),
+          event: 'gtm.js'
+        });
+
+        const gtmScript = document.createElement('script');
+        gtmScript.async = true;
+        gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WL2FN4PR';
+        document.head.appendChild(gtmScript);
+
+        ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
+          window.removeEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
+        });
+      }
+
+      function triggerAnalyticsLoad() {
+        loadAnalyticsScripts();
+      }
+
+      const passiveOnceOptions = { passive: true, once: true };
+
+      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
+        window.addEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
+      });
+
+      window.addEventListener('load', () => {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadAnalyticsScripts, { timeout: 2500 });
+        } else {
+          setTimeout(loadAnalyticsScripts, 1500);
+        }
+      }, { once: true });
+    </script>
 
     <style>
         * {
@@ -614,8 +658,13 @@
     </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
         <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vestedksa.com"},{"@type":"ListItem","position":2,"name":"Services","item":"https://vestedksa.com/services"}]}</script>
+    <script src="/language-switcher.js" defer></script>
     </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL2FN4PR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:#3b82f6;color:#fff;padding:8px 16px;z-index:10000;transition:top 0.3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
     <!-- Navigation -->
     <nav>
@@ -648,7 +697,7 @@
             <div style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid #E5E5E7;">
                 <h3 style="font-size: 1.5rem; font-weight: 600; color: #1D1D1F; margin-bottom: 1.5rem;">The Advantage of Scale</h3>
                 <p style="font-size: 1.05rem; color: #6E6E73; line-height: 1.75; margin-bottom: 1.25rem;">Because we manage operations for dozens of companies across Saudi Arabia, we've built deep relationships with service providers, landlords, government liaisons, auditors, and vendors.</p>
-                <p style="font-size: 1.05rem; color: #6E6E73; line-height: 1.75; margin-bottom: 1.25rem;">From office leases and staff accommodation to legal services, insurance, and government processing, we secure better terms because we bring repeat business and trusted relationships to every negotiation. Our clients consistently pay less for higher-quality services than they would sourcing independently.</p>
+                <p style="font-size: 1.05rem; color: #6E6E73; line-height: 1.75; margin-bottom: 1.25rem;">From office leases and staff accommodation to legal services, insurance, and government processing, we coordinate vendor selection with clear scopes, comparable quotes, and transparent approval records so clients can make informed local decisions.</p>
             </div>
         </div>
     </section>
@@ -675,7 +724,7 @@
                         </p>
                     </div>
 
-                    <div class="timeline-badge">4-6 weeks from engagement to operational entity</div>
+                    <div class="timeline-badge">Timeline varies by activity, documents, approvals, and banking</div>
 
                     <div class="service-section">
                         <h4>What's included</h4>
@@ -945,15 +994,15 @@
                 <h4>Connect</h4>
                 <ul>
                     <li><a href="mailto:hello@vestedksa.com">Email</a></li>
-                    <li><a href="#">LinkedIn</a></li>
-                    <li><a href="#">Twitter</a></li>
+                    <li><a href="https://www.linkedin.com/company/vested-ksa/">LinkedIn</a></li>
+                    <li><a href="https://twitter.com/vestedksa">X</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Vest KSA Co. All rights reserved.</p>
             <div>
-                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a>
             </div>
         </div>
     </footer>
@@ -961,7 +1010,7 @@
     <!-- Cookie Consent Banner -->
     <div class="cookie-banner" id="cookieBanner">
         <div class="cookie-text">
-            We use cookies to enhance your experience and analyze site performance. By continuing, you agree to our <a href="#">privacy policy</a>.
+            We use cookies to enhance your experience and analyze site performance. By continuing, you agree to our <a href="/privacy">privacy policy</a>.
         </div>
         <div class="cookie-buttons">
             <button class="cookie-btn cookie-decline" onclick="handleCookieDecline()">Decline</button>
@@ -973,9 +1022,12 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
+        "@type": "ProfessionalService",
+        "@id": "https://vestedksa.com/#organization",
         "name": "Vested KSA",
-        "description": "End-to-end operational support for international companies in Saudi Arabia",
+        "legalName": "Vest KSA Co.",
+        "alternateName": ["Vested", "Vested Saudi Arabia", "Vest KSA Co."],
+        "description": "Market-entry and operations partner in Saudi Arabia for international companies setting up, hiring, registering vendors, and running local back-office operations.",
         "url": "https://vestedksa.com",
         "email": "hello@vestedksa.com",
         "address": {
@@ -995,6 +1047,7 @@
         "@type": "Service",
         "name": "Company Formation & Setup",
         "description": "MISA licensing, Commercial Registration, entity structuring, and regulatory compliance for foreign companies in Saudi Arabia",
+        "provider": {"@id": "https://vestedksa.com/#organization"},
         "areaServed": {
             "@type": "Country",
             "name": "Saudi Arabia"
@@ -1008,6 +1061,7 @@
         "@type": "Service",
         "name": "Full Operational Outsourcing",
         "description": "Complete non-core operations management including admin, procurement, facility management, and government relations",
+        "provider": {"@id": "https://vestedksa.com/#organization"},
         "areaServed": {
             "@type": "Country",
             "name": "Saudi Arabia"
@@ -1021,6 +1075,7 @@
         "@type": "Service",
         "name": "People & HR",
         "description": "Recruitment, payroll, GOSI registration, Saudization compliance, and workforce management services",
+        "provider": {"@id": "https://vestedksa.com/#organization"},
         "areaServed": {
             "@type": "Country",
             "name": "Saudi Arabia"
@@ -1034,6 +1089,7 @@
         "@type": "Service",
         "name": "Accounting & Finance",
         "description": "Bookkeeping, financial reporting, VAT filing, audit preparation, and IFRS/SOCPA compliant accounting services",
+        "provider": {"@id": "https://vestedksa.com/#organization"},
         "areaServed": {
             "@type": "Country",
             "name": "Saudi Arabia"
@@ -1047,6 +1103,7 @@
         "@type": "Service",
         "name": "Legal & Compliance",
         "description": "Entity structuring, regulatory compliance, contract review, AML compliance, and intellectual property services",
+        "provider": {"@id": "https://vestedksa.com/#organization"},
         "areaServed": {
             "@type": "Country",
             "name": "Saudi Arabia"
@@ -1060,6 +1117,7 @@
         "@type": "Service",
         "name": "Workspace & Facilities",
         "description": "Office space selection, fit-out, IT infrastructure, reception services, and facility management",
+        "provider": {"@id": "https://vestedksa.com/#organization"},
         "areaServed": {
             "@type": "Country",
             "name": "Saudi Arabia"

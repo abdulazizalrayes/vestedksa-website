@@ -30,6 +30,7 @@ function setCorsHeaders(req, res) {
 function json(res, status, payload) {
   res.statusCode = status;
   res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.setHeader("Cache-Control", "no-store");
   res.end(JSON.stringify(payload));
 }
 
@@ -122,6 +123,7 @@ function cleanLead(fields) {
     service: sanitizeText(fields.service, 80),
     message: sanitizeText(fields.message, 4000),
     phone: normalizePhone(fields.phone || ""),
+    website: sanitizeText(fields.website || fields.url || fields.companyWebsite || fields.company_website, 500),
     pageUrl: sanitizeText(fields.pageUrl || fields.page_url, 500),
     referrer: sanitizeText(fields.referrer, 500),
     userAgent: sanitizeText(fields.userAgent || fields.user_agent, 500),
@@ -300,6 +302,7 @@ async function sendLeadAlertEmail(record) {
 }
 
 module.exports = async function handler(req, res) {
+  res.setHeader("X-Robots-Tag", "noindex, nofollow, noarchive");
   setCorsHeaders(req, res);
 
   if (req.method === "OPTIONS") {
@@ -354,6 +357,14 @@ module.exports = async function handler(req, res) {
       return;
     }
     const lead = cleanLead(fields);
+
+    if (lead.website) {
+      json(res, 200, {
+        ok: true,
+        message: "Thank you for reaching out. We'll be in touch within 24 hours.",
+      });
+      return;
+    }
 
     if (!lead.name || !lead.email || !lead.company || !lead.country || !lead.service || !lead.message) {
       json(res, 400, {

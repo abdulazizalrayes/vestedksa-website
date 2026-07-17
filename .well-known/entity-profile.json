@@ -1,0 +1,51 @@
+{
+  "name": "Vested KSA",
+  "legalName": "Vest KSA Co.",
+  "alternateName": [
+    "Vested",
+    "Vested Saudi Arabia",
+    "Vest KSA Co."
+  ],
+  "url": "https://vestedksa.com",
+  "description": "Vested KSA is a market-entry and operations partner in Saudi Arabia for international companies entering, establishing, hiring, registering vendors, and operating locally.",
+  "sameAs": [
+    "https://www.linkedin.com/company/vested-ksa/"
+  ],
+  "location": {
+    "addressLocality": "Riyadh",
+    "addressCountry": "SA"
+  },
+  "contact": {
+    "email": "hello@vestedksa.com",
+    "url": "https://vestedksa.com/contact"
+  },
+  "languages": [
+    "en",
+    "ar",
+    "zh-Hans"
+  ],
+  "focus": [
+    "Saudi market entry",
+    "Company formation in Saudi Arabia",
+    "Operational outsourcing",
+    "HR and payroll",
+    "Finance and compliance",
+    "Vendor registration",
+    "Saudi launch planning"
+  ],
+  "primaryPages": [
+    "https://vestedksa.com/",
+    "https://vestedksa.com/services",
+    "https://vestedksa.com/about",
+    "https://vestedksa.com/ethics",
+    "https://vestedksa.com/insights",
+    "https://vestedksa.com/contact"
+  ],
+  "machineReadableResources": [
+    "https://vestedksa.com/llms.txt",
+    "https://vestedksa.com/llms-full.md",
+    "https://vestedksa.com/service-pages.json",
+    "https://vestedksa.com/.well-known/agent-card.json",
+    "https://vestedksa.com/.well-known/agent-skills/index.json"
+  ]
+}

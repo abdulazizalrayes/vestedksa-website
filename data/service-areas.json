@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "2026-06-20",
+  "company": "Vested KSA",
+  "primaryServiceArea": {
+    "name": "Saudi Arabia",
+    "countryCode": "SA",
+    "description": "Vested KSA supports international companies entering and operating in Saudi Arabia."
+  },
+  "operatingBase": {
+    "city": "Riyadh",
+    "country": "Saudi Arabia",
+    "note": "No public coordinates are asserted."
+  },
+  "clientOrigins": [
+    "International companies entering Saudi Arabia",
+    "Foreign founders evaluating Saudi market entry",
+    "Regional headquarters and leadership teams coordinating a Saudi launch",
+    "Companies needing local Saudi operations support"
+  ],
+  "deliveryModel": [
+    "Saudi local execution",
+    "Remote coordination with headquarters",
+    "Project-specific local operating cadence",
+    "Documentation and reporting for international leadership teams"
+  ],
+  "notAsserted": [
+    "Additional branch locations",
+    "Exact coverage radius",
+    "Public map coordinates"
+  ]
+}

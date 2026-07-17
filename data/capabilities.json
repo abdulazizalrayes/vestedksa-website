@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "2026-06-20",
+  "company": "Vested KSA",
+  "capabilities": [
+    {
+      "id": "entry-model-diagnostics",
+      "name": "Entry model diagnostics",
+      "description": "Helps teams compare Saudi entry options before selecting a formation or operating path.",
+      "relatedServices": ["market-entry-planning", "company-formation-setup"]
+    },
+    {
+      "id": "first-90-day-launch-planning",
+      "name": "First-90-day launch planning",
+      "description": "Turns market-entry intent into a sequenced launch plan covering decisions, documents, owners, and operational dependencies.",
+      "relatedServices": ["market-entry-planning", "managed-local-operations"]
+    },
+    {
+      "id": "government-registration-follow-up",
+      "name": "Government registration follow-up",
+      "description": "Coordinates document readiness, follow-ups, and post-formation registration workstreams.",
+      "relatedServices": ["company-formation-setup"]
+    },
+    {
+      "id": "operating-rhythm-design",
+      "name": "Operating rhythm design",
+      "description": "Defines reporting cadence, approval flows, document storage, vendor coordination, and headquarters visibility.",
+      "relatedServices": ["managed-local-operations", "finance-vat-zakat-controls"]
+    },
+    {
+      "id": "workforce-readiness",
+      "name": "Workforce readiness",
+      "description": "Prepares hiring, payroll, employee records, and Saudization planning inputs.",
+      "relatedServices": ["hr-payroll-saudization"]
+    },
+    {
+      "id": "finance-control-readiness",
+      "name": "Finance control readiness",
+      "description": "Prepares VAT/Zakat ownership, e-invoicing readiness, invoice controls, and payment approval records.",
+      "relatedServices": ["finance-vat-zakat-controls"]
+    },
+    {
+      "id": "procurement-portal-readiness",
+      "name": "Procurement portal readiness",
+      "description": "Builds the reusable company, tax, policy, capability, and portal evidence pack needed for Saudi customer onboarding.",
+      "relatedServices": ["vendor-registration-procurement-readiness"]
+    },
+    {
+      "id": "due-diligence-support",
+      "name": "Partner due-diligence support",
+      "description": "Helps serious prospects understand what can be requested and shared through due-diligence channels.",
+      "relatedServices": ["legal-compliance-coordination"]
+    }
+  ],
+  "notCapabilities": [
+    "Retail shopping",
+    "Consumer visa services",
+    "Recruitment agency for job seekers",
+    "Internship placement",
+    "Training-course sales",
+    "Paid backlink placement",
+    "Unrelated local errands"
+  ]
+}

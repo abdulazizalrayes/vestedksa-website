@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "2026-06-29",
+  "resourceType": "analytics-event-taxonomy",
+  "company": "Vested KSA",
+  "privacyRules": [
+    "Do not log names, emails, phone numbers, passports, IDs, bank details, confidential documents, or full inquiry messages in analytics events.",
+    "Use page path, service interest, country, language, source, and coarse route classification only.",
+    "Server logs for MCP should record tool names and broad user-agent class, not full prompts or private inquiry details.",
+    "Contact form submission analytics should record success/failure and service interest, not message body."
+  ],
+  "keyEvents": [
+    {
+      "name": "lead_form_submit",
+      "status": "mark_as_key_event_in_ga4",
+      "purpose": "Qualified inquiry conversion",
+      "recommendedParameters": [
+        "service_interest",
+        "country",
+        "page_path",
+        "language",
+        "lead_route"
+      ]
+    },
+    {
+      "name": "email_click",
+      "status": "mark_as_key_event_in_ga4",
+      "purpose": "Direct contact intent",
+      "recommendedParameters": [
+        "page_path",
+        "language"
+      ]
+    },
+    {
+      "name": "checklist_download_click",
+      "status": "mark_as_key_event_in_ga4",
+      "purpose": "Research-to-intent asset engagement",
+      "recommendedParameters": [
+        "asset_id",
+        "page_path",
+        "language"
+      ]
+    },
+    {
+      "name": "language_switch_click",
+      "status": "mark_as_key_event_in_ga4",
+      "purpose": "Language demand signal",
+      "recommendedParameters": [
+        "from_locale",
+        "to_locale",
+        "page_path"
+      ]
+    }
+  ],
+  "supportingEvents": [
+    "lead_form_start",
+    "lead_cta_click",
+    "view_key_page",
+    "agent_resource_read",
+    "mcp_tool_call",
+    "mcp_resource_read",
+    "openapi_read",
+    "llms_read",
+    "answer_asset_read"
+  ],
+  "funnelStages": [
+    {
+      "stage": "discover",
+      "signals": [
+        "organic landing page",
+        "Search Console query",
+        "AI referral",
+        "llms_read",
+        "openapi_read"
+      ]
+    },
+    {
+      "stage": "evaluate",
+      "signals": [
+        "insight page view",
+        "service page view",
+        "checklist_download_click",
+        "language_switch_click",
+        "answer_asset_read"
+      ]
+    },
+    {
+      "stage": "qualify",
+      "signals": [
+        "lead_cta_click",
+        "lead_form_start",
+        "mcp_tool_call:match_project_scope",
+        "mcp_tool_call:prepare_project_inquiry"
+      ]
+    },
+    {
+      "stage": "convert",
+      "signals": [
+        "lead_form_submit",
+        "email_click"
+      ]
+    }
+  ],
+  "monthlyQueries": [
+    {
+      "id": "countries-to-leads",
+      "question": "Which countries generate qualified Saudi market-entry leads?",
+      "dimensions": [
+        "country",
+        "source",
+        "medium",
+        "landing_page",
+        "service_interest"
+      ]
+    },
+    {
+      "id": "answer-engine-demand",
+      "question": "Which AI/agent resources are being read?",
+      "logFilters": [
+        "/llms.txt",
+        "/llms-full",
+        "/openapi.json",
+        "/data/answer-engine.json",
+        "/data/source-map.json",
+        "/api/mcp"
+      ]
+    },
+    {
+      "id": "search-console-content-gaps",
+      "question": "Which high-impression queries need stronger answer blocks or guides?",
+      "dimensions": [
+        "query",
+        "page",
+        "country",
+        "device"
+      ]
+    },
+    {
+      "id": "conversion-friction",
+      "question": "Where do qualified users start but not complete contact?",
+      "dimensions": [
+        "landing_page",
+        "page_path",
+        "service_interest",
+        "country",
+        "language"
+      ]
+    }
+  ]
+}

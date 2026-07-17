@@ -1,29 +1,45 @@
-ser-agent: *
+User-agent: Googlebot
 Allow: /
+Disallow: /admin
+Disallow: /private
+Disallow: /internal
+Disallow: /.vercel
 
-# Content Signals (https://contentsignals.org/)
-Content-Signal: search=yes, ai-train=yes, ai-input=yes
-
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /private
+Disallow: /internal
+Disallow: /.vercel
+Disallow: /api/contact
 Sitemap: https://vestedksa.com/sitemap.xml
+Content-Signal: ai-train=no, search=yes, ai-input=yes
 
 # AI Crawlers
 User-agent: GPTBot
 Allow: /
+Disallow: /api/contact
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /api/contact
 
 User-agent: CCBot
 Allow: /
+Disallow: /api/contact
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /api/contact
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /api/contact
 
 User-agent: Bytespider
 Allow: /
+Disallow: /api/contact
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /api/contact

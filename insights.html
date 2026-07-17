@@ -23,13 +23,56 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7STG2HDV42"></script>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </noscript>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-7STG2HDV42');
+    function gtag(){window.dataLayer.push(arguments);}
+
+    function loadAnalyticsScripts() {
+      if (window.__vestedAnalyticsLoaded) return;
+      window.__vestedAnalyticsLoaded = true;
+
+      const gtagScript = document.createElement('script');
+      gtagScript.async = true;
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-7STG2HDV42';
+      document.head.appendChild(gtagScript);
+
+      gtag('js', new Date());
+      gtag('config', 'G-7STG2HDV42');
+
+      window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+
+      const gtmScript = document.createElement('script');
+      gtmScript.async = true;
+      gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WL2FN4PR';
+      document.head.appendChild(gtmScript);
+
+      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
+        window.removeEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
+      });
+    }
+
+    function triggerAnalyticsLoad() {
+      loadAnalyticsScripts();
+    }
+
+    const passiveOnceOptions = { passive: true, once: true };
+
+    ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
+      window.addEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
+    });
+
+    window.addEventListener('load', () => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadAnalyticsScripts, { timeout: 2500 });
+      } else {
+        setTimeout(loadAnalyticsScripts, 1500);
+      }
+    }, { once: true });
   </script>
   <style>
     * {
@@ -199,6 +242,117 @@
       font-weight: 400;
     }
 
+    .hub-section {
+      padding: 100px 20px 80px;
+      background: #FFFFFF;
+    }
+
+    .hub-header {
+      max-width: 1280px;
+      margin: 0 auto 44px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 56px;
+      align-items: end;
+    }
+
+    .hub-header h2 {
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.08;
+      color: #1D1D1F;
+      letter-spacing: 0;
+      margin: 0;
+    }
+
+    .hub-header p {
+      color: #6E6E73;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .hub-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+    }
+
+    .hub-primary,
+    .hub-topic {
+      border: 1px solid #E5E5E7;
+      border-radius: 8px;
+      background: #FFFFFF;
+      padding: 32px;
+    }
+
+    .hub-primary {
+      min-height: 330px;
+      display: grid;
+      align-content: space-between;
+      gap: 34px;
+    }
+
+    .hub-primary h3 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.12;
+      color: #1D1D1F;
+      margin-bottom: 16px;
+    }
+
+    .hub-primary p,
+    .hub-topic p {
+      color: #6E6E73;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .hub-topic-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .hub-topic h3 {
+      font-size: 18px;
+      color: #1D1D1F;
+      margin-bottom: 8px;
+    }
+
+    .stage-grid {
+      max-width: 1280px;
+      margin: 36px auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stage-card {
+      border: 1px solid #E5E5E7;
+      border-radius: 8px;
+      background: #FAFAFA;
+      padding: 22px;
+      min-height: 180px;
+    }
+
+    .stage-card strong {
+      display: block;
+      color: #0071E3;
+      font-size: 13px;
+      margin-bottom: 30px;
+    }
+
+    .stage-card h3 {
+      font-size: 18px;
+      color: #1D1D1F;
+      margin-bottom: 8px;
+    }
+
+    .stage-card p {
+      color: #6E6E73;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
     /* Generic section */
     .section {
       padding: 140px 20px;
@@ -279,6 +433,12 @@
         grid-template-columns: 1fr;
         padding: 40px 20px;
       }
+
+      .hub-header,
+      .hub-grid,
+      .stage-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Article Grid */
@@ -335,6 +495,13 @@
 
     .article-card .read-more {
       font-size: 14px;
+    }
+
+    .read-more.unavailable {
+      color: #86868B;
+      cursor: default;
+      pointer-events: none;
+      text-decoration: none;
     }
 
     /* Newsletter Section */
@@ -622,17 +789,33 @@
       "description": "Guides, analysis, and updates for international companies entering Saudi Arabia. Market insights, compliance guides, and strategic analysis.",
       "url": "https://vestedksa.com/insights",
       "publisher": {
-            "@type": "Organization",
-            "name": "Vested KSA",
-            "url": "https://vestedksa.com"
+            "@id": "https://vestedksa.com/#organization"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "Saudi market-entry guide library",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "url": "https://vestedksa.com/insights/ksa-market-entry-guide-2026", "name": "Saudi Market Entry Guide 2026"},
+          {"@type": "ListItem", "position": 2, "url": "https://vestedksa.com/insights/foreign-ownership-saudi-arabia", "name": "100% Foreign Ownership in Saudi Arabia"},
+          {"@type": "ListItem", "position": 3, "url": "https://vestedksa.com/insights/misa-licensing-commercial-registration-saudi-arabia", "name": "MISA Licensing and Commercial Registration in Saudi Arabia"},
+          {"@type": "ListItem", "position": 4, "url": "https://vestedksa.com/insights/vat-zakat-saudi-arabia", "name": "VAT and Zakat in Saudi Arabia"},
+          {"@type": "ListItem", "position": 5, "url": "https://vestedksa.com/insights/regional-headquarters-rhq-saudi-arabia", "name": "Regional Headquarters Program in Saudi Arabia"},
+          {"@type": "ListItem", "position": 6, "url": "https://vestedksa.com/insights/saudi-vendor-registration-aramco-pif", "name": "Saudi Vendor Registration"},
+          {"@type": "ListItem", "position": 7, "url": "https://vestedksa.com/insights/saudization-nitaqat-hr-saudi-arabia", "name": "Saudization and Nitaqat for International Companies"}
+        ]
       }
 }
     </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
         <meta property="og:image" content="https://vestedksa.com/og-image.png">
         <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vestedksa.com"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://vestedksa.com/insights"}]}</script>
+    <script src="/language-switcher.js" defer></script>
     </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL2FN4PR"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
     <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:#3b82f6;color:#fff;padding:8px 16px;z-index:10000;transition:top 0.3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
   <!-- Navigation -->
   <nav>
@@ -658,8 +841,62 @@
   <!-- Hero -->
   <section id="main-content" class="hero">
     <div class="container">
-      <h1>Insights.</h1>
-      <p class="subtitle">Guides, analysis, and updates for international companies entering Saudi Arabia.</p>
+      <h1>Saudi Launch Readiness Center.</h1>
+      <p class="subtitle">Decision guides, planning tools, and operating checklists for international companies entering Saudi Arabia.</p>
+    </div>
+  </section>
+
+  <!-- Decision Hub -->
+  <section class="hub-section">
+    <div class="hub-header">
+      <h2>Move from market interest to operating readiness.</h2>
+      <p>The guide library is organized around the decisions buyers actually need to make: structure, licensing, finance, people, vendor access, and first-90-day execution.</p>
+    </div>
+    <div class="hub-grid">
+      <div class="hub-primary">
+        <div>
+          <span class="article-tag">START HERE</span>
+          <h3>The Saudi market-entry guide library, organized by launch stage.</h3>
+          <p>Use the main guide to orient the full setup path, then move into focused guides for ownership, MISA licensing, VAT/Zakat, e-invoicing controls, RHQ, vendor registration, and Saudization.</p>
+        </div>
+        <a class="read-more" href="/insights/ksa-market-entry-guide-2026">Start with the complete guide →</a>
+      </div>
+      <div class="hub-topic-list">
+        <div class="hub-topic">
+          <h3>Banking and finance controls</h3>
+          <p>Prepare invoice, tax, approval, vendor, and headquarters reporting workflows before the first Saudi transaction.</p>
+        </div>
+        <div class="hub-topic">
+          <h3>First employee readiness</h3>
+          <p>Plan employment, payroll, GOSI, Qiwa, Saudization, and local HR records before hiring starts.</p>
+        </div>
+        <div class="hub-topic">
+          <h3>Entity vs branch decision</h3>
+          <p>Compare entry models before choosing a setup path, customer onboarding route, or local operating layer.</p>
+        </div>
+      </div>
+    </div>
+    <div class="stage-grid">
+      <div class="stage-card">
+        <strong>01</strong>
+        <h3>Evaluate</h3>
+        <p>Ownership, activity, sector restrictions, and Saudi opportunity fit.</p>
+      </div>
+      <div class="stage-card">
+        <strong>02</strong>
+        <h3>Form</h3>
+        <p>MISA, CR, Chamber, tax, HR, national address, and banking readiness.</p>
+      </div>
+      <div class="stage-card">
+        <strong>03</strong>
+        <h3>Operate</h3>
+        <p>Payroll, finance controls, suppliers, office, records, and reporting cadence.</p>
+      </div>
+      <div class="stage-card">
+        <strong>04</strong>
+        <h3>Access</h3>
+        <p>Vendor profiles, procurement portals, customer evidence packs, and tender readiness.</p>
+      </div>
     </div>
   </section>
 
@@ -670,9 +907,8 @@
         <div class="featured-content">
           <span class="article-tag">MARKET ENTRY</span>
           <h3>The Complete Guide to Setting Up a Business in Saudi Arabia (2026)</h3>
-          <p>Everything you need to know about establishing a legal entity in Saudi Arabia, from business registration to licensing to your first hire. We've distilled 10 years of experience into this comprehensive guide covering legal structures, timeline, costs, and common mistakes.</p>
-          <!-- PLACEHOLDER: This is a placeholder article. Actual guide content would be detailed and comprehensive. -->
-          <a href="#" class="read-more">Read the full guide →</a>
+          <p>Everything you need to know before establishing a practical Saudi operating presence, from entry structure and licensing readiness to banking, HR, vendors, governance, and first-90-day execution.</p>
+          <a class="read-more" href="/insights/ksa-market-entry-guide-2026">Read the guide →</a>
         </div>
       </div>
     </div>
@@ -681,66 +917,108 @@
   <!-- Article Grid -->
   <section class="section" style="background: #FAFAFA;">
     <div class="container">
-      <h2>Latest Articles</h2>
+      <h2>Guide Library</h2>
       <div class="article-grid">
-        <!-- PLACEHOLDER: Articles 1-6 are placeholders. Actual articles will be published with full content and dates. -->
         <div class="article-card">
           <div class="article-card-content">
-            <span class="article-tag">COMPLIANCE</span>
-            <h3>Understanding Saudization: What International Companies Need to Know</h3>
-            <p class="summary">The Nitaqat system requires companies to employ Saudi nationals. Here's how it works, what it means for your workforce, and how to achieve compliance.</p>
-            <span class="date">Placeholder - Article pending publication</span>
-            <a href="#" class="read-more">Read →</a>
+            <span class="article-tag">OWNERSHIP</span>
+            <h3>100% Foreign Ownership in Saudi Arabia</h3>
+            <p class="summary">What international companies should confirm before choosing a fully foreign-owned Saudi structure: activity, MISA path, restrictions, and operating readiness.</p>
+            <span class="date">Published June 6, 2026</span>
+            <a class="read-more" href="/insights/foreign-ownership-saudi-arabia">Read guide →</a>
+          </div>
+        </div>
+
+        <div class="article-card">
+          <div class="article-card-content">
+            <span class="article-tag">FORMATION</span>
+            <h3>MISA Licensing and Commercial Registration in Saudi Arabia</h3>
+            <p class="summary">The setup sequence foreign companies should understand: activity definition, MISA path, CR, Chamber, tax, HR, and post-formation readiness.</p>
+            <span class="date">Published June 6, 2026</span>
+            <a class="read-more" href="/insights/misa-licensing-commercial-registration-saudi-arabia">Read guide →</a>
           </div>
         </div>
 
         <div class="article-card">
           <div class="article-card-content">
             <span class="article-tag">FINANCE</span>
-            <h3>VAT and Zakat in Saudi Arabia: A Practical Guide</h3>
-            <p class="summary">Understanding Saudi Arabia's tax system. VAT rates, exemptions, Zakat implications for foreign-owned entities, and how to stay compliant.</p>
-            <span class="date">Placeholder - Article pending publication</span>
-            <a href="#" class="read-more">Read →</a>
+            <h3>VAT and Zakat in Saudi Arabia</h3>
+            <p class="summary">Registration thresholds, TIN, ZATCA workflows, certificates, filing calendars, and the finance controls companies should plan before launch.</p>
+            <span class="date">Published June 6, 2026</span>
+            <a class="read-more" href="/insights/vat-zakat-saudi-arabia">Read guide →</a>
           </div>
         </div>
 
         <div class="article-card">
           <div class="article-card-content">
-            <span class="article-tag">LEGAL</span>
-            <h3>Choosing the Right Legal Structure for Your Saudi Entity</h3>
-            <p class="summary">LLC vs. branch office vs. representative office. We break down the pros, cons, and implications of each structure for different business models.</p>
-            <span class="date">Placeholder - Article pending publication</span>
-            <a href="#" class="read-more">Read →</a>
+            <span class="article-tag">FINANCE</span>
+            <h3>Saudi E-Invoicing and Finance Controls</h3>
+            <p class="summary">What international companies should prepare before issuing invoices, onboarding suppliers, and scaling Saudi finance operations.</p>
+            <span class="date">Published June 18, 2026</span>
+            <a class="read-more" href="/insights/saudi-e-invoicing-operating-controls">Read guide →</a>
           </div>
         </div>
 
         <div class="article-card">
           <div class="article-card-content">
-            <span class="article-tag">PLANNING</span>
-            <h3>The Cost of Market Entry: What to Budget For</h3>
-            <p class="summary">A realistic breakdown of setup costs, licensing, legal compliance, staffing, office space, and operational expenses for the first 12 months.</p>
-            <span class="date">Placeholder - Article pending publication</span>
-            <a href="#" class="read-more">Read →</a>
+            <span class="article-tag">RHQ</span>
+            <h3>Regional Headquarters Program in Saudi Arabia</h3>
+            <p class="summary">How multinational companies should evaluate RHQ licensing, local substance, leadership roles, governance, and regional operating readiness.</p>
+            <span class="date">Published June 6, 2026</span>
+            <a class="read-more" href="/insights/regional-headquarters-rhq-saudi-arabia">Read guide →</a>
           </div>
         </div>
 
         <div class="article-card">
           <div class="article-card-content">
-            <span class="article-tag">OPPORTUNITY</span>
-            <h3>Saudi Arabia's Giga-Projects: Opportunities for Foreign Companies</h3>
-            <p class="summary">NEOM, The Line, Red Sea Project, and Diriyah Gate represent $500+ billion in spending. Here's where companies are finding contracts and opportunities.</p>
-            <span class="date">Placeholder - Article pending publication</span>
-            <a href="#" class="read-more">Read →</a>
+            <span class="article-tag">VENDORS</span>
+            <h3>Saudi Vendor Registration: Aramco, SABIC, NEOM and PIF Companies</h3>
+            <p class="summary">How to prepare supplier profiles, ownership details, policies, portal access, and local records before chasing major Saudi tenders.</p>
+            <span class="date">Published June 6, 2026</span>
+            <a class="read-more" href="/insights/saudi-vendor-registration-aramco-pif">Read guide →</a>
           </div>
         </div>
 
         <div class="article-card">
           <div class="article-card-content">
             <span class="article-tag">PEOPLE</span>
-            <h3>Navigating Saudi Labor Law: A Guide for International Employers</h3>
-            <p class="summary">Employment contracts, benefits, termination, work permits, and worker rights in Saudi Arabia. What every employer needs to know.</p>
-            <span class="date">Placeholder - Article pending publication</span>
-            <a href="#" class="read-more">Read →</a>
+            <h3>Saudization and Nitaqat for International Companies</h3>
+            <p class="summary">How Nitaqat affects hiring, work permits, transfers, payroll setup, and Saudi workforce planning for international companies.</p>
+            <span class="date">Published June 6, 2026</span>
+            <a class="read-more" href="/insights/saudization-nitaqat-hr-saudi-arabia">Read guide →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Downloads -->
+  <section class="section">
+    <div class="container">
+      <h2>Downloadable planning tools</h2>
+      <div class="article-grid">
+        <div class="article-card">
+          <div class="article-card-content">
+            <span class="article-tag">PLANNING</span>
+            <h3>90-Day Saudi Launch Plan</h3>
+            <p class="summary">A practical operating sequence for entry design, formation readiness, and controlled launch.</p>
+            <a class="read-more" href="/ksa-90-day-launch-plan.txt" download>Download →</a>
+          </div>
+        </div>
+        <div class="article-card">
+          <div class="article-card-content">
+            <span class="article-tag">VENDORS</span>
+            <h3>Vendor Registration Evidence Pack</h3>
+            <p class="summary">The company, tax, compliance, and capability records to prepare before supplier portal onboarding.</p>
+            <a class="read-more" href="/ksa-vendor-registration-pack.txt" download>Download →</a>
+          </div>
+        </div>
+        <div class="article-card">
+          <div class="article-card-content">
+            <span class="article-tag">DILIGENCE</span>
+            <h3>Partner Due Diligence Request List</h3>
+            <p class="summary">A buyer-side checklist for evaluating market-entry and operations partners in Saudi Arabia.</p>
+            <a class="read-more" href="/ksa-due-diligence-request-list.txt" download>Download →</a>
           </div>
         </div>
       </div>
@@ -778,7 +1056,7 @@
           <h3>Vested</h3>
           <p>We help international companies establish, operate, and scale in Saudi Arabia. From formation to accounting to full operations outsourcing, we handle everything that isn't your core business.</p>
           <div class="footer-social">
-            <a href="https://linkedin.com/company/vestedksa" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/company/vested-ksa/" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.047-8.842 0-9.769h3.554v1.383c.43-.665 1.199-1.61 2.920-1.61 2.135 0 3.753 1.395 3.753 4.402v5.594zM5.337 5.433c-1.144 0-1.915-.759-1.915-1.71 0-.955.77-1.71 1.954-1.71 1.185 0 1.915.755 1.915 1.71 0 .951-.73 1.71-1.954 1.71zm1.946 14.019H3.391V9.683h3.892v9.769zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
             </a>
             <a href="https://twitter.com/vestedksa" aria-label="X (Twitter)">
@@ -830,12 +1108,12 @@
 
     // Cookie consent
     function acceptCookies() {
-      localStorage.setItem('cookies-accepted', 'true');
+      localStorage.setItem('cookieConsent', 'accepted');
       document.getElementById('cookieBanner').classList.remove('show');
     }
 
     function initCookieBanner() {
-      if (!localStorage.getItem('cookies-accepted')) {
+      if (!localStorage.getItem('cookieConsent')) {
         document.getElementById('cookieBanner').classList.add('show');
       }
     }
@@ -848,20 +1126,28 @@
       event.target.reset();
     }
 
-    initCookieBanner();
+    function initScrollAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeIn 0.8s ease-in forwards';
+          }
+        });
+      }, { threshold: 0.1 });
 
-    // Smooth scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = 'fadeIn 0.8s ease-in forwards';
-        }
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
       });
-    }, { threshold: 0.1 });
+    }
 
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
+    initCookieBanner();
+    window.addEventListener('load', () => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(initScrollAnimations, { timeout: 1500 });
+      } else {
+        setTimeout(initScrollAnimations, 600);
+      }
+    }, { once: true });
   </script>
 
   <!-- Schema.org Structured Data -->
@@ -877,7 +1163,7 @@
       "name": "Vested KSA",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://vestedksa.com/logo.png"
+        "url": "https://vestedksa.com/og-image.png"
       }
     }
   }

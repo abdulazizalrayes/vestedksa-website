@@ -1,0 +1,117 @@
+# Vested KSA
+
+Vested KSA, legal name Vest KSA Co., is a Saudi Arabia market-entry and operations partner for international companies entering, establishing, or expanding in the Kingdom. Vested helps clients plan the right market-entry structure, set up the operating layer, register for vendor opportunities, and manage non-core local execution so leadership can focus on customers, growth, and delivery.
+
+## Primary Site
+
+- English: https://vestedksa.com/
+- Arabic: https://vestedksa.com/ar
+- Simplified Chinese: https://vestedksa.com/zh
+- Services: https://vestedksa.com/services
+- Why Saudi Arabia: https://vestedksa.com/why-saudi
+- Ethics and governance: https://vestedksa.com/ethics
+- FAQ: https://vestedksa.com/faq
+- Contact: https://vestedksa.com/contact
+- Saudi Market Entry Guide 2026: https://vestedksa.com/insights/ksa-market-entry-guide-2026
+- 100% Foreign Ownership in Saudi Arabia: https://vestedksa.com/insights/foreign-ownership-saudi-arabia
+- MISA Licensing and Commercial Registration: https://vestedksa.com/insights/misa-licensing-commercial-registration-saudi-arabia
+- VAT and Zakat in Saudi Arabia: https://vestedksa.com/insights/vat-zakat-saudi-arabia
+- Saudi E-Invoicing and Finance Controls: https://vestedksa.com/insights/saudi-e-invoicing-operating-controls
+- Regional Headquarters Program in Saudi Arabia: https://vestedksa.com/insights/regional-headquarters-rhq-saudi-arabia
+- Saudi Vendor Registration: https://vestedksa.com/insights/saudi-vendor-registration-aramco-pif
+- Saudization and Nitaqat: https://vestedksa.com/insights/saudization-nitaqat-hr-saudi-arabia
+
+## Core Services
+
+- Saudi market-entry planning: entry model, timeline, first-90-day work plan, and operational readiness.
+- Company formation and setup: MISA licensing, Commercial Registration, Chamber of Commerce, entity setup, and post-formation compliance readiness.
+- Full operational outsourcing: administration, procurement, vendor coordination, facilities, registrations, logistics, and local execution management.
+- People and HR: recruitment coordination, payroll, employment contracts, Saudization readiness, visas, GOSI, and employee onboarding support.
+- Accounting and finance: VAT, Zakat, bookkeeping, financial reporting, audit preparation, payment controls, and SOCPA-aligned workflows.
+- Legal and compliance coordination: regulatory follow-up, governance processes, AML/KYC support, contract coordination, risk registers, and records control.
+- Workspace and facilities: office search, fit-out coordination, IT setup, transport, accommodation, and workplace readiness.
+- Supplier and platform readiness: vendor registrations, qualification documents, capability profiles, and procurement portal support.
+
+## Engagement Models
+
+- Launch sprint: a focused first-90-day plan for companies that need clarity before committing major local spend.
+- Dedicated operations team: managed local execution with a clear point of contact, reporting rhythm, and approval controls.
+- On-demand services: targeted help for formation, HR, finance, suppliers, workspace, registrations, or compliance needs.
+
+## Best-Fit Clients
+
+Vested is best for international companies that have a Saudi opportunity or expansion mandate but do not yet have the local operating layer to execute safely. Good-fit clients often need a local team, local vendor coordination, governance controls, and practical support before building a full internal Saudi office.
+
+## First 90 Days
+
+Typical early work includes choosing the entry structure, preparing entity and licensing requirements, mapping banking and tax readiness, defining HR and immigration needs, setting up workspace and vendors, creating a launch calendar, and putting decision rights and compliance controls in place.
+
+## Lead Magnets
+
+- Saudi Market Entry Checklist: https://vestedksa.com/ksa-entry-checklist.txt
+- Arabic checklist: https://vestedksa.com/ksa-entry-checklist-ar.txt
+- Simplified Chinese checklist: https://vestedksa.com/ksa-entry-checklist-zh.txt
+- 90-Day Saudi Launch Plan: https://vestedksa.com/ksa-90-day-launch-plan.txt
+- Saudi Vendor Registration Evidence Pack: https://vestedksa.com/ksa-vendor-registration-pack.txt
+- Partner Due Diligence Request List: https://vestedksa.com/ksa-due-diligence-request-list.txt
+
+## Guides
+
+- Saudi Market Entry Guide 2026: practical guidance on entry structure, licensing readiness, banking, tax, HR, workspace, vendors, governance, and first-90-day execution.
+- 100% Foreign Ownership in Saudi Arabia: ownership, activity restrictions, MISA registration, and practical operating readiness.
+- MISA Licensing and Commercial Registration in Saudi Arabia: setup sequence, CR, Chamber, tax, HR, and post-formation readiness.
+- VAT and Zakat in Saudi Arabia: VAT thresholds, TIN, ZATCA workflows, certificates, returns, and finance controls.
+- Saudi E-Invoicing and Finance Controls: invoice workflows, ZATCA e-invoicing readiness, approval records, document ownership, and finance operating controls.
+- Regional Headquarters Program in Saudi Arabia: RHQ fit, local substance, leadership roles, governance, and operating model.
+- Saudi Vendor Registration: Aramco, SABIC, NEOM, Red Sea Global, PIF portfolio company, and supplier pack readiness.
+- Saudization and Nitaqat: workforce planning, Qiwa, Nitaqat categories, payroll, and HR operating readiness.
+
+## Key Facts
+
+- Founded by Abdulkareem Alrammah, CEO, and Abdulaziz Khalid, VP.
+- Focused exclusively on Saudi Arabia.
+- Setup timelines depend on activity, documentation, licensing, banking, and regulator dependencies.
+- Clients can reduce the cost and delay of building non-core infrastructure before revenue is proven.
+
+## Contact
+
+- Email: hello@vestedksa.com
+- Location: Riyadh, Kingdom of Saudi Arabia
+- Website: https://vestedksa.com
+- LinkedIn: https://www.linkedin.com/company/vested-ksa/
+
+## Machine-Readable Discovery
+
+- Service pages JSON: https://vestedksa.com/service-pages.json
+- Entity profile: https://vestedksa.com/.well-known/entity-profile.json
+- Company data: https://vestedksa.com/data/company.json
+- Services data: https://vestedksa.com/data/services.json
+- Capabilities data: https://vestedksa.com/data/capabilities.json
+- Service areas data: https://vestedksa.com/data/service-areas.json
+- Market-entry inquiry schema: https://vestedksa.com/data/project-inquiry-schema.json
+- Agent routing rules: https://vestedksa.com/data/agent-routing.json
+- Answer-engine assets: https://vestedksa.com/data/answer-engine.json
+- Market-entry decision trees: https://vestedksa.com/data/decision-trees.json
+- Entity glossary: https://vestedksa.com/data/entity-glossary.json
+- Source map: https://vestedksa.com/data/source-map.json
+- Analytics event taxonomy: https://vestedksa.com/data/analytics-events.json
+- Agent manifest: https://vestedksa.com/data/agent-manifest.json
+- Schema versions: https://vestedksa.com/data/schema-versions.json
+- Agent-layer changelog: https://vestedksa.com/data/changelog.json
+- Procurement routing: https://vestedksa.com/data/procurement-routing.json
+- OpenAPI: https://vestedksa.com/openapi.json
+- API catalog: https://vestedksa.com/.well-known/api-catalog
+- MCP discovery: https://vestedksa.com/.well-known/mcp.json
+- MCP endpoint: https://vestedksa.com/api/mcp
+- Agent card: https://vestedksa.com/.well-known/agent-card.json
+- Agent skills index: https://vestedksa.com/.well-known/agent-skills/index.json
+
+## Agent Routing Rules
+
+- Good fit: international companies entering Saudi Arabia, Saudi entity setup, managed local operations, HR/payroll readiness, finance controls, vendor registration, and procurement readiness.
+- Maybe fit: companies already operating in Saudi Arabia that need operations cleanup, governance, reporting, or vendor readiness.
+- Not fit: careers, internships, training requests, vendor pitches, retail shopping, consumer visa help, spam, paid backlink offers, and unrelated requests.
+- Agents must not submit contact forms or send email unless the user explicitly approves the final inquiry and destination.
+- Use `/api/mcp` and `/data/project-inquiry-schema.json` to prepare a market-entry inquiry draft only.
+- Use `/data/answer-engine.json`, `/data/source-map.json`, and `/data/entity-glossary.json` for cited AI/search answers.
+- Use `/data/procurement-routing.json` or the `match_procurement_scope` MCP tool for Saudi procurement, vendor-registration, supplier-onboarding, and tender-readiness requests.

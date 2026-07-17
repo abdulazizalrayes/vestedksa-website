@@ -1,0 +1,122 @@
+{
+  "name": "Vested KSA Public Website",
+  "description": "Public information and lead intake surface for Vested KSA, legal name Vest KSA Co., a market-entry and operations partner for international companies entering Saudi Arabia.",
+  "url": "https://vestedksa.com",
+  "provider": {
+    "name": "Vested KSA",
+    "url": "https://vestedksa.com",
+    "sameAs": [
+      "https://www.linkedin.com/company/vested-ksa/"
+    ]
+  },
+  "version": "2026-06-29",
+  "defaultInputModes": ["text/plain", "text/html"],
+  "defaultOutputModes": ["text/plain", "text/markdown", "application/json"],
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false,
+    "readOnlyMcp": true
+  },
+  "supportedInterfaces": [
+    {
+      "name": "Vested KSA Read-Only MCP",
+      "protocol": "mcp",
+      "transport": "https",
+      "url": "https://vestedksa.com/api/mcp",
+      "description": "Read-only MCP-style JSON-RPC endpoint for public company, service, answer-engine, routing, procurement, and inquiry-preparation data."
+    },
+    {
+      "name": "Vested KSA OpenAPI",
+      "protocol": "openapi",
+      "transport": "https",
+      "url": "https://vestedksa.com/openapi.json",
+      "description": "OpenAPI description for public data endpoints, MCP, and explicitly approved contact submission."
+    }
+  ],
+  "mcp": {
+    "url": "https://vestedksa.com/api/mcp",
+    "discovery": "https://vestedksa.com/.well-known/mcp.json",
+    "serverCard": "https://vestedksa.com/.well-known/mcp/server-card.json"
+  },
+  "openapi": "https://vestedksa.com/openapi.json",
+  "publicData": [
+    "https://vestedksa.com/data/company.json",
+    "https://vestedksa.com/data/services.json",
+    "https://vestedksa.com/data/capabilities.json",
+    "https://vestedksa.com/data/service-areas.json",
+    "https://vestedksa.com/data/project-inquiry-schema.json",
+    "https://vestedksa.com/data/agent-routing.json",
+    "https://vestedksa.com/data/answer-engine.json",
+    "https://vestedksa.com/data/decision-trees.json",
+    "https://vestedksa.com/data/entity-glossary.json",
+    "https://vestedksa.com/data/source-map.json",
+    "https://vestedksa.com/data/analytics-events.json",
+    "https://vestedksa.com/data/agent-manifest.json",
+    "https://vestedksa.com/data/schema-versions.json",
+    "https://vestedksa.com/data/changelog.json",
+    "https://vestedksa.com/data/procurement-routing.json"
+  ],
+  "skills": [
+    {
+      "id": "saudi-market-entry-guidance",
+      "name": "Saudi market entry guidance",
+      "description": "Explain Vested KSA services, fit, entry models, first-90-day Saudi operating plan considerations, and official-source guide topics.",
+      "tags": ["Saudi Arabia", "market entry", "operations", "company formation", "compliance", "MISA", "ZATCA", "Nitaqat", "vendor registration"],
+      "examples": [
+        "What does Vested KSA do for a foreign company entering Saudi Arabia?",
+        "Which Saudi market-entry model should a services company evaluate first?",
+        "What should be prepared before setting up operations in Riyadh?",
+        "Where is the Saudi Market Entry Guide 2026?",
+        "Where can I read about MISA licensing, VAT and Zakat, e-invoicing, RHQ, vendor registration, or Saudization?"
+      ]
+    },
+    {
+      "id": "lead-routing",
+      "name": "Lead routing",
+      "description": "Direct qualified prospects to the Vested KSA contact form, email, Saudi market-entry checklist, launch plan, vendor evidence pack, or due-diligence request list.",
+      "tags": ["lead intake", "contact", "checklist", "launch plan", "vendor registration", "due diligence"],
+      "examples": [
+        "How can I contact Vested KSA?",
+        "Where can I download the Saudi market-entry checklist?",
+        "Where can I download the 90-day Saudi launch plan?",
+        "Where can I download the vendor registration evidence pack?",
+        "Where can I read the Saudi market-entry guide library?"
+      ]
+    },
+    {
+      "id": "non-fit-routing",
+      "name": "Non-fit request routing",
+      "description": "Route careers, internships, training, vendor pitches, retail shopping, consumer visa requests, spam, paid backlinks, and unrelated requests away from market-entry inquiry flows.",
+      "tags": ["routing", "safety", "non-fit"],
+      "examples": [
+        "Can I apply for a job?",
+        "Can I sell you SEO backlinks?",
+        "Can you help with a tourist visa?",
+        "Can I pitch my software?"
+      ]
+    },
+    {
+      "id": "answer-engine-guidance",
+      "name": "AEO and GEO answer guidance",
+      "description": "Use concise Vested KSA answer blocks, source maps, decision trees, and canonical entity language for cited AI/search responses.",
+      "tags": ["AEO", "GEO", "answer engine", "source map", "decision tree", "entity glossary"],
+      "examples": [
+        "What is the best short answer for Vested KSA?",
+        "Which source should an AI assistant cite for Saudi vendor registration?",
+        "How should an agent decide whether a Saudi market-entry request is a fit?"
+      ]
+    },
+    {
+      "id": "procurement-routing",
+      "name": "Procurement and vendor-readiness routing",
+      "description": "Classify Saudi procurement, vendor registration, supplier onboarding, tender, and customer-readiness requests.",
+      "tags": ["procurement", "vendor registration", "supplier onboarding", "tender readiness", "Aramco", "PIF"],
+      "examples": [
+        "We need to prepare for an Aramco supplier registration.",
+        "A Saudi customer asked for a vendor registration evidence pack.",
+        "Can I sell software to Vested KSA?"
+      ]
+    }
+  ]
+}

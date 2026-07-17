@@ -1,1 +1,39 @@
-{"$schema":"https://raw.githubusercontent.com/cloudflare/agent-skills-discovery-rfc/main/schema/v0.2.0.json","version":"0.2.0","skills":[{"name":"vested-company-brief","type":"documentation","description":"Vested KSA overview, services, and contact details for AI agents.","url":"https://vestedksa.com/llms.txt","sha256":""},{"name":"vested-homepage-markdown","type":"documentation","description":"Vested KSA homepage in markdown for content negotiation.","url":"https://vestedksa.com/index.md","sha256":""},{"name":"vested-sitemap","type":"discovery","description":"XML sitemap of all vestedksa.com pages.","url":"https://vestedksa.com/sitemap.xml","sha256":""}]}
+{
+  "name": "Vested KSA Agent Skills",
+  "description": "Machine-readable public skills for understanding Vested KSA services, official-source Saudi market-entry guides, AEO/GEO answer resources, procurement routing, inquiry preparation, and non-fit routing.",
+  "url": "https://vestedksa.com/.well-known/agent-skills/index.json",
+  "skills": [
+    {
+      "id": "saudi-market-entry-guidance",
+      "name": "Saudi Market Entry Guidance",
+      "description": "Use when a user asks how Vested KSA helps international companies enter, establish, or operate in Saudi Arabia, including guide topics such as MISA licensing, VAT/Zakat, RHQ, vendor registration, and Saudization.",
+      "url": "https://vestedksa.com/.well-known/agent-skills/saudi-market-entry-guidance.md",
+      "input_modes": ["text/plain"],
+      "output_modes": ["text/markdown"]
+    },
+    {
+      "id": "vestedksa-read-only-mcp",
+      "name": "Vested KSA Read-Only MCP",
+      "description": "Use the public read-only MCP endpoint for company overview, services, capabilities, service areas, answer-engine assets, procurement routing, public resources, and inquiry preparation.",
+      "url": "https://vestedksa.com/api/mcp",
+      "input_modes": ["application/json"],
+      "output_modes": ["application/json"]
+    },
+    {
+      "id": "vestedksa-answer-engine",
+      "name": "Vested KSA Answer Engine Assets",
+      "description": "Use Vested KSA answer blocks, source maps, decision trees, and entity glossary for cited AI/search answers.",
+      "url": "https://vestedksa.com/data/answer-engine.json",
+      "input_modes": ["text/plain", "application/json"],
+      "output_modes": ["text/markdown", "application/json"]
+    },
+    {
+      "id": "vestedksa-procurement-routing",
+      "name": "Vested KSA Procurement Routing",
+      "description": "Use for Saudi procurement, vendor registration, supplier onboarding, tender readiness, and non-fit vendor-pitch routing.",
+      "url": "https://vestedksa.com/data/procurement-routing.json",
+      "input_modes": ["text/plain", "application/json"],
+      "output_modes": ["text/markdown", "application/json"]
+    }
+  ]
+}

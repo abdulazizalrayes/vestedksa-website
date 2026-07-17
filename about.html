@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Vested | Operations Partner for International Companies in Saudi Arabia</title>
-    <meta name="description" content="Learn about Vested KSA, the trusted operations partner helping international companies establish and grow in Saudi Arabia.">
+    <meta name="description" content="Learn about Vested KSA, the market-entry and operations partner helping international companies establish and operate in Saudi Arabia.">
     <meta name="keywords" content="Vested KSA, Saudi Arabia business, international companies, market entry, operations partner">
 
     <!-- Open Graph Tags -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="About Vested | Operations Partner for International Companies in Saudi Arabia">
-    <meta property="og:description" content="Learn about Vested KSA, the trusted operations partner helping international companies establish and grow in Saudi Arabia.">
+    <meta property="og:description" content="Learn about Vested KSA, the market-entry and operations partner helping international companies establish and operate in Saudi Arabia.">
     <meta property="og:url" content="https://vestedksa.com/about">
     <meta property="og:image" content="https://vestedksa.com/og-image.png">
     <meta property="og:site_name" content="Vested KSA">
@@ -18,7 +18,7 @@
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="About Vested | Operations Partner for International Companies in Saudi Arabia">
-    <meta name="twitter:description" content="Learn about Vested KSA, the trusted operations partner helping international companies establish and grow in Saudi Arabia.">
+    <meta name="twitter:description" content="Learn about Vested KSA, the market-entry and operations partner helping international companies establish and operate in Saudi Arabia.">
     <meta name="twitter:image" content="https://vestedksa.com/og-image.png">
 
     <!-- Canonical Tag -->
@@ -29,20 +29,66 @@
     <meta name="google-site-verification" content="i-LLBKDZ22hMvxi-mo7506okUq1IlniTM73DpDK439Y">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
-    <!-- Google Analytics GA4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7STG2HDV42"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7STG2HDV42');
-    </script>
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+
+    <!-- Analytics bootstrap -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){window.dataLayer.push(arguments);}
+
+      function loadAnalyticsScripts() {
+        if (window.__vestedAnalyticsLoaded) return;
+        window.__vestedAnalyticsLoaded = true;
+
+        const gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-7STG2HDV42';
+        document.head.appendChild(gtagScript);
+
+        gtag('js', new Date());
+        gtag('config', 'G-7STG2HDV42');
+
+        window.dataLayer.push({
+          'gtm.start': Date.now(),
+          event: 'gtm.js'
+        });
+
+        const gtmScript = document.createElement('script');
+        gtmScript.async = true;
+        gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WL2FN4PR';
+        document.head.appendChild(gtmScript);
+
+        ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
+          window.removeEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
+        });
+      }
+
+      function triggerAnalyticsLoad() {
+        loadAnalyticsScripts();
+      }
+
+      const passiveOnceOptions = { passive: true, once: true };
+
+      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
+        window.addEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
+      });
+
+      window.addEventListener('load', () => {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadAnalyticsScripts, { timeout: 2500 });
+        } else {
+          setTimeout(loadAnalyticsScripts, 1500);
+        }
+      }, { once: true });
+    </script>
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -50,13 +96,16 @@
         "@context": "https://schema.org",
         "@type": "AboutPage",
         "name": "About Vested",
-        "description": "Learn about Vested KSA, the trusted operations partner helping international companies establish and grow in Saudi Arabia.",
+        "description": "Learn about Vested KSA, the market-entry and operations partner helping international companies establish and operate in Saudi Arabia.",
         "url": "https://vestedksa.com/about",
         "organization": {
             "@type": "Organization",
+            "@id": "https://vestedksa.com/#organization",
             "name": "Vested KSA",
+            "legalName": "Vest KSA Co.",
+            "alternateName": ["Vested", "Vested Saudi Arabia", "Vest KSA Co."],
             "url": "https://vestedksa.com",
-            "description": "Operations partner for international companies entering Saudi Arabia"
+            "description": "Market-entry and operations partner for international companies entering Saudi Arabia"
         }
     }
     </script>
@@ -713,8 +762,13 @@
     <link rel="alternate" hreflang="x-default" href="https://vestedksa.com/about">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
         <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vestedksa.com"},{"@type":"ListItem","position":2,"name":"About","item":"https://vestedksa.com/about"}]}</script>
+    <script src="/language-switcher.js" defer></script>
     </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL2FN4PR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:#3b82f6;color:#fff;padding:8px 16px;z-index:10000;transition:top 0.3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
     <!-- Navigation -->
     <nav>
@@ -758,7 +812,7 @@
         <div class="mission-vision-container">
             <div class="mission-card fade-in-up">
                 <h3>Our Mission</h3>
-                <p>To be the most trusted operations partner for international companies entering Saudi Arabia.</p>
+                <p>To be the most reliable operations partner for international companies entering Saudi Arabia.</p>
             </div>
             <div class="vision-card fade-in-up">
                 <h3>Our Vision</h3>
@@ -798,7 +852,7 @@
                 <h3>Abdulkareem Alrammah</h3>
                 <p class="leader-title">Founder & CEO</p>
                 <p class="leader-education">BSc in Finance | San Francisco State University</p>
-                <p class="leader-bio">Deep expertise in Saudi business formation, corporate structuring, and cross-border investment. Has guided dozens of international companies through every phase of market entry, from entity setup to full-scale operations, with a hands-on approach grounded in both local knowledge and global standards.</p>
+                <p class="leader-bio">Deep expertise in Saudi business formation, corporate structuring, and cross-border investment. Guides international companies through market-entry planning, entity setup, and operating readiness with a hands-on approach grounded in both local knowledge and global standards.</p>
             </div>
             <div class="leader-card fade-in-up">
                 <h3>Abdulaziz Khalid</h3>
@@ -808,7 +862,7 @@
             </div>
         </div>
         <div class="leadership-stat fade-in-up">
-            Vested has helped 50+ companies establish and grow in Saudi Arabia.
+            Founder-led support for international companies establishing and operating in Saudi Arabia.
         </div>
     </section>
 
@@ -821,8 +875,8 @@
                 <div class="timeline-item fade-in-up">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h3>2010</h3>
-                        <p>Vested is founded in Riyadh with a clear mission: to become the most reliable operations partner for international companies entering Saudi Arabia.</p>
+                        <h3>Founder-led model</h3>
+                        <p>Vested KSA is built in Riyadh with a clear mission: to become the most reliable operations partner for international companies entering Saudi Arabia.</p>
                     </div>
                 </div>
                 <div class="timeline-item fade-in-up">
@@ -835,8 +889,8 @@
                 <div class="timeline-item fade-in-up">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h3>50+ Companies Served</h3>
-                        <p>Reached a milestone of over 50 international companies successfully established and operating in Saudi Arabia across multiple sectors.</p>
+                        <h3>Reference-grade guidance</h3>
+                        <p>Expanded public resources for international companies evaluating Saudi ownership, MISA licensing, VAT, Zakat, RHQ, vendor registration, and Saudization.</p>
                     </div>
                 </div>
             </div>
@@ -867,7 +921,7 @@
                     <li><a href="/about">About</a></li>
                     <li><a href="/contact">Contact</a></li>
                     <li><a href="/faq">FAQ</a></li>
-                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/insights">Blog</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -875,14 +929,14 @@
                 <ul>
                     <li><a href="/privacy">Privacy Policy</a></li>
                     <li><a href="/terms">Terms of Service</a></li>
-                    <li><a href="/cookies">Cookie Policy</a></li>
+                    <li><a href="/privacy">Cookie Policy</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h4>Connect</h4>
                 <ul>
-                    <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-                    <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+                    <li><a href="https://www.linkedin.com/company/vested-ksa/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://twitter.com/vestedksa" target="_blank">Twitter</a></li>
                     <li><a href="mailto:hello@vestedksa.com">Email</a></li>
                 </ul>
             </div>
@@ -892,14 +946,14 @@
             <div class="footer-links">
                 <a href="/privacy">Privacy</a>
                 <a href="/terms">Terms</a>
-                <a href="/cookies">Cookies</a>
+                <a href="/privacy">Cookies</a>
             </div>
         </div>
     </footer>
 
     <!-- Cookie Consent Banner -->
     <div class="cookie-consent" id="cookieConsent">
-        <span>We use cookies to improve your experience. By continuing, you agree to our <a href="/cookies" style="color: #0071E3;">cookie policy</a>.</span>
+        <span>We use cookies to improve your experience. By continuing, you agree to our <a href="/privacy" style="color: #0071E3;">cookie policy</a>.</span>
         <button onclick="acceptCookies()">Accept</button>
     </div>
 
@@ -916,7 +970,6 @@
             document.getElementById('cookieConsent').classList.remove('active');
         }
 
-        // Fade-in animation on scroll
         function observeElements() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -935,15 +988,13 @@
             });
         }
 
-        // Initialize
         window.addEventListener('load', () => {
             showCookieConsent();
-            observeElements();
-        });
-
-        // Ensure animations run on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            observeElements();
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(observeElements, { timeout: 1500 });
+            } else {
+                setTimeout(observeElements, 600);
+            }
         });
     </script>
 </body>

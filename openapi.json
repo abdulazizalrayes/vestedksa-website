@@ -1,0 +1,190 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Vested KSA Public Agent API",
+    "version": "2.0.0",
+    "description": "Public read-only data, answer-engine resources, analytics taxonomy, schema versioning, MCP, and approved contact documentation for Vested KSA. Vested KSA is a Saudi market-entry and operations partner for international companies."
+  },
+  "servers": [
+    {
+      "url": "https://vestedksa.com"
+    }
+  ],
+  "paths": {
+    "/data/company.json": {
+      "get": {
+        "summary": "Get company overview data",
+        "operationId": "getCompanyData",
+        "responses": {"200": {"description": "Company overview JSON"}}
+      }
+    },
+    "/data/services.json": {
+      "get": {
+        "summary": "List Vested KSA services",
+        "operationId": "listServiceData",
+        "responses": {"200": {"description": "Services JSON"}}
+      }
+    },
+    "/data/capabilities.json": {
+      "get": {
+        "summary": "List Vested KSA capabilities",
+        "operationId": "listCapabilityData",
+        "responses": {"200": {"description": "Capabilities JSON"}}
+      }
+    },
+    "/data/service-areas.json": {
+      "get": {
+        "summary": "List service areas and delivery model",
+        "operationId": "listServiceAreasData",
+        "responses": {"200": {"description": "Service areas JSON"}}
+      }
+    },
+    "/data/project-inquiry-schema.json": {
+      "get": {
+        "summary": "Get inquiry preparation schema",
+        "operationId": "getProjectInquirySchema",
+        "responses": {"200": {"description": "Market-entry inquiry preparation schema"}}
+      }
+    },
+    "/data/agent-routing.json": {
+      "get": {
+        "summary": "Get agent routing rules",
+        "operationId": "getAgentRoutingRules",
+        "responses": {"200": {"description": "Routing rules for fit and non-fit requests"}}
+      }
+    },
+    "/data/answer-engine.json": {
+      "get": {
+        "summary": "Get AEO/GEO answer-engine assets",
+        "operationId": "getAnswerEngineAssets",
+        "responses": {"200": {"description": "Concise answer blocks, citation policy, and answer-engine guidance"}}
+      }
+    },
+    "/data/decision-trees.json": {
+      "get": {
+        "summary": "Get market-entry decision trees",
+        "operationId": "getDecisionTrees",
+        "responses": {"200": {"description": "Structured Saudi market-entry and inquiry-fit decision trees"}}
+      }
+    },
+    "/data/entity-glossary.json": {
+      "get": {
+        "summary": "Get canonical entity glossary",
+        "operationId": "getEntityGlossary",
+        "responses": {"200": {"description": "Canonical entity and service-category language for Vested KSA"}}
+      }
+    },
+    "/data/source-map.json": {
+      "get": {
+        "summary": "Get source map for high-intent buyer questions",
+        "operationId": "getSourceMap",
+        "responses": {"200": {"description": "Topic-to-source mapping for cited search and AI answers"}}
+      }
+    },
+    "/data/analytics-events.json": {
+      "get": {
+        "summary": "Get privacy-safe analytics event taxonomy",
+        "operationId": "getAnalyticsEvents",
+        "responses": {"200": {"description": "Event names, funnel stages, privacy rules, and monthly analytics questions"}}
+      }
+    },
+    "/data/agent-manifest.json": {
+      "get": {
+        "summary": "Get Vested KSA public agent manifest",
+        "operationId": "getAgentManifest",
+        "responses": {"200": {"description": "Resource groups, versioning, discovery order, MCP rules, and safety guidance"}}
+      }
+    },
+    "/data/schema-versions.json": {
+      "get": {
+        "summary": "Get schema version registry",
+        "operationId": "getSchemaVersions",
+        "responses": {"200": {"description": "Schema versions and stability status for public data resources"}}
+      }
+    },
+    "/data/changelog.json": {
+      "get": {
+        "summary": "Get public agent-layer changelog",
+        "operationId": "getAgentLayerChangelog",
+        "responses": {"200": {"description": "Public changelog for agent/API layer changes"}}
+      }
+    },
+    "/data/procurement-routing.json": {
+      "get": {
+        "summary": "Get procurement and vendor-readiness routing rules",
+        "operationId": "getProcurementRouting",
+        "responses": {"200": {"description": "Procurement, vendor-registration, supplier-onboarding, and non-fit vendor-pitch routing rules"}}
+      }
+    },
+    "/api/mcp": {
+      "get": {
+        "summary": "Get MCP server metadata",
+        "operationId": "getMcpMetadata",
+        "responses": {"200": {"description": "MCP endpoint metadata"}}
+      },
+      "post": {
+        "summary": "Call read-only MCP JSON-RPC tools",
+        "operationId": "callMcp",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "jsonrpc": {"type": "string", "const": "2.0"},
+                  "id": {},
+                  "method": {"type": "string"},
+                  "params": {"type": "object"}
+                },
+                "required": ["jsonrpc", "method"]
+              }
+            }
+          }
+        },
+        "responses": {"200": {"description": "MCP JSON-RPC response"}}
+      }
+    },
+    "/api/contact": {
+      "post": {
+        "summary": "Submit contact inquiry after explicit user approval",
+        "description": "This endpoint sends an inquiry to Vested KSA. Agents must not call it unless the user explicitly approves the final inquiry and destination. Do not route careers, internships, vendor pitches, retail shopping, spam, or unrelated requests to this endpoint.",
+        "operationId": "submitApprovedContactInquiry",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "email", "company", "country", "service", "message"],
+                "properties": {
+                  "name": {"type": "string", "maxLength": 120},
+                  "email": {"type": "string", "format": "email", "maxLength": 254},
+                  "company": {"type": "string", "maxLength": 160},
+                  "country": {"type": "string", "maxLength": 120},
+                  "service": {"type": "string", "maxLength": 80},
+                  "message": {"type": "string", "maxLength": 4000},
+                  "phone": {"type": "string", "maxLength": 20},
+                  "pageUrl": {"type": "string", "maxLength": 500},
+                  "referrer": {"type": "string", "maxLength": 500}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "Inquiry accepted"},
+          "400": {"description": "Invalid or incomplete request"},
+          "403": {"description": "Origin not allowed"},
+          "429": {"description": "Rate limit exceeded"}
+        }
+      }
+    }
+  },
+  "x-agent-rules": [
+    "Use public data and MCP tools for understanding and inquiry preparation.",
+    "Do not submit /api/contact without explicit user approval.",
+    "Do not include sensitive personal data or confidential documents in initial inquiry preparation.",
+    "Route careers, internships, vendor sales, training, retail, spam, and unrelated requests away from project inquiry flows."
+  ]
+}

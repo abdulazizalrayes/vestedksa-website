@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "2026-06-29",
+  "name": "Vested KSA Public API Catalog",
+  "description": "Public read-only data, discovery, answer-engine, analytics, versioning, and agent endpoints for Vested KSA.",
+  "baseUrl": "https://vestedksa.com",
+  "openapi": "https://vestedksa.com/openapi.json",
+  "auth": "https://vestedksa.com/auth.md",
+  "mcp": {
+    "endpoint": "https://vestedksa.com/api/mcp",
+    "discovery": "https://vestedksa.com/.well-known/mcp.json",
+    "serverCard": "https://vestedksa.com/.well-known/mcp/server-card.json"
+  },
+  "publicData": [
+    "https://vestedksa.com/data/company.json",
+    "https://vestedksa.com/data/services.json",
+    "https://vestedksa.com/data/capabilities.json",
+    "https://vestedksa.com/data/service-areas.json",
+    "https://vestedksa.com/data/project-inquiry-schema.json",
+    "https://vestedksa.com/data/agent-routing.json",
+    "https://vestedksa.com/data/answer-engine.json",
+    "https://vestedksa.com/data/decision-trees.json",
+    "https://vestedksa.com/data/entity-glossary.json",
+    "https://vestedksa.com/data/source-map.json",
+    "https://vestedksa.com/data/analytics-events.json",
+    "https://vestedksa.com/data/agent-manifest.json",
+    "https://vestedksa.com/data/schema-versions.json",
+    "https://vestedksa.com/data/changelog.json",
+    "https://vestedksa.com/data/procurement-routing.json"
+  ],
+  "linkset": [
+    {
+      "anchor": "https://vestedksa.com/",
+      "alternate": [
+        {
+          "href": "https://vestedksa.com/llms.txt",
+          "type": "text/markdown"
+        },
+        {
+          "href": "https://vestedksa.com/llms-full.md",
+          "type": "text/markdown"
+        }
+      ],
+      "service-desc": [
+        {
+          "href": "https://vestedksa.com/openapi.json",
+          "type": "application/vnd.oai.openapi+json"
+        },
+        {
+          "href": "https://vestedksa.com/.well-known/api-catalog",
+          "type": "application/linkset+json"
+        }
+      ],
+      "mcp-discovery": [
+        {
+          "href": "https://vestedksa.com/.well-known/mcp.json",
+          "type": "application/json"
+        }
+      ],
+      "agent-card": [
+        {
+          "href": "https://vestedksa.com/.well-known/agent-card.json",
+          "type": "application/json"
+        }
+      ],
+      "agent-skills": [
+        {
+          "href": "https://vestedksa.com/.well-known/agent-skills/index.json",
+          "type": "application/json"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Public data endpoints are read-only.",
+    "The contact endpoint can submit information only when a user explicitly approves.",
+    "Agents should not route careers, internships, vendor pitches, retail shopping, spam, or unrelated requests to project inquiry flows."
+  ]
+}

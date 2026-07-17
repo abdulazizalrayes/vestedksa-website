@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "2026-06-20",
+  "company": "Vested KSA",
+  "services": [
+    {
+      "id": "market-entry-planning",
+      "name": "Saudi market-entry planning",
+      "summary": "Entry model, activity fit, launch path, dependency map, and first-90-day operating plan.",
+      "buyerIntent": [
+        "We are evaluating Saudi Arabia",
+        "We need to understand the right entry path",
+        "We need a launch plan before committing spend"
+      ],
+      "outputs": [
+        "Entry model recommendation",
+        "Regulatory dependency map",
+        "First-90-day plan",
+        "Risk and decision log"
+      ],
+      "url": "https://vestedksa.com/"
+    },
+    {
+      "id": "company-formation-setup",
+      "name": "Company formation and setup",
+      "summary": "MISA path, Commercial Registration readiness, Chamber, tax, HR, national address, and post-formation operating setup.",
+      "buyerIntent": [
+        "We need to form a Saudi entity",
+        "We need help sequencing licensing and registrations"
+      ],
+      "outputs": [
+        "Formation workstream tracker",
+        "Document readiness checklist",
+        "Government follow-up rhythm",
+        "Post-formation readiness plan"
+      ],
+      "url": "https://vestedksa.com/services"
+    },
+    {
+      "id": "managed-local-operations",
+      "name": "Managed local operations",
+      "summary": "Local execution layer for administration, suppliers, facilities, records, approvals, and reporting.",
+      "buyerIntent": [
+        "We need a local operating layer",
+        "We need one accountable Saudi follow-through owner"
+      ],
+      "outputs": [
+        "Operating cadence",
+        "Vendor coordination",
+        "Document control",
+        "Weekly or monthly reporting"
+      ],
+      "url": "https://vestedksa.com/services"
+    },
+    {
+      "id": "hr-payroll-saudization",
+      "name": "HR, payroll, and Saudization readiness",
+      "summary": "Hiring readiness, contracts, payroll, GOSI, Qiwa, Saudization/Nitaqat planning, and workforce records.",
+      "buyerIntent": [
+        "We need to hire in Saudi Arabia",
+        "We need payroll and workforce compliance readiness"
+      ],
+      "outputs": [
+        "HR readiness checklist",
+        "Payroll and employee record workflow",
+        "Saudization planning inputs",
+        "Hiring dependency map"
+      ],
+      "url": "https://vestedksa.com/services"
+    },
+    {
+      "id": "finance-vat-zakat-controls",
+      "name": "Finance, VAT, Zakat, and reporting controls",
+      "summary": "Finance operations, VAT/Zakat readiness, e-invoicing controls, approval workflows, and headquarters reporting.",
+      "buyerIntent": [
+        "We need finance controls before transacting",
+        "We need local reporting headquarters can review"
+      ],
+      "outputs": [
+        "Finance control map",
+        "Invoice and approval workflow",
+        "Tax calendar ownership",
+        "Document archive structure"
+      ],
+      "url": "https://vestedksa.com/services"
+    },
+    {
+      "id": "legal-compliance-coordination",
+      "name": "Legal and compliance coordination",
+      "summary": "Governance coordination, regulatory follow-up, contract process support, policies, and due-diligence readiness.",
+      "buyerIntent": [
+        "We need compliance and governance visibility",
+        "We need due-diligence materials and operating controls"
+      ],
+      "outputs": [
+        "Governance checklist",
+        "Policy and control map",
+        "Due-diligence request support",
+        "Escalation and approval process"
+      ],
+      "url": "https://vestedksa.com/ethics"
+    },
+    {
+      "id": "workspace-facilities",
+      "name": "Workspace and facilities setup",
+      "summary": "Office search, fit-out coordination, IT, admin support, transport, accommodation, and workplace readiness.",
+      "buyerIntent": [
+        "We need a Saudi physical presence",
+        "We need workspace and facilities support before landing"
+      ],
+      "outputs": [
+        "Workspace readiness plan",
+        "Supplier coordination",
+        "Facilities setup checklist",
+        "Operating handover notes"
+      ],
+      "url": "https://vestedksa.com/services"
+    },
+    {
+      "id": "vendor-registration-procurement-readiness",
+      "name": "Vendor registration and procurement readiness",
+      "summary": "Supplier evidence packs, buyer portal readiness, category mapping, policy records, and procurement onboarding support.",
+      "buyerIntent": [
+        "We need to register with Saudi customers",
+        "We need a vendor evidence pack",
+        "We need tender/procurement readiness"
+      ],
+      "outputs": [
+        "Vendor evidence pack",
+        "Portal ownership process",
+        "Capability profile inputs",
+        "Document update calendar"
+      ],
+      "url": "https://vestedksa.com/insights/saudi-vendor-registration-aramco-pif"
+    }
+  ]
+}

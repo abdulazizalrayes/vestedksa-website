@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "2026-06-20",
+  "name": "Vested KSA",
+  "legalName": "Vest KSA Co.",
+  "alternateNames": [
+    "Vested",
+    "Vested Saudi Arabia",
+    "Vest KSA Co."
+  ],
+  "url": "https://vestedksa.com",
+  "description": "Vested KSA is a Saudi market-entry and operations partner for international companies entering, establishing, hiring, registering vendors, and operating locally in Saudi Arabia.",
+  "positioning": "Saudi market-entry and local operations partner for international companies.",
+  "primaryLanguage": "en",
+  "availableLanguages": [
+    "en",
+    "ar",
+    "zh-Hans"
+  ],
+  "operatingBase": {
+    "city": "Riyadh",
+    "country": "Saudi Arabia",
+    "countryCode": "SA",
+    "note": "No public coordinates or branch-office details are asserted."
+  },
+  "serviceAreaSummary": "Saudi Arabia, with remote coordination for international headquarters and leadership teams.",
+  "bestFitClients": [
+    "International companies evaluating Saudi market entry",
+    "Foreign founders and regional leaders preparing a Saudi launch",
+    "Companies that need Saudi operations before building a full in-house team",
+    "Companies preparing for Saudi customer, supplier, tender, or procurement portal readiness"
+  ],
+  "notAsserted": [
+    "CR number",
+    "VAT number",
+    "license number",
+    "public client logos",
+    "public testimonials",
+    "public case studies",
+    "unverified coordinates",
+    "unverified certifications"
+  ],
+  "contact": {
+    "email": "hello@vestedksa.com",
+    "contactPage": "https://vestedksa.com/contact"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/vested-ksa/"
+  ],
+  "publicResources": {
+    "homepage": "https://vestedksa.com/",
+    "services": "https://vestedksa.com/services",
+    "insights": "https://vestedksa.com/insights",
+    "ethics": "https://vestedksa.com/ethics",
+    "faq": "https://vestedksa.com/faq",
+    "llms": "https://vestedksa.com/llms.txt",
+    "llmsFull": "https://vestedksa.com/llms-full.txt",
+    "openapi": "https://vestedksa.com/openapi.json",
+    "mcp": "https://vestedksa.com/api/mcp"
+  }
+}

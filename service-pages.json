@@ -1,0 +1,152 @@
+{
+  "name": "Vested KSA",
+  "legalName": "Vest KSA Co.",
+  "alternateNames": ["Vested", "Vested Saudi Arabia", "Vest KSA Co."],
+  "url": "https://vestedksa.com",
+  "sameAs": [
+    "https://www.linkedin.com/company/vested-ksa/"
+  ],
+  "descriptor": "Market-entry and operations partner in Saudi Arabia for international companies.",
+  "primaryLanguage": "en",
+  "availableLanguages": [
+    {
+      "code": "en",
+      "name": "English",
+      "url": "https://vestedksa.com/"
+    },
+    {
+      "code": "ar",
+      "name": "Arabic",
+      "url": "https://vestedksa.com/ar"
+    },
+    {
+      "code": "zh-Hans",
+      "name": "Simplified Chinese",
+      "url": "https://vestedksa.com/zh"
+    }
+  ],
+  "audience": [
+    "International companies entering Saudi Arabia",
+    "Foreign founders and regional leaders evaluating Saudi market entry",
+    "Companies needing managed local operations before building a full in-house team"
+  ],
+  "services": [
+    {
+      "name": "Saudi market entry planning",
+      "url": "https://vestedksa.com/",
+      "description": "Entry structure, launch model, first-90-day operating plan, and readiness checklist."
+    },
+    {
+      "name": "Company formation and setup",
+      "url": "https://vestedksa.com/services",
+      "description": "MISA licensing, Commercial Registration, Chamber of Commerce, entity setup, and post-formation compliance readiness."
+    },
+    {
+      "name": "Operational outsourcing",
+      "url": "https://vestedksa.com/services",
+      "description": "Administrative operations, procurement, vendor coordination, facilities, registrations, logistics, and local execution management."
+    },
+    {
+      "name": "People and HR",
+      "url": "https://vestedksa.com/services",
+      "description": "Recruitment coordination, payroll, employment contracts, Saudization readiness, visas, GOSI, and employee onboarding support."
+    },
+    {
+      "name": "Finance and compliance",
+      "url": "https://vestedksa.com/services",
+      "description": "VAT, Zakat, bookkeeping, financial reporting, audit preparation, payment controls, and SOCPA-aligned workflows."
+    },
+    {
+      "name": "Workspace and supplier readiness",
+      "url": "https://vestedksa.com/services",
+      "description": "Office search, fit-out coordination, IT setup, transportation, accommodation, vendor onboarding, and procurement controls."
+    }
+  ],
+  "leadMagnets": [
+    {
+      "name": "Saudi Market Entry Checklist",
+      "language": "en",
+      "url": "https://vestedksa.com/ksa-entry-checklist.txt"
+    },
+    {
+      "name": "90-Day Saudi Launch Plan",
+      "language": "en",
+      "url": "https://vestedksa.com/ksa-90-day-launch-plan.txt"
+    },
+    {
+      "name": "Saudi Vendor Registration Evidence Pack",
+      "language": "en",
+      "url": "https://vestedksa.com/ksa-vendor-registration-pack.txt"
+    },
+    {
+      "name": "Partner Due Diligence Request List",
+      "language": "en",
+      "url": "https://vestedksa.com/ksa-due-diligence-request-list.txt"
+    },
+    {
+      "name": "قائمة دخول السوق السعودي",
+      "language": "ar",
+      "url": "https://vestedksa.com/ksa-entry-checklist-ar.txt"
+    },
+    {
+      "name": "沙特市场进入清单",
+      "language": "zh-Hans",
+      "url": "https://vestedksa.com/ksa-entry-checklist-zh.txt"
+    }
+  ],
+  "guides": [
+    {
+      "name": "Saudi Market Entry Guide 2026",
+      "language": "en",
+      "url": "https://vestedksa.com/insights/ksa-market-entry-guide-2026",
+      "description": "Practical guidance on Saudi entry structure, licensing readiness, banking, tax, HR, workspace, vendors, governance, and first-90-day execution."
+    },
+    {
+      "name": "100% Foreign Ownership in Saudi Arabia",
+      "language": "en",
+      "url": "https://vestedksa.com/insights/foreign-ownership-saudi-arabia",
+      "description": "Ownership, activity restrictions, MISA registration, and practical operating readiness for foreign companies."
+    },
+    {
+      "name": "MISA Licensing and Commercial Registration in Saudi Arabia",
+      "language": "en",
+      "url": "https://vestedksa.com/insights/misa-licensing-commercial-registration-saudi-arabia",
+      "description": "Setup sequence, Commercial Registration, Chamber, tax, HR, and post-formation operating readiness."
+    },
+    {
+      "name": "VAT and Zakat in Saudi Arabia",
+      "language": "en",
+      "url": "https://vestedksa.com/insights/vat-zakat-saudi-arabia",
+      "description": "VAT thresholds, TIN, ZATCA workflows, certificates, returns, and finance controls."
+    },
+    {
+      "name": "Saudi E-Invoicing and Finance Controls",
+      "language": "en",
+      "url": "https://vestedksa.com/insights/saudi-e-invoicing-operating-controls",
+      "description": "Invoice workflows, ZATCA e-invoicing readiness, approval records, document ownership, and finance operating controls."
+    },
+    {
+      "name": "Regional Headquarters Program in Saudi Arabia",
+      "language": "en",
+      "url": "https://vestedksa.com/insights/regional-headquarters-rhq-saudi-arabia",
+      "description": "RHQ fit, local substance, leadership roles, governance, and operating model for multinational companies."
+    },
+    {
+      "name": "Saudi Vendor Registration: Aramco, SABIC, NEOM and PIF Companies",
+      "language": "en",
+      "url": "https://vestedksa.com/insights/saudi-vendor-registration-aramco-pif",
+      "description": "Supplier profile, ownership documents, compliance evidence, portal access, and buyer-specific readiness."
+    },
+    {
+      "name": "Saudization and Nitaqat for International Companies",
+      "language": "en",
+      "url": "https://vestedksa.com/insights/saudization-nitaqat-hr-saudi-arabia",
+      "description": "Workforce planning, Qiwa, Nitaqat categories, payroll, and HR operating readiness."
+    }
+  ],
+  "contact": {
+    "email": "hello@vestedksa.com",
+    "url": "https://vestedksa.com/contact",
+    "location": "Riyadh, Saudi Arabia"
+  }
+}

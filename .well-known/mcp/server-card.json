@@ -1,1 +1,49 @@
-{"$schema":"https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/schema/server-card.json","serverInfo":{"name":"vestedksa-website","version":"1.0.0","title":"Vested KSA","description":"Operations partner in Saudi Arabia. Sets up, runs, and manages non-core business functions.","homepage":"https://vestedksa.com","vendor":{"name":"Vested KSA","url":"https://vestedksa.com"}},"transport":{"type":"webmcp","url":"https://vestedksa.com/"},"capabilities":{"tools":{"listChanged":false},"resources":{"subscribe":false,"listChanged":false}},"documentation":{"service-doc":"https://vestedksa.com/llms.txt","agent-skills":"https://vestedksa.com/.well-known/agent-skills/index.json"}}
+{
+  "schemaVersion": "2026-06-29",
+  "id": "vestedksa-public",
+  "name": "Vested KSA Public Read-Only MCP",
+  "description": "Provides read-only Vested KSA overview, services, capabilities, service areas, AEO/GEO answer assets, decision trees, routing rules, procurement routing, public resources, and market-entry inquiry preparation.",
+  "url": "https://vestedksa.com/api/mcp",
+  "homepage": "https://vestedksa.com",
+  "readOnly": true,
+  "auth": {
+    "type": "none",
+    "documentation": "https://vestedksa.com/auth.md"
+  },
+  "tools": [
+    "get_company_overview",
+    "list_services",
+    "match_project_scope",
+    "prepare_project_inquiry",
+    "list_service_areas",
+    "read_public_resource",
+    "get_answer_engine_assets",
+    "get_market_entry_decision_trees",
+    "get_entity_glossary",
+    "get_agent_manifest",
+    "match_procurement_scope"
+  ],
+  "resources": [
+    "company",
+    "services",
+    "capabilities",
+    "service-areas",
+    "project-inquiry-schema",
+    "agent-routing",
+    "answer-engine",
+    "decision-trees",
+    "entity-glossary",
+    "source-map",
+    "analytics-events",
+    "agent-manifest",
+    "schema-versions",
+    "changelog",
+    "procurement-routing"
+  ],
+  "safety": [
+    "Does not submit forms or contact Vested KSA.",
+    "prepare_project_inquiry returns a draft inquiry package only.",
+    "Submission requires explicit user approval through a separate contact channel.",
+    "Careers, vendors, internships, training, spam, retail shopping, and unrelated requests are routed away from market-entry inquiry forms."
+  ]
+}

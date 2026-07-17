@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "2026-06-29",
+  "resourceType": "agent-manifest",
+  "company": "Vested KSA",
+  "domain": "vestedksa.com",
+  "apiLayerVersion": "2.0.0",
+  "status": "public-read-only",
+  "compatibility": {
+    "v1ResourcesRemainAvailable": true,
+    "breakingChanges": false,
+    "preferredDiscoveryOrder": [
+      "/llms.txt",
+      "/.well-known/agent-card.json",
+      "/.well-known/mcp.json",
+      "/data/agent-manifest.json",
+      "/openapi.json"
+    ]
+  },
+  "resourceGroups": [
+    {
+      "id": "company-foundation",
+      "resources": [
+        "/data/company.json",
+        "/data/services.json",
+        "/data/capabilities.json",
+        "/data/service-areas.json"
+      ]
+    },
+    {
+      "id": "answer-engine",
+      "resources": [
+        "/data/answer-engine.json",
+        "/data/decision-trees.json",
+        "/data/entity-glossary.json",
+        "/data/source-map.json"
+      ]
+    },
+    {
+      "id": "routing-and-inquiry",
+      "resources": [
+        "/data/agent-routing.json",
+        "/data/procurement-routing.json",
+        "/data/project-inquiry-schema.json"
+      ]
+    },
+    {
+      "id": "operations-and-analytics",
+      "resources": [
+        "/data/analytics-events.json",
+        "/docs/advanced-analytics-playbook.md"
+      ]
+    },
+    {
+      "id": "versioning",
+      "resources": [
+        "/data/schema-versions.json",
+        "/data/changelog.json"
+      ]
+    }
+  ],
+  "mcp": {
+    "endpoint": "https://vestedksa.com/api/mcp",
+    "readOnly": true,
+    "submissionAllowed": false,
+    "approvalRequiredForContact": true
+  },
+  "safety": [
+    "Agents must not submit forms, send email, or contact Vested KSA without explicit user approval.",
+    "Agents must not route careers, internships, vendor sales, retail shopping, consumer visa, spam, paid-link, or unrelated requests into project inquiry flows.",
+    "Agents must not invent missing business facts, public proof, coordinates, legal identifiers, certifications, or client references."
+  ]
+}
