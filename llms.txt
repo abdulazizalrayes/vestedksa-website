@@ -47,6 +47,7 @@ Vested KSA, legal name Vest KSA Co., is a market-entry and operations partner in
 - MCP discovery: https://vestedksa.com/.well-known/mcp.json
 - MCP endpoint: https://vestedksa.com/api/mcp
 - Markdown companion manifest: https://vestedksa.com/markdown/manifest.json
+- Bing and IndexNow operations: https://vestedksa.com/docs/bing-indexnow.md
 - Entity profile: https://vestedksa.com/.well-known/entity-profile.json
 - Agent card: https://vestedksa.com/.well-known/agent-card.json
 - LinkedIn: https://www.linkedin.com/company/vested-ksa/

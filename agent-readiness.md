@@ -39,6 +39,7 @@ Discovery:
 - `/openapi.json`
 - `/auth.md`
 - `/docs/advanced-analytics-playbook.md`
+- `/docs/bing-indexnow.md`
 
 MCP/API:
 
@@ -131,6 +132,7 @@ Suggested checks:
 - GA4 referrals containing AI tools or assistant browsers.
 - Search Console pages for `/llms.txt`, `/openapi.json`, `/data/`, and guide URLs.
 - `/docs/advanced-analytics-playbook.md` for the monthly operating process.
+- `/docs/bing-indexnow.md` for Bing Webmaster Tools and IndexNow checks.
 
 ## Testing Commands
 

@@ -5,6 +5,8 @@
   "scripts": {
     "generate:markdown": "node scripts/generate-markdown-companions.mjs",
     "check:markdown": "node scripts/generate-markdown-companions.mjs --check",
+    "indexnow:dry-run": "node scripts/submit-indexnow.mjs --dry-run",
+    "indexnow:submit": "node scripts/submit-indexnow.mjs",
     "validate:markdown-layer": "node scripts/validate-markdown-layer.mjs",
     "validate:agent-readiness": "node scripts/validate-agent-readiness.js"
   },

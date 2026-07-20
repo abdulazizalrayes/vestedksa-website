@@ -190,6 +190,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://vestedksa.com/docs/bing-indexnow.md</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://vestedksa.com/openapi.json</loc>
     <lastmod>2026-06-29</lastmod>
     <changefreq>monthly</changefreq>

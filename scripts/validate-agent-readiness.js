@@ -34,6 +34,7 @@ const requiredFiles = [
   "openapi.json",
   "auth.md",
   "docs/advanced-analytics-playbook.md",
+  "docs/bing-indexnow.md",
   "docs/markdown-for-agents.md",
   "markdown/manifest.json",
   "middleware.ts",
@@ -43,6 +44,7 @@ const requiredFiles = [
   "scripts/validate-markdown-layer.mjs",
   "robots.txt",
   "sitemap.xml",
+  "29b92482-dc1f-4e7d-8184-cf3de5f9937e.txt",
   "vercel.json",
   "api/mcp.js",
 ];
@@ -120,6 +122,25 @@ const robots = read("robots.txt");
 });
 ok("robots includes crawler and private/contact guidance");
 
+const indexNowKeyFile = "29b92482-dc1f-4e7d-8184-cf3de5f9937e.txt";
+const indexNowKey = read(indexNowKeyFile).trim();
+if (indexNowKeyFile !== `${indexNowKey}.txt`) {
+  fail("IndexNow key file name must match the key value");
+}
+if (!/^[A-Za-z0-9-]{8,128}$/.test(indexNowKey)) {
+  fail("IndexNow key must be 8-128 characters and contain only letters, numbers, or dashes");
+}
+const bingIndexNowDoc = read("docs/bing-indexnow.md");
+[
+  "https://vestedksa.com/sitemap.xml",
+  `https://vestedksa.com/${indexNowKeyFile}`,
+  "npm run indexnow:submit",
+  "Bing Webmaster Tools",
+].forEach((token) => {
+  if (!bingIndexNowDoc.includes(token)) fail(`docs/bing-indexnow.md missing ${token}`);
+});
+ok("IndexNow key and Bing operations documentation are present");
+
 const contactApi = read("api/contact.js");
 if (!contactApi.includes("X-Robots-Tag") || !contactApi.includes("noindex")) {
   fail("api/contact.js missing X-Robots-Tag noindex guidance");
@@ -138,6 +159,7 @@ const llms = read("llms.txt");
   "/openapi.json",
   "/api/mcp",
   "/markdown/manifest.json",
+  "/docs/bing-indexnow.md",
   "Agents must not submit contact forms",
 ].forEach((token) => {
   if (!llms.includes(token)) fail(`llms.txt missing ${token}`);

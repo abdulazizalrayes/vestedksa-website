@@ -33,19 +33,25 @@ Supporting events:
    - Map each query to `/data/source-map.json`.
    - Improve the matching guide, answer block, or structured resource.
 
-2. GA4
+2. Bing Webmaster Tools and IndexNow
+   - Confirm `https://vestedksa.com/sitemap.xml` is submitted in the Vested KSA Bing Webmaster Tools property.
+   - Review IndexNow submission status for recent content updates.
+   - Inspect the homepage, `/services`, `/insights`, and new guide URLs in Bing Webmaster Tools.
+   - Use `/docs/bing-indexnow.md` for the repeatable submit and validation process.
+
+3. GA4
    - Review traffic and leads by country, source, medium, landing page, and service interest.
    - Mark the four core conversion events as key events.
    - Segment traffic from GCC, United States, United Kingdom, China, India, Germany, and France.
    - Review language switch demand before adding more localized content.
 
-3. Vercel Logs
+4. Vercel Logs
    - Filter for `agent_readiness_event`.
    - Filter paths containing `/api/mcp`, `/llms.txt`, `/openapi.json`, `/data/`, and `/.well-known/`.
    - Count MCP tools by `event.tool`.
    - Watch for repeated non-fit traffic such as internships, vendor pitches, paid links, and spam.
 
-4. Content Decisions
+5. Content Decisions
    - Create or improve one answer block per month.
    - Create or improve one guide per month from Search Console demand.
    - Add country or sector pages only after a repeatable signal appears in Search Console, GA4, or approved sales conversations.
@@ -101,6 +107,17 @@ Inspect these URLs monthly:
 - `https://vestedksa.com/data/company.json`
 - `https://vestedksa.com/data/answer-engine.json`
 - `https://vestedksa.com/data/source-map.json`
+
+## Bing And IndexNow Checks
+
+Run after meaningful public content updates:
+
+```bash
+npm run indexnow:dry-run
+npm run indexnow:submit
+```
+
+Then confirm receipt in Bing Webmaster Tools for the Vested KSA property only.
 
 ## Do Not Mix Accounts
 
