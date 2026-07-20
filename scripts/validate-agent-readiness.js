@@ -250,7 +250,7 @@ if (!headers.some((header) => header.source === "/" && header.headers.some((item
 if (!headers.some((header) => header.source === "/" && header.headers.some((item) => item.key === "Link" && item.value.includes("/.well-known/mcp.json")))) {
   fail("vercel.json missing root agent-discovery Link header");
 }
-if (!headers.some((header) => header.source === "/markdown/:path*" && header.headers.some((item) => item.key === "X-Robots-Tag" && item.value === "noindex, follow"))) {
+if (!headers.some((header) => header.source === "/markdown/(.*)\\.md" && header.headers.some((item) => item.key === "X-Robots-Tag" && item.value === "noindex, follow"))) {
   fail("vercel.json missing direct Markdown sidecar noindex header");
 }
 if (!read("middleware.ts").includes("Accept") && !read("middleware.ts").includes("acceptsMarkdown")) {

@@ -71,7 +71,7 @@ function validateCoverageAndSidecars() {
 
 function validateHeadersConfig() {
   const vercel = JSON.parse(read("vercel.json"));
-  const markdownHeader = vercel.headers.find((item) => item.source === "/markdown/:path*");
+  const markdownHeader = vercel.headers.find((item) => item.source === "/markdown/(.*)\\.md");
   assert.ok(markdownHeader, "direct markdown sidecar headers missing");
   const headers = Object.fromEntries(markdownHeader.headers.map((item) => [item.key.toLowerCase(), item.value]));
   assert.equal(headers["x-robots-tag"], "noindex, follow");

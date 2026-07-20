@@ -130,7 +130,7 @@
       ]
     },
     {
-      "source": "/markdown/:path*",
+      "source": "/markdown/(.*)\\.md",
       "headers": [
         {
           "key": "Content-Type",
