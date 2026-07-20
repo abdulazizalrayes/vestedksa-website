@@ -107,3 +107,41 @@ The layer uses the existing Vercel project, static files, one lightweight middle
 ## Rollback
 
 Rollback can be done by reverting the Markdown-layer commit and redeploying the previous production commit, or by removing `middleware.ts` from the deployment. Direct sidecars are noindex and safe to leave temporarily during rollback, but removing middleware immediately restores all canonical URL behavior to HTML-only.
+
+## Release Record
+
+- Implemented: 2026-07-20
+- Branch: `codex/vested-markdown-agents-layer`
+- Source commit: `08b647b` (`Add Markdown-for-agents layer`)
+- Production deployment: `dpl_H7JX4MEfdGh3hxosfZ2qgbzZ9ybP`
+- Production alias: `https://vestedksa.com`
+- Vercel project: `project-ivd9v`
+- Cost: free, using the existing Vercel project and no paid provider.
+- Visual impact: none. HTML source hashes for canonical HTML pages were unchanged before deployment.
+
+## Verification Evidence
+
+Pre-deployment checks:
+
+- `npm run validate:markdown-layer` passed for 20 canonical HTML sitemap pages.
+- `npm run validate:agent-readiness` passed.
+- `npm audit` passed with 0 vulnerabilities.
+- `vercel build --prod` completed successfully.
+- Vercel build inventory contained 20 Markdown sidecars and no suffixed duplicate, README, CLAUDE, script, preview, or `node_modules` files.
+
+Production checks after deployment:
+
+- Canonical HTML coverage: 20/20 pages returned HTML for ordinary `text/html` requests.
+- Negotiated Markdown coverage: 20/20 pages returned Markdown for `Accept: text/markdown`.
+- `q=0` fallback: 20/20 pages returned HTML for `Accept: text/markdown;q=0`.
+- Direct sidecars: 20/20 returned `Content-Type: text/markdown; charset=utf-8`.
+- Direct sidecars: 20/20 returned `X-Robots-Tag: noindex, follow`.
+- Multilingual headers: `/ar` returned `Content-Language: ar`; `/zh` returned `Content-Language: zh-Hans`.
+- Total HTML bytes tested: 459,534.
+- Total Markdown bytes tested: 143,740.
+- Aggregate Markdown size reduction: 68.7%.
+- Failures: 0.
+
+## Paperclip Record Status
+
+Cloud Paperclip at `https://ai.eijarat.com/api/health` redirected to Cloudflare Access from the shell, so live Paperclip health, version, model inventory, and issue write access could not be verified without authenticated access. No Paperclip company, issue, agent, run, or workspace was changed. This file is the durable Vested-side release record until an authenticated Paperclip session is available.
