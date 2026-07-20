@@ -14,7 +14,13 @@
 
 ## Owner Policy
 
-The public content policy is the Vested KSA policy already declared in `robots.txt`:
+The owner confirmed this Vested KSA public content policy on 2026-07-20:
+
+```text
+search=yes, ai-input=yes, ai-train=no
+```
+
+The equivalent live HTTP header and crawler guidance are:
 
 ```text
 Content-Signal: ai-train=no, search=yes, ai-input=yes
@@ -112,8 +118,8 @@ Rollback can be done by reverting the Markdown-layer commit and redeploying the 
 
 - Implemented: 2026-07-20
 - Branch: `codex/vested-markdown-agents-layer`
-- Source commit: `08b647b` (`Add Markdown-for-agents layer`)
-- Production deployment: `dpl_H7JX4MEfdGh3hxosfZ2qgbzZ9ybP`
+- Source commits: `08b647b`, `a2d4bab`, `0e1e357`
+- Production deployment: `dpl_D39UvUiKSYw1zJ624tcawY7ZQVTd`
 - Production alias: `https://vestedksa.com`
 - Vercel project: `project-ivd9v`
 - Cost: free, using the existing Vercel project and no paid provider.
@@ -144,4 +150,9 @@ Production checks after deployment:
 
 ## Paperclip Record Status
 
-Cloud Paperclip at `https://ai.eijarat.com/api/health` redirected to Cloudflare Access from the shell, so live Paperclip health, version, model inventory, and issue write access could not be verified without authenticated access. No Paperclip company, issue, agent, run, or workspace was changed. This file is the durable Vested-side release record until an authenticated Paperclip session is available.
+- Verified through the authenticated Vested KSA (`VES`) workspace on 2026-07-20.
+- Paperclip version: `v2026.707.0+1.git.37ce78cba`.
+- OpenCode models visible in the live selector: `opencode/big-pickle`, `opencode/deepseek-v4-flash-free`, `opencode/hy3-free`, `opencode/mimo-v2.5-free`, `opencode/nemotron-3-ultra-free`, and `opencode/north-mini-code-free`.
+- Vested CEO configuration: `opencode/big-pickle` primary with `opencode/deepseek-v4-flash-free` as the cheap-model fallback. No model change was required.
+- Durable Paperclip task: `VES-406` (`Markdown-for-agents production release 2026-07-20`), status `Done`.
+- No non-Vested Paperclip company, issue, agent, run, or workspace was changed.
