@@ -34,6 +34,13 @@ const requiredFiles = [
   "openapi.json",
   "auth.md",
   "docs/advanced-analytics-playbook.md",
+  "docs/markdown-for-agents.md",
+  "markdown/manifest.json",
+  "middleware.ts",
+  "api/markdown.js",
+  "lib/markdown-negotiation.mjs",
+  "scripts/generate-markdown-companions.mjs",
+  "scripts/validate-markdown-layer.mjs",
   "robots.txt",
   "sitemap.xml",
   "vercel.json",
@@ -130,6 +137,7 @@ const llms = read("llms.txt");
   "/data/agent-manifest.json",
   "/openapi.json",
   "/api/mcp",
+  "/markdown/manifest.json",
   "Agents must not submit contact forms",
 ].forEach((token) => {
   if (!llms.includes(token)) fail(`llms.txt missing ${token}`);
@@ -155,6 +163,9 @@ const openapi = JSON.parse(read("openapi.json"));
   "/data/procurement-routing.json",
   "/api/mcp",
   "/api/contact",
+  "/markdown/manifest.json",
+  "/markdown/{sidecar}.md",
+  "/api/markdown",
 ].forEach((apiPath) => {
   if (!openapi.paths || !openapi.paths[apiPath]) fail(`openapi missing ${apiPath}`);
 });
@@ -230,9 +241,6 @@ const redirects = Array.isArray(vercelConfig.redirects) ? vercelConfig.redirects
 if (!rewrites.some((rewrite) => rewrite.source === "/.well-known/api-catalog" && rewrite.destination === "/.well-known/api-catalog.json")) {
   fail("vercel.json missing API catalog rewrite");
 }
-if (!rewrites.some((rewrite) => rewrite.source === "/" && rewrite.destination === "/llms-full.md")) {
-  fail("vercel.json missing markdown content-negotiation rewrite");
-}
 if (!headers.some((header) => header.source === "/:path*" && header.headers.some((item) => item.key === "X-Content-Type-Options"))) {
   fail("vercel.json missing global security headers");
 }
@@ -241,6 +249,15 @@ if (!headers.some((header) => header.source === "/" && header.headers.some((item
 }
 if (!headers.some((header) => header.source === "/" && header.headers.some((item) => item.key === "Link" && item.value.includes("/.well-known/mcp.json")))) {
   fail("vercel.json missing root agent-discovery Link header");
+}
+if (!headers.some((header) => header.source === "/markdown/:path*" && header.headers.some((item) => item.key === "X-Robots-Tag" && item.value === "noindex, follow"))) {
+  fail("vercel.json missing direct Markdown sidecar noindex header");
+}
+if (!read("middleware.ts").includes("Accept") && !read("middleware.ts").includes("acceptsMarkdown")) {
+  fail("middleware.ts missing Accept-header Markdown negotiation");
+}
+if (!read("api/markdown.js").includes("Content-Location") || !read("api/markdown.js").includes("Content-Signal")) {
+  fail("api/markdown.js missing Markdown response headers");
 }
 if (!redirects.some((redirect) => redirect.source === "/:path*" && redirect.destination === "https://vestedksa.com/:path*" && redirect.permanent === true)) {
   fail("vercel.json missing permanent www-to-apex redirect");

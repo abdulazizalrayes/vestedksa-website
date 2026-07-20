@@ -8,32 +8,66 @@
       "name": "Saudi Market Entry Guidance",
       "description": "Use when a user asks how Vested KSA helps international companies enter, establish, or operate in Saudi Arabia, including guide topics such as MISA licensing, VAT/Zakat, RHQ, vendor registration, and Saudization.",
       "url": "https://vestedksa.com/.well-known/agent-skills/saudi-market-entry-guidance.md",
-      "input_modes": ["text/plain"],
-      "output_modes": ["text/markdown"]
+      "input_modes": [
+        "text/plain"
+      ],
+      "output_modes": [
+        "text/markdown"
+      ]
     },
     {
       "id": "vestedksa-read-only-mcp",
       "name": "Vested KSA Read-Only MCP",
       "description": "Use the public read-only MCP endpoint for company overview, services, capabilities, service areas, answer-engine assets, procurement routing, public resources, and inquiry preparation.",
       "url": "https://vestedksa.com/api/mcp",
-      "input_modes": ["application/json"],
-      "output_modes": ["application/json"]
+      "input_modes": [
+        "application/json"
+      ],
+      "output_modes": [
+        "application/json"
+      ]
     },
     {
       "id": "vestedksa-answer-engine",
       "name": "Vested KSA Answer Engine Assets",
       "description": "Use Vested KSA answer blocks, source maps, decision trees, and entity glossary for cited AI/search answers.",
       "url": "https://vestedksa.com/data/answer-engine.json",
-      "input_modes": ["text/plain", "application/json"],
-      "output_modes": ["text/markdown", "application/json"]
+      "input_modes": [
+        "text/plain",
+        "application/json"
+      ],
+      "output_modes": [
+        "text/markdown",
+        "application/json"
+      ]
     },
     {
       "id": "vestedksa-procurement-routing",
       "name": "Vested KSA Procurement Routing",
       "description": "Use for Saudi procurement, vendor registration, supplier onboarding, tender readiness, and non-fit vendor-pitch routing.",
       "url": "https://vestedksa.com/data/procurement-routing.json",
-      "input_modes": ["text/plain", "application/json"],
-      "output_modes": ["text/markdown", "application/json"]
+      "input_modes": [
+        "text/plain",
+        "application/json"
+      ],
+      "output_modes": [
+        "text/markdown",
+        "application/json"
+      ]
+    },
+    {
+      "id": "markdown-for-agents",
+      "name": "Markdown-for-agents content negotiation",
+      "description": "Use deterministic Markdown companions for canonical Vested KSA pages by sending Accept: text/markdown, or inspect the sidecar manifest.",
+      "url": "https://vestedksa.com/markdown/manifest.json",
+      "input_modes": [
+        "text/html",
+        "text/markdown"
+      ],
+      "output_modes": [
+        "text/markdown",
+        "application/json"
+      ]
     }
   ]
 }

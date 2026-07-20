@@ -1,0 +1,18 @@
+{
+  "name": "vestedksa-website",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "generate:markdown": "node scripts/generate-markdown-companions.mjs",
+    "check:markdown": "node scripts/generate-markdown-companions.mjs --check",
+    "validate:markdown-layer": "node scripts/validate-markdown-layer.mjs",
+    "validate:agent-readiness": "node scripts/validate-agent-readiness.js"
+  },
+  "dependencies": {
+    "@vercel/functions": "^2.2.13"
+  },
+  "devDependencies": {
+    "fast-xml-parser": "^5.10.1",
+    "parse5": "^7.2.1"
+  }
+}

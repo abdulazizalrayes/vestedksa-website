@@ -15,112 +15,176 @@
       "get": {
         "summary": "Get company overview data",
         "operationId": "getCompanyData",
-        "responses": {"200": {"description": "Company overview JSON"}}
+        "responses": {
+          "200": {
+            "description": "Company overview JSON"
+          }
+        }
       }
     },
     "/data/services.json": {
       "get": {
         "summary": "List Vested KSA services",
         "operationId": "listServiceData",
-        "responses": {"200": {"description": "Services JSON"}}
+        "responses": {
+          "200": {
+            "description": "Services JSON"
+          }
+        }
       }
     },
     "/data/capabilities.json": {
       "get": {
         "summary": "List Vested KSA capabilities",
         "operationId": "listCapabilityData",
-        "responses": {"200": {"description": "Capabilities JSON"}}
+        "responses": {
+          "200": {
+            "description": "Capabilities JSON"
+          }
+        }
       }
     },
     "/data/service-areas.json": {
       "get": {
         "summary": "List service areas and delivery model",
         "operationId": "listServiceAreasData",
-        "responses": {"200": {"description": "Service areas JSON"}}
+        "responses": {
+          "200": {
+            "description": "Service areas JSON"
+          }
+        }
       }
     },
     "/data/project-inquiry-schema.json": {
       "get": {
         "summary": "Get inquiry preparation schema",
         "operationId": "getProjectInquirySchema",
-        "responses": {"200": {"description": "Market-entry inquiry preparation schema"}}
+        "responses": {
+          "200": {
+            "description": "Market-entry inquiry preparation schema"
+          }
+        }
       }
     },
     "/data/agent-routing.json": {
       "get": {
         "summary": "Get agent routing rules",
         "operationId": "getAgentRoutingRules",
-        "responses": {"200": {"description": "Routing rules for fit and non-fit requests"}}
+        "responses": {
+          "200": {
+            "description": "Routing rules for fit and non-fit requests"
+          }
+        }
       }
     },
     "/data/answer-engine.json": {
       "get": {
         "summary": "Get AEO/GEO answer-engine assets",
         "operationId": "getAnswerEngineAssets",
-        "responses": {"200": {"description": "Concise answer blocks, citation policy, and answer-engine guidance"}}
+        "responses": {
+          "200": {
+            "description": "Concise answer blocks, citation policy, and answer-engine guidance"
+          }
+        }
       }
     },
     "/data/decision-trees.json": {
       "get": {
         "summary": "Get market-entry decision trees",
         "operationId": "getDecisionTrees",
-        "responses": {"200": {"description": "Structured Saudi market-entry and inquiry-fit decision trees"}}
+        "responses": {
+          "200": {
+            "description": "Structured Saudi market-entry and inquiry-fit decision trees"
+          }
+        }
       }
     },
     "/data/entity-glossary.json": {
       "get": {
         "summary": "Get canonical entity glossary",
         "operationId": "getEntityGlossary",
-        "responses": {"200": {"description": "Canonical entity and service-category language for Vested KSA"}}
+        "responses": {
+          "200": {
+            "description": "Canonical entity and service-category language for Vested KSA"
+          }
+        }
       }
     },
     "/data/source-map.json": {
       "get": {
         "summary": "Get source map for high-intent buyer questions",
         "operationId": "getSourceMap",
-        "responses": {"200": {"description": "Topic-to-source mapping for cited search and AI answers"}}
+        "responses": {
+          "200": {
+            "description": "Topic-to-source mapping for cited search and AI answers"
+          }
+        }
       }
     },
     "/data/analytics-events.json": {
       "get": {
         "summary": "Get privacy-safe analytics event taxonomy",
         "operationId": "getAnalyticsEvents",
-        "responses": {"200": {"description": "Event names, funnel stages, privacy rules, and monthly analytics questions"}}
+        "responses": {
+          "200": {
+            "description": "Event names, funnel stages, privacy rules, and monthly analytics questions"
+          }
+        }
       }
     },
     "/data/agent-manifest.json": {
       "get": {
         "summary": "Get Vested KSA public agent manifest",
         "operationId": "getAgentManifest",
-        "responses": {"200": {"description": "Resource groups, versioning, discovery order, MCP rules, and safety guidance"}}
+        "responses": {
+          "200": {
+            "description": "Resource groups, versioning, discovery order, MCP rules, and safety guidance"
+          }
+        }
       }
     },
     "/data/schema-versions.json": {
       "get": {
         "summary": "Get schema version registry",
         "operationId": "getSchemaVersions",
-        "responses": {"200": {"description": "Schema versions and stability status for public data resources"}}
+        "responses": {
+          "200": {
+            "description": "Schema versions and stability status for public data resources"
+          }
+        }
       }
     },
     "/data/changelog.json": {
       "get": {
         "summary": "Get public agent-layer changelog",
         "operationId": "getAgentLayerChangelog",
-        "responses": {"200": {"description": "Public changelog for agent/API layer changes"}}
+        "responses": {
+          "200": {
+            "description": "Public changelog for agent/API layer changes"
+          }
+        }
       }
     },
     "/data/procurement-routing.json": {
       "get": {
         "summary": "Get procurement and vendor-readiness routing rules",
         "operationId": "getProcurementRouting",
-        "responses": {"200": {"description": "Procurement, vendor-registration, supplier-onboarding, and non-fit vendor-pitch routing rules"}}
+        "responses": {
+          "200": {
+            "description": "Procurement, vendor-registration, supplier-onboarding, and non-fit vendor-pitch routing rules"
+          }
+        }
       }
     },
     "/api/mcp": {
       "get": {
         "summary": "Get MCP server metadata",
         "operationId": "getMcpMetadata",
-        "responses": {"200": {"description": "MCP endpoint metadata"}}
+        "responses": {
+          "200": {
+            "description": "MCP endpoint metadata"
+          }
+        }
       },
       "post": {
         "summary": "Call read-only MCP JSON-RPC tools",
@@ -132,17 +196,31 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "jsonrpc": {"type": "string", "const": "2.0"},
+                  "jsonrpc": {
+                    "type": "string",
+                    "const": "2.0"
+                  },
                   "id": {},
-                  "method": {"type": "string"},
-                  "params": {"type": "object"}
+                  "method": {
+                    "type": "string"
+                  },
+                  "params": {
+                    "type": "object"
+                  }
                 },
-                "required": ["jsonrpc", "method"]
+                "required": [
+                  "jsonrpc",
+                  "method"
+                ]
               }
             }
           }
         },
-        "responses": {"200": {"description": "MCP JSON-RPC response"}}
+        "responses": {
+          "200": {
+            "description": "MCP JSON-RPC response"
+          }
+        }
       }
     },
     "/api/contact": {
@@ -156,27 +234,128 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["name", "email", "company", "country", "service", "message"],
+                "required": [
+                  "name",
+                  "email",
+                  "company",
+                  "country",
+                  "service",
+                  "message"
+                ],
                 "properties": {
-                  "name": {"type": "string", "maxLength": 120},
-                  "email": {"type": "string", "format": "email", "maxLength": 254},
-                  "company": {"type": "string", "maxLength": 160},
-                  "country": {"type": "string", "maxLength": 120},
-                  "service": {"type": "string", "maxLength": 80},
-                  "message": {"type": "string", "maxLength": 4000},
-                  "phone": {"type": "string", "maxLength": 20},
-                  "pageUrl": {"type": "string", "maxLength": 500},
-                  "referrer": {"type": "string", "maxLength": 500}
+                  "name": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254
+                  },
+                  "company": {
+                    "type": "string",
+                    "maxLength": 160
+                  },
+                  "country": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "service": {
+                    "type": "string",
+                    "maxLength": 80
+                  },
+                  "message": {
+                    "type": "string",
+                    "maxLength": 4000
+                  },
+                  "phone": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "pageUrl": {
+                    "type": "string",
+                    "maxLength": 500
+                  },
+                  "referrer": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": {"description": "Inquiry accepted"},
-          "400": {"description": "Invalid or incomplete request"},
-          "403": {"description": "Origin not allowed"},
-          "429": {"description": "Rate limit exceeded"}
+          "200": {
+            "description": "Inquiry accepted"
+          },
+          "400": {
+            "description": "Invalid or incomplete request"
+          },
+          "403": {
+            "description": "Origin not allowed"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/markdown/manifest.json": {
+      "get": {
+        "summary": "Get Markdown-for-agents companion manifest",
+        "operationId": "getMarkdownManifest",
+        "responses": {
+          "200": {
+            "description": "Canonical HTML page to Markdown sidecar manifest"
+          }
+        }
+      }
+    },
+    "/markdown/{sidecar}.md": {
+      "get": {
+        "summary": "Get a direct Markdown sidecar",
+        "description": "Direct Markdown sidecars are public but return X-Robots-Tag: noindex, follow to prevent duplicate indexing.",
+        "operationId": "getMarkdownSidecar",
+        "parameters": [
+          {
+            "name": "sidecar",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Markdown companion for a canonical page"
+          }
+        }
+      }
+    },
+    "/api/markdown": {
+      "get": {
+        "summary": "Serve Markdown companion for content-negotiated canonical page requests",
+        "description": "Used by routing middleware when a canonical HTML page is requested with Accept: text/markdown. If unavailable, canonical HTML requests fall back before reaching this endpoint.",
+        "operationId": "getNegotiatedMarkdown",
+        "parameters": [
+          {
+            "name": "path",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Markdown companion with Content-Location, Content-Language, canonical Link, Vary, and Content-Signal headers"
+          },
+          "404": {
+            "description": "Markdown companion unavailable"
+          }
         }
       }
     }
@@ -186,5 +365,9 @@
     "Do not submit /api/contact without explicit user approval.",
     "Do not include sensitive personal data or confidential documents in initial inquiry preparation.",
     "Route careers, internships, vendor sales, training, retail, spam, and unrelated requests away from project inquiry flows."
-  ]
+  ],
+  "x-markdown-for-agents": {
+    "manifest": "https://vestedksa.com/markdown/manifest.json",
+    "instructions": "Send Accept: text/markdown to any canonical HTML sitemap URL listed in markdown/manifest.json. Direct sidecars are noindex, follow."
+  }
 }

@@ -38,12 +38,17 @@
     "agent-manifest",
     "schema-versions",
     "changelog",
-    "procurement-routing"
+    "procurement-routing",
+    "markdown-manifest"
   ],
   "safety": [
     "Does not submit forms or contact Vested KSA.",
     "prepare_project_inquiry returns a draft inquiry package only.",
     "Submission requires explicit user approval through a separate contact channel.",
     "Careers, vendors, internships, training, spam, retail shopping, and unrelated requests are routed away from market-entry inquiry forms."
-  ]
+  ],
+  "markdownForAgents": {
+    "manifest": "https://vestedksa.com/markdown/manifest.json",
+    "instructions": "Send Accept: text/markdown to any canonical HTML sitemap URL listed in markdown/manifest.json. Direct sidecars are noindex, follow."
+  }
 }

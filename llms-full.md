@@ -103,8 +103,20 @@ Typical early work includes choosing the entry structure, preparing entity and l
 - API catalog: https://vestedksa.com/.well-known/api-catalog
 - MCP discovery: https://vestedksa.com/.well-known/mcp.json
 - MCP endpoint: https://vestedksa.com/api/mcp
+- Markdown companion manifest: https://vestedksa.com/markdown/manifest.json
 - Agent card: https://vestedksa.com/.well-known/agent-card.json
 - Agent skills index: https://vestedksa.com/.well-known/agent-skills/index.json
+
+## Markdown for Agents
+
+- Canonical HTML sitemap pages support HTTP content negotiation.
+- Send `Accept: text/markdown` to a canonical page URL, for example `https://vestedksa.com/services`, to receive its deterministic Markdown representation.
+- Browser and ordinary `text/html` requests continue receiving HTML.
+- Direct Markdown sidecars are listed in `https://vestedksa.com/markdown/manifest.json`.
+- Direct sidecars return `X-Robots-Tag: noindex, follow` to avoid duplicate SEO indexing.
+- Markdown companions preserve page title, description, canonical URL, language, public links, meaningful image alt text, headings, lists, tables, details, and relevant public JSON-LD.
+- Markdown companions exclude navigation, footers, forms, scripts, styles, hidden content, admin material, and internal notes.
+- Vested KSA content signal: `ai-train=no, search=yes, ai-input=yes`.
 
 ## Agent Routing Rules
 

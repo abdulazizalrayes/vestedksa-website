@@ -25,7 +25,8 @@
     "https://vestedksa.com/data/agent-manifest.json",
     "https://vestedksa.com/data/schema-versions.json",
     "https://vestedksa.com/data/changelog.json",
-    "https://vestedksa.com/data/procurement-routing.json"
+    "https://vestedksa.com/data/procurement-routing.json",
+    "https://vestedksa.com/markdown/manifest.json"
   ],
   "linkset": [
     {
@@ -37,6 +38,14 @@
         },
         {
           "href": "https://vestedksa.com/llms-full.md",
+          "type": "text/markdown"
+        },
+        {
+          "href": "https://vestedksa.com/markdown/manifest.json",
+          "type": "application/json"
+        },
+        {
+          "href": "https://vestedksa.com/markdown/index.md",
           "type": "text/markdown"
         }
       ],
@@ -74,5 +83,9 @@
     "Public data endpoints are read-only.",
     "The contact endpoint can submit information only when a user explicitly approves.",
     "Agents should not route careers, internships, vendor pitches, retail shopping, spam, or unrelated requests to project inquiry flows."
-  ]
+  ],
+  "markdownForAgents": {
+    "manifest": "https://vestedksa.com/markdown/manifest.json",
+    "instructions": "Send Accept: text/markdown to any canonical HTML sitemap URL listed in markdown/manifest.json. Direct sidecars are noindex, follow."
+  }
 }

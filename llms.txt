@@ -46,9 +46,19 @@ Vested KSA, legal name Vest KSA Co., is a market-entry and operations partner in
 - API catalog: https://vestedksa.com/.well-known/api-catalog
 - MCP discovery: https://vestedksa.com/.well-known/mcp.json
 - MCP endpoint: https://vestedksa.com/api/mcp
+- Markdown companion manifest: https://vestedksa.com/markdown/manifest.json
 - Entity profile: https://vestedksa.com/.well-known/entity-profile.json
 - Agent card: https://vestedksa.com/.well-known/agent-card.json
 - LinkedIn: https://www.linkedin.com/company/vested-ksa/
+
+## Markdown for Agents
+
+- Canonical HTML sitemap pages support HTTP content negotiation.
+- Send `Accept: text/markdown` to a canonical page URL, for example `https://vestedksa.com/services`, to receive its deterministic Markdown representation.
+- Browser and ordinary `text/html` requests continue receiving HTML.
+- Direct Markdown sidecars are listed in `https://vestedksa.com/markdown/manifest.json`.
+- Direct sidecars return `X-Robots-Tag: noindex, follow` to avoid duplicate SEO indexing.
+- Vested KSA content signal: `ai-train=no, search=yes, ai-input=yes`.
 
 ## Agent Routing Rules
 
