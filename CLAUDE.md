@@ -94,3 +94,19 @@ If verification cannot be run, explain why and state the remaining risk.
 - Push back if the requested approach seems risky or overcomplicated.
 - Do not hide uncertainty.
 - Do not claim success without verification.
+
+## Cloud Paperclip Operations
+
+- This repository and its Paperclip work belong only to Vested KSA. Do not mix agents, tasks, credentials, instructions, workspaces, or account ownership with another company.
+- The cloud Paperclip instance is `https://ai.eijarat.com`. Treat it as a changing external system: before Paperclip work, verify the running release through `/api/health` or the signed-in account menu, confirm the Vested KSA dashboard loads, and check the authoritative agent/task status. Do not assume behavior from an older release.
+- The verified release on 2026-07-24 was `deployment/v2026.722.0-cloud-models-20260724` at commit `558bdec`. Reverify on future work instead of treating this value as permanent.
+- Confirm available OpenCode models from the live agent model selector or `opencode models` before assigning them. Use `opencode/big-pickle` for leadership, orchestration, implementation, audit, and other important or judgment-heavy work. Use `opencode/deepseek-v4-flash-free` for routine, helper, enrichment, triage, formatting, and other cost-sensitive work.
+- Kimi is not configured or approved. Do not select or configure it without owner approval.
+- Review an existing agent and its latest configuration revision before changing its model, permissions, tools, or runtime behavior. Do not enable experimental features without owner approval.
+- Use the v2026.722.0 attention/Decisions queue, Skill Studio, search, run recovery, cost telemetry, secret-access controls, and Office attachment support when they are relevant to the task.
+- Audit legacy agents after upgrades. Remove obsolete primary-model assignments and verify the saved model on the complete agent roster; do not rely only on an individual configuration form.
+- In Paperclip v2026.707.0 and later, use user-specific runtime secrets and responsible-user attribution for sensitive values. Never place plaintext secrets in agent prompts or ordinary environment-variable fields.
+- Use the Work Timeline and the read-only issue-subtree, blocker, and branch-ancestry diagnostics before mutating stuck work. Prefer the one-click isolated re-issue flow for genuinely diverged branches.
+- Account for current continuation behavior: checkbox selections and plan-review context persist across wakes, dependency wakes have a reconciliation backstop, superseded user questions expire, and active heartbeat runs should not be treated as stale solely because they are long-running.
+- Distinguish current agent status from stale run cards. If dashboard live-run counts disagree with the authoritative agent summary, inspect run/task diagnostics before pausing, retrying, or deleting anything.
+- Use the redesigned environment-variable and secret-reference editor consistently across agents, projects, routines, and company environments. Keep company and user secret scopes explicit.
