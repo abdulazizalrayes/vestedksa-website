@@ -1,6 +1,6 @@
 ---
 title: "Services - Vested KSA"
-description: "Comprehensive operational and business support services for international companies establishing operations in Saudi Arabia."
+description: "Explore Saudi market-entry services from Vested KSA: company formation, MISA licensing, PEO and HR, finance, legal, and vendor registration support."
 canonical: "https://vestedksa.com/services"
 language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
@@ -10,7 +10,7 @@ alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/services"},
 ---
 
 # Services - Vested KSA
-> Comprehensive operational and business support services for international companies establishing operations in Saudi Arabia.
+> Explore Saudi market-entry services from Vested KSA: company formation, MISA licensing, PEO and HR, finance, legal, and vendor registration support.
 ## Page Metadata
 - Canonical: https://vestedksa.com/services
 - Language: en

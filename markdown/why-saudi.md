@@ -1,6 +1,6 @@
 ---
 title: "Why Saudi Arabia | Vested KSA"
-description: "Saudi Arabia is undergoing the world's most ambitious economic transformation, creating unprecedented opportunities for international companies. Discover Vision 2030 and why now is the time to invest."
+description: "Explore Saudi Arabia's Vision 2030 opportunity, priority sectors, investment environment, and market-entry considerations for international companies."
 canonical: "https://vestedksa.com/why-saudi"
 language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
@@ -10,7 +10,7 @@ alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/why-saudi"}
 ---
 
 # Why Saudi Arabia | Vested KSA
-> Saudi Arabia is undergoing the world's most ambitious economic transformation, creating unprecedented opportunities for international companies. Discover Vision 2030 and why now is the time to invest.
+> Explore Saudi Arabia's Vision 2030 opportunity, priority sectors, investment environment, and market-entry considerations for international companies.
 ## Page Metadata
 - Canonical: https://vestedksa.com/why-saudi
 - Language: en

@@ -1,6 +1,6 @@
 ---
 title: "Vested KSA | Market-Entry & Operations Partner in Saudi Arabia"
-description: "Vested KSA is a market-entry and operations partner in Saudi Arabia for international companies setting up, hiring, registering vendors, and running local back-office operations."
+description: "Vested KSA helps international companies enter and operate in Saudi Arabia through formation, PEO and HR, finance, legal, and vendor registration."
 canonical: "https://vestedksa.com/"
 language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
@@ -10,7 +10,7 @@ alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/"},{"hrefla
 ---
 
 # Vested KSA | Market-Entry & Operations Partner in Saudi Arabia
-> Vested KSA is a market-entry and operations partner in Saudi Arabia for international companies setting up, hiring, registering vendors, and running local back-office operations.
+> Vested KSA helps international companies enter and operate in Saudi Arabia through formation, PEO and HR, finance, legal, and vendor registration.
 ## Page Metadata
 - Canonical: https://vestedksa.com/
 - Language: en
