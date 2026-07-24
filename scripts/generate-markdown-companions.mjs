@@ -14,7 +14,27 @@ const BLOCK_TAGS = new Set([
   "h4", "h5", "h6", "hr", "li", "main", "ol", "p", "section", "summary", "table", "tbody",
   "td", "tfoot", "th", "thead", "tr", "ul"
 ]);
-const DROP_TAGS = new Set(["nav", "footer", "form", "script", "style", "noscript", "template", "svg", "iframe", "button", "input", "select", "textarea", "label"]);
+const DROP_TAGS = new Set(["nav", "header", "footer", "form", "script", "style", "noscript", "template", "svg", "iframe", "button", "input", "select", "textarea", "label"]);
+const DROP_CLASSES = new Set([
+  "breadcrumb",
+  "breadcrumbs",
+  "cookie-banner",
+  "cookie-consent",
+  "cookie-notice",
+  "eyebrow",
+  "form-honeypot",
+  "hero-eyebrow",
+  "mobile-menu",
+  "nav-container",
+  "nav-cta",
+  "nav-links",
+  "nav-wordmark",
+  "skip-link",
+  "sr-only",
+  "entry-path-number",
+  "step-number",
+  "visually-hidden",
+]);
 
 function read(file) {
   return fs.readFileSync(path.join(ROOT, file), "utf8");
@@ -37,6 +57,10 @@ function textContent(node) {
 
 function normalizeText(value) {
   return String(value || "").replace(/\s+/g, " ").trim();
+}
+
+function isStandaloneVisualCounter(value) {
+  return /^[0-9]{1,2}$/.test(normalizeText(value));
 }
 
 function findAll(node, predicate, results = []) {
@@ -63,9 +87,8 @@ function isHidden(node) {
     attr(node, "aria-hidden").toLowerCase() === "true" ||
     style.includes("display:none") ||
     style.includes("visibility:hidden") ||
-    hasClass(node, "form-honeypot") ||
     id.includes("cookie") ||
-    classes.some((className) => ["skip-link", "cookie-banner", "cookie-notice", "cookie-consent"].includes(className))
+    classes.some((className) => DROP_CLASSES.has(className))
   );
 }
 
@@ -130,30 +153,47 @@ function renderTable(node, canonical) {
   return [header, separator, ...body].map((row) => `| ${row.join(" | ")} |`).join("\n");
 }
 
+function renderInlineWithoutNestedLists(node, canonical) {
+  if (!node || shouldDrop(node)) return "";
+  return (node.childNodes || [])
+    .filter((child) => child.tagName !== "ul" && child.tagName !== "ol")
+    .map((child) => renderInline(child, canonical))
+    .filter(Boolean)
+    .join(" ");
+}
+
+function renderListItem(item, canonical, depth) {
+  const text = normalizeText(renderInlineWithoutNestedLists(item, canonical));
+  const nestedLists = (item.childNodes || [])
+    .filter((child) => child.tagName === "ul" || child.tagName === "ol")
+    .flatMap((child) => renderBlocks(child, canonical, depth + 1));
+  return { text, nestedLists };
+}
+
 function renderBlocks(node, canonical, depth = 0) {
   if (!node || shouldDrop(node)) return [];
   if (node.nodeName === "#text") {
     const text = normalizeText(node.value);
-    return text ? [escapeMarkdown(text)] : [];
+    return text && !isStandaloneVisualCounter(text) ? [escapeMarkdown(text)] : [];
   }
 
   const tag = node.tagName;
   if (/^h[1-6]$/.test(tag)) {
-    const level = Number(tag.slice(1));
+    const level = Math.min(Number(tag.slice(1)) + 1, 6);
     const text = normalizeText(renderInline(node, canonical));
-    return text ? [`${"#".repeat(level)} ${text}`] : [];
+    return text && !isStandaloneVisualCounter(text) ? [`${"#".repeat(level)} ${text}`] : [];
   }
   if (tag === "p") {
     const text = normalizeText(renderInline(node, canonical));
-    return text ? [text] : [];
+    return text && !isStandaloneVisualCounter(text) ? [text] : [];
   }
   if (tag === "ul" || tag === "ol") {
     const ordered = tag === "ol";
     const items = (node.childNodes || []).filter((child) => child.tagName === "li");
-    return items.map((item, index) => {
-      const text = normalizeText(renderInline(item, canonical));
+    return items.flatMap((item, index) => {
+      const { text, nestedLists } = renderListItem(item, canonical, depth);
       const prefix = ordered ? `${index + 1}. ` : "- ";
-      return text ? `${"  ".repeat(depth)}${prefix}${text}` : "";
+      return text ? [`${"  ".repeat(depth)}${prefix}${text}`, ...nestedLists] : nestedLists;
     }).filter(Boolean);
   }
   if (tag === "table") {
@@ -170,15 +210,69 @@ function renderBlocks(node, canonical, depth = 0) {
     const image = renderInline(node, canonical);
     return image ? [image] : [];
   }
+  if (tag === "a") {
+    const link = normalizeText(renderInline(node, canonical));
+    return link ? [link] : [];
+  }
 
   const childBlocks = (node.childNodes || []).flatMap((child) => renderBlocks(child, canonical, depth));
   if (childBlocks.length) return childBlocks;
 
   if (BLOCK_TAGS.has(tag)) {
     const text = normalizeText(renderInline(node, canonical));
-    return text ? [text] : [];
+    return text && !isStandaloneVisualCounter(text) ? [text] : [];
   }
   return [];
+}
+
+function findAllVisible(node, predicate, results = []) {
+  if (!node || shouldDrop(node)) return results;
+  if (predicate(node)) results.push(node);
+  for (const child of node.childNodes || []) findAllVisible(child, predicate, results);
+  return results;
+}
+
+function uniqueBy(items, keyFn) {
+  const seen = new Set();
+  return items.filter((item) => {
+    const key = keyFn(item);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function extractAlternates(document) {
+  return findAll(document, (node) => node.tagName === "link" && attr(node, "rel").toLowerCase() === "alternate")
+    .map((node) => ({
+      hreflang: attr(node, "hreflang"),
+      href: attr(node, "href"),
+    }))
+    .filter((item) => item.hreflang && item.href);
+}
+
+function extractPublicLinks(main, canonical) {
+  return uniqueBy(
+    findAllVisible(main, (node) => node.tagName === "a")
+      .map((node) => ({
+        text: normalizeText(textContent(node)),
+        href: absoluteUrl(attr(node, "href"), canonical),
+      }))
+      .filter((item) => item.text && item.href && !item.href.startsWith("#") && !item.href.startsWith("javascript:")),
+    (item) => `${item.text}\n${item.href}`
+  );
+}
+
+function extractPublicImages(main, canonical) {
+  return uniqueBy(
+    findAllVisible(main, (node) => node.tagName === "img")
+      .map((node) => ({
+        alt: normalizeText(attr(node, "alt")),
+        src: absoluteUrl(attr(node, "src"), canonical),
+      }))
+      .filter((item) => item.alt && item.src),
+    (item) => `${item.alt}\n${item.src}`
+  );
 }
 
 function extractJsonLd(document) {
@@ -235,6 +329,9 @@ function buildMarkdownForPage(url) {
   const main = findFirst(document, (node) => node.tagName === "main") || findFirst(document, (node) => node.tagName === "body");
   const blocks = renderBlocks(main, canonical).filter(Boolean);
   const jsonLd = extractJsonLd(document);
+  const alternates = extractAlternates(document);
+  const publicLinks = extractPublicLinks(main, canonical);
+  const publicImages = extractPublicImages(main, canonical);
   const pagePath = new URL(canonical).pathname.replace(/\/+$/, "") || "/";
   const sidecar = sidecarForPath(pagePath);
 
@@ -245,6 +342,9 @@ function buildMarkdownForPage(url) {
     `canonical: ${JSON.stringify(canonical)}`,
     `language: ${JSON.stringify(language)}`,
     `content_signal: ${JSON.stringify(CONTENT_SIGNAL)}`,
+    `source_html: ${JSON.stringify(`/${localFile}`)}`,
+    `markdown_sidecar: ${JSON.stringify(sidecar)}`,
+    `alternate_languages: ${JSON.stringify(alternates)}`,
     "---",
     "",
   ].join("\n");
@@ -255,11 +355,30 @@ function buildMarkdownForPage(url) {
     "",
     description ? `> ${description}` : "",
     "",
-    `Canonical: ${canonical}`,
-    `Language: ${language}`,
+    "## Page Metadata",
+    "",
+    `- Canonical: ${canonical}`,
+    `- Language: ${language}`,
+    `- Source HTML: /${localFile}`,
+    `- Markdown sidecar: ${sidecar}`,
+    alternates.length ? `- Alternate languages: ${alternates.map((item) => `${item.hreflang} (${item.href})`).join(", ")}` : "",
+    "",
+    "## Main Content",
     "",
     ...blocks,
   ].filter((item) => item !== "");
+
+  if (publicLinks.length || publicImages.length) {
+    sections.push("", "## Public Page Resources", "");
+    if (publicLinks.length) {
+      sections.push("### Links", "");
+      publicLinks.forEach((link) => sections.push(`- [${escapeMarkdown(link.text)}](${link.href})`));
+    }
+    if (publicImages.length) {
+      sections.push("", "### Images", "");
+      publicImages.forEach((image) => sections.push(`- ![${escapeMarkdown(image.alt)}](${image.src})`));
+    }
+  }
 
   if (jsonLd.length) {
     sections.push("", "## Public Structured Data", "");
@@ -277,6 +396,9 @@ function buildMarkdownForPage(url) {
       language,
       title,
       description,
+      alternates,
+      publicLinkCount: publicLinks.length,
+      publicImageCount: publicImages.length,
     },
     markdown: `${sections.join("\n").replace(/\n{3,}/g, "\n\n").trim()}\n`,
   };

@@ -4,30 +4,44 @@ description: "Frequently asked questions about establishing and operating your b
 canonical: "https://vestedksa.com/faq"
 language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
+source_html: "/faq.html"
+markdown_sidecar: "/markdown/faq.md"
+alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/faq"},{"hreflang":"x-default","href":"https://vestedksa.com/faq"}]
 ---
 
 # FAQ | Vested KSA
 > Frequently asked questions about establishing and operating your business in Saudi Arabia. Clear answers from Vested KSA.
-Canonical: https://vestedksa.com/faq
-Language: en
-# Frequently asked questions.
+## Page Metadata
+- Canonical: https://vestedksa.com/faq
+- Language: en
+- Source HTML: /faq.html
+- Markdown sidecar: /markdown/faq.md
+- Alternate languages: en (https://vestedksa.com/faq), x-default (https://vestedksa.com/faq)
+## Main Content
+## Frequently asked questions.
 Clear answers to the most common questions about establishing your business in Saudi Arabia.
-### Getting Started
+#### Getting Started
 - **Often, yes, depending on the activity.** Many international companies can establish fully foreign-owned Saudi entities, but the correct answer depends on the MISA path, Commercial Registration requirements, and whether the activity is restricted, excluded, or subject to sector-specific approval.
 - **Three main options:** **LLC (Limited Liability Company):** The most common structure. Owned by shareholders (can be one person), managed by partners. Straightforward to establish and operate. **Branch Office:** An extension of your foreign parent company. Simpler setup but the parent company is liable for all debts and obligations. **Representative Office:** For companies that want a presence but no commercial operations (meetings, research, coordination only). Cannot invoice or sign contracts for commercial activity. We typically recommend an LLC for most businesses. It's clean, flexible, and well-understood by Saudi authorities.
 - **It depends on the activity and document readiness.** Licensing, banking, regulator dependencies, shareholder documents, translations, and customer registration needs can all affect timing. We map the critical path early and run formation, licensing, and initial operating setup in parallel wherever the process allows.
-### Operations & Services
+#### Operations & Services
 - **Everything that isn't your core business.** That includes: legal formation, licensing, HR and recruitment, payroll and benefits administration, accounting and financial reporting, tax compliance, regulatory compliance with Saudi authorities, office setup and facilities management, government relations and approvals, and ongoing operational support. The goal is simple: you focus on your business; we handle everything else.
 - **Not necessarily.** You have options. Some clients build their own team with our support (recruitment, onboarding, compliance). Other clients prefer we manage their entire workforce, we handle hiring, payroll, benefits, compliance, and operations. Many clients do a mix: we manage support functions and back-office staff; they hire their own technical or business-facing team. Whatever makes sense for your model, we support it.
 - **Absolutely.** Many clients start with formation and compliance, then expand to full operational outsourcing as they scale. Our services are modular. You can engage us for one service (formation), then add another (accounting), then expand further (HR). No long-term lock-in. You pay for what you use.
-### Finance & Compliance
+#### Finance & Compliance
 - **VAT is 15%** on most goods and services sold in Saudi Arabia. If your company's annual revenue exceeds 375,000 SAR (about $100,000), you must register for VAT. We handle registration and filing. VAT-registered companies can claim back VAT on business expenses, which often results in a net credit. Zakat (Islamic tax) applies only to Saudi and GCC-owned entities, not foreign companies.
 - **Saudization is a government policy** requiring companies to employ a minimum percentage of Saudi nationals. The Nitaqat system defines compliance levels based on your sector and company size. For example, a software company with 10 employees might need 2-3 Saudi employees; a construction firm might need a different ratio. We manage full Saudization compliance. You hire, we ensure you meet the regulatory requirement. If you don't meet it, there are fines and operational restrictions. We make sure you stay compliant.
-### Trust & Governance
+#### Trust & Governance
 - **We provide full documentation upon request.** That includes: commercial registration and business license, audited financial statements (SOCPA approved), compliance certifications, references from existing clients, and detailed governance and conflict-of-interest policies. We encourage due diligence. Email hello@vestedksa.com with what you need, and we'll provide it within 24 hours. The more you vet us, the more confident you'll be.
 - **A founder.** Every client relationship at Vested is personally led by a founding partner. You don't get shuffled to a junior person or passed around. Your founder partner is your primary point of contact, supported by a dedicated operations team. This ensures continuity, accountability, and a deep understanding of your business.
-## Still have questions?
-Get in touch →
+### Still have questions?
+[Get in touch →](https://vestedksa.com/contact)
+
+## Public Page Resources
+
+### Links
+
+- [Get in touch →](https://vestedksa.com/contact)
 
 ## Public Structured Data
 

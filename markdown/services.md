@@ -4,92 +4,104 @@ description: "Comprehensive operational and business support services for intern
 canonical: "https://vestedksa.com/services"
 language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
+source_html: "/services.html"
+markdown_sidecar: "/markdown/services.md"
+alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/services"},{"hreflang":"x-default","href":"https://vestedksa.com/services"}]
 ---
 
 # Services - Vested KSA
 > Comprehensive operational and business support services for international companies establishing operations in Saudi Arabia.
-Canonical: https://vestedksa.com/services
-Language: en
-# Our services.
+## Page Metadata
+- Canonical: https://vestedksa.com/services
+- Language: en
+- Source HTML: /services.html
+- Markdown sidecar: /markdown/services.md
+- Alternate languages: en (https://vestedksa.com/services), x-default (https://vestedksa.com/services)
+## Main Content
+## Our services.
 End-to-end operational support for international companies in Saudi Arabia. One partner. Every function covered.
 We handle everything that isn't your core business: formation, people, finance, legal, workspace, and day-to-day operations. You focus on growth. We handle the rest.
 Every engagement is tailored to your needs. Build a fully dedicated in-house team through Vested, or access our services on demand as your business requires. You choose the model, we deliver the execution.
-### The Advantage of Scale
+#### The Advantage of Scale
 Because we manage operations for dozens of companies across Saudi Arabia, we've built deep relationships with service providers, landlords, government liaisons, auditors, and vendors.
 From office leases and staff accommodation to legal services, insurance, and government processing, we coordinate vendor selection with clear scopes, comparable quotes, and transparent approval records so clients can make informed local decisions.
-### Company Formation & Setup
-#### What we do
+#### Company Formation & Setup
+##### What we do
 MISA licensing, Commercial Registration (CR), foreign-owned entity structuring (LLC, branch, representative office), Articles of Association, Memorandum of Association, Chamber of Commerce registration, and municipal licensing. We navigate every regulatory requirement to get your legal entity live.
-#### How we do it
+##### How we do it
 You're assigned a dedicated formation specialist who manages every step. Weekly progress updates keep you informed. We handle all document management, submissions, and follow-ups with government agencies, so you don't have to.
 Timeline varies by activity, documents, approvals, and banking
-#### What's included
+##### What's included
 Initial regulatory assessment and entity structure recommendation, all MISA licensing and CR documentation preparation and filing, Articles and Memorandum of Association drafting, Chamber of Commerce registration and municipal licensing, government liaison and follow-ups, document management and filing archive, post-formation compliance checklist.
-### Full Operational Outsourcing
-#### What we do
+#### Full Operational Outsourcing
+##### What we do
 Complete non-core operations management: admin, procurement, vendor management, logistics coordination, facility management, mail handling, and government relations (PRO services). We become the backbone that keeps your operation running smoothly.
-#### Why it matters
+##### Why it matters
 Eliminate the need to build an operations team from scratch. We become your back office on day one, handling everything from vendor negotiations to regulatory reporting, so your core team stays focused on business development.
-#### How it works
+##### How it works
 You get a dedicated operations manager as your single point of contact. Monthly reporting and SLA-backed service levels ensure accountability and transparency. From daily admin to annual compliance, we've got it covered.
-### People & HR
-#### What we do
+#### People & HR
+##### What we do
 Recruitment, employment contracts, payroll processing, GOSI registration, Saudization compliance, annual leave management, end-of-service calculations, employee accommodation, transportation, work permits and visas (iqama processing). Every aspect of your workforce, fully managed.
-#### Why it matters
+##### Why it matters
 Saudi labor law is specific and strictly enforced. We ensure full compliance while handling every detail of your workforce, so you avoid costly violations and your team stays focused on delivering results.
 **Compliance Coverage:** Saudization ratios, Nitaqat system status, WPS (Wage Protection System) compliance, and ongoing labor law updates.
-### Accounting & Finance
-#### What we do
+#### Accounting & Finance
+##### What we do
 Bookkeeping, financial reporting, VAT filing, Zakat returns, invoicing, accounts payable/receivable, payroll accounting, audit preparation, and liaison with SOCPA-approved auditors. Accounting software setup and management included.
-#### Standards
+##### Standards
 All financial operations comply with IFRS and SOCPA standards. Your financials are audit-ready from day one.
-#### Reporting
+##### Reporting
 Monthly financial statements, quarterly reviews, and annual audit-ready packages delivered on schedule. We integrate with ZAKAT and GAZT systems for seamless compliance reporting.
-### Legal & Compliance
-#### What we do
+#### Legal & Compliance
+##### What we do
 Legal entity structuring advice, regulatory compliance monitoring, contract review, employment law guidance, commercial dispute advisory, intellectual property registration, anti-money laundering (AML) compliance, and data protection advisory.
-#### Governance
+##### Governance
 We operate with internationally aligned governance frameworks: documented processes, clear accountability, and audit trails. Every decision is documented and traceable.
-#### Partners
+##### Partners
 We work with approved legal firms and auditors across Saudi Arabia, providing you with access to expertise without the overhead of building your own legal team.
-### Workspace & Facilities
-#### What we do
+#### Workspace & Facilities
+##### What we do
 Office search and selection, fit-out and furnishing, IT infrastructure setup, reception and admin staffing, maintenance and facility management, executive accommodation, airport transfers, and transportation coordination.
-#### Flexibility
+##### Flexibility
 From serviced offices to full custom buildouts, we match your workspace to your stage and budget. Whether you're scaling up or establishing your first Saudi location, we find and manage the right space.
-### Support Services & Logistics
-#### Office Management & Facilities
+#### Support Services & Logistics
+##### Office Management & Facilities
 Office cleaning and maintenance, utility management (electricity, water, telecom), office consumables and supplies, mail and courier handling, and day-to-day operational support to keep your workspace running seamlessly.
-#### Executive Hospitality & Transportation
+##### Executive Hospitality & Transportation
 Meet and greet services for visiting executives at the airport, ground transportation to accommodation or the office, dedicated drivers and vehicle arrangements, hotel and accommodation booking for staff and management, and trip coordination for business travel within Saudi Arabia.
-#### Visa & Government Services
+##### Visa & Government Services
 Work visa and iqama processing, visit visa coordination, Chamber of Commerce document attestation, ministry attestations, and all government-related paperwork and follow-ups handled on your behalf.
-#### Specialized Registrations
+##### Specialized Registrations
 Depending on your industry, we handle registrations with SFDA (Saudi Food and Drug Authority), CITC (Communications, Space and Technology Commission), SASO (Saudi Standards, Metrology and Quality Organization), customs clearance setup, and any other sector-specific regulatory body. We identify what's required for your business and ensure every registration is completed accurately and on time.
-#### Additional Support
+##### Additional Support
 Translation and document legalization, Saudization advisory and Nitaqat management, insurance procurement (medical, vehicle, property), bank account opening coordination, and any operational requirement unique to your business. If it's non-core, we handle it.
-### Vendor Registration & Market Access
-#### What we do
+#### Vendor Registration & Market Access
+##### What we do
 We register your company as an approved vendor with Saudi Arabia's largest enterprises and government-backed entities. This opens the door to procurement opportunities, tender participation, and direct business relationships with the organizations driving the Kingdom's economic transformation.
-#### Key Registrations
+##### Key Registrations
 Saudi Aramco vendor registration, SABIC supplier qualification, PIF (Public Investment Fund) portfolio companies including Diriyah Gate, Red Sea Global, Qiddiya, ROSHN, and others. Telecom operators (STC, Mobily, Zain), NEOM, and other giga-project procurement platforms. We manage the full application process, documentation, qualification requirements, and follow-ups.
-#### Why it matters
+##### Why it matters
 Vendor registration with major Saudi entities can take months and requires deep knowledge of each organization's qualification criteria. We handle the entire process so you can start bidding on contracts and building relationships from day one. Many of our clients have secured their first Saudi contract within months of registration.
-#### Government Procurement
+##### Government Procurement
 Registration with Etimad (the national government procurement platform), Ministry of Finance vendor qualification, and other public sector procurement systems. We ensure your company meets all eligibility requirements and is positioned to participate in government tenders.
-## How Engagement Works
-1
-#### Consultation
+### How Engagement Works
+##### Consultation
 We understand your business, goals, and timeline. No cookie-cutter approach, just a real conversation about what you need.
-2
-#### Custom Proposal
+##### Custom Proposal
 Tailored service package with clear scope, deliverables, and pricing. You know exactly what you're getting and when.
-3
-#### Launch
+##### Launch
 We execute while you focus on your core business. Dedicated point of contact, regular updates, and full transparency throughout.
-## Let's scope your Saudi operation.
-Get a custom proposal →
+### Let's scope your Saudi operation.
+[Get a custom proposal →](https://vestedksa.com/contact)
 Questions? Reach out: [hello@vestedksa.com](mailto:hello@vestedksa.com)
+
+## Public Page Resources
+
+### Links
+
+- [Get a custom proposal →](https://vestedksa.com/contact)
+- [hello@vestedksa.com](mailto:hello@vestedksa.com)
 
 ## Public Structured Data
 

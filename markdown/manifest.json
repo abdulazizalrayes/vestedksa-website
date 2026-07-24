@@ -13,7 +13,27 @@
       "sidecar": "/markdown/index.md",
       "language": "en",
       "title": "Vested KSA | Market-Entry & Operations Partner in Saudi Arabia",
-      "description": "Vested KSA is a market-entry and operations partner in Saudi Arabia for international companies setting up, hiring, registering vendors, and running local back-office operations."
+      "description": "Vested KSA is a market-entry and operations partner in Saudi Arabia for international companies setting up, hiring, registering vendors, and running local back-office operations.",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://vestedksa.com/"
+        },
+        {
+          "hreflang": "ar",
+          "href": "https://vestedksa.com/ar"
+        },
+        {
+          "hreflang": "zh-Hans",
+          "href": "https://vestedksa.com/zh"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://vestedksa.com/"
+        }
+      ],
+      "publicLinkCount": 20,
+      "publicImageCount": 0
     },
     {
       "path": "/ar",
@@ -22,7 +42,27 @@
       "sidecar": "/markdown/ar.md",
       "language": "ar",
       "title": "فستد السعودية | شريك العمليات في المملكة العربية السعودية",
-      "description": "فستد السعودية شريك عمليات للشركات الدولية التي تدخل السوق السعودي. نؤسس ونشغل وندير الأعمال غير الأساسية حتى تركزوا على النمو."
+      "description": "فستد السعودية شريك عمليات للشركات الدولية التي تدخل السوق السعودي. نؤسس ونشغل وندير الأعمال غير الأساسية حتى تركزوا على النمو.",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://vestedksa.com/"
+        },
+        {
+          "hreflang": "ar",
+          "href": "https://vestedksa.com/ar"
+        },
+        {
+          "hreflang": "zh-Hans",
+          "href": "https://vestedksa.com/zh"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://vestedksa.com/"
+        }
+      ],
+      "publicLinkCount": 4,
+      "publicImageCount": 0
     },
     {
       "path": "/zh",
@@ -31,7 +71,27 @@
       "sidecar": "/markdown/zh.md",
       "language": "zh-Hans",
       "title": "Vested KSA | 沙特阿拉伯运营合作伙伴",
-      "description": "Vested KSA 是国际公司进入沙特阿拉伯的运营合作伙伴。我们协助设立、运营和管理非核心业务，让您专注于增长。"
+      "description": "Vested KSA 是国际公司进入沙特阿拉伯的运营合作伙伴。我们协助设立、运营和管理非核心业务，让您专注于增长。",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://vestedksa.com/"
+        },
+        {
+          "hreflang": "ar",
+          "href": "https://vestedksa.com/ar"
+        },
+        {
+          "hreflang": "zh-Hans",
+          "href": "https://vestedksa.com/zh"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://vestedksa.com/"
+        }
+      ],
+      "publicLinkCount": 4,
+      "publicImageCount": 0
     },
     {
       "path": "/about",
@@ -40,7 +100,19 @@
       "sidecar": "/markdown/about.md",
       "language": "en",
       "title": "About Vested | Operations Partner for International Companies in Saudi Arabia",
-      "description": "Learn about Vested KSA, the market-entry and operations partner helping international companies establish and operate in Saudi Arabia."
+      "description": "Learn about Vested KSA, the market-entry and operations partner helping international companies establish and operate in Saudi Arabia.",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://vestedksa.com/about"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://vestedksa.com/about"
+        }
+      ],
+      "publicLinkCount": 1,
+      "publicImageCount": 0
     },
     {
       "path": "/services",
@@ -49,7 +121,19 @@
       "sidecar": "/markdown/services.md",
       "language": "en",
       "title": "Services - Vested KSA",
-      "description": "Comprehensive operational and business support services for international companies establishing operations in Saudi Arabia."
+      "description": "Comprehensive operational and business support services for international companies establishing operations in Saudi Arabia.",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://vestedksa.com/services"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://vestedksa.com/services"
+        }
+      ],
+      "publicLinkCount": 2,
+      "publicImageCount": 0
     },
     {
       "path": "/why-saudi",
@@ -58,7 +142,19 @@
       "sidecar": "/markdown/why-saudi.md",
       "language": "en",
       "title": "Why Saudi Arabia | Vested KSA",
-      "description": "Saudi Arabia is undergoing the world's most ambitious economic transformation, creating unprecedented opportunities for international companies. Discover Vision 2030 and why now is the time to invest."
+      "description": "Saudi Arabia is undergoing the world's most ambitious economic transformation, creating unprecedented opportunities for international companies. Discover Vision 2030 and why now is the time to invest.",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://vestedksa.com/why-saudi"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://vestedksa.com/why-saudi"
+        }
+      ],
+      "publicLinkCount": 1,
+      "publicImageCount": 0
     },
     {
       "path": "/ethics",
@@ -67,7 +163,19 @@
       "sidecar": "/markdown/ethics.md",
       "language": "en",
       "title": "Ethics & Governance | Vested KSA",
-      "description": "Vested KSA operates with international-standard governance. We are transparent, ethical, and auditable. Trust is built on clear policies and consistent action."
+      "description": "Vested KSA operates with international-standard governance. We are transparent, ethical, and auditable. Trust is built on clear policies and consistent action.",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://vestedksa.com/ethics"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://vestedksa.com/ethics"
+        }
+      ],
+      "publicLinkCount": 2,
+      "publicImageCount": 0
     },
     {
       "path": "/insights",
@@ -76,7 +184,19 @@
       "sidecar": "/markdown/insights.md",
       "language": "en",
       "title": "Insights | Vested KSA",
-      "description": "Guides, analysis, and updates for international companies entering Saudi Arabia. Market insights, compliance guides, and strategic analysis."
+      "description": "Guides, analysis, and updates for international companies entering Saudi Arabia. Market insights, compliance guides, and strategic analysis.",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://vestedksa.com/insights"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://vestedksa.com/insights"
+        }
+      ],
+      "publicLinkCount": 13,
+      "publicImageCount": 0
     },
     {
       "path": "/insights/ksa-market-entry-guide-2026",
@@ -85,7 +205,10 @@
       "sidecar": "/markdown/insights/ksa-market-entry-guide-2026.md",
       "language": "en",
       "title": "Saudi Market Entry Guide 2026 | Vested KSA",
-      "description": "A practical 2026 Saudi market-entry guide for international companies: entity choice, licensing, tax, HR, workspace, vendors, and first-90-day execution."
+      "description": "A practical 2026 Saudi market-entry guide for international companies: entity choice, licensing, tax, HR, workspace, vendors, and first-90-day execution.",
+      "alternates": [],
+      "publicLinkCount": 13,
+      "publicImageCount": 0
     },
     {
       "path": "/insights/foreign-ownership-saudi-arabia",
@@ -94,7 +217,10 @@
       "sidecar": "/markdown/insights/foreign-ownership-saudi-arabia.md",
       "language": "en",
       "title": "100% Foreign Ownership in Saudi Arabia | Vested KSA",
-      "description": "A practical guide to foreign ownership in Saudi Arabia for international companies: MISA registration, excluded activities, entity setup, and operating readiness."
+      "description": "A practical guide to foreign ownership in Saudi Arabia for international companies: MISA registration, excluded activities, entity setup, and operating readiness.",
+      "alternates": [],
+      "publicLinkCount": 5,
+      "publicImageCount": 0
     },
     {
       "path": "/insights/misa-licensing-commercial-registration-saudi-arabia",
@@ -103,7 +229,10 @@
       "sidecar": "/markdown/insights/misa-licensing-commercial-registration-saudi-arabia.md",
       "language": "en",
       "title": "MISA Licensing and Commercial Registration in Saudi Arabia | Vested KSA",
-      "description": "A practical guide to MISA licensing, Commercial Registration, Chamber, tax, HR, and post-formation readiness for foreign companies entering Saudi Arabia."
+      "description": "A practical guide to MISA licensing, Commercial Registration, Chamber, tax, HR, and post-formation readiness for foreign companies entering Saudi Arabia.",
+      "alternates": [],
+      "publicLinkCount": 5,
+      "publicImageCount": 0
     },
     {
       "path": "/insights/vat-zakat-saudi-arabia",
@@ -112,7 +241,10 @@
       "sidecar": "/markdown/insights/vat-zakat-saudi-arabia.md",
       "language": "en",
       "title": "VAT and Zakat in Saudi Arabia | Vested KSA",
-      "description": "A practical VAT and Zakat guide for international companies entering Saudi Arabia: registration thresholds, TIN, certificates, returns, and operating controls."
+      "description": "A practical VAT and Zakat guide for international companies entering Saudi Arabia: registration thresholds, TIN, certificates, returns, and operating controls.",
+      "alternates": [],
+      "publicLinkCount": 5,
+      "publicImageCount": 0
     },
     {
       "path": "/insights/saudi-e-invoicing-operating-controls",
@@ -121,7 +253,10 @@
       "sidecar": "/markdown/insights/saudi-e-invoicing-operating-controls.md",
       "language": "en",
       "title": "Saudi E-Invoicing and Finance Controls | Vested KSA",
-      "description": "A practical guide to Saudi e-invoicing and finance operating controls for international companies entering Saudi Arabia."
+      "description": "A practical guide to Saudi e-invoicing and finance operating controls for international companies entering Saudi Arabia.",
+      "alternates": [],
+      "publicLinkCount": 5,
+      "publicImageCount": 0
     },
     {
       "path": "/insights/regional-headquarters-rhq-saudi-arabia",
@@ -130,7 +265,10 @@
       "sidecar": "/markdown/insights/regional-headquarters-rhq-saudi-arabia.md",
       "language": "en",
       "title": "Regional Headquarters (RHQ) Program in Saudi Arabia | Vested KSA",
-      "description": "A practical guide to Saudi Arabia's Regional Headquarters program for multinational companies evaluating RHQ licensing, local operations, and governance."
+      "description": "A practical guide to Saudi Arabia's Regional Headquarters program for multinational companies evaluating RHQ licensing, local operations, and governance.",
+      "alternates": [],
+      "publicLinkCount": 5,
+      "publicImageCount": 0
     },
     {
       "path": "/insights/saudi-vendor-registration-aramco-pif",
@@ -139,7 +277,10 @@
       "sidecar": "/markdown/insights/saudi-vendor-registration-aramco-pif.md",
       "language": "en",
       "title": "Saudi Vendor Registration: Aramco, SABIC, NEOM and PIF Companies | Vested KSA",
-      "description": "A practical guide to Saudi vendor registration readiness for Aramco, SABIC, NEOM, Red Sea Global, and PIF portfolio opportunities."
+      "description": "A practical guide to Saudi vendor registration readiness for Aramco, SABIC, NEOM, Red Sea Global, and PIF portfolio opportunities.",
+      "alternates": [],
+      "publicLinkCount": 7,
+      "publicImageCount": 0
     },
     {
       "path": "/insights/saudization-nitaqat-hr-saudi-arabia",
@@ -148,7 +289,10 @@
       "sidecar": "/markdown/insights/saudization-nitaqat-hr-saudi-arabia.md",
       "language": "en",
       "title": "Saudization and Nitaqat for International Companies | Vested KSA",
-      "description": "A practical guide to Saudization, Nitaqat, HR readiness, payroll, and workforce planning for international companies operating in Saudi Arabia."
+      "description": "A practical guide to Saudization, Nitaqat, HR readiness, payroll, and workforce planning for international companies operating in Saudi Arabia.",
+      "alternates": [],
+      "publicLinkCount": 4,
+      "publicImageCount": 0
     },
     {
       "path": "/faq",
@@ -157,7 +301,19 @@
       "sidecar": "/markdown/faq.md",
       "language": "en",
       "title": "FAQ | Vested KSA",
-      "description": "Frequently asked questions about establishing and operating your business in Saudi Arabia. Clear answers from Vested KSA."
+      "description": "Frequently asked questions about establishing and operating your business in Saudi Arabia. Clear answers from Vested KSA.",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://vestedksa.com/faq"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://vestedksa.com/faq"
+        }
+      ],
+      "publicLinkCount": 1,
+      "publicImageCount": 0
     },
     {
       "path": "/contact",
@@ -166,7 +322,19 @@
       "sidecar": "/markdown/contact.md",
       "language": "en",
       "title": "Contact | Vested KSA",
-      "description": "Get in touch with Vested KSA. Whether you're exploring Saudi Arabia or ready to launch, we're here to help. Contact us today."
+      "description": "Get in touch with Vested KSA. Whether you're exploring Saudi Arabia or ready to launch, we're here to help. Contact us today.",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://vestedksa.com/contact"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://vestedksa.com/contact"
+        }
+      ],
+      "publicLinkCount": 1,
+      "publicImageCount": 0
     },
     {
       "path": "/privacy",
@@ -175,7 +343,19 @@
       "sidecar": "/markdown/privacy.md",
       "language": "en",
       "title": "Privacy Policy - Vested KSA",
-      "description": "Privacy Policy for Vested KSA - Learn how we protect your data and privacy."
+      "description": "Privacy Policy for Vested KSA - Learn how we protect your data and privacy.",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://vestedksa.com/privacy"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://vestedksa.com/privacy"
+        }
+      ],
+      "publicLinkCount": 3,
+      "publicImageCount": 0
     },
     {
       "path": "/terms",
@@ -184,7 +364,19 @@
       "sidecar": "/markdown/terms.md",
       "language": "en",
       "title": "Terms of Service - Vested KSA",
-      "description": "Terms of Service for Vested KSA - Review our terms and conditions for using our services and website."
+      "description": "Terms of Service for Vested KSA - Review our terms and conditions for using our services and website.",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://vestedksa.com/terms"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://vestedksa.com/terms"
+        }
+      ],
+      "publicLinkCount": 2,
+      "publicImageCount": 0
     }
   ]
 }

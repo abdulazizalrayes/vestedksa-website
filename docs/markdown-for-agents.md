@@ -71,6 +71,18 @@ The HTML conversion uses `parse5`, a structured HTML parser. It extracts public 
 
 Preserved fields include page title, description, canonical URL, language, public links, meaningful image alt text, headings, lists, tables, details, and relevant public JSON-LD.
 
+## Enhanced Markdown Shape
+
+Each sidecar now includes:
+
+- YAML-style front matter with `title`, `description`, `canonical`, `language`, `content_signal`, `source_html`, `markdown_sidecar`, and `alternate_languages`.
+- A `Page Metadata` section for canonical URL, language, source HTML, sidecar path, and hreflang alternates.
+- A `Main Content` section with body headings shifted below the generated page title.
+- A `Public Page Resources` section with visible public links and meaningful images extracted from the page content.
+- A `Public Structured Data` section with valid JSON-LD blocks.
+
+The generator drops decorative navigation, mobile menus, eyebrow labels, cookie/skip elements, forms, scripts, styles, and visual-only counters such as card numbers. Standalone CTA anchors are rendered as Markdown links, while direct sidecars remain `noindex, follow`.
+
 ## Testing Commands
 
 ```bash

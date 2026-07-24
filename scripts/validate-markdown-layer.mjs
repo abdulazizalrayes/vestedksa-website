@@ -62,9 +62,17 @@ function validateCoverageAndSidecars() {
     const markdown = read(entry.sidecar.slice(1));
     assert.match(markdown, new RegExp(`canonical: ${JSON.stringify(entry.canonical).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`));
     assert.match(markdown, new RegExp(`language: ${JSON.stringify(entry.language).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`));
+    assert.match(markdown, /^source_html: /m, `${entry.sidecar} missing source_html front matter`);
+    assert.match(markdown, /^markdown_sidecar: /m, `${entry.sidecar} missing markdown_sidecar front matter`);
+    assert.match(markdown, /^alternate_languages: /m, `${entry.sidecar} missing alternate_languages front matter`);
+    assert.ok(markdown.includes("## Page Metadata"), `${entry.sidecar} missing Page Metadata section`);
+    assert.ok(markdown.includes("## Main Content"), `${entry.sidecar} missing Main Content section`);
     assert.ok(!markdown.includes("<nav"), `${entry.sidecar} leaks nav markup`);
+    assert.ok(!markdown.includes("<header"), `${entry.sidecar} leaks header markup`);
     assert.ok(!markdown.includes("<footer"), `${entry.sidecar} leaks footer markup`);
     assert.ok(!markdown.includes("<form"), `${entry.sidecar} leaks forms`);
+    assert.ok(!/^Market entry guide$/m.test(markdown), `${entry.sidecar} leaks decorative eyebrow text`);
+    assert.ok(!/^[0-9]{1,2}$/m.test(markdown), `${entry.sidecar} leaks standalone visual counters`);
     assert.ok(markdown.includes("## Public Structured Data"), `${entry.sidecar} missing JSON-LD section`);
   }
 }

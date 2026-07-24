@@ -4,19 +4,27 @@ description: "Terms of Service for Vested KSA - Review our terms and conditions 
 canonical: "https://vestedksa.com/terms"
 language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
+source_html: "/terms.html"
+markdown_sidecar: "/markdown/terms.md"
+alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/terms"},{"hreflang":"x-default","href":"https://vestedksa.com/terms"}]
 ---
 
 # Terms of Service - Vested KSA
 > Terms of Service for Vested KSA - Review our terms and conditions for using our services and website.
-Canonical: https://vestedksa.com/terms
-Language: en
-# Terms of Service
+## Page Metadata
+- Canonical: https://vestedksa.com/terms
+- Language: en
+- Source HTML: /terms.html
+- Markdown sidecar: /markdown/terms.md
+- Alternate languages: en (https://vestedksa.com/terms), x-default (https://vestedksa.com/terms)
+## Main Content
+## Terms of Service
 Last updated: March 23, 2026
-## 1. Agreement to Terms
+### 1. Agreement to Terms
 These Terms of Service ("Terms") constitute a legally binding agreement between you and Vested KSA ("Company," "we," "us," or "our") regarding your access to and use of our website **https://vestedksa.com** (the "Site") and any services offered through the Site.
 By accessing and using the Site, you agree to be bound by these Terms. If you do not agree to abide by the above, please do not use this service.
 Vested KSA reserves the right to modify these Terms at any time. Your continued use of the Site following any modifications constitutes your acceptance of the updated Terms. We will notify you of material changes by updating the "Last updated" date at the top of this page.
-## 2. Use License
+### 2. Use License
 Permission is granted to temporarily download one copy of the materials (information or software) on Vested KSA's Site for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
 - Modify or copy the materials
 - Use the materials for any commercial purpose or for any public display
@@ -25,35 +33,35 @@ Permission is granted to temporarily download one copy of the materials (informa
 - Transferring the materials to another person or "mirroring" the materials on any other server
 - Accessing or searching the Site by any means other than Vested's publicly supported interfaces
 - Harassing, abusing, or interfering with the normal operation of the Site
-## 3. Disclaimer of Warranties
+### 3. Disclaimer of Warranties
 The materials on Vested KSA's Site are provided on an "as-is" basis. Vested KSA makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
 Further, Vested KSA does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its Site or otherwise relating to such materials or on any sites linked to this Site.
-## 4. Limitations of Liability
+### 4. Limitations of Liability
 In no event shall Vested KSA or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Vested KSA's Site, even if Vested KSA or an authorized representative of Vested KSA has been notified orally or in writing of the possibility of such damage.
 Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
 In no case shall Vested KSA's total liability to you exceed the amount you paid to Vested KSA in the 12 months preceding the claim.
-## 5. Accuracy of Materials
+### 5. Accuracy of Materials
 The materials appearing on Vested KSA's Site could include technical, typographical, or photographic errors. Vested KSA does not warrant that any of the materials on Vested KSA's Site are accurate, complete, or current. Vested KSA may make changes to the materials contained on its Site at any time without notice. However, Vested KSA does not commit to updating the materials.
-## 6. Links
+### 6. Links
 Vested KSA has not reviewed all of the sites linked to its Site and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Vested KSA of the site. Use of any such linked website is at the user's own risk.
 If you discover a broken link or inappropriate content on the Site or any linked site, please report it to us at [hello@vestedksa.com](mailto:hello@vestedksa.com) .
-## 7. Modifications
+### 7. Modifications
 Vested KSA may revise these Terms for its Site at any time without notice. By using this Site, you are agreeing to be bound by the then-current version of these Terms.
-## 8. Governing Law and Jurisdiction
+### 8. Governing Law and Jurisdiction
 These Terms and Conditions are governed by and construed in accordance with the laws of the Kingdom of Saudi Arabia, and you irrevocably submit to the exclusive jurisdiction of the courts located in Riyadh, Kingdom of Saudi Arabia.
 If any provision of these Terms is found to be invalid or unenforceable under applicable law, such provision shall be modified to the minimum extent necessary to make it valid and enforceable, and the remaining provisions shall continue in full force and effect.
-## 9. Intellectual Property Rights
+### 9. Intellectual Property Rights
 The Site and all content, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio) are owned by Vested KSA, its licensors, or other providers of such material and are protected by Saudi Arabia and international copyright, trademark, and other intellectual property laws.
-### Trademarks
+#### Trademarks
 The name "Vested," the Vested logo, and all related names, logos, product and service names, designs, and slogans are trademarks or service marks of Vested KSA. You may not use these marks without the prior written permission of Vested KSA. Other names, logos, product and service names, designs, and slogans that appear on the Site may be the trademarks of their respective owners.
-### Limited License
+#### Limited License
 We grant you a limited, non-exclusive, non-transferable license to access and use the Site and the materials thereon for lawful purposes only. You may not:
 - Reproduce or distribute any materials without written permission
 - Modify or adapt any materials
 - Create derivative works from any materials
 - Sell or transfer any materials
 - Use any materials for any unlawful purpose
-## 10. User Responsibilities
+### 10. User Responsibilities
 You agree that you will not:
 - Use the Site in any way that violates any applicable law or regulation
 - Engage in any conduct that restricts or inhibits anyone's use or enjoyment of the Site
@@ -62,36 +70,43 @@ You agree that you will not:
 - Impersonate or attempt to impersonate any person or entity
 - Harvest or collect email addresses or other personally identifiable information of others
 - Engage in spamming, phishing, or other malicious activities
-## 11. Contact Form and Communications
+### 11. Contact Form and Communications
 When you submit information through our contact form, you represent and warrant that:
 - The information provided is accurate and truthful
 - You have the right to provide such information
 - You understand that your information will be used to respond to your inquiry
 - You consent to the processing of your information in accordance with our Privacy Policy
 Vested KSA reserves the right to decline any inquiry or request that it deems inappropriate or beyond the scope of its services.
-## 12. Service Limitations
+### 12. Service Limitations
 Vested KSA provides information about its services through this Site. This Site is not an offer to provide services, nor does it constitute a binding agreement. Any formal engagement for services by Vested KSA shall be governed by a separate signed agreement.
 Vested KSA operates exclusively in the Kingdom of Saudi Arabia. The services described on this Site are provided only within Saudi Arabia unless otherwise explicitly stated.
-## 13. Indemnification
+### 13. Indemnification
 You agree to indemnify, defend, and hold harmless Vested KSA and its officers, directors, employees, agents, and licensors from and against any and all claims, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) arising out of or relating to:
 - Your use of the Site
 - Your violation of these Terms
 - Your violation of any applicable law or regulation
 - Any content you submit or transmit through the Site
 - Your violation of any third-party rights
-## 14. Termination
+### 14. Termination
 Vested KSA may terminate or suspend your access to the Site immediately, without prior notice or liability, for any reason, including if you breach these Terms. Upon termination, your right to use the Site will immediately cease. The provisions of these Terms that by their nature should survive termination shall survive.
-## 15. Entire Agreement
+### 15. Entire Agreement
 These Terms, together with our Privacy Policy and any other policies or notices published on the Site, constitute the entire agreement between you and Vested KSA regarding your use of the Site and supersede all prior negotiations, representations, and agreements, whether written or oral.
-## 16. Severability
+### 16. Severability
 If any provision of these Terms is determined to be invalid or unenforceable by a court of competent jurisdiction, such determination shall not affect the validity or enforceability of any other provision, and all other provisions shall remain in full force and effect.
-## 17. Waiver
+### 17. Waiver
 Vested KSA's failure to enforce any provision of these Terms shall not be construed as a waiver of such provision or the right to enforce it. The waiver of any one provision shall not constitute the waiver of any other provision.
-## 18. Contact Information
+### 18. Contact Information
 If you have any questions about these Terms or the Site, please contact us:
 **Vested KSA** Email: [hello@vestedksa.com](mailto:hello@vestedksa.com) Location: Tahliyah St, Olaya Riyadh, Saudi Arabia Website: [https://vestedksa.com](https://vestedksa.com/)
-## 19. Acknowledgment
+### 19. Acknowledgment
 BY ACCESSING AND USING THIS SITE, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS, UNDERSTAND THEM, AND AGREE TO BE BOUND BY THEM. IF YOU DO NOT AGREE WITH THESE TERMS, DO NOT USE THIS SITE.
+
+## Public Page Resources
+
+### Links
+
+- [hello@vestedksa.com](mailto:hello@vestedksa.com)
+- [https://vestedksa.com](https://vestedksa.com/)
 
 ## Public Structured Data
 
