@@ -883,7 +883,7 @@
           <span class="status"><span class="status-dot"></span>Production mapped</span>
           <span class="status"><span class="status-dot"></span>Vested-only identity lock</span>
           <span class="status"><span class="status-dot"></span>No public visual change</span>
-          <span class="status is-warning"><span class="status-dot"></span>Working-tree drift recorded</span>
+          <span class="status"><span class="status-dot"></span>Main reconciled and validated</span>
         </div>
       </div>
       <div class="header-actions">
@@ -915,8 +915,8 @@
     <section class="workspace">
       <div class="diagram-panel">
         <div class="drift-banner">
-          <span class="drift-mark">!</span>
-          <span><strong>Current source drift:</strong> four agent-discovery files are deleted in the working tree but remain present in deployed commit <code>3b8d476</code>. The map records this state and does not restore those user changes.</span>
+          <span class="drift-mark">R</span>
+          <span><strong>Reconciled release:</strong> main commit <code>9d3bf1c</code> contains the restored agent-discovery files and the validated agent architecture layer. Production deployment <code>dpl_6M96RqDtvedK7CPu4n87HXqEnLYW</code> is ready and aliased to vestedksa.com.</span>
         </div>
         <div class="diagram-scroll">
           <div class="diagram" id="diagram">
@@ -940,7 +940,7 @@
 
     <footer class="footer">
       <span><strong>Authority:</strong> ARCHITECTURE.json</span>
-      <span><strong>Source:</strong> 3b8d476c81bd8cd7d76f3d968295e1d7eb5a7020</span>
+      <span><strong>Source:</strong> 9d3bf1cdc652f87dbd864f30c99d5ed5397660e3</span>
       <span><strong>Audited:</strong> 2026-07-26</span>
       <span><strong>Production:</strong> vestedksa.com</span>
     </footer>
@@ -989,7 +989,7 @@
 
       { id: "github", layer: "operations", name: "GitHub source", kind: "operations", description: "Repository, branch, commit history, and rollback source.", files: ["abdulazizalrayes/vestedksa-website"], owner: "Vested source owner" },
       { id: "validation-suite", layer: "operations", name: "Validation suite", kind: "operations", description: "Determinism, schema, MCP, SEO, build inventory, live endpoint, and dependency checks.", files: ["scripts/validate-*.js", "scripts/validate-*.mjs"], owner: "Release engineering" },
-      { id: "vercel-deploy", layer: "operations", name: "Vercel deployment", kind: "operations", description: "Builds and publishes the exact validated artifact to vestedksa.com.", files: ["project-ivd9v", "dpl_JCeaNWDgZ7AD1jZnfdPCMD1CPvEn"], owner: "Vercel team" },
+      { id: "vercel-deploy", layer: "operations", name: "Vercel deployment", kind: "operations", description: "Builds and publishes the exact validated artifact to vestedksa.com.", files: ["project-ivd9v", "dpl_6M96RqDtvedK7CPu4n87HXqEnLYW"], owner: "Vercel team" },
       { id: "paperclip-record", layer: "operations", name: "Paperclip VES-406", kind: "operations", description: "Stores identity lock, release evidence, cost, deployment, verification, and rollback.", files: ["VES-406"], owner: "Vested KSA workspace VES" }
     ];
 

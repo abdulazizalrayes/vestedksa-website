@@ -20,24 +20,31 @@
     "doNotMixWithOtherCompanies": true
   },
   "sourceState": {
-    "mapBasis": "Deployed HEAD plus verified production behavior and explicit working-tree drift",
-    "branch": "codex/vested-markdown-agents-layer",
-    "commit": "3b8d476c81bd8cd7d76f3d968295e1d7eb5a7020",
-    "productionDeployment": "dpl_JCeaNWDgZ7AD1jZnfdPCMD1CPvEn",
+    "mapBasis": "Reconciled main commit plus verified production behavior",
+    "branch": "main",
+    "commit": "9d3bf1cdc652f87dbd864f30c99d5ed5397660e3",
+    "productionDeployment": "dpl_6M96RqDtvedK7CPu4n87HXqEnLYW",
     "productionDeploymentState": "READY",
     "productionAlias": "https://vestedksa.com",
-    "workingTreeDriftAtAudit": {
-      "preExistingDeletedFiles": [
+    "releaseReconciliation": {
+      "status": "resolved",
+      "previousMainCommit": "e091db7409c684907d6511c83cf34045ce9b3e18",
+      "validatedBranchCommit": "c144f8cb5d47e364b1c8e7cbe5c1489577064221",
+      "mergeCommit": "9d3bf1cdc652f87dbd864f30c99d5ed5397660e3",
+      "restoredDiscoveryFiles": [
         ".well-known/agent-skills/index.json",
         ".well-known/agent-skills/saudi-market-entry-guidance.md",
         ".well-known/mcp/server-card.json",
         ".well-known/mcp/server-cards.json"
       ],
-      "preExistingUntrackedFiles": [
+      "treeResult": "The reconciled tree matches the validated Vested agent architecture branch."
+    },
+    "localWorkspaceNote": {
+      "untrackedPreviewFilesPreserved": [
         "previews/vested-2-5-before-after.html",
         "previews/vested-2-5-before-after.png"
       ],
-      "handling": "The architecture map does not restore, delete, or overwrite these pre-existing user changes. Deployed HEAD still contains the four discovery files."
+      "handling": "These local preview files were not staged, deleted, deployed, or included in the reconciliation."
     }
   },
   "systemProfile": {
@@ -1413,7 +1420,7 @@
     "The contact rate limit is per warm serverless instance and is not a globally consistent distributed limit.",
     "Static llms, OpenAPI, and data-file reads are observed through hosting/access analytics rather than a dedicated event sink.",
     "CR, VAT, license numbers, client logos, testimonials, case studies, certifications, exact coordinates, and Wikidata are intentionally not asserted.",
-    "The four working-tree discovery deletions must be resolved deliberately before the next source deployment."
+    "Repository-local architecture files are intentionally excluded from the public Vercel deployment."
   ],
   "freshness": {
     "lastAudited": "2026-07-26",
@@ -1424,7 +1431,7 @@
       "A new external service or secret class is introduced",
       "The release pipeline or validation commands change",
       "A visual feature materially changes page behavior",
-      "Working-tree drift is resolved"
+      "A release changes the production commit or deployment ID"
     ],
     "verificationCommands": [
       "node -e \"JSON.parse(require('fs').readFileSync('ARCHITECTURE.json','utf8')); console.log('ARCHITECTURE.json valid')\"",
