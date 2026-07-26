@@ -3,25 +3,26 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
-const DATA_ROOT = path.join(__dirname, "..", "data");
 const MAX_BODY_BYTES = 64 * 1024;
+const CURRENT_PROTOCOL_VERSION = "2025-11-25";
+const SUPPORTED_PROTOCOL_VERSIONS = new Set([CURRENT_PROTOCOL_VERSION, "2024-11-05"]);
 
-const RESOURCE_FILES = {
-  company: "company.json",
-  services: "services.json",
-  capabilities: "capabilities.json",
-  "service-areas": "service-areas.json",
-  "project-inquiry-schema": "project-inquiry-schema.json",
-  "agent-routing": "agent-routing.json",
-  "answer-engine": "answer-engine.json",
-  "decision-trees": "decision-trees.json",
-  "entity-glossary": "entity-glossary.json",
-  "source-map": "source-map.json",
-  "analytics-events": "analytics-events.json",
-  "agent-manifest": "agent-manifest.json",
-  "schema-versions": "schema-versions.json",
-  changelog: "changelog.json",
-  "procurement-routing": "procurement-routing.json",
+const RESOURCE_DATA = {
+  company: require("../data/company.json"),
+  services: require("../data/services.json"),
+  capabilities: require("../data/capabilities.json"),
+  "service-areas": require("../data/service-areas.json"),
+  "project-inquiry-schema": require("../data/project-inquiry-schema.json"),
+  "agent-routing": require("../data/agent-routing.json"),
+  "answer-engine": require("../data/answer-engine.json"),
+  "decision-trees": require("../data/decision-trees.json"),
+  "entity-glossary": require("../data/entity-glossary.json"),
+  "source-map": require("../data/source-map.json"),
+  "analytics-events": require("../data/analytics-events.json"),
+  "agent-manifest": require("../data/agent-manifest.json"),
+  "schema-versions": require("../data/schema-versions.json"),
+  changelog: require("../data/changelog.json"),
+  "procurement-routing": require("../data/procurement-routing.json"),
 };
 
 const PUBLIC_RESOURCE_ALIASES = {
@@ -40,7 +41,8 @@ function setCommonHeaders(res) {
   res.setHeader("Cache-Control", "public, max-age=0, must-revalidate");
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, MCP-Protocol-Version");
+  res.setHeader("MCP-Protocol-Version", CURRENT_PROTOCOL_VERSION);
 }
 
 function sendJson(res, status, payload) {
@@ -80,13 +82,13 @@ function readBody(req) {
 }
 
 function readJsonResource(name) {
-  const file = RESOURCE_FILES[name];
-  if (!file) {
+  const resource = RESOURCE_DATA[name];
+  if (!resource) {
     const error = new Error(`Unknown resource: ${name}`);
     error.statusCode = 404;
     throw error;
   }
-  return JSON.parse(fs.readFileSync(path.join(DATA_ROOT, file), "utf8"));
+  return resource;
 }
 
 function normalizePublicResourceName(value) {
@@ -98,7 +100,7 @@ function normalizePublicResourceName(value) {
 
   if (withoutLeadingSlash.startsWith("data/")) {
     const dataName = withoutLeadingSlash.replace(/^data\//, "").replace(/\.json$/i, "");
-    return RESOURCE_FILES[dataName] ? dataName : "";
+    return RESOURCE_DATA[dataName] ? dataName : "";
   }
 
   if (withoutLeadingSlash.startsWith(".well-known/")) {
@@ -116,7 +118,15 @@ function normalizePublicResourceName(value) {
 
 function readTextResource(name) {
   const resourceName = normalizePublicResourceName(name);
-  const file = PUBLIC_RESOURCE_ALIASES[resourceName] || (RESOURCE_FILES[resourceName] ? path.join(DATA_ROOT, RESOURCE_FILES[resourceName]) : "");
+  if (RESOURCE_DATA[resourceName]) {
+    return {
+      name: resourceName,
+      contentType: "application/json",
+      text: `${JSON.stringify(RESOURCE_DATA[resourceName], null, 2)}\n`,
+    };
+  }
+
+  const file = PUBLIC_RESOURCE_ALIASES[resourceName] || "";
   if (!file || !fs.existsSync(file)) {
     const error = new Error(`Unknown public resource: ${name}`);
     error.statusCode = 404;
@@ -162,7 +172,7 @@ function getServerMetadata() {
     company: "Vested KSA",
     description: "Read-only MCP endpoint for Vested KSA public company, service, capability, service-area, answer-engine, routing, analytics, procurement, and inquiry-preparation data.",
     tools: Object.keys(toolHandlers),
-    resources: Object.keys(RESOURCE_FILES),
+    resources: Object.keys(RESOURCE_DATA),
     safety: [
       "Does not submit forms or contact Vested KSA.",
       "prepare_project_inquiry returns a draft inquiry package only.",
@@ -233,7 +243,7 @@ function listTools() {
           resource: {
             type: "string",
             enum: [
-              ...Object.keys(RESOURCE_FILES),
+              ...Object.keys(RESOURCE_DATA),
               ...Object.keys(PUBLIC_RESOURCE_ALIASES),
             ],
           },
@@ -278,7 +288,7 @@ function listTools() {
 }
 
 function listResources() {
-  return Object.keys(RESOURCE_FILES).map((name) => ({
+  return Object.keys(RESOURCE_DATA).map((name) => ({
     uri: `vestedksa://public/${name}`,
     name,
     mimeType: "application/json",
@@ -454,15 +464,50 @@ async function handleRpc(req, res) {
   const id = payload.id;
   const method = payload.method;
   const params = payload.params || {};
+  const requestProtocolVersion = String(req.headers["mcp-protocol-version"] || "");
+
+  if (requestProtocolVersion && !SUPPORTED_PROTOCOL_VERSIONS.has(requestProtocolVersion)) {
+    sendJson(res, 400, rpcError(id, -32600, `Unsupported MCP protocol version: ${requestProtocolVersion}`));
+    return;
+  }
+  if (requestProtocolVersion) {
+    res.setHeader("MCP-Protocol-Version", requestProtocolVersion);
+  }
 
   try {
     if (method === "initialize") {
+      const requestedVersion = String(params.protocolVersion || "");
+      const negotiatedVersion = SUPPORTED_PROTOCOL_VERSIONS.has(requestedVersion)
+        ? requestedVersion
+        : CURRENT_PROTOCOL_VERSION;
+      res.setHeader("MCP-Protocol-Version", negotiatedVersion);
       logAgentEvent(req, { action: "mcp_initialize" });
       sendJson(res, 200, rpcResult(id, {
-        protocolVersion: "2024-11-05",
-        serverInfo: { name: "vestedksa-public", version: "2026-06-20" },
-        capabilities: { tools: {}, resources: {} },
+        protocolVersion: negotiatedVersion,
+        serverInfo: {
+          name: "vestedksa-public",
+          title: "Vested KSA Public Read-Only MCP",
+          version: "2026-07-26",
+          websiteUrl: "https://vestedksa.com/.well-known/mcp/server-card.json",
+        },
+        capabilities: {
+          tools: { listChanged: false },
+          resources: { listChanged: false },
+        },
+        instructions: "Use public read-only resources and tools. Inquiry preparation never submits or contacts Vested KSA without explicit user approval.",
       }));
+      return;
+    }
+
+    if (method === "notifications/initialized") {
+      logAgentEvent(req, { action: "mcp_initialized" });
+      res.statusCode = 202;
+      res.end();
+      return;
+    }
+
+    if (method === "ping") {
+      sendJson(res, 200, rpcResult(id, {}));
       return;
     }
 

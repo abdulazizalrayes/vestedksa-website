@@ -412,6 +412,32 @@ function writeIfChanged(file, content) {
   return true;
 }
 
+function buildRuntimeAssets(entries) {
+  const records = entries.map((entry) => {
+    const segments = entry.sidecar.split("/").filter(Boolean).map((segment) => JSON.stringify(segment)).join(", ");
+    return [
+      `  ${JSON.stringify(entry.path)}: {`,
+      `    sidecar: ${JSON.stringify(entry.sidecar)},`,
+      `    language: ${JSON.stringify(entry.language)},`,
+      `    canonical: ${JSON.stringify(entry.canonical)},`,
+      `    content: fs.readFileSync(path.join(__dirname, "..", ${segments}), "utf8"),`,
+      "  },",
+    ].join("\n");
+  });
+
+  return [
+    '"use strict";',
+    "",
+    'const fs = require("node:fs");',
+    'const path = require("node:path");',
+    "",
+    "module.exports = {",
+    ...records,
+    "};",
+    "",
+  ].join("\n");
+}
+
 function run() {
   const generated = parseSitemap().map(buildMarkdownForPage).filter(Boolean);
   const manifest = {
@@ -428,6 +454,7 @@ function run() {
   generated.forEach((item) => outputs.set(item.entry.sidecar.slice(1), item.markdown));
   outputs.set("markdown/manifest.json", `${JSON.stringify(manifest, null, 2)}\n`);
   outputs.set("markdown-routes.ts", `export const MARKDOWN_ROUTES = ${JSON.stringify(manifest.entries.map(({ path, sidecar, language, canonical }) => ({ path, sidecar, language, canonical })), null, 2)} as const;\n`);
+  outputs.set("lib/markdown-assets.cjs", buildRuntimeAssets(manifest.entries));
 
   if (CHECK_MODE) {
     const failures = [];

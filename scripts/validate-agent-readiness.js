@@ -39,8 +39,11 @@ const requiredFiles = [
   "markdown/manifest.json",
   "middleware.ts",
   "api/markdown.js",
+  "lib/markdown-assets.cjs",
   "lib/markdown-negotiation.mjs",
   "scripts/generate-markdown-companions.mjs",
+  "scripts/validate-deployment-output.mjs",
+  "scripts/validate-live-agent-surface.mjs",
   "scripts/validate-markdown-layer.mjs",
   "robots.txt",
   "sitemap.xml",
@@ -215,6 +218,9 @@ if (!Array.isArray(agentCard.supportedInterfaces) || agentCard.supportedInterfac
 ok("agent card lists supported interfaces");
 
 const mcpCard = JSON.parse(read(".well-known/mcp/server-card.json"));
+if (mcpCard.protocolVersion !== "2025-11-25") {
+  fail("MCP server card must advertise the current finalized protocol version");
+}
 [
   "get_company_overview",
   "list_services",
@@ -296,15 +302,22 @@ if (!/^README\.md$/m.test(vercelIgnore)) {
 if (!/^scripts\/$/m.test(vercelIgnore)) {
   fail(".vercelignore must exclude internal scripts from public deployments");
 }
+if (!/^\* \[0-9\]\.\*$/m.test(vercelIgnore)) {
+  fail(".vercelignore must exclude Finder-style suffixed duplicate files");
+}
 ok("Vercel ignores internal instructions, repo README, and scripts");
 
-function callMcp(payload) {
+function callMcp(payload, headers = {}) {
   return new Promise((resolve, reject) => {
     const handler = require(path.join(root, "api", "mcp.js"));
     const req = new EventEmitter();
     req.method = "POST";
     req.url = "/api/mcp";
-    req.headers = { "content-type": "application/json", "user-agent": "agent-readiness-validator" };
+    req.headers = {
+      "content-type": "application/json",
+      "user-agent": "agent-readiness-validator",
+      ...headers,
+    };
     req.destroy = reject;
 
     const res = {
@@ -334,6 +347,36 @@ function callMcp(payload) {
 }
 
 async function validateMcpRuntime() {
+  const initialize = await callMcp({
+    jsonrpc: "2.0",
+    id: 0,
+    method: "initialize",
+    params: {
+      protocolVersion: "2025-11-25",
+      capabilities: {},
+      clientInfo: { name: "agent-readiness-validator", version: "1.0.0" },
+    },
+  });
+  if (initialize.body.result.protocolVersion !== "2025-11-25") {
+    fail("MCP initialize does not negotiate protocol version 2025-11-25");
+  }
+
+  const initialized = await callMcp(
+    { jsonrpc: "2.0", method: "notifications/initialized" },
+    { "mcp-protocol-version": "2025-11-25" }
+  );
+  if (initialized.statusCode !== 202 || initialized.body !== null) {
+    fail("MCP initialized notification must return 202 without a response body");
+  }
+
+  const unsupportedVersion = await callMcp(
+    { jsonrpc: "2.0", id: 0.5, method: "ping" },
+    { "mcp-protocol-version": "2020-01-01" }
+  );
+  if (unsupportedVersion.statusCode !== 400 || !unsupportedVersion.body.error) {
+    fail("MCP must reject unsupported protocol versions");
+  }
+
   const resourceRead = await callMcp({
     jsonrpc: "2.0",
     id: 1,

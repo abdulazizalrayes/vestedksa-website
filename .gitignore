@@ -11,3 +11,4 @@ node_modules/
 *private*
 *.key
 *.pem
+* [0-9].*

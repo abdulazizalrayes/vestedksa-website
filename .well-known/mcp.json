@@ -8,6 +8,11 @@
       "name": "Vested KSA Public Read-Only MCP",
       "url": "https://vestedksa.com/api/mcp",
       "transport": "https",
+      "protocolVersion": "2025-11-25",
+      "supportedProtocolVersions": [
+        "2025-11-25",
+        "2024-11-05"
+      ],
       "serverCard": "https://vestedksa.com/.well-known/mcp/server-card.json",
       "auth": "none",
       "readOnly": true

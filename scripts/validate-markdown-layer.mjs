@@ -38,7 +38,7 @@ function validateJsonFiles() {
     ".well-known/mcp/server-card.json",
     ".well-known/mcp/server-cards.json",
     ".well-known/agent-skills/index.json",
-    ...fs.readdirSync(path.join(ROOT, "data")).filter((file) => file.endsWith(".json") && !file.includes(" 2")).map((file) => `data/${file}`),
+    ...fs.readdirSync(path.join(ROOT, "data")).filter((file) => file.endsWith(".json") && !/ \d+\.json$/i.test(file)).map((file) => `data/${file}`),
   ]) {
     JSON.parse(read(file));
   }

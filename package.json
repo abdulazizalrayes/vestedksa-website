@@ -8,7 +8,9 @@
     "indexnow:dry-run": "node scripts/submit-indexnow.mjs --dry-run",
     "indexnow:submit": "node scripts/submit-indexnow.mjs",
     "validate:markdown-layer": "node scripts/validate-markdown-layer.mjs",
-    "validate:agent-readiness": "node scripts/validate-agent-readiness.js"
+    "validate:agent-readiness": "node scripts/validate-agent-readiness.js",
+    "validate:deployment-output": "node scripts/validate-deployment-output.mjs",
+    "validate:live": "node scripts/validate-live-agent-surface.mjs"
   },
   "dependencies": {
     "@vercel/functions": "^2.2.13"

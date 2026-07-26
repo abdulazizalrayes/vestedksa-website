@@ -189,6 +189,21 @@
       "post": {
         "summary": "Call read-only MCP JSON-RPC tools",
         "operationId": "callMcp",
+        "parameters": [
+          {
+            "name": "MCP-Protocol-Version",
+            "in": "header",
+            "required": false,
+            "description": "Negotiated MCP protocol version. Current: 2025-11-25; legacy 2024-11-05 remains supported.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2025-11-25",
+                "2024-11-05"
+              ]
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -219,6 +234,12 @@
         "responses": {
           "200": {
             "description": "MCP JSON-RPC response"
+          },
+          "202": {
+            "description": "Initialized notification accepted without a response body"
+          },
+          "400": {
+            "description": "Invalid JSON-RPC request or unsupported MCP protocol version"
           }
         }
       }

@@ -4,7 +4,8 @@
     {
       "id": "vestedksa-public",
       "serverCard": "https://vestedksa.com/.well-known/mcp/server-card.json",
-      "url": "https://vestedksa.com/api/mcp"
+      "url": "https://vestedksa.com/api/mcp",
+      "protocolVersion": "2025-11-25"
     }
   ]
 }

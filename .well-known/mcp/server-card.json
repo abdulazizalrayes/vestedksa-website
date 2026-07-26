@@ -5,6 +5,11 @@
   "description": "Provides read-only Vested KSA overview, services, capabilities, service areas, AEO/GEO answer assets, decision trees, routing rules, procurement routing, public resources, and market-entry inquiry preparation.",
   "url": "https://vestedksa.com/api/mcp",
   "homepage": "https://vestedksa.com",
+  "protocolVersion": "2025-11-25",
+  "supportedProtocolVersions": [
+    "2025-11-25",
+    "2024-11-05"
+  ],
   "readOnly": true,
   "auth": {
     "type": "none",

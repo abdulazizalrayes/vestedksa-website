@@ -3,4 +3,4 @@ CLAUDE.md
 README.md
 scripts/
 node_modules/
-* 2.*
+* [0-9].*

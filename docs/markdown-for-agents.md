@@ -91,8 +91,12 @@ npm run check:markdown
 npm run validate:markdown-layer
 npm run validate:agent-readiness
 npm audit
-vercel build
+vercel build --prod
+npm run validate:deployment-output
+npm run validate:live
 ```
+
+The deployment-output check must run after the Vercel build. It rejects Finder-style suffixed copies, private key/environment files, internal repository files in the public static tree, missing canonical public data, and incomplete Markdown sidecar coverage. The live check runs after deployment and audits every canonical HTML/Markdown representation, sidecar, multilingual header, discovery resource, MCP safeguard, and known duplicate-file path.
 
 Live production checks after deployment:
 
