@@ -5,6 +5,13 @@ Project instructions for AI coding agents.
 These rules are adapted from the Karpathy-inspired Claude Code guidelines:
 think before coding, prefer simple solutions, make surgical changes, and verify against clear goals.
 
+## Architecture Map
+
+- Read `ARCHITECTURE.json` before any non-trivial feature, integration, routing, deployment, SEO, or agent-readiness change. It is the machine-readable system map and identity lock for Vested KSA.
+- Use `ARCHITECTURE.html` for the interactive human-readable view of components, runtime flows, contracts, ownership, and change paths.
+- Update both files when a change alters a mapped component, flow, contract, public route, integration, account boundary, or release procedure.
+- These files are repository-local documentation and must remain excluded from the public Vercel deployment.
+
 ## Core Behavior
 
 - Do not silently guess when the task is ambiguous.

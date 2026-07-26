@@ -1,0 +1,1439 @@
+{
+  "schemaVersion": "1.0.0",
+  "mapVersion": "2026-07-26",
+  "title": "Vested KSA Website Architecture",
+  "description": "Authoritative machine-readable map of the Vested KSA public website, agent-readiness layer, data contracts, runtime flows, integrations, deployment boundaries, and change guidance.",
+  "identityLock": {
+    "company": "Vested KSA",
+    "legalName": "Vest KSA Co.",
+    "productionDomain": "https://vestedksa.com",
+    "repositoryPath": "/Users/abdulazizalrayes/Documents/New project/vestedksa-website",
+    "githubRepository": "abdulazizalrayes/vestedksa-website",
+    "hostingPlatform": "Vercel",
+    "vercelProjectName": "project-ivd9v",
+    "vercelProjectId": "prj_Qf4Ef3S8n0cNveCoRoqw2br1SAmC",
+    "vercelTeamId": "team_AnOdxEeUwCwUtPdqTk5I1Dkt",
+    "paperclipHost": "https://ai.eijarat.com",
+    "paperclipWorkspace": "Vested KSA",
+    "paperclipPrefix": "VES",
+    "paperclipReleaseRecord": "VES-406",
+    "doNotMixWithOtherCompanies": true
+  },
+  "sourceState": {
+    "mapBasis": "Deployed HEAD plus verified production behavior and explicit working-tree drift",
+    "branch": "codex/vested-markdown-agents-layer",
+    "commit": "3b8d476c81bd8cd7d76f3d968295e1d7eb5a7020",
+    "productionDeployment": "dpl_JCeaNWDgZ7AD1jZnfdPCMD1CPvEn",
+    "productionDeploymentState": "READY",
+    "productionAlias": "https://vestedksa.com",
+    "workingTreeDriftAtAudit": {
+      "preExistingDeletedFiles": [
+        ".well-known/agent-skills/index.json",
+        ".well-known/agent-skills/saudi-market-entry-guidance.md",
+        ".well-known/mcp/server-card.json",
+        ".well-known/mcp/server-cards.json"
+      ],
+      "preExistingUntrackedFiles": [
+        "previews/vested-2-5-before-after.html",
+        "previews/vested-2-5-before-after.png"
+      ],
+      "handling": "The architecture map does not restore, delete, or overwrite these pre-existing user changes. Deployed HEAD still contains the four discovery files."
+    }
+  },
+  "systemProfile": {
+    "architectureStyle": "Static multipage website with Vercel edge middleware and three Node.js serverless endpoints",
+    "framework": "None",
+    "rendering": "Prebuilt static HTML",
+    "packageType": "Private repository package; no public CLI or npm package",
+    "primaryLanguages": [
+      {
+        "code": "en",
+        "role": "primary"
+      },
+      {
+        "code": "ar",
+        "role": "localized homepage"
+      },
+      {
+        "code": "zh-Hans",
+        "role": "localized homepage"
+      }
+    ],
+    "metrics": {
+      "canonicalHtmlPages": 20,
+      "sitemapUrls": 46,
+      "insightGuides": 8,
+      "structuredDataResources": 15,
+      "markdownCompanions": 20,
+      "mcpTools": 11,
+      "mcpResources": 15,
+      "serverlessEndpoints": 3,
+      "publicLanguages": 3
+    }
+  },
+  "ownership": {
+    "businessOwner": "Vested KSA",
+    "sourceOwner": "abdulazizalrayes/vestedksa-website",
+    "deploymentOwner": "Vercel team team_AnOdxEeUwCwUtPdqTk5I1Dkt",
+    "analyticsProperty": {
+      "platform": "Google Analytics 4",
+      "measurementId": "G-7STG2HDV42"
+    },
+    "tagManagerContainer": "GTM-WL2FN4PR",
+    "systemOfRecord": "Paperclip Vested KSA workspace VES",
+    "accountRule": "Confirm Vested KSA plus at least one second identifier before any external write."
+  },
+  "entryPoints": {
+    "human": [
+      {
+        "id": "home-en",
+        "method": "GET",
+        "url": "https://vestedksa.com/",
+        "source": "index.html",
+        "language": "en"
+      },
+      {
+        "id": "home-ar",
+        "method": "GET",
+        "url": "https://vestedksa.com/ar",
+        "source": "ar/index.html",
+        "language": "ar"
+      },
+      {
+        "id": "home-zh",
+        "method": "GET",
+        "url": "https://vestedksa.com/zh",
+        "source": "zh/index.html",
+        "language": "zh-Hans"
+      },
+      {
+        "id": "contact",
+        "method": "GET",
+        "url": "https://vestedksa.com/contact",
+        "source": "contact.html",
+        "language": "en"
+      }
+    ],
+    "agent": [
+      {
+        "id": "llms",
+        "method": "GET",
+        "url": "https://vestedksa.com/llms.txt",
+        "purpose": "Concise AI orientation and routing"
+      },
+      {
+        "id": "llms-full",
+        "method": "GET",
+        "url": "https://vestedksa.com/llms-full.md",
+        "purpose": "Expanded AI orientation"
+      },
+      {
+        "id": "agent-card",
+        "method": "GET",
+        "url": "https://vestedksa.com/.well-known/agent-card.json",
+        "purpose": "Agent capability discovery"
+      },
+      {
+        "id": "mcp-discovery",
+        "method": "GET",
+        "url": "https://vestedksa.com/.well-known/mcp.json",
+        "purpose": "MCP server discovery"
+      },
+      {
+        "id": "openapi",
+        "method": "GET",
+        "url": "https://vestedksa.com/openapi.json",
+        "purpose": "Public HTTP contract"
+      },
+      {
+        "id": "mcp",
+        "method": "POST",
+        "url": "https://vestedksa.com/api/mcp",
+        "purpose": "Read-only typed agent tools and resources"
+      }
+    ],
+    "search": [
+      {
+        "id": "robots",
+        "method": "GET",
+        "url": "https://vestedksa.com/robots.txt"
+      },
+      {
+        "id": "sitemap",
+        "method": "GET",
+        "url": "https://vestedksa.com/sitemap.xml"
+      },
+      {
+        "id": "indexnow-key",
+        "method": "GET",
+        "url": "https://vestedksa.com/29b92482-dc1f-4e7d-8184-cf3de5f9937e.txt"
+      }
+    ]
+  },
+  "canonicalPages": [
+    {
+      "path": "/",
+      "file": "index.html",
+      "language": "en",
+      "type": "homepage"
+    },
+    {
+      "path": "/ar",
+      "file": "ar/index.html",
+      "language": "ar",
+      "type": "localized-homepage"
+    },
+    {
+      "path": "/zh",
+      "file": "zh/index.html",
+      "language": "zh-Hans",
+      "type": "localized-homepage"
+    },
+    {
+      "path": "/about",
+      "file": "about.html",
+      "language": "en",
+      "type": "company"
+    },
+    {
+      "path": "/services",
+      "file": "services.html",
+      "language": "en",
+      "type": "services"
+    },
+    {
+      "path": "/why-saudi",
+      "file": "why-saudi.html",
+      "language": "en",
+      "type": "market-context"
+    },
+    {
+      "path": "/ethics",
+      "file": "ethics.html",
+      "language": "en",
+      "type": "trust"
+    },
+    {
+      "path": "/insights",
+      "file": "insights.html",
+      "language": "en",
+      "type": "content-index"
+    },
+    {
+      "path": "/insights/ksa-market-entry-guide-2026",
+      "file": "insights/ksa-market-entry-guide-2026.html",
+      "language": "en",
+      "type": "article"
+    },
+    {
+      "path": "/insights/foreign-ownership-saudi-arabia",
+      "file": "insights/foreign-ownership-saudi-arabia.html",
+      "language": "en",
+      "type": "article"
+    },
+    {
+      "path": "/insights/misa-licensing-commercial-registration-saudi-arabia",
+      "file": "insights/misa-licensing-commercial-registration-saudi-arabia.html",
+      "language": "en",
+      "type": "article"
+    },
+    {
+      "path": "/insights/vat-zakat-saudi-arabia",
+      "file": "insights/vat-zakat-saudi-arabia.html",
+      "language": "en",
+      "type": "article"
+    },
+    {
+      "path": "/insights/saudi-e-invoicing-operating-controls",
+      "file": "insights/saudi-e-invoicing-operating-controls.html",
+      "language": "en",
+      "type": "article"
+    },
+    {
+      "path": "/insights/regional-headquarters-rhq-saudi-arabia",
+      "file": "insights/regional-headquarters-rhq-saudi-arabia.html",
+      "language": "en",
+      "type": "article"
+    },
+    {
+      "path": "/insights/saudi-vendor-registration-aramco-pif",
+      "file": "insights/saudi-vendor-registration-aramco-pif.html",
+      "language": "en",
+      "type": "article"
+    },
+    {
+      "path": "/insights/saudization-nitaqat-hr-saudi-arabia",
+      "file": "insights/saudization-nitaqat-hr-saudi-arabia.html",
+      "language": "en",
+      "type": "article"
+    },
+    {
+      "path": "/faq",
+      "file": "faq.html",
+      "language": "en",
+      "type": "faq"
+    },
+    {
+      "path": "/contact",
+      "file": "contact.html",
+      "language": "en",
+      "type": "lead-intake"
+    },
+    {
+      "path": "/privacy",
+      "file": "privacy.html",
+      "language": "en",
+      "type": "legal"
+    },
+    {
+      "path": "/terms",
+      "file": "terms.html",
+      "language": "en",
+      "type": "legal"
+    }
+  ],
+  "publicDownloads": [
+    "ksa-entry-checklist.txt",
+    "ksa-entry-checklist-ar.txt",
+    "ksa-entry-checklist-zh.txt",
+    "ksa-90-day-launch-plan.txt",
+    "ksa-vendor-registration-pack.txt",
+    "ksa-due-diligence-request-list.txt"
+  ],
+  "structuredResources": [
+    {
+      "id": "company",
+      "file": "data/company.json",
+      "schemaVersion": "2026-06-20",
+      "purpose": "Canonical public company identity, positioning, languages, contact, and verified social link"
+    },
+    {
+      "id": "services",
+      "file": "data/services.json",
+      "schemaVersion": "2026-06-20",
+      "purpose": "Eight service definitions"
+    },
+    {
+      "id": "capabilities",
+      "file": "data/capabilities.json",
+      "schemaVersion": "2026-06-20",
+      "purpose": "Eight capabilities plus explicit non-capabilities"
+    },
+    {
+      "id": "service-areas",
+      "file": "data/service-areas.json",
+      "schemaVersion": "2026-06-20",
+      "purpose": "Operating base, service area, client origins, and delivery model"
+    },
+    {
+      "id": "project-inquiry-schema",
+      "file": "data/project-inquiry-schema.json",
+      "schemaVersion": "2026-06-20",
+      "purpose": "Typed inquiry preparation contract with explicit approval requirement"
+    },
+    {
+      "id": "agent-routing",
+      "file": "data/agent-routing.json",
+      "schemaVersion": "2026-06-20",
+      "purpose": "Good-fit, maybe-fit, and non-fit routing"
+    },
+    {
+      "id": "answer-engine",
+      "file": "data/answer-engine.json",
+      "schemaVersion": "2026-06-29",
+      "purpose": "Concise AEO/GEO answer blocks and citation policy"
+    },
+    {
+      "id": "decision-trees",
+      "file": "data/decision-trees.json",
+      "schemaVersion": "2026-06-29",
+      "purpose": "Market-entry readiness and inquiry-fit decisions"
+    },
+    {
+      "id": "entity-glossary",
+      "file": "data/entity-glossary.json",
+      "schemaVersion": "2026-06-29",
+      "purpose": "Canonical company and service terminology"
+    },
+    {
+      "id": "source-map",
+      "file": "data/source-map.json",
+      "schemaVersion": "2026-06-29",
+      "purpose": "Topic-to-canonical-source mapping"
+    },
+    {
+      "id": "analytics-events",
+      "file": "data/analytics-events.json",
+      "schemaVersion": "2026-06-29",
+      "purpose": "Privacy-safe analytics taxonomy and key events"
+    },
+    {
+      "id": "agent-manifest",
+      "file": "data/agent-manifest.json",
+      "schemaVersion": "2026-06-29",
+      "purpose": "Agent layer inventory, compatibility, and safety"
+    },
+    {
+      "id": "schema-versions",
+      "file": "data/schema-versions.json",
+      "schemaVersion": "2026-06-29",
+      "purpose": "Public resource version registry"
+    },
+    {
+      "id": "changelog",
+      "file": "data/changelog.json",
+      "schemaVersion": "2026-06-29",
+      "purpose": "Agent-layer change history"
+    },
+    {
+      "id": "procurement-routing",
+      "file": "data/procurement-routing.json",
+      "schemaVersion": "2026-06-29",
+      "purpose": "Vendor-registration and procurement-fit routing"
+    }
+  ],
+  "services": [
+    "market-entry-planning",
+    "company-formation-setup",
+    "managed-local-operations",
+    "hr-payroll-saudization",
+    "finance-vat-zakat-controls",
+    "legal-compliance-coordination",
+    "workspace-facilities",
+    "vendor-registration-procurement-readiness"
+  ],
+  "runtime": {
+    "edge": {
+      "provider": "Vercel",
+      "dns": "Vercel DNS nameservers",
+      "configuration": "vercel.json",
+      "behaviors": [
+        "Redirect www to apex",
+        "Redirect index.html variants to clean canonical paths",
+        "Redirect /blog to /insights and /cookies to /privacy",
+        "Apply security headers",
+        "Advertise agent discovery Link headers on the root page",
+        "Apply noindex and Content-Signal headers to direct Markdown sidecars",
+        "Cache immutable static assets"
+      ]
+    },
+    "middleware": {
+      "file": "middleware.ts",
+      "dependency": "lib/markdown-negotiation.mjs",
+      "routeMap": "markdown-routes.ts",
+      "purpose": "Return Markdown from canonical URLs only when Accept explicitly includes text/markdown with q greater than zero",
+      "fallback": "Continue to ordinary static HTML"
+    },
+    "serverlessEndpoints": [
+      {
+        "id": "contact-api",
+        "path": "/api/contact",
+        "file": "api/contact.js",
+        "runtime": "Node.js serverless",
+        "methods": [
+          "POST",
+          "OPTIONS"
+        ],
+        "state": "Ephemeral in-memory rate-limit map per warm instance",
+        "sideEffect": "Sends SMTP lead alert email after validation",
+        "protections": [
+          "Origin allowlist",
+          "32 KiB body limit",
+          "Eight requests per minute per observed IP",
+          "Honeypot field",
+          "Required-field validation",
+          "Email validation",
+          "Input length limits",
+          "SMTP sender match",
+          "TLS certificate validation",
+          "X-Robots-Tag noindex"
+        ]
+      },
+      {
+        "id": "markdown-api",
+        "path": "/api/markdown",
+        "file": "api/markdown.js",
+        "runtime": "Node.js serverless",
+        "sideEffect": "None",
+        "dependency": "lib/markdown-assets.cjs",
+        "purpose": "Return one allowlisted deterministic Markdown representation with canonical, language, location, Vary, and Content-Signal headers"
+      },
+      {
+        "id": "mcp-api",
+        "path": "/api/mcp",
+        "file": "api/mcp.js",
+        "runtime": "Node.js serverless",
+        "sideEffect": "None",
+        "protocol": {
+          "current": "2025-11-25",
+          "legacySupported": "2024-11-05",
+          "transport": "HTTPS JSON-RPC"
+        },
+        "purpose": "Read-only company, service, routing, answer-engine, procurement, and inquiry-preparation interface"
+      }
+    ]
+  },
+  "markdownLayer": {
+    "generator": "scripts/generate-markdown-companions.mjs",
+    "parser": "parse5 structured HTML parser",
+    "sitemapParser": "fast-xml-parser",
+    "manifest": "markdown/manifest.json",
+    "routeMap": "markdown-routes.ts",
+    "runtimeAssetMap": "lib/markdown-assets.cjs",
+    "sidecarRoot": "markdown/",
+    "coverage": "20 of 20 canonical, indexable HTML sitemap pages",
+    "exclusions": [
+      "Navigation",
+      "Headers",
+      "Footers",
+      "Forms",
+      "Scripts",
+      "Styles",
+      "Hidden content",
+      "Decorative counters"
+    ],
+    "preserves": [
+      "Title",
+      "Description",
+      "Canonical URL",
+      "Language",
+      "Public links",
+      "Images with meaningful alt text",
+      "Lists",
+      "Tables",
+      "Headings",
+      "Details",
+      "Relevant public JSON-LD"
+    ],
+    "contentSignal": "ai-train=no, search=yes, ai-input=yes",
+    "directSidecarRobots": "noindex, follow"
+  },
+  "mcp": {
+    "endpoint": "https://vestedksa.com/api/mcp",
+    "readOnly": true,
+    "authentication": "None for public read-only methods",
+    "tools": [
+      "get_company_overview",
+      "list_services",
+      "match_project_scope",
+      "prepare_project_inquiry",
+      "list_service_areas",
+      "read_public_resource",
+      "get_answer_engine_assets",
+      "get_market_entry_decision_trees",
+      "get_entity_glossary",
+      "get_agent_manifest",
+      "match_procurement_scope"
+    ],
+    "resources": [
+      "company",
+      "services",
+      "capabilities",
+      "service-areas",
+      "project-inquiry-schema",
+      "agent-routing",
+      "answer-engine",
+      "decision-trees",
+      "entity-glossary",
+      "source-map",
+      "analytics-events",
+      "agent-manifest",
+      "schema-versions",
+      "changelog",
+      "procurement-routing"
+    ],
+    "safety": {
+      "submitsForms": false,
+      "sendsEmail": false,
+      "storesPersonalData": false,
+      "inquiryPreparationOnly": true,
+      "explicitApprovalRequiredBeforeExternalContact": true,
+      "nonFitCategories": [
+        "careers",
+        "internships",
+        "training",
+        "vendor pitches",
+        "retail shopping",
+        "consumer visa requests",
+        "spam",
+        "paid backlinks",
+        "unrelated requests"
+      ]
+    }
+  },
+  "discovery": {
+    "search": [
+      "robots.txt",
+      "sitemap.xml",
+      "29b92482-dc1f-4e7d-8184-cf3de5f9937e.txt",
+      "googled1234567890.html"
+    ],
+    "llm": [
+      "llms.txt",
+      "llms-full.txt",
+      "llms-full.md"
+    ],
+    "agent": [
+      ".well-known/agent-card.json",
+      ".well-known/api-catalog.json",
+      ".well-known/mcp.json",
+      ".well-known/mcp/server-card.json",
+      ".well-known/mcp/server-cards.json",
+      ".well-known/agent-skills/index.json",
+      ".well-known/agent-skills/saudi-market-entry-guidance.md",
+      "openapi.json",
+      "auth.md"
+    ],
+    "entity": [
+      ".well-known/entity-profile.json",
+      "data/company.json",
+      "data/entity-glossary.json"
+    ],
+    "crawlerPolicy": {
+      "publicSearch": "allowed",
+      "aiInput": "allowed",
+      "aiTraining": "not allowed",
+      "blockedPaths": [
+        "/admin",
+        "/private",
+        "/internal",
+        "/.vercel",
+        "/api/contact"
+      ]
+    }
+  },
+  "analytics": {
+    "client": {
+      "ga4MeasurementId": "G-7STG2HDV42",
+      "gtmContainerId": "GTM-WL2FN4PR",
+      "consentMechanism": "Page-level cookie banner using localStorage",
+      "globalTracker": "language-switcher.js plus page-level event helpers"
+    },
+    "keyEvents": [
+      "lead_form_submit",
+      "email_click",
+      "checklist_download_click",
+      "language_switch_click"
+    ],
+    "supportingEvents": [
+      "lead_form_start",
+      "lead_cta_click",
+      "view_key_page",
+      "agent_resource_read",
+      "mcp_tool_call",
+      "mcp_resource_read",
+      "openapi_read",
+      "llms_read",
+      "answer_asset_read"
+    ],
+    "serverObservability": "Privacy-safe JSON logs from /api/mcp in Vercel logs",
+    "privacyRule": "Do not log names, emails, phones, full prompts, inquiry messages, IDs, financial data, or confidential documents."
+  },
+  "externalIntegrations": [
+    {
+      "id": "vercel",
+      "role": "DNS, edge, static hosting, middleware, serverless functions, logs, deployment"
+    },
+    {
+      "id": "github",
+      "role": "Source repository and branch history",
+      "url": "https://github.com/abdulazizalrayes/vestedksa-website"
+    },
+    {
+      "id": "smtp",
+      "role": "Approved contact inquiry delivery",
+      "defaultHost": "mail.privateemail.com",
+      "secretHandling": "Environment variables only; values are not stored in the repository"
+    },
+    {
+      "id": "google-analytics",
+      "role": "Client analytics and conversion events"
+    },
+    {
+      "id": "google-tag-manager",
+      "role": "Tag orchestration"
+    },
+    {
+      "id": "google-search-console",
+      "role": "Indexing and search performance operations"
+    },
+    {
+      "id": "bing-indexnow",
+      "role": "Bing discovery, sitemap operations, and IndexNow submission"
+    },
+    {
+      "id": "linkedin",
+      "role": "Verified public sameAs entity signal",
+      "url": "https://www.linkedin.com/company/vested-ksa/"
+    },
+    {
+      "id": "paperclip",
+      "role": "Vested company operating record and release evidence; not a public-site runtime dependency"
+    }
+  ],
+  "environmentVariables": {
+    "contactDelivery": [
+      "VESTED_ALLOWED_ORIGINS",
+      "VESTED_SMTP_USER",
+      "VESTED_SMTP_PASS",
+      "VESTED_SMTP_HOST",
+      "VESTED_SMTP_PORT",
+      "VESTED_BUSINESS_MAILBOX",
+      "VESTED_LEAD_ALERT_TO"
+    ],
+    "legacyFallbackNamesPresent": [
+      "SMTP_USER",
+      "SMTP_PASS",
+      "SMTP_HOST",
+      "SMTP_PORT",
+      "PRIVATE_EMAIL_USERNAME",
+      "PRIVATE_EMAIL_PASSWORD",
+      "PRIVATE_EMAIL_SMTP_HOST",
+      "PRIVATE_EMAIL_SMTP_PORT",
+      "CONTACT_FROM",
+      "CONTACT_DESTINATION"
+    ],
+    "valuesRecordedHere": false
+  },
+  "buildAndRelease": {
+    "sourceControl": {
+      "remote": "https://github.com/abdulazizalrayes/vestedksa-website.git",
+      "branch": "codex/vested-markdown-agents-layer"
+    },
+    "packageScripts": {
+      "generate:markdown": "Generate deterministic Markdown companions",
+      "check:markdown": "Fail when generated Markdown artifacts are stale",
+      "indexnow:dry-run": "Preview the IndexNow submission payload",
+      "indexnow:submit": "Submit sitemap URLs to IndexNow",
+      "validate:markdown-layer": "Validate coverage, headers, routing, content exclusions, and optional HTML hashes",
+      "validate:agent-readiness": "Validate discovery, JSON, OpenAPI, MCP runtime safety, robots, and Vercel config",
+      "validate:deployment-output": "Validate Vercel build inventory and reject duplicate/private/internal artifacts",
+      "validate:live": "Validate production HTML, Markdown negotiation, sidecars, discovery, MCP, and duplicate paths"
+    },
+    "releaseSequence": [
+      "npm run check:markdown",
+      "npm run validate:markdown-layer",
+      "npm run validate:agent-readiness",
+      "npm audit --omit=dev",
+      "vercel build --prod",
+      "npm run validate:deployment-output",
+      "Commit and push the exact source state",
+      "vercel deploy --prebuilt --prod",
+      "npm run validate:live",
+      "npm run indexnow:submit",
+      "Record evidence in VES-406"
+    ],
+    "deploymentIgnore": [
+      "previews/",
+      "CLAUDE.md",
+      "README.md",
+      "ARCHITECTURE.html",
+      "ARCHITECTURE.json",
+      "scripts/",
+      "node_modules/",
+      "Finder-style numbered duplicate files"
+    ]
+  },
+  "components": [
+    {
+      "id": "human-browser",
+      "layer": "clients",
+      "name": "Human browser",
+      "kind": "client",
+      "description": "Ordinary visitors request static HTML, assets, forms, and downloads."
+    },
+    {
+      "id": "search-crawlers",
+      "layer": "clients",
+      "name": "Search crawlers",
+      "kind": "crawler",
+      "description": "Google, Bing, and other permitted crawlers consume HTML, robots, sitemap, and structured data."
+    },
+    {
+      "id": "ai-agents",
+      "layer": "clients",
+      "name": "AI and procurement agents",
+      "kind": "agent",
+      "description": "Agents consume llms files, Markdown, JSON, OpenAPI, and the read-only MCP endpoint."
+    },
+    {
+      "id": "vercel-dns",
+      "layer": "edge",
+      "name": "Vercel DNS",
+      "kind": "infrastructure",
+      "description": "Apex and www resolve through Vercel-managed DNS."
+    },
+    {
+      "id": "vercel-edge",
+      "layer": "edge",
+      "name": "Vercel edge",
+      "kind": "infrastructure",
+      "description": "Applies redirects, rewrites, security headers, caching, and dispatch."
+    },
+    {
+      "id": "accept-middleware",
+      "layer": "edge",
+      "name": "Accept negotiation",
+      "kind": "middleware",
+      "description": "Routes explicit text/markdown requests to the Markdown function; otherwise serves HTML."
+    },
+    {
+      "id": "static-site",
+      "layer": "application",
+      "name": "Static multipage site",
+      "kind": "frontend",
+      "description": "Twenty canonical HTML pages, three languages, eight guides, and six public downloads."
+    },
+    {
+      "id": "contact-form",
+      "layer": "application",
+      "name": "Contact form",
+      "kind": "frontend",
+      "description": "Collects market-entry inquiry fields and posts to /api/contact."
+    },
+    {
+      "id": "contact-api",
+      "layer": "application",
+      "name": "Contact API",
+      "kind": "serverless-function",
+      "description": "Validates, rate-limits, sanitizes, and delivers approved inquiries over SMTP."
+    },
+    {
+      "id": "markdown-api",
+      "layer": "application",
+      "name": "Markdown API",
+      "kind": "serverless-function",
+      "description": "Returns allowlisted Markdown content with canonical and language headers."
+    },
+    {
+      "id": "mcp-api",
+      "layer": "application",
+      "name": "Read-only MCP",
+      "kind": "serverless-function",
+      "description": "Exposes eleven typed tools and fifteen public resources without external submission."
+    },
+    {
+      "id": "html-jsonld",
+      "layer": "content",
+      "name": "HTML and JSON-LD",
+      "kind": "content",
+      "description": "Canonical public content with page-appropriate structured data."
+    },
+    {
+      "id": "structured-data",
+      "layer": "content",
+      "name": "15 public JSON resources",
+      "kind": "data",
+      "description": "Company, services, capabilities, routing, AEO/GEO, analytics, versioning, and procurement contracts."
+    },
+    {
+      "id": "markdown-companions",
+      "layer": "content",
+      "name": "20 Markdown companions",
+      "kind": "content",
+      "description": "Deterministic main-content representations generated from canonical HTML."
+    },
+    {
+      "id": "routing-contracts",
+      "layer": "content",
+      "name": "Routing and inquiry contracts",
+      "kind": "data",
+      "description": "Fit routing, procurement routing, and inquiry schema enforce agent boundaries."
+    },
+    {
+      "id": "sitemap-robots",
+      "layer": "discovery",
+      "name": "Sitemap and robots",
+      "kind": "discovery",
+      "description": "Forty-six public sitemap URLs and explicit crawler/private-path policy."
+    },
+    {
+      "id": "llms-discovery",
+      "layer": "discovery",
+      "name": "LLM discovery",
+      "kind": "discovery",
+      "description": "llms.txt and llms-full orient assistants to canonical pages and structured resources."
+    },
+    {
+      "id": "agent-discovery",
+      "layer": "discovery",
+      "name": "Agent and API discovery",
+      "kind": "discovery",
+      "description": "Agent card, API catalog, MCP cards, skills, OpenAPI, and auth guidance."
+    },
+    {
+      "id": "markdown-manifest",
+      "layer": "discovery",
+      "name": "Markdown manifest",
+      "kind": "discovery",
+      "description": "Maps every canonical HTML route to its language-specific Markdown sidecar."
+    },
+    {
+      "id": "smtp-service",
+      "layer": "external",
+      "name": "Private-email SMTP",
+      "kind": "external-service",
+      "description": "Receives validated contact inquiry email over TLS."
+    },
+    {
+      "id": "ga4-gtm",
+      "layer": "external",
+      "name": "GA4 and GTM",
+      "kind": "external-service",
+      "description": "Receives privacy-safe page, intent, language, download, and conversion events."
+    },
+    {
+      "id": "google-search",
+      "layer": "external",
+      "name": "Google Search Console",
+      "kind": "external-service",
+      "description": "Sitemap, indexing, search performance, and rich-result operations."
+    },
+    {
+      "id": "bing-indexnow",
+      "layer": "external",
+      "name": "Bing and IndexNow",
+      "kind": "external-service",
+      "description": "Sitemap operations and explicit URL-change notifications."
+    },
+    {
+      "id": "github",
+      "layer": "operations",
+      "name": "GitHub source",
+      "kind": "operations",
+      "description": "Repository, branch, commit history, and rollback source."
+    },
+    {
+      "id": "validation-suite",
+      "layer": "operations",
+      "name": "Validation suite",
+      "kind": "operations",
+      "description": "Determinism, schema, MCP, SEO, build inventory, live endpoint, and dependency checks."
+    },
+    {
+      "id": "vercel-deploy",
+      "layer": "operations",
+      "name": "Vercel deployment",
+      "kind": "operations",
+      "description": "Builds and publishes the exact validated artifact to production."
+    },
+    {
+      "id": "paperclip-record",
+      "layer": "operations",
+      "name": "Paperclip VES-406",
+      "kind": "operations",
+      "description": "Stores identity lock, evidence, cost, deployment, verification, and rollback."
+    }
+  ],
+  "flows": [
+    {
+      "id": "html-page-request",
+      "name": "Ordinary HTML page request",
+      "trigger": "Browser sends a normal GET or Accept: text/html",
+      "steps": [
+        {
+          "from": "human-browser",
+          "to": "vercel-dns",
+          "action": "Resolve vestedksa.com"
+        },
+        {
+          "from": "vercel-dns",
+          "to": "vercel-edge",
+          "action": "Route request to Vercel"
+        },
+        {
+          "from": "vercel-edge",
+          "to": "accept-middleware",
+          "action": "Evaluate canonical route and Accept header"
+        },
+        {
+          "from": "accept-middleware",
+          "to": "static-site",
+          "action": "Continue without rewrite"
+        },
+        {
+          "from": "static-site",
+          "to": "human-browser",
+          "action": "Return static HTML and assets"
+        }
+      ],
+      "invariants": [
+        "Ordinary requests remain HTML",
+        "Canonical URL and hreflang remain unchanged"
+      ]
+    },
+    {
+      "id": "markdown-negotiation",
+      "name": "Canonical URL to Markdown",
+      "trigger": "Agent sends Accept: text/markdown with q greater than zero",
+      "steps": [
+        {
+          "from": "ai-agents",
+          "to": "vercel-edge",
+          "action": "Request canonical page"
+        },
+        {
+          "from": "vercel-edge",
+          "to": "accept-middleware",
+          "action": "Parse Accept header"
+        },
+        {
+          "from": "accept-middleware",
+          "to": "markdown-api",
+          "action": "Rewrite allowlisted route to /api/markdown"
+        },
+        {
+          "from": "markdown-companions",
+          "to": "markdown-api",
+          "action": "Read explicit generated asset"
+        },
+        {
+          "from": "markdown-api",
+          "to": "ai-agents",
+          "action": "Return Markdown with language, canonical, location, Vary, and Content-Signal headers"
+        }
+      ],
+      "invariants": [
+        "q=0 falls back to HTML",
+        "Missing companions fall back safely",
+        "Direct sidecars remain noindex, follow"
+      ]
+    },
+    {
+      "id": "search-discovery",
+      "name": "Search crawler discovery",
+      "trigger": "Crawler visits the domain",
+      "steps": [
+        {
+          "from": "search-crawlers",
+          "to": "sitemap-robots",
+          "action": "Read permissions and URL inventory"
+        },
+        {
+          "from": "sitemap-robots",
+          "to": "static-site",
+          "action": "Discover canonical public pages"
+        },
+        {
+          "from": "static-site",
+          "to": "html-jsonld",
+          "action": "Expose canonical content and structured data"
+        },
+        {
+          "from": "html-jsonld",
+          "to": "google-search",
+          "action": "Index and evaluate rich results"
+        },
+        {
+          "from": "sitemap-robots",
+          "to": "bing-indexnow",
+          "action": "Submit sitemap and URL changes"
+        }
+      ]
+    },
+    {
+      "id": "agent-discovery-and-read",
+      "name": "Agent discovery and public read",
+      "trigger": "Assistant or procurement agent needs Vested facts",
+      "steps": [
+        {
+          "from": "ai-agents",
+          "to": "llms-discovery",
+          "action": "Read orientation and safety rules"
+        },
+        {
+          "from": "llms-discovery",
+          "to": "agent-discovery",
+          "action": "Locate OpenAPI, MCP, skills, and API catalog"
+        },
+        {
+          "from": "agent-discovery",
+          "to": "structured-data",
+          "action": "Read canonical JSON resources"
+        },
+        {
+          "from": "structured-data",
+          "to": "ai-agents",
+          "action": "Return citation-ready public facts"
+        }
+      ]
+    },
+    {
+      "id": "mcp-read-only",
+      "name": "Read-only MCP call",
+      "trigger": "MCP client initializes and calls a public tool",
+      "steps": [
+        {
+          "from": "ai-agents",
+          "to": "agent-discovery",
+          "action": "Discover protocol and endpoint"
+        },
+        {
+          "from": "agent-discovery",
+          "to": "mcp-api",
+          "action": "Initialize MCP 2025-11-25"
+        },
+        {
+          "from": "structured-data",
+          "to": "mcp-api",
+          "action": "Read explicit bundled resources"
+        },
+        {
+          "from": "routing-contracts",
+          "to": "mcp-api",
+          "action": "Apply fit, procurement, and approval rules"
+        },
+        {
+          "from": "mcp-api",
+          "to": "ai-agents",
+          "action": "Return JSON-RPC result without submission"
+        }
+      ],
+      "invariants": [
+        "No form submission",
+        "No email",
+        "No personal-data storage",
+        "Inquiry preparation remains not_submitted"
+      ]
+    },
+    {
+      "id": "approved-contact-inquiry",
+      "name": "Approved contact inquiry",
+      "trigger": "Human explicitly submits the contact form",
+      "steps": [
+        {
+          "from": "human-browser",
+          "to": "contact-form",
+          "action": "Complete required market-entry fields"
+        },
+        {
+          "from": "contact-form",
+          "to": "contact-api",
+          "action": "POST sanitized JSON"
+        },
+        {
+          "from": "routing-contracts",
+          "to": "contact-api",
+          "action": "Contract defines required inquiry data and approval boundary"
+        },
+        {
+          "from": "contact-api",
+          "to": "smtp-service",
+          "action": "Deliver validated inquiry over TLS"
+        },
+        {
+          "from": "contact-api",
+          "to": "contact-form",
+          "action": "Return success or safe error"
+        },
+        {
+          "from": "contact-form",
+          "to": "ga4-gtm",
+          "action": "Record privacy-safe conversion event after success"
+        }
+      ],
+      "invariants": [
+        "Agents require explicit user approval before submission",
+        "Analytics excludes personal fields and message body"
+      ]
+    },
+    {
+      "id": "analytics-event",
+      "name": "Privacy-safe analytics",
+      "trigger": "Visitor views, clicks, switches language, downloads, or completes a form",
+      "steps": [
+        {
+          "from": "static-site",
+          "to": "ga4-gtm",
+          "action": "Send approved client event taxonomy"
+        },
+        {
+          "from": "mcp-api",
+          "to": "vercel-deploy",
+          "action": "Write broad, privacy-safe runtime log event"
+        }
+      ]
+    },
+    {
+      "id": "release-pipeline",
+      "name": "Validated production release",
+      "trigger": "Source or public contract changes",
+      "steps": [
+        {
+          "from": "github",
+          "to": "validation-suite",
+          "action": "Check deterministic content, schemas, MCP, SEO, security, and dependencies"
+        },
+        {
+          "from": "validation-suite",
+          "to": "vercel-deploy",
+          "action": "Build exact production artifact and reject duplicate/private files"
+        },
+        {
+          "from": "vercel-deploy",
+          "to": "vercel-edge",
+          "action": "Publish and alias production"
+        },
+        {
+          "from": "vercel-edge",
+          "to": "validation-suite",
+          "action": "Run live coverage and behavior checks"
+        },
+        {
+          "from": "validation-suite",
+          "to": "paperclip-record",
+          "action": "Record evidence, cost, and rollback"
+        }
+      ]
+    }
+  ],
+  "dataContracts": [
+    {
+      "id": "canonical-html",
+      "producer": "Hand-maintained static HTML pages",
+      "consumers": [
+        "Human browsers",
+        "Search crawlers",
+        "Markdown generator"
+      ],
+      "contract": "Canonical, indexable HTML with robots metadata, JSON-LD, and stable clean URLs"
+    },
+    {
+      "id": "markdown-manifest",
+      "producer": "scripts/generate-markdown-companions.mjs",
+      "consumers": [
+        "middleware.ts",
+        "api/markdown.js",
+        "Agents",
+        "Validation scripts"
+      ],
+      "contract": "One entry per canonical indexable HTML sitemap page"
+    },
+    {
+      "id": "public-json",
+      "producer": "Vested-maintained data/*.json files",
+      "consumers": [
+        "MCP tools",
+        "OpenAPI clients",
+        "Search and AI agents",
+        "llms discovery"
+      ],
+      "contract": "Public, verified, privacy-safe, additive versioned facts only"
+    },
+    {
+      "id": "contact-request",
+      "producer": "contact.html",
+      "consumers": [
+        "api/contact.js"
+      ],
+      "contract": "Required name, email, company, country, service, and message; honeypot must remain empty"
+    },
+    {
+      "id": "mcp-json-rpc",
+      "producer": "api/mcp.js",
+      "consumers": [
+        "MCP-capable agents"
+      ],
+      "contract": "JSON-RPC 2.0, MCP 2025-11-25 current, read-only resources and tools"
+    },
+    {
+      "id": "analytics-taxonomy",
+      "producer": "data/analytics-events.json",
+      "consumers": [
+        "Page scripts",
+        "GA4",
+        "GTM",
+        "Monthly reporting"
+      ],
+      "contract": "No personal information or full inquiry content in events"
+    }
+  ],
+  "invariants": [
+    {
+      "id": "identity-isolation",
+      "severity": "critical",
+      "rule": "Never mix Vested assets, accounts, facts, credentials, analytics, deployments, or Paperclip records with another company."
+    },
+    {
+      "id": "visual-freeze",
+      "severity": "high",
+      "rule": "Do not change public visual HTML without owner approval."
+    },
+    {
+      "id": "html-default",
+      "severity": "critical",
+      "rule": "Canonical URLs return HTML unless text/markdown is explicitly accepted with q greater than zero."
+    },
+    {
+      "id": "markdown-noindex",
+      "severity": "high",
+      "rule": "Direct Markdown sidecars return X-Robots-Tag: noindex, follow."
+    },
+    {
+      "id": "content-signal",
+      "severity": "high",
+      "rule": "Public content policy remains ai-train=no, search=yes, ai-input=yes unless the owner changes it."
+    },
+    {
+      "id": "agent-read-only",
+      "severity": "critical",
+      "rule": "MCP does not submit forms, send email, or contact Vested KSA."
+    },
+    {
+      "id": "contact-approval",
+      "severity": "critical",
+      "rule": "An agent may use /api/contact only after explicit user approval of final content and destination."
+    },
+    {
+      "id": "verified-facts-only",
+      "severity": "high",
+      "rule": "Do not invent legal numbers, coordinates, certifications, social links, clients, testimonials, or case studies."
+    },
+    {
+      "id": "privacy",
+      "severity": "critical",
+      "rule": "Do not expose secrets or log personal and confidential inquiry data."
+    },
+    {
+      "id": "deployment-integrity",
+      "severity": "high",
+      "rule": "Do not deploy if required validation fails or numbered duplicate files enter the build."
+    }
+  ],
+  "changeGuide": [
+    {
+      "change": "Add or edit a canonical page",
+      "touch": [
+        "Relevant .html file",
+        "sitemap.xml",
+        "Relevant JSON-LD",
+        "Potential llms/source-map/answer-engine entries"
+      ],
+      "thenRun": [
+        "npm run generate:markdown",
+        "npm run validate:markdown-layer",
+        "npm run validate:agent-readiness",
+        "vercel build --prod",
+        "npm run validate:deployment-output",
+        "npm run validate:live"
+      ]
+    },
+    {
+      "change": "Add or edit a service",
+      "touch": [
+        "data/services.json",
+        "data/capabilities.json when applicable",
+        "services.html",
+        "service-pages.json",
+        "openapi.json when the contract changes",
+        "data/schema-versions.json and data/changelog.json"
+      ],
+      "thenRun": [
+        "npm run generate:markdown",
+        "npm run validate:agent-readiness",
+        "npm run validate:markdown-layer"
+      ]
+    },
+    {
+      "change": "Change inquiry fields or routing",
+      "touch": [
+        "data/project-inquiry-schema.json",
+        "data/agent-routing.json",
+        "data/procurement-routing.json",
+        "api/mcp.js",
+        "contact.html and api/contact.js only when submission fields change",
+        "openapi.json"
+      ],
+      "thenRun": [
+        "npm run validate:agent-readiness",
+        "npm run validate:live"
+      ]
+    },
+    {
+      "change": "Change Markdown behavior",
+      "touch": [
+        "scripts/generate-markdown-companions.mjs",
+        "middleware.ts",
+        "lib/markdown-negotiation.mjs",
+        "api/markdown.js",
+        "vercel.json"
+      ],
+      "thenRun": [
+        "npm run generate:markdown",
+        "npm run check:markdown",
+        "npm run validate:markdown-layer",
+        "vercel build --prod",
+        "npm run validate:deployment-output",
+        "npm run validate:live"
+      ]
+    },
+    {
+      "change": "Change MCP tools or resources",
+      "touch": [
+        "api/mcp.js",
+        ".well-known/mcp.json",
+        ".well-known/mcp/server-card.json",
+        ".well-known/agent-card.json",
+        "openapi.json",
+        "llms.txt",
+        "data/agent-manifest.json",
+        "data/schema-versions.json and data/changelog.json"
+      ],
+      "thenRun": [
+        "npm run validate:agent-readiness",
+        "npm run validate:live"
+      ]
+    },
+    {
+      "change": "Change analytics events",
+      "touch": [
+        "data/analytics-events.json",
+        "language-switcher.js or relevant page scripts",
+        "analytics-reporting.md",
+        "docs/advanced-analytics-playbook.md"
+      ],
+      "thenRun": [
+        "Confirm no personal fields are transmitted",
+        "npm run validate:agent-readiness"
+      ]
+    },
+    {
+      "change": "Release to production",
+      "touch": [
+        "Only the intended Vested files"
+      ],
+      "thenRun": [
+        "Complete every buildAndRelease.releaseSequence step",
+        "Record deployment, commit, cost, evidence, and rollback in VES-406"
+      ]
+    }
+  ],
+  "knownConstraints": [
+    "The site intentionally has no public CLI or npm package because current workflows are repository-local and HTTP-based.",
+    "The contact rate limit is per warm serverless instance and is not a globally consistent distributed limit.",
+    "Static llms, OpenAPI, and data-file reads are observed through hosting/access analytics rather than a dedicated event sink.",
+    "CR, VAT, license numbers, client logos, testimonials, case studies, certifications, exact coordinates, and Wikidata are intentionally not asserted.",
+    "The four working-tree discovery deletions must be resolved deliberately before the next source deployment."
+  ],
+  "freshness": {
+    "lastAudited": "2026-07-26",
+    "updateThisMapWhen": [
+      "A canonical route is added, removed, or renamed",
+      "A data contract or MCP tool changes",
+      "Hosting, DNS, repository, analytics, SMTP, or Paperclip ownership changes",
+      "A new external service or secret class is introduced",
+      "The release pipeline or validation commands change",
+      "A visual feature materially changes page behavior",
+      "Working-tree drift is resolved"
+    ],
+    "verificationCommands": [
+      "node -e \"JSON.parse(require('fs').readFileSync('ARCHITECTURE.json','utf8')); console.log('ARCHITECTURE.json valid')\"",
+      "npm run check:markdown",
+      "npm run validate:markdown-layer",
+      "npm run validate:agent-readiness",
+      "vercel build --prod",
+      "npm run validate:deployment-output",
+      "npm run validate:live"
+    ]
+  }
+}

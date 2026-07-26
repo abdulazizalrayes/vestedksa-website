@@ -1,6 +1,8 @@
 previews/
 CLAUDE.md
 README.md
+ARCHITECTURE.html
+ARCHITECTURE.json
 scripts/
 node_modules/
 * [0-9].*
