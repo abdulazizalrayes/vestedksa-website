@@ -614,7 +614,7 @@
       "ga4MeasurementId": "G-7STG2HDV42",
       "gtmContainerId": "GTM-WL2FN4PR",
       "consentMechanism": "Page-level cookie banner using localStorage",
-      "globalTracker": "language-switcher.js plus page-level event helpers"
+      "globalTracker": "analytics-loader.js on all insight guides, plus language-switcher.js and page-level event helpers"
     },
     "keyEvents": [
       "lead_form_submit",

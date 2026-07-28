@@ -45,6 +45,7 @@ const requiredFiles = [
   "scripts/validate-deployment-output.mjs",
   "scripts/validate-live-agent-surface.mjs",
   "scripts/validate-markdown-layer.mjs",
+  "analytics-loader.js",
   "robots.txt",
   "sitemap.xml",
   "29b92482-dc1f-4e7d-8184-cf3de5f9937e.txt",
@@ -64,6 +65,16 @@ const htmlFiles = [
   "contact.html",
   "privacy.html",
   "terms.html",
+];
+const insightHtmlFiles = [
+  "insights/foreign-ownership-saudi-arabia.html",
+  "insights/ksa-market-entry-guide-2026.html",
+  "insights/misa-licensing-commercial-registration-saudi-arabia.html",
+  "insights/regional-headquarters-rhq-saudi-arabia.html",
+  "insights/saudi-e-invoicing-operating-controls.html",
+  "insights/saudi-vendor-registration-aramco-pif.html",
+  "insights/saudization-nitaqat-hr-saudi-arabia.html",
+  "insights/vat-zakat-saudi-arabia.html",
 ];
 
 function fail(message) {
@@ -244,6 +255,17 @@ for (const file of htmlFiles) {
   if (!/<meta\s+name=["']robots["']/.test(html)) fail(`${file} missing robots meta`);
 }
 ok("core HTML pages include canonical and robots meta");
+
+const analyticsLoader = read("analytics-loader.js");
+["G-7STG2HDV42", "GTM-WL2FN4PR"].forEach((identifier) => {
+  if (!analyticsLoader.includes(identifier)) fail(`analytics-loader.js missing ${identifier}`);
+});
+for (const file of insightHtmlFiles) {
+  if (!read(file).includes('<script src="/analytics-loader.js" defer></script>')) {
+    fail(`${file} missing shared analytics loader`);
+  }
+}
+ok("all insight guides load the Vested analytics instrumentation");
 
 const vercel = read("vercel.json");
 let vercelConfig;
