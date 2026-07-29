@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/insights/saudization-nitaqat-hr-saudi-arabia.html"
 markdown_sidecar: "/markdown/insights/saudization-nitaqat-hr-saudi-arabia.md"
+direct_markdown: "/insights/saudization-nitaqat-hr-saudi-arabia.md"
 alternate_languages: []
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: []
 - Language: en
 - Source HTML: /insights/saudization-nitaqat-hr-saudi-arabia.html
 - Markdown sidecar: /markdown/insights/saudization-nitaqat-hr-saudi-arabia.md
+- Direct Markdown: /insights/saudization-nitaqat-hr-saudi-arabia.md
 ## Main Content
 ## Saudization and Nitaqat for International Companies
 Saudi workforce compliance should be planned before the first wave of hiring. Nitaqat status can affect visas, work permits, employee transfers, and the practical ability to scale a local team.

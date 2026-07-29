@@ -335,8 +335,8 @@
     },
     "/markdown/{sidecar}.md": {
       "get": {
-        "summary": "Get a direct Markdown sidecar",
-        "description": "Direct Markdown sidecars are public but return X-Robots-Tag: noindex, follow to prevent duplicate indexing.",
+        "summary": "Get a legacy Markdown sidecar",
+        "description": "Legacy /markdown/ sidecars remain public for compatibility and return X-Robots-Tag: noindex, follow. Prefer the clean direct URL listed as direct in markdown/manifest.json.",
         "operationId": "getMarkdownSidecar",
         "parameters": [
           {
@@ -351,6 +351,27 @@
         "responses": {
           "200": {
             "description": "Markdown companion for a canonical page"
+          }
+        }
+      }
+    },
+    "/services.md": {
+      "get": {
+        "summary": "Get a clean direct Markdown companion",
+        "description": "Representative clean direct companion. Every canonical page in markdown/manifest.json exposes its own direct .md URL with canonical, language, location, Vary, Content-Signal, and noindex headers.",
+        "operationId": "getCleanDirectMarkdownExample",
+        "responses": {
+          "200": {
+            "description": "Markdown companion for https://vestedksa.com/services"
+          }
+        }
+      },
+      "head": {
+        "summary": "Inspect clean direct Markdown headers",
+        "operationId": "headCleanDirectMarkdownExample",
+        "responses": {
+          "200": {
+            "description": "Markdown headers without a response body"
           }
         }
       }
@@ -389,6 +410,6 @@
   ],
   "x-markdown-for-agents": {
     "manifest": "https://vestedksa.com/markdown/manifest.json",
-    "instructions": "Send Accept: text/markdown to any canonical HTML sitemap URL listed in markdown/manifest.json. Direct sidecars are noindex, follow."
+    "instructions": "Send Accept: text/markdown to any canonical HTML sitemap URL listed in markdown/manifest.json, or use its clean direct URL such as /services.md. Direct Markdown URLs are noindex, follow."
   }
 }

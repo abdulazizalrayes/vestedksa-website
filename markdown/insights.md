@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/insights.html"
 markdown_sidecar: "/markdown/insights.md"
+direct_markdown: "/insights.md"
 alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/insights"},{"hreflang":"x-default","href":"https://vestedksa.com/insights"}]
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/insights"},
 - Language: en
 - Source HTML: /insights.html
 - Markdown sidecar: /markdown/insights.md
+- Direct Markdown: /insights.md
 - Alternate languages: en (https://vestedksa.com/insights), x-default (https://vestedksa.com/insights)
 ## Main Content
 ## Saudi Launch Readiness Center.

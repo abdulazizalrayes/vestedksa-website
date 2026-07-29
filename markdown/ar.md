@@ -6,6 +6,7 @@ language: "ar"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/ar/index.html"
 markdown_sidecar: "/markdown/ar.md"
+direct_markdown: "/ar.md"
 alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/"},{"hreflang":"ar","href":"https://vestedksa.com/ar"},{"hreflang":"zh-Hans","href":"https://vestedksa.com/zh"},{"hreflang":"x-default","href":"https://vestedksa.com/"}]
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/"},{"hrefla
 - Language: ar
 - Source HTML: /ar/index.html
 - Markdown sidecar: /markdown/ar.md
+- Direct Markdown: /ar.md
 - Alternate languages: en (https://vestedksa.com/), ar (https://vestedksa.com/ar), zh-Hans (https://vestedksa.com/zh), x-default (https://vestedksa.com/)
 ## Main Content
 ## ادخل السوق السعودي.

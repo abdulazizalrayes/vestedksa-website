@@ -33,7 +33,7 @@ This means public search crawling is allowed, AI assistants may use public page 
 - `markdown/*.md`: deterministic Markdown companions for canonical, indexable HTML sitemap pages.
 - `markdown/manifest.json`: canonical URL to Markdown sidecar inventory.
 - `markdown-routes.ts`: generated route map consumed by Vercel Routing Middleware.
-- `middleware.ts`: checks `Accept` headers and rewrites eligible Markdown requests.
+- `middleware.ts`: performs standards-correct `Accept` negotiation, advertises clean Markdown alternates, and rewrites eligible requests.
 - `api/markdown.js`: serves Markdown with canonical, language, location, vary, and content policy headers.
 - `lib/markdown-negotiation.mjs`: shared Accept-header parsing and route resolution.
 - `scripts/generate-markdown-companions.mjs`: structured parser generator with `--check` mode.
@@ -52,12 +52,30 @@ If a generated Markdown companion exists, middleware rewrites the request to `/a
 
 - `Content-Type: text/markdown; charset=utf-8`
 - `Vary: Accept`
-- `Content-Location: /markdown/services.md`
+- `Content-Location: /services.md`
 - `Content-Language: en`
 - `Link: <https://vestedksa.com/services>; rel="canonical"`
 - `Content-Signal: ai-train=no, search=yes, ai-input=yes`
 
-Direct sidecars such as `/markdown/services.md` are also public, but return `X-Robots-Tag: noindex, follow` so they do not compete with canonical HTML pages in search.
+Canonical HTML and HEAD responses advertise the page-specific companion:
+
+```text
+Link: <https://vestedksa.com/services.md>; rel="alternate"; type="text/markdown"
+Vary: Accept
+```
+
+Clean direct companions such as `/services.md` are public and return `X-Robots-Tag: noindex, follow` so they do not compete with canonical HTML pages in search. Legacy `/markdown/services.md` URLs remain available with the same noindex policy for compatibility.
+
+### Accept Negotiation
+
+- Missing, unknown, or ambiguous `Accept` headers default to HTML.
+- `text/markdown`, `text/html`, `text/*`, and `*/*` are supported.
+- The higher effective `q` value wins.
+- A more specific media range determines the effective quality for a representation.
+- Equal explicit HTML and Markdown preferences default to HTML.
+- A representation with effective `q=0` is never selected.
+- If both HTML and Markdown are explicitly unacceptable, the canonical URL returns `406 Not Acceptable`.
+- If a Markdown companion is unavailable, the request continues to ordinary HTML.
 
 ## Generation Rules
 
@@ -73,10 +91,10 @@ Preserved fields include page title, description, canonical URL, language, publi
 
 ## Enhanced Markdown Shape
 
-Each sidecar now includes:
+Each companion now includes:
 
-- YAML-style front matter with `title`, `description`, `canonical`, `language`, `content_signal`, `source_html`, `markdown_sidecar`, and `alternate_languages`.
-- A `Page Metadata` section for canonical URL, language, source HTML, sidecar path, and hreflang alternates.
+- YAML-style front matter with `title`, `description`, `canonical`, `language`, `content_signal`, `source_html`, `direct_markdown`, `markdown_sidecar`, and `alternate_languages`.
+- A `Page Metadata` section for canonical URL, language, source HTML, clean Markdown URL, legacy sidecar path, and hreflang alternates.
 - A `Main Content` section with body headings shifted below the generated page title.
 - A `Public Page Resources` section with visible public links and meaningful images extracted from the page content.
 - A `Public Structured Data` section with valid JSON-LD blocks.
@@ -87,6 +105,7 @@ The generator drops decorative navigation, mobile menus, eyebrow labels, cookie/
 
 ```bash
 npm run generate:markdown
+npm test
 npm run check:markdown
 npm run validate:markdown-layer
 npm run validate:agent-readiness
@@ -103,7 +122,11 @@ Live production checks after deployment:
 ```bash
 curl -sSI https://vestedksa.com/services
 curl -sSI -H 'Accept: text/markdown' https://vestedksa.com/services
-curl -sSI -H 'Accept: text/markdown;q=0' https://vestedksa.com/services
+curl -sSI -H 'Accept: text/html;q=1, text/markdown;q=0.2' https://vestedksa.com/services
+curl -sSI -H 'Accept: text/html;q=0.2, text/markdown;q=1' https://vestedksa.com/services
+curl -sSI -H 'Accept: text/html, text/markdown' https://vestedksa.com/services
+curl -sSI -H 'Accept: text/markdown;q=0, text/html' https://vestedksa.com/services
+curl -sSI https://vestedksa.com/services.md
 curl -sSI https://vestedksa.com/markdown/services.md
 curl -sS https://vestedksa.com/markdown/manifest.json
 ```

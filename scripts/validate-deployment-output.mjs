@@ -27,6 +27,7 @@ assert.deepEqual(duplicateFiles, [], `deployment contains suffixed duplicate fil
 
 const forbiddenStaticFiles = outputFiles.filter((file) => (
   file.startsWith("static/scripts/") ||
+  file.startsWith("static/test/") ||
   file.startsWith("static/previews/") ||
   file.startsWith("static/node_modules/") ||
   file === "static/README.md" ||

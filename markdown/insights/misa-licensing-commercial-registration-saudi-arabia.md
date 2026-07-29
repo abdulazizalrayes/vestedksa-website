@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/insights/misa-licensing-commercial-registration-saudi-arabia.html"
 markdown_sidecar: "/markdown/insights/misa-licensing-commercial-registration-saudi-arabia.md"
+direct_markdown: "/insights/misa-licensing-commercial-registration-saudi-arabia.md"
 alternate_languages: []
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: []
 - Language: en
 - Source HTML: /insights/misa-licensing-commercial-registration-saudi-arabia.html
 - Markdown sidecar: /markdown/insights/misa-licensing-commercial-registration-saudi-arabia.md
+- Direct Markdown: /insights/misa-licensing-commercial-registration-saudi-arabia.md
 ## Main Content
 ## MISA Licensing and Commercial Registration in Saudi Arabia
 For foreign companies, Saudi setup is not a single filing. It is a sequence: activity definition, investment registration or licensing, entity formation, Commercial Registration, and the operational registrations that make the company usable.

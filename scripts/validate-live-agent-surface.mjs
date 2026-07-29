@@ -23,14 +23,71 @@ async function fetchChecked(pathname, options = {}) {
   }
 }
 
+function hasHeaderToken(response, name, token) {
+  return String(response.headers.get(name) || "")
+    .split(",")
+    .map((value) => value.trim().toLowerCase())
+    .includes(token.toLowerCase());
+}
+
+function hasMarkdownType(response) {
+  return response.headers.get("content-type")?.includes("text/markdown");
+}
+
+function hasHtmlType(response) {
+  return response.headers.get("content-type")?.includes("text/html");
+}
+
+function checkMarkdownHeaders(response, entry, expectedCanonical, label, direct) {
+  if (response.status !== 200 || !hasMarkdownType(response)) {
+    fail(`${label}: expected 200 text/markdown`);
+  }
+  if (response.headers.get("content-location") !== entry.direct) {
+    fail(`${label}: incorrect Content-Location`);
+  }
+  if (response.headers.get("content-language") !== entry.language) {
+    fail(`${label}: incorrect Content-Language`);
+  }
+  if (!response.headers.get("link")?.includes(`<${expectedCanonical}>; rel="canonical"`)) {
+    fail(`${label}: missing canonical Link header`);
+  }
+  if (!hasHeaderToken(response, "vary", "accept")) {
+    fail(`${label}: missing Vary: Accept`);
+  }
+  if (response.headers.get("content-signal") !== CONTENT_SIGNAL) {
+    fail(`${label}: incorrect Content-Signal`);
+  }
+  if (direct && response.headers.get("x-robots-tag") !== "noindex, follow") {
+    fail(`${label}: direct Markdown missing noindex, follow`);
+  }
+  if (!direct && response.headers.has("x-robots-tag")) {
+    fail(`${label}: negotiated canonical Markdown must not be noindex`);
+  }
+}
+
 async function checkCanonicalEntry(entry) {
   const pagePath = entry.path;
   const expectedCanonical = `${BASE_URL}${pagePath === "/" ? "/" : pagePath}`;
+  const expectedAlternate = `<${BASE_URL}${entry.direct}>; rel="alternate"; type="text/markdown"`;
   const htmlResponse = await fetchChecked(pagePath, { headers: { Accept: "text/html" } });
+  const htmlHeadResponse = await fetchChecked(pagePath, {
+    method: "HEAD",
+    headers: { Accept: "text/html" },
+  });
   const markdownResponse = await fetchChecked(pagePath, { headers: { Accept: "text/markdown" } });
   const qZeroResponse = await fetchChecked(pagePath, { headers: { Accept: "text/markdown;q=0, text/html" } });
-  const sidecarResponse = await fetchChecked(entry.sidecar);
-  if (!htmlResponse || !markdownResponse || !qZeroResponse || !sidecarResponse) return;
+  const directResponse = await fetchChecked(entry.direct);
+  const directHeadResponse = await fetchChecked(entry.direct, { method: "HEAD" });
+  const legacyResponse = await fetchChecked(entry.sidecar);
+  if (
+    !htmlResponse ||
+    !htmlHeadResponse ||
+    !markdownResponse ||
+    !qZeroResponse ||
+    !directResponse ||
+    !directHeadResponse ||
+    !legacyResponse
+  ) return;
 
   const html = await htmlResponse.text();
   const markdown = await markdownResponse.text();
@@ -41,22 +98,23 @@ async function checkCanonicalEntry(entry) {
     fail(`${pagePath}: ordinary request did not return 200 HTML`);
   }
   if (!/<html[\s>]/i.test(html)) fail(`${pagePath}: ordinary response does not contain an HTML document`);
+  if (!htmlResponse.headers.get("link")?.includes(expectedAlternate)) {
+    fail(`${pagePath}: HTML response missing page-specific Markdown alternate Link`);
+  }
+  if (!hasHeaderToken(htmlResponse, "vary", "accept")) {
+    fail(`${pagePath}: HTML response missing Vary: Accept`);
+  }
+  if (htmlHeadResponse.status !== 200 || !hasHtmlType(htmlHeadResponse)) {
+    fail(`${pagePath}: HTML HEAD did not return 200 HTML headers`);
+  }
+  if (!htmlHeadResponse.headers.get("link")?.includes(expectedAlternate)) {
+    fail(`${pagePath}: HTML HEAD missing page-specific Markdown alternate Link`);
+  }
+  if (!hasHeaderToken(htmlHeadResponse, "vary", "accept")) {
+    fail(`${pagePath}: HTML HEAD missing Vary: Accept`);
+  }
 
-  if (markdownResponse.status !== 200 || !markdownResponse.headers.get("content-type")?.includes("text/markdown")) {
-    fail(`${pagePath}: Markdown negotiation did not return 200 text/markdown`);
-  }
-  if (markdownResponse.headers.get("content-location") !== entry.sidecar) {
-    fail(`${pagePath}: incorrect Content-Location`);
-  }
-  if (markdownResponse.headers.get("content-language") !== entry.language) {
-    fail(`${pagePath}: incorrect Content-Language`);
-  }
-  if (!markdownResponse.headers.get("link")?.includes(`<${expectedCanonical}>; rel="canonical"`)) {
-    fail(`${pagePath}: missing canonical Link header`);
-  }
-  if (markdownResponse.headers.get("content-signal") !== CONTENT_SIGNAL) {
-    fail(`${pagePath}: incorrect Content-Signal`);
-  }
+  checkMarkdownHeaders(markdownResponse, entry, expectedCanonical, pagePath, false);
   if (!markdown.includes(`canonical: ${JSON.stringify(expectedCanonical)}`)) {
     fail(`${pagePath}: Markdown canonical metadata mismatch`);
   }
@@ -66,16 +124,49 @@ async function checkCanonicalEntry(entry) {
   }
   await qZeroResponse.arrayBuffer();
 
-  if (sidecarResponse.status !== 200 || !sidecarResponse.headers.get("content-type")?.includes("text/markdown")) {
-    fail(`${entry.sidecar}: direct sidecar did not return 200 text/markdown`);
+  checkMarkdownHeaders(directResponse, entry, expectedCanonical, entry.direct, true);
+  const directMarkdown = await directResponse.text();
+  if (!directMarkdown.includes(`direct_markdown: ${JSON.stringify(entry.direct)}`)) {
+    fail(`${entry.direct}: direct Markdown metadata mismatch`);
   }
-  if (sidecarResponse.headers.get("x-robots-tag") !== "noindex, follow") {
-    fail(`${entry.sidecar}: direct sidecar missing noindex, follow`);
+  checkMarkdownHeaders(directHeadResponse, entry, expectedCanonical, `HEAD ${entry.direct}`, true);
+  if ((await directHeadResponse.arrayBuffer()).byteLength !== 0) {
+    fail(`HEAD ${entry.direct}: response body must be empty`);
   }
-  if (sidecarResponse.headers.get("content-signal") !== CONTENT_SIGNAL) {
-    fail(`${entry.sidecar}: direct sidecar has incorrect Content-Signal`);
+
+  checkMarkdownHeaders(legacyResponse, entry, expectedCanonical, entry.sidecar, true);
+  await legacyResponse.arrayBuffer();
+}
+
+async function checkAcceptMatrix() {
+  const cases = [
+    ["exact HTML", "text/html", 200, "html"],
+    ["exact Markdown", "text/markdown", 200, "markdown"],
+    ["stronger HTML", "text/html;q=1, text/markdown;q=0.2", 200, "html"],
+    ["stronger Markdown", "text/html;q=0.2, text/markdown;q=1", 200, "markdown"],
+    ["equal explicit", "text/html, text/markdown", 200, "html"],
+    ["Markdown q=0", "text/markdown;q=0, text/html", 200, "html"],
+    ["text wildcard tie", "text/*", 200, "html"],
+    ["global wildcard tie", "*/*", 200, "html"],
+    ["equal q favors specific HTML", "text/*;q=1, text/html;q=1", 200, "html"],
+    ["equal q favors specific Markdown", "text/*;q=1, text/markdown;q=1", 200, "markdown"],
+    ["text wildcard favors Markdown", "text/*;q=1, text/html;q=0.5", 200, "markdown"],
+    ["global wildcard favors Markdown", "*/*;q=1, text/html;q=0.5", 200, "markdown"],
+    ["both q=0", "text/html;q=0, text/markdown;q=0", 406, "none"],
+  ];
+
+  for (const [label, accept, expectedStatus, expectedType] of cases) {
+    const response = await fetchChecked("/services", { headers: { Accept: accept } });
+    if (!response) continue;
+    if (response.status !== expectedStatus) {
+      fail(`Accept matrix ${label}: expected ${expectedStatus}, received ${response.status}`);
+    } else if (expectedType === "html" && !hasHtmlType(response)) {
+      fail(`Accept matrix ${label}: expected HTML`);
+    } else if (expectedType === "markdown" && !hasMarkdownType(response)) {
+      fail(`Accept matrix ${label}: expected Markdown`);
+    }
+    await response.arrayBuffer();
   }
-  await sidecarResponse.arrayBuffer();
 }
 
 async function checkJson(pathname) {
@@ -128,6 +219,7 @@ for (const entry of manifest.entries) {
 }
 
 await Promise.all(manifest.entries.map(checkCanonicalEntry));
+await checkAcceptMatrix();
 
 const canonicalDataFiles = fs.readdirSync(path.join(ROOT, "data"))
   .filter((file) => file.endsWith(".json") && !/ \d+\.json$/i.test(file))

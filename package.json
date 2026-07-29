@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "test": "node --test test/markdown-layer.test.mjs",
     "generate:markdown": "node scripts/generate-markdown-companions.mjs",
     "check:markdown": "node scripts/generate-markdown-companions.mjs --check",
     "indexnow:dry-run": "node scripts/submit-indexnow.mjs --dry-run",

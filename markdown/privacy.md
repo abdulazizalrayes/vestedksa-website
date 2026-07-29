@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/privacy.html"
 markdown_sidecar: "/markdown/privacy.md"
+direct_markdown: "/privacy.md"
 alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/privacy"},{"hreflang":"x-default","href":"https://vestedksa.com/privacy"}]
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/privacy"},{
 - Language: en
 - Source HTML: /privacy.html
 - Markdown sidecar: /markdown/privacy.md
+- Direct Markdown: /privacy.md
 - Alternate languages: en (https://vestedksa.com/privacy), x-default (https://vestedksa.com/privacy)
 ## Main Content
 ## Privacy Policy

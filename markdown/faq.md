@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/faq.html"
 markdown_sidecar: "/markdown/faq.md"
+direct_markdown: "/faq.md"
 alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/faq"},{"hreflang":"x-default","href":"https://vestedksa.com/faq"}]
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/faq"},{"hre
 - Language: en
 - Source HTML: /faq.html
 - Markdown sidecar: /markdown/faq.md
+- Direct Markdown: /faq.md
 - Alternate languages: en (https://vestedksa.com/faq), x-default (https://vestedksa.com/faq)
 ## Main Content
 ## Frequently asked questions.

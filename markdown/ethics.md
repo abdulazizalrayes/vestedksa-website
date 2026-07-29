@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/ethics.html"
 markdown_sidecar: "/markdown/ethics.md"
+direct_markdown: "/ethics.md"
 alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/ethics"},{"hreflang":"x-default","href":"https://vestedksa.com/ethics"}]
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/ethics"},{"
 - Language: en
 - Source HTML: /ethics.html
 - Markdown sidecar: /markdown/ethics.md
+- Direct Markdown: /ethics.md
 - Alternate languages: en (https://vestedksa.com/ethics), x-default (https://vestedksa.com/ethics)
 ## Main Content
 ## Ethics & Governance.

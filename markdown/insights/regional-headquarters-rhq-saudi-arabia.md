@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/insights/regional-headquarters-rhq-saudi-arabia.html"
 markdown_sidecar: "/markdown/insights/regional-headquarters-rhq-saudi-arabia.md"
+direct_markdown: "/insights/regional-headquarters-rhq-saudi-arabia.md"
 alternate_languages: []
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: []
 - Language: en
 - Source HTML: /insights/regional-headquarters-rhq-saudi-arabia.html
 - Markdown sidecar: /markdown/insights/regional-headquarters-rhq-saudi-arabia.md
+- Direct Markdown: /insights/regional-headquarters-rhq-saudi-arabia.md
 ## Main Content
 ## Regional Headquarters (RHQ) Program in Saudi Arabia
 Saudi Arabia's RHQ program is relevant for multinational companies that want the Kingdom to become a regional management base, not just a sales market. The decision should be made around substance, governance, and operating capability.

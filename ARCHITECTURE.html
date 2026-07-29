@@ -964,12 +964,12 @@
 
       { id: "vercel-dns", layer: "edge", name: "Vercel DNS", kind: "infrastructure", description: "Apex and www resolve through Vercel-managed nameservers.", files: ["vestedksa.com", "www.vestedksa.com"], owner: "Vercel project project-ivd9v" },
       { id: "vercel-edge", layer: "edge", name: "Vercel edge", kind: "infrastructure", description: "Applies redirects, rewrites, security headers, caching, and runtime dispatch.", files: ["vercel.json"], owner: "Vercel project project-ivd9v" },
-      { id: "accept-middleware", layer: "edge", name: "Accept negotiation", kind: "middleware", description: "Routes explicit text/markdown requests to the Markdown function and leaves ordinary requests as HTML.", files: ["middleware.ts", "lib/markdown-negotiation.mjs", "markdown-routes.ts"], owner: "Website source" },
+      { id: "accept-middleware", layer: "edge", name: "Accept negotiation", kind: "middleware", description: "Selects HTML or Markdown by q-value and specificity, defaults ties to HTML, and advertises clean page-specific Markdown alternates.", files: ["middleware.ts", "lib/markdown-negotiation.mjs", "markdown-routes.ts"], owner: "Website source" },
 
       { id: "static-site", layer: "application", name: "Static multipage site", kind: "frontend", description: "Twenty canonical pages, three languages, eight guides, and six public downloads.", files: ["*.html", "ar/index.html", "zh/index.html", "insights/*.html"], owner: "Vested KSA website" },
       { id: "contact-form", layer: "application", name: "Contact form", kind: "frontend", description: "Collects required market-entry inquiry fields and posts sanitized JSON.", files: ["contact.html"], owner: "Vested KSA lead intake" },
       { id: "contact-api", layer: "application", name: "Contact API", kind: "serverless function", description: "Validates, rate-limits, sanitizes, and delivers approved inquiries over TLS SMTP.", files: ["api/contact.js"], owner: "Vested KSA lead delivery" },
-      { id: "markdown-api", layer: "application", name: "Markdown API", kind: "serverless function", description: "Returns allowlisted Markdown with canonical, language, location, Vary, and Content-Signal headers.", files: ["api/markdown.js", "lib/markdown-assets.cjs"], owner: "Agent-readiness layer" },
+      { id: "markdown-api", layer: "application", name: "Markdown API", kind: "serverless function", description: "Returns allowlisted Markdown with canonical, language, clean location, Vary, Content-Signal, and direct noindex headers.", files: ["api/markdown.js", "lib/markdown-assets.cjs"], owner: "Agent-readiness layer" },
       { id: "mcp-api", layer: "application", name: "Read-only MCP", kind: "serverless function", description: "Exposes eleven typed tools and fifteen public resources without external submission.", files: ["api/mcp.js"], owner: "Agent-readiness layer" },
 
       { id: "html-jsonld", layer: "content", name: "HTML and JSON-LD", kind: "content", description: "Canonical public content with page-specific ProfessionalService, Service, Article, FAQ, breadcrumb, and page schemas.", files: ["20 canonical HTML files"], owner: "SEO and content" },
@@ -980,7 +980,7 @@
       { id: "sitemap-robots", layer: "discovery", name: "Sitemap and robots", kind: "discovery", description: "Forty-six public URLs plus explicit search, AI crawler, and private-path policy.", files: ["sitemap.xml", "robots.txt"], owner: "Search operations" },
       { id: "llms-discovery", layer: "discovery", name: "LLM discovery", kind: "discovery", description: "Concise and full orientation files point assistants to canonical resources and safety rules.", files: ["llms.txt", "llms-full.txt", "llms-full.md"], owner: "Agent-readiness layer" },
       { id: "agent-discovery", layer: "discovery", name: "Agent and API discovery", kind: "discovery", description: "Agent card, API catalog, MCP cards, agent skills, OpenAPI, and auth guidance.", files: [".well-known/*", "openapi.json", "auth.md"], owner: "Agent-readiness layer" },
-      { id: "markdown-manifest", layer: "discovery", name: "Markdown manifest", kind: "discovery", description: "Maps each canonical HTML route to its language-specific Markdown sidecar.", files: ["markdown/manifest.json"], owner: "Markdown generator" },
+      { id: "markdown-manifest", layer: "discovery", name: "Markdown manifest", kind: "discovery", description: "Maps each canonical HTML route to its clean direct Markdown URL and legacy sidecar.", files: ["markdown/manifest.json"], owner: "Markdown generator" },
 
       { id: "smtp-service", layer: "external", name: "Private-email SMTP", kind: "external service", description: "Receives validated inquiry email from the contact function over TLS.", files: ["Environment variables only"], owner: "Vested KSA mailbox" },
       { id: "ga4-gtm", layer: "external", name: "GA4 and GTM", kind: "external service", description: "Receives privacy-safe page, intent, language, download, and conversion events.", files: ["analytics-loader.js", "G-7STG2HDV42", "GTM-WL2FN4PR"], owner: "Vested analytics" },
@@ -1010,7 +1010,7 @@
       {
         id: "markdown-negotiation",
         name: "Canonical URL to Markdown",
-        trigger: "Agent sends Accept: text/markdown with q greater than zero",
+        trigger: "Agent prefers Markdown after q-value and specificity evaluation",
         steps: [
           ["ai-agents", "vercel-edge", "Request canonical page"],
           ["vercel-edge", "accept-middleware", "Parse Accept header"],
@@ -1018,7 +1018,7 @@
           ["markdown-companions", "markdown-api", "Read explicit generated asset"],
           ["markdown-api", "ai-agents", "Return Markdown and metadata headers"]
         ],
-        invariants: ["q=0 falls back to HTML", "Direct sidecars remain noindex, follow", "Content-Signal remains ai-train=no"]
+        invariants: ["q=0 is never selected", "Equal explicit preference defaults to HTML", "Clean and legacy direct companions remain noindex, follow", "Content-Signal remains ai-train=no"]
       },
       {
         id: "search-discovery",
@@ -1100,8 +1100,8 @@
     const invariants = [
       ["critical", "Identity isolation", "Never mix Vested assets, accounts, facts, credentials, analytics, deployments, or Paperclip records with another company."],
       ["high", "Visual freeze", "Do not change public visual HTML without owner approval."],
-      ["critical", "HTML default", "Canonical URLs return HTML unless text/markdown is explicitly accepted with q greater than zero."],
-      ["high", "Markdown noindex", "Direct Markdown sidecars return X-Robots-Tag: noindex, follow."],
+      ["critical", "HTML default", "Canonical URLs return HTML for missing, ambiguous, or equally preferred HTML and Markdown Accept values."],
+      ["high", "Markdown noindex", "Clean and legacy direct Markdown companions return X-Robots-Tag: noindex, follow."],
       ["high", "Content policy", "Keep ai-train=no, search=yes, ai-input=yes unless the owner changes it."],
       ["critical", "Agent read-only", "MCP does not submit forms, send email, or contact Vested KSA."],
       ["critical", "Contact approval", "Agents require explicit user approval before using /api/contact."],
@@ -1112,7 +1112,7 @@
 
     const contracts = [
       ["Canonical HTML", "Hand-maintained static HTML", "Humans, crawlers, Markdown generator", "Canonical, indexable HTML with robots metadata, JSON-LD, and clean URLs."],
-      ["Markdown manifest", "Markdown generator", "Middleware, Markdown API, agents, validators", "Exactly one entry per canonical indexable HTML sitemap page."],
+      ["Markdown manifest", "Markdown generator", "Middleware, Markdown API, agents, validators", "Exactly one entry per canonical indexable HTML sitemap page, with clean direct and legacy sidecar URLs."],
       ["Public JSON", "data/*.json", "MCP, OpenAPI, search and AI agents", "Public, verified, privacy-safe, additive versioned facts only."],
       ["Contact request", "contact.html", "api/contact.js", "Required inquiry fields; honeypot must remain empty."],
       ["MCP JSON-RPC", "api/mcp.js", "MCP-capable agents", "JSON-RPC 2.0, MCP 2025-11-25 current, read-only tools and resources."],
@@ -1123,7 +1123,7 @@
       ["Add or edit a page", "HTML + sitemap + JSON-LD + relevant discovery/data, then regenerate and validate Markdown."],
       ["Add or edit a service", "services.json + capabilities + services HTML + service-pages + schema version/changelog."],
       ["Change inquiry routing", "Inquiry schema + routing JSON + MCP + contact contract + OpenAPI."],
-      ["Change Markdown behavior", "Generator + middleware + negotiation + Markdown API + Vercel headers."],
+      ["Change Markdown behavior", "Generator + middleware + negotiation + Markdown API + discovery docs + unit/live tests."],
       ["Change MCP", "MCP function + discovery cards + OpenAPI + llms + manifest + schema registry."],
       ["Change analytics", "Analytics taxonomy + page trackers + reporting docs, with a privacy review."],
       ["Release", "Run all local/build/live gates, deploy exact artifact, submit IndexNow, record VES-406."]

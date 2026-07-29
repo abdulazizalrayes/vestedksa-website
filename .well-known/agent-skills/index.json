@@ -58,7 +58,7 @@
     {
       "id": "markdown-for-agents",
       "name": "Markdown-for-agents content negotiation",
-      "description": "Use deterministic Markdown companions for canonical Vested KSA pages by sending Accept: text/markdown, or inspect the sidecar manifest.",
+      "description": "Use deterministic Markdown companions by sending Accept: text/markdown to a canonical Vested KSA page, using a clean direct URL such as /services.md, or inspecting the companion manifest.",
       "url": "https://vestedksa.com/markdown/manifest.json",
       "input_modes": [
         "text/html",

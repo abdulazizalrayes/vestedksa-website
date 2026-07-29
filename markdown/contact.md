@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/contact.html"
 markdown_sidecar: "/markdown/contact.md"
+direct_markdown: "/contact.md"
 alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/contact"},{"hreflang":"x-default","href":"https://vestedksa.com/contact"}]
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/contact"},{
 - Language: en
 - Source HTML: /contact.html
 - Markdown sidecar: /markdown/contact.md
+- Direct Markdown: /contact.md
 - Alternate languages: en (https://vestedksa.com/contact), x-default (https://vestedksa.com/contact)
 ## Main Content
 ## Get in touch.

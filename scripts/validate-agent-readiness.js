@@ -45,6 +45,7 @@ const requiredFiles = [
   "scripts/validate-deployment-output.mjs",
   "scripts/validate-live-agent-surface.mjs",
   "scripts/validate-markdown-layer.mjs",
+  "test/markdown-layer.test.mjs",
   "analytics-loader.js",
   "robots.txt",
   "sitemap.xml",
@@ -173,6 +174,7 @@ const llms = read("llms.txt");
   "/openapi.json",
   "/api/mcp",
   "/markdown/manifest.json",
+  "/services.md",
   "/docs/bing-indexnow.md",
   "Agents must not submit contact forms",
 ].forEach((token) => {
@@ -297,14 +299,23 @@ if (!headers.some((header) => header.source === "/:path*" && header.headers.some
 if (!headers.some((header) => header.source === "/" && header.headers.some((item) => item.key === "X-Content-Type-Options"))) {
   fail("vercel.json missing root-page security headers");
 }
-if (!headers.some((header) => header.source === "/" && header.headers.some((item) => item.key === "Link" && item.value.includes("/.well-known/mcp.json")))) {
-  fail("vercel.json missing root agent-discovery Link header");
+const middleware = read("middleware.ts");
+const markdownNegotiation = read("lib/markdown-negotiation.mjs");
+if (!middleware.includes("ROOT_DISCOVERY_LINKS") || !middleware.includes("/.well-known/mcp.json")) {
+  fail("middleware.ts missing root agent-discovery Link header");
 }
 if (!headers.some((header) => header.source === "/markdown/(.*)\\.md" && header.headers.some((item) => item.key === "X-Robots-Tag" && item.value === "noindex, follow"))) {
   fail("vercel.json missing direct Markdown sidecar noindex header");
 }
-if (!read("middleware.ts").includes("Accept") && !read("middleware.ts").includes("acceptsMarkdown")) {
+if (!middleware.includes("Accept") && !middleware.includes("selectRepresentation")) {
   fail("middleware.ts missing Accept-header Markdown negotiation");
+}
+if (
+  !middleware.includes("htmlRepresentationHeaders") ||
+  !markdownNegotiation.includes('rel="alternate"; type="text/markdown"') ||
+  !markdownNegotiation.includes('Vary: "Accept"')
+) {
+  fail("Markdown negotiation layer missing page-specific alternate headers");
 }
 if (!read("api/markdown.js").includes("Content-Location") || !read("api/markdown.js").includes("Content-Signal")) {
   fail("api/markdown.js missing Markdown response headers");
@@ -317,6 +328,9 @@ ok("Vercel config uses modern redirects, rewrites, headers, and clean URLs");
 const vercelIgnore = read(".vercelignore");
 if (!/^CLAUDE\.md$/m.test(vercelIgnore)) {
   fail(".vercelignore must exclude CLAUDE.md from public deployments");
+}
+if (!/^test\/$/m.test(vercelIgnore)) {
+  fail(".vercelignore must exclude local unit tests from public deployments");
 }
 if (!/^README\.md$/m.test(vercelIgnore)) {
   fail(".vercelignore must exclude README.md from public deployments");

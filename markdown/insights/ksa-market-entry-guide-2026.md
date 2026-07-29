@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/insights/ksa-market-entry-guide-2026.html"
 markdown_sidecar: "/markdown/insights/ksa-market-entry-guide-2026.md"
+direct_markdown: "/insights/ksa-market-entry-guide-2026.md"
 alternate_languages: []
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: []
 - Language: en
 - Source HTML: /insights/ksa-market-entry-guide-2026.html
 - Markdown sidecar: /markdown/insights/ksa-market-entry-guide-2026.md
+- Direct Markdown: /insights/ksa-market-entry-guide-2026.md
 ## Main Content
 ## Saudi Market Entry Guide 2026
 A practical guide for international companies deciding how to enter Saudi Arabia, what to prepare, and how to avoid operational drift in the first 90 days.

@@ -57,7 +57,9 @@ Vested KSA, legal name Vest KSA Co., is a market-entry and operations partner in
 - Canonical HTML sitemap pages support HTTP content negotiation.
 - Send `Accept: text/markdown` to a canonical page URL, for example `https://vestedksa.com/services`, to receive its deterministic Markdown representation.
 - Browser and ordinary `text/html` requests continue receiving HTML.
-- Direct Markdown sidecars are listed in `https://vestedksa.com/markdown/manifest.json`.
+- Clean direct Markdown URLs are available for every manifest entry, for example `https://vestedksa.com/services.md`.
+- Canonical HTML and HEAD responses advertise their page-specific companion with `rel="alternate"` and `type="text/markdown"`.
+- The complete clean and legacy sidecar inventory is listed in `https://vestedksa.com/markdown/manifest.json`.
 - Direct sidecars return `X-Robots-Tag: noindex, follow` to avoid duplicate SEO indexing.
 - Vested KSA content signal: `ai-train=no, search=yes, ai-input=yes`.
 

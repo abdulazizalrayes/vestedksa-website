@@ -304,6 +304,11 @@ function sidecarForPath(pagePath) {
   return `/markdown${pagePath}.md`;
 }
 
+function directMarkdownForPath(pagePath) {
+  if (pagePath === "/") return "/index.md";
+  return `${pagePath}.md`;
+}
+
 function parseSitemap() {
   const parser = new XMLParser({ ignoreAttributes: false });
   const parsed = parser.parse(read("sitemap.xml"));
@@ -334,6 +339,7 @@ function buildMarkdownForPage(url) {
   const publicImages = extractPublicImages(main, canonical);
   const pagePath = new URL(canonical).pathname.replace(/\/+$/, "") || "/";
   const sidecar = sidecarForPath(pagePath);
+  const direct = directMarkdownForPath(pagePath);
 
   const frontMatter = [
     "---",
@@ -344,6 +350,7 @@ function buildMarkdownForPage(url) {
     `content_signal: ${JSON.stringify(CONTENT_SIGNAL)}`,
     `source_html: ${JSON.stringify(`/${localFile}`)}`,
     `markdown_sidecar: ${JSON.stringify(sidecar)}`,
+    `direct_markdown: ${JSON.stringify(direct)}`,
     `alternate_languages: ${JSON.stringify(alternates)}`,
     "---",
     "",
@@ -361,6 +368,7 @@ function buildMarkdownForPage(url) {
     `- Language: ${language}`,
     `- Source HTML: /${localFile}`,
     `- Markdown sidecar: ${sidecar}`,
+    `- Direct Markdown: ${direct}`,
     alternates.length ? `- Alternate languages: ${alternates.map((item) => `${item.hreflang} (${item.href})`).join(", ")}` : "",
     "",
     "## Main Content",
@@ -393,6 +401,7 @@ function buildMarkdownForPage(url) {
       canonical,
       source: `/${localFile}`,
       sidecar,
+      direct,
       language,
       title,
       description,
@@ -418,6 +427,7 @@ function buildRuntimeAssets(entries) {
     return [
       `  ${JSON.stringify(entry.path)}: {`,
       `    sidecar: ${JSON.stringify(entry.sidecar)},`,
+      `    direct: ${JSON.stringify(entry.direct)},`,
       `    language: ${JSON.stringify(entry.language)},`,
       `    canonical: ${JSON.stringify(entry.canonical)},`,
       `    content: fs.readFileSync(path.join(__dirname, "..", ${segments}), "utf8"),`,
@@ -453,7 +463,7 @@ function run() {
   const outputs = new Map();
   generated.forEach((item) => outputs.set(item.entry.sidecar.slice(1), item.markdown));
   outputs.set("markdown/manifest.json", `${JSON.stringify(manifest, null, 2)}\n`);
-  outputs.set("markdown-routes.ts", `export const MARKDOWN_ROUTES = ${JSON.stringify(manifest.entries.map(({ path, sidecar, language, canonical }) => ({ path, sidecar, language, canonical })), null, 2)} as const;\n`);
+  outputs.set("markdown-routes.ts", `export const MARKDOWN_ROUTES = ${JSON.stringify(manifest.entries.map(({ path, sidecar, direct, language, canonical }) => ({ path, sidecar, direct, language, canonical })), null, 2)} as const;\n`);
   outputs.set("lib/markdown-assets.cjs", buildRuntimeAssets(manifest.entries));
 
   if (CHECK_MODE) {

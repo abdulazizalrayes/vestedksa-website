@@ -54,6 +54,6 @@
   ],
   "markdownForAgents": {
     "manifest": "https://vestedksa.com/markdown/manifest.json",
-    "instructions": "Send Accept: text/markdown to any canonical HTML sitemap URL listed in markdown/manifest.json. Direct sidecars are noindex, follow."
+    "instructions": "Send Accept: text/markdown to any canonical HTML sitemap URL listed in markdown/manifest.json, or use its clean direct URL such as /services.md. Direct Markdown URLs are noindex, follow."
   }
 }

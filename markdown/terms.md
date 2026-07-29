@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/terms.html"
 markdown_sidecar: "/markdown/terms.md"
+direct_markdown: "/terms.md"
 alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/terms"},{"hreflang":"x-default","href":"https://vestedksa.com/terms"}]
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/terms"},{"h
 - Language: en
 - Source HTML: /terms.html
 - Markdown sidecar: /markdown/terms.md
+- Direct Markdown: /terms.md
 - Alternate languages: en (https://vestedksa.com/terms), x-default (https://vestedksa.com/terms)
 ## Main Content
 ## Terms of Service

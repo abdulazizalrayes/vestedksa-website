@@ -4,5 +4,6 @@ README.md
 ARCHITECTURE.html
 ARCHITECTURE.json
 scripts/
+test/
 node_modules/
 * [0-9].*

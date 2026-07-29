@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/why-saudi.html"
 markdown_sidecar: "/markdown/why-saudi.md"
+direct_markdown: "/why-saudi.md"
 alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/why-saudi"},{"hreflang":"x-default","href":"https://vestedksa.com/why-saudi"}]
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/why-saudi"}
 - Language: en
 - Source HTML: /why-saudi.html
 - Markdown sidecar: /markdown/why-saudi.md
+- Direct Markdown: /why-saudi.md
 - Alternate languages: en (https://vestedksa.com/why-saudi), x-default (https://vestedksa.com/why-saudi)
 ## Main Content
 ## Why Saudi Arabia.

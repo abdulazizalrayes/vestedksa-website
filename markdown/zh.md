@@ -6,6 +6,7 @@ language: "zh-Hans"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/zh/index.html"
 markdown_sidecar: "/markdown/zh.md"
+direct_markdown: "/zh.md"
 alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/"},{"hreflang":"ar","href":"https://vestedksa.com/ar"},{"hreflang":"zh-Hans","href":"https://vestedksa.com/zh"},{"hreflang":"x-default","href":"https://vestedksa.com/"}]
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/"},{"hrefla
 - Language: zh-Hans
 - Source HTML: /zh/index.html
 - Markdown sidecar: /markdown/zh.md
+- Direct Markdown: /zh.md
 - Alternate languages: en (https://vestedksa.com/), ar (https://vestedksa.com/ar), zh-Hans (https://vestedksa.com/zh), x-default (https://vestedksa.com/)
 ## Main Content
 ## 进入沙特阿拉伯。

@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/insights/saudi-e-invoicing-operating-controls.html"
 markdown_sidecar: "/markdown/insights/saudi-e-invoicing-operating-controls.md"
+direct_markdown: "/insights/saudi-e-invoicing-operating-controls.md"
 alternate_languages: []
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: []
 - Language: en
 - Source HTML: /insights/saudi-e-invoicing-operating-controls.html
 - Markdown sidecar: /markdown/insights/saudi-e-invoicing-operating-controls.md
+- Direct Markdown: /insights/saudi-e-invoicing-operating-controls.md
 ## Main Content
 ## Saudi E-Invoicing and Finance Controls
 Finance readiness is not only about tax registration. International companies need invoice workflows, approval records, document ownership, and system decisions before the first Saudi transaction.

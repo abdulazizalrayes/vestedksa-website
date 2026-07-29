@@ -111,10 +111,6 @@
           "value": "max-age=31536000; includeSubDomains; preload"
         },
         {
-          "key": "Link",
-          "value": "</llms.txt>; rel=\"alternate\"; type=\"text/markdown\", </llms-full.md>; rel=\"alternate\"; type=\"text/markdown\", </openapi.json>; rel=\"service-desc\"; type=\"application/vnd.oai.openapi+json\", </.well-known/api-catalog>; rel=\"service-desc\"; type=\"application/linkset+json\", </.well-known/mcp.json>; rel=\"mcp-discovery\"; type=\"application/json\", </.well-known/agent-card.json>; rel=\"agent-card\"; type=\"application/json\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\"; type=\"application/json\""
-        },
-        {
           "key": "Vary",
           "value": "Accept"
         }

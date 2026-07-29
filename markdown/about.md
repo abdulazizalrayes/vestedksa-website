@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/about.html"
 markdown_sidecar: "/markdown/about.md"
+direct_markdown: "/about.md"
 alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/about"},{"hreflang":"x-default","href":"https://vestedksa.com/about"}]
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/about"},{"h
 - Language: en
 - Source HTML: /about.html
 - Markdown sidecar: /markdown/about.md
+- Direct Markdown: /about.md
 - Alternate languages: en (https://vestedksa.com/about), x-default (https://vestedksa.com/about)
 ## Main Content
 ## Who we are.

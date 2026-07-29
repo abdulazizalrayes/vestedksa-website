@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/insights/saudi-vendor-registration-aramco-pif.html"
 markdown_sidecar: "/markdown/insights/saudi-vendor-registration-aramco-pif.md"
+direct_markdown: "/insights/saudi-vendor-registration-aramco-pif.md"
 alternate_languages: []
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: []
 - Language: en
 - Source HTML: /insights/saudi-vendor-registration-aramco-pif.html
 - Markdown sidecar: /markdown/insights/saudi-vendor-registration-aramco-pif.md
+- Direct Markdown: /insights/saudi-vendor-registration-aramco-pif.md
 ## Main Content
 ## Saudi Vendor Registration: Aramco, SABIC, NEOM and PIF Companies
 For many foreign companies, the sales bottleneck is not incorporation. It is becoming credible and complete enough to pass customer, supplier, and procurement registration requirements with major Saudi buyers.

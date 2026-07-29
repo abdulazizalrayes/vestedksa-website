@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "mapVersion": "2026-07-26",
+  "mapVersion": "2026-07-29",
   "title": "Vested KSA Website Architecture",
   "description": "Authoritative machine-readable map of the Vested KSA public website, agent-readiness layer, data contracts, runtime flows, integrations, deployment boundaries, and change guidance.",
   "identityLock": {
@@ -419,8 +419,9 @@
         "Redirect index.html variants to clean canonical paths",
         "Redirect /blog to /insights and /cookies to /privacy",
         "Apply security headers",
-        "Advertise agent discovery Link headers on the root page",
-        "Apply noindex and Content-Signal headers to direct Markdown sidecars",
+        "Advertise page-specific clean Markdown alternate Link headers on canonical HTML and HEAD responses",
+        "Preserve root agent-discovery Link headers alongside the root Markdown alternate",
+        "Apply noindex and Content-Signal headers to clean and legacy direct Markdown companions",
         "Cache immutable static assets"
       ]
     },
@@ -428,8 +429,8 @@
       "file": "middleware.ts",
       "dependency": "lib/markdown-negotiation.mjs",
       "routeMap": "markdown-routes.ts",
-      "purpose": "Return Markdown from canonical URLs only when Accept explicitly includes text/markdown with q greater than zero",
-      "fallback": "Continue to ordinary static HTML"
+      "purpose": "Select HTML or Markdown using q-values, media-range specificity, q=0 exclusion, and an HTML tie/default rule",
+      "fallback": "Continue to ordinary static HTML when Markdown is not preferred or no companion is available"
     },
     "serverlessEndpoints": [
       {
@@ -488,6 +489,8 @@
     "routeMap": "markdown-routes.ts",
     "runtimeAssetMap": "lib/markdown-assets.cjs",
     "sidecarRoot": "markdown/",
+    "directUrlPattern": "Clean page path plus .md, with /index.md for the root page",
+    "legacyUrlPattern": "/markdown/<page>.md",
     "coverage": "20 of 20 canonical, indexable HTML sitemap pages",
     "exclusions": [
       "Navigation",
@@ -513,7 +516,20 @@
       "Relevant public JSON-LD"
     ],
     "contentSignal": "ai-train=no, search=yes, ai-input=yes",
-    "directSidecarRobots": "noindex, follow"
+    "directSidecarRobots": "noindex, follow",
+    "negotiation": {
+      "supportedRanges": [
+        "text/markdown",
+        "text/html",
+        "text/*",
+        "*/*"
+      ],
+      "selection": "Higher effective q-value wins; equal q uses greater specificity; equal explicit HTML and Markdown preference defaults to HTML",
+      "qZero": "A representation with effective q=0 is never selected",
+      "missingOrAmbiguous": "HTML",
+      "bothUnavailable": "406 Not Acceptable"
+    },
+    "htmlAdvertisement": "Canonical HTML and HEAD responses include a page-specific alternate Link to the clean .md URL and Vary: Accept"
   },
   "mcp": {
     "endpoint": "https://vestedksa.com/api/mcp",
@@ -709,6 +725,7 @@
     },
     "packageScripts": {
       "generate:markdown": "Generate deterministic Markdown companions",
+      "test": "Run Accept negotiation, route resolution, Markdown API header, HEAD, and method unit tests",
       "check:markdown": "Fail when generated Markdown artifacts are stale",
       "indexnow:dry-run": "Preview the IndexNow submission payload",
       "indexnow:submit": "Submit sitemap URLs to IndexNow",
@@ -782,7 +799,7 @@
       "layer": "edge",
       "name": "Accept negotiation",
       "kind": "middleware",
-      "description": "Routes explicit text/markdown requests to the Markdown function; otherwise serves HTML."
+      "description": "Selects HTML or Markdown by effective quality and specificity, defaults ties and ambiguity to HTML, and advertises the clean page-specific Markdown alternate."
     },
     {
       "id": "static-site",
@@ -810,7 +827,7 @@
       "layer": "application",
       "name": "Markdown API",
       "kind": "serverless-function",
-      "description": "Returns allowlisted Markdown content with canonical and language headers."
+      "description": "Returns allowlisted Markdown content with canonical, language, clean location, Vary, Content-Signal, and direct noindex headers."
     },
     {
       "id": "mcp-api",
@@ -873,7 +890,7 @@
       "layer": "discovery",
       "name": "Markdown manifest",
       "kind": "discovery",
-      "description": "Maps every canonical HTML route to its language-specific Markdown sidecar."
+      "description": "Maps every canonical HTML route to its clean direct Markdown URL and legacy language-specific sidecar."
     },
     {
       "id": "smtp-service",
@@ -972,7 +989,7 @@
     {
       "id": "markdown-negotiation",
       "name": "Canonical URL to Markdown",
-      "trigger": "Agent sends Accept: text/markdown with q greater than zero",
+      "trigger": "Agent prefers Markdown after q-value and specificity evaluation, with HTML winning an equal explicit preference",
       "steps": [
         {
           "from": "ai-agents",
@@ -1001,9 +1018,12 @@
         }
       ],
       "invariants": [
-        "q=0 falls back to HTML",
+        "A q=0 representation is never selected",
+        "Equal explicit HTML and Markdown preference defaults to HTML",
+        "Missing or ambiguous Accept defaults to HTML",
         "Missing companions fall back safely",
-        "Direct sidecars remain noindex, follow"
+        "Clean and legacy direct companions remain noindex, follow",
+        "Canonical HTML and HEAD responses advertise the page-specific clean .md alternate"
       ]
     },
     {

@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/insights/foreign-ownership-saudi-arabia.html"
 markdown_sidecar: "/markdown/insights/foreign-ownership-saudi-arabia.md"
+direct_markdown: "/insights/foreign-ownership-saudi-arabia.md"
 alternate_languages: []
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: []
 - Language: en
 - Source HTML: /insights/foreign-ownership-saudi-arabia.html
 - Markdown sidecar: /markdown/insights/foreign-ownership-saudi-arabia.md
+- Direct Markdown: /insights/foreign-ownership-saudi-arabia.md
 ## Main Content
 ## 100% Foreign Ownership in Saudi Arabia
 Many international companies can operate in Saudi Arabia through a fully foreign-owned local presence, but ownership is only one part of the decision. The practical work is confirming the activity, registration path, license requirements, and operating model before setup begins.

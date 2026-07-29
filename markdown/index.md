@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/index.html"
 markdown_sidecar: "/markdown/index.md"
+direct_markdown: "/index.md"
 alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/"},{"hreflang":"ar","href":"https://vestedksa.com/ar"},{"hreflang":"zh-Hans","href":"https://vestedksa.com/zh"},{"hreflang":"x-default","href":"https://vestedksa.com/"}]
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/"},{"hrefla
 - Language: en
 - Source HTML: /index.html
 - Markdown sidecar: /markdown/index.md
+- Direct Markdown: /index.md
 - Alternate languages: en (https://vestedksa.com/), ar (https://vestedksa.com/ar), zh-Hans (https://vestedksa.com/zh), x-default (https://vestedksa.com/)
 ## Main Content
 ## Your Saudi operation, built before the first mistake.

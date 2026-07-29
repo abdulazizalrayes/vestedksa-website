@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/insights/vat-zakat-saudi-arabia.html"
 markdown_sidecar: "/markdown/insights/vat-zakat-saudi-arabia.md"
+direct_markdown: "/insights/vat-zakat-saudi-arabia.md"
 alternate_languages: []
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: []
 - Language: en
 - Source HTML: /insights/vat-zakat-saudi-arabia.html
 - Markdown sidecar: /markdown/insights/vat-zakat-saudi-arabia.md
+- Direct Markdown: /insights/vat-zakat-saudi-arabia.md
 ## Main Content
 ## VAT and Zakat in Saudi Arabia
 Tax readiness should be designed before the first invoice, employee, or supplier payment. Saudi VAT, Zakat, and income-tax workflows affect pricing, contracts, accounting systems, and management reporting from day one.

@@ -6,6 +6,7 @@ language: "en"
 content_signal: "ai-train=no, search=yes, ai-input=yes"
 source_html: "/services.html"
 markdown_sidecar: "/markdown/services.md"
+direct_markdown: "/services.md"
 alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/services"},{"hreflang":"x-default","href":"https://vestedksa.com/services"}]
 ---
 
@@ -16,6 +17,7 @@ alternate_languages: [{"hreflang":"en","href":"https://vestedksa.com/services"},
 - Language: en
 - Source HTML: /services.html
 - Markdown sidecar: /markdown/services.md
+- Direct Markdown: /services.md
 - Alternate languages: en (https://vestedksa.com/services), x-default (https://vestedksa.com/services)
 ## Main Content
 ## Our services.
