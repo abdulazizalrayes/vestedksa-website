@@ -317,6 +317,11 @@ if (
 ) {
   fail("Markdown negotiation layer missing page-specific alternate headers");
 }
+for (const directRoute of ["/index.md", "/insights.md", "/services.md"]) {
+  if (!middleware.includes(`'${directRoute}'`)) {
+    fail(`middleware.ts missing clean direct matcher ${directRoute}`);
+  }
+}
 if (!read("api/markdown.js").includes("Content-Location") || !read("api/markdown.js").includes("Content-Signal")) {
   fail("api/markdown.js missing Markdown response headers");
 }

@@ -34,6 +34,7 @@ export const config = {
     '/services.md',
     '/why-saudi.md',
     '/ethics.md',
+    '/insights.md',
     '/faq.md',
     '/contact.md',
     '/privacy.md',
