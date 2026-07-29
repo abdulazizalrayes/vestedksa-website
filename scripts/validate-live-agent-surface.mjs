@@ -257,5 +257,6 @@ const reduction = htmlBytes ? ((1 - markdownBytes / htmlBytes) * 100).toFixed(1)
 console.log(
   `Live agent surface passed: ${manifest.entries.length}/${manifest.entries.length} canonical pages, ` +
   `${canonicalDataFiles.length} data resources, ${discoveryJson.length} discovery resources, ` +
-  `0 failures, ${reduction}% aggregate Markdown size reduction.`
+  `0 failures, ${htmlBytes} HTML bytes, ${markdownBytes} Markdown bytes, ` +
+  `${reduction}% aggregate Markdown size reduction.`
 );

@@ -164,6 +164,33 @@ Rollback can be done by reverting the Markdown-layer commit and redeploying the 
 - Cost: free, using the existing Vercel project and no paid provider.
 - Visual impact: none. HTML source hashes for canonical HTML pages were unchanged before deployment.
 
+### 2026-07-29 Negotiation Hardening
+
+- Implementation commits: `a2d728e`, `5e58ea2`
+- Validated production deployment: `dpl_87FMyqfXKRBA32kxRhSnQZ1hFjgY`
+- Authenticated preview deployment: `dpl_Hwz7BKMNAYDS1A3Y7S8xx3LDytKn`
+- Production alias: `https://vestedksa.com`
+- Content policy: `ai-train=no, search=yes, ai-input=yes`
+- Scope: standards-correct Accept negotiation, clean direct `.md` URLs, canonical HTML/HEAD alternate links, complete direct response headers, and expanded regression tests.
+- Rollback target: `dpl_3r4HXdSiKhfxtDMQswe31GT8Euyc`
+- Cost: free, using the existing Vercel Hobby project and no managed Markdown provider.
+- Visual impact: none. All 20 canonical HTML source files remained byte-identical.
+
+Production evidence:
+
+- Canonical HTML: 20/20.
+- Negotiated Markdown: 20/20.
+- Clean direct Markdown: 20/20.
+- Legacy sidecar compatibility: 20/20.
+- HTML and Markdown HEAD behavior: 20/20.
+- Data resources: 15/15.
+- Discovery resources: 8/8.
+- Accept matrix: exact types, stronger quality values, equal explicit preference, q=0 exclusion, wildcard ties, wildcard specificity, and 406 handling passed.
+- Multilingual headers: English, Arabic, and Simplified Chinese passed.
+- Failures: 0.
+- Aggregate response bytes: 459,913 HTML; 166,273 Markdown.
+- Aggregate Markdown response-size reduction: 63.8%.
+
 ## Verification Evidence
 
 Pre-deployment checks:

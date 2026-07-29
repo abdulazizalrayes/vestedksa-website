@@ -22,8 +22,8 @@
   "sourceState": {
     "mapBasis": "Reconciled main commit plus verified production behavior",
     "branch": "main",
-    "commit": "9d3bf1cdc652f87dbd864f30c99d5ed5397660e3",
-    "productionDeployment": "dpl_6M96RqDtvedK7CPu4n87HXqEnLYW",
+    "commit": "5e58ea2",
+    "productionDeployment": "dpl_87FMyqfXKRBA32kxRhSnQZ1hFjgY",
     "productionDeploymentState": "READY",
     "productionAlias": "https://vestedksa.com",
     "releaseReconciliation": {
@@ -38,6 +38,23 @@
         ".well-known/mcp/server-cards.json"
       ],
       "treeResult": "The reconciled tree matches the validated Vested agent architecture branch."
+    },
+    "markdownNegotiationRelease": {
+      "date": "2026-07-29",
+      "commits": [
+        "a2d728e",
+        "5e58ea2"
+      ],
+      "previewDeployment": "dpl_Hwz7BKMNAYDS1A3Y7S8xx3LDytKn",
+      "validatedProductionDeployment": "dpl_87FMyqfXKRBA32kxRhSnQZ1hFjgY",
+      "rollbackDeployment": "dpl_3r4HXdSiKhfxtDMQswe31GT8Euyc",
+      "liveCoverage": "20 canonical HTML, 20 negotiated Markdown, 20 clean direct Markdown, 20 legacy sidecars, 15 data resources, 8 discovery resources, 0 failures",
+      "responseBytes": {
+        "html": 459913,
+        "markdown": 166273
+      },
+      "responseSizeReduction": "63.8%",
+      "visualImpact": "None; 20 canonical HTML files remained byte-identical"
     },
     "localWorkspaceNote": {
       "untrackedPreviewFilesPreserved": [
@@ -721,7 +738,7 @@
   "buildAndRelease": {
     "sourceControl": {
       "remote": "https://github.com/abdulazizalrayes/vestedksa-website.git",
-      "branch": "codex/vested-markdown-agents-layer"
+      "branch": "main"
     },
     "packageScripts": {
       "generate:markdown": "Generate deterministic Markdown companions",
@@ -735,6 +752,7 @@
       "validate:live": "Validate production HTML, Markdown negotiation, sidecars, discovery, MCP, and duplicate paths"
     },
     "releaseSequence": [
+      "npm test",
       "npm run check:markdown",
       "npm run validate:markdown-layer",
       "npm run validate:agent-readiness",
