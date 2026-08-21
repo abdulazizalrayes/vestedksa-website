@@ -104,6 +104,12 @@ async function checkCanonicalEntry(entry) {
   if (!hasHeaderToken(htmlResponse, "vary", "accept")) {
     fail(`${pagePath}: HTML response missing Vary: Accept`);
   }
+  if (htmlResponse.headers.get("content-signal") !== CONTENT_SIGNAL) {
+    fail(`${pagePath}: HTML response has incorrect Content-Signal`);
+  }
+  if (!htmlResponse.headers.get("content-security-policy-report-only")?.includes("report-uri /api/csp-report")) {
+    fail(`${pagePath}: HTML response missing report-only CSP`);
+  }
   if (htmlHeadResponse.status !== 200 || !hasHtmlType(htmlHeadResponse)) {
     fail(`${pagePath}: HTML HEAD did not return 200 HTML headers`);
   }
@@ -112,6 +118,12 @@ async function checkCanonicalEntry(entry) {
   }
   if (!hasHeaderToken(htmlHeadResponse, "vary", "accept")) {
     fail(`${pagePath}: HTML HEAD missing Vary: Accept`);
+  }
+  if (htmlHeadResponse.headers.get("content-signal") !== CONTENT_SIGNAL) {
+    fail(`${pagePath}: HTML HEAD has incorrect Content-Signal`);
+  }
+  if (!htmlHeadResponse.headers.get("content-security-policy-report-only")?.includes("report-uri /api/csp-report")) {
+    fail(`${pagePath}: HTML HEAD missing report-only CSP`);
   }
 
   checkMarkdownHeaders(markdownResponse, entry, expectedCanonical, pagePath, false);

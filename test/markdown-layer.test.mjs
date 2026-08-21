@@ -67,6 +67,12 @@ test("HTML and HEAD metadata advertise the page-specific clean Markdown URL", ()
     '<https://vestedksa.com/services.md>; rel="alternate"; type="text/markdown"',
   );
   assert.equal(headers.Vary, "Accept");
+  assert.equal(headers["Content-Signal"], CONTENT_SIGNAL);
+  assert.match(headers["Content-Security-Policy-Report-Only"], /report-uri \/api\/csp-report/);
+  assert.equal(
+    headers["Reporting-Endpoints"],
+    'csp-endpoint="https://vestedksa.com/api/csp-report"',
+  );
 
   const home = resolveMarkdownEntry("/", manifest);
   const rootHeaders = htmlRepresentationHeaders(home, [
