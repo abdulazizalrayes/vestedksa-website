@@ -14,13 +14,13 @@
 
 ## Owner Policy
 
-The owner confirmed this Vested KSA public content policy on 2026-07-20:
+The owner confirmed this Vested KSA public content policy on 2026-07-20 and reconfirmed it on 2026-08-21:
 
 ```text
 search=yes, ai-input=yes, ai-train=no
 ```
 
-The equivalent live HTTP header and crawler guidance are:
+The equivalent live HTTP header and `robots.txt` crawler guidance are:
 
 ```text
 Content-Signal: search=yes, ai-input=yes, ai-train=no

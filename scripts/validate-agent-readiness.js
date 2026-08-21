@@ -140,8 +140,10 @@ const robots = read("robots.txt");
 for (const trainingBot of ["GPTBot", "Google-Extended", "ClaudeBot", "CCBot", "Bytespider"]) {
   if (!robots.includes(`User-agent: ${trainingBot}\nDisallow: /`)) fail(`robots.txt does not block training bot ${trainingBot}`);
 }
-if (/^Content-Signal:/m.test(robots)) fail("robots.txt contains unsupported Content-Signal directive");
-ok("robots separates search/input crawlers from model-training crawlers");
+if (!/^Content-Signal: search=yes, ai-input=yes, ai-train=no$/m.test(robots)) {
+  fail("robots.txt missing owner-approved Content-Signal policy");
+}
+ok("robots separates search/input crawlers from model-training crawlers and publishes Content-Signal");
 
 const indexNowKeyFile = "29b92482-dc1f-4e7d-8184-cf3de5f9937e.txt";
 const indexNowKey = read(indexNowKeyFile).trim();

@@ -119,7 +119,11 @@ for (const { file, node } of entityFacts) {
 }
 
 const robots = read("robots.txt");
-assert.ok(!/^Content-Signal:/m.test(robots), "robots.txt must not use the unsupported Content-Signal directive");
+assert.match(
+  robots,
+  /^Content-Signal: search=yes, ai-input=yes, ai-train=no$/m,
+  "robots.txt must publish the owner-approved Content-Signal policy",
+);
 for (const bot of ["GPTBot", "Google-Extended", "ClaudeBot", "CCBot", "Bytespider"]) {
   assert.match(robots, new RegExp(`User-agent: ${bot}\\nDisallow: /(?:\\n|$)`), `${bot} must be blocked under ai-train=no`);
 }
