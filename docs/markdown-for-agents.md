@@ -23,7 +23,7 @@ search=yes, ai-input=yes, ai-train=no
 The equivalent live HTTP header and crawler guidance are:
 
 ```text
-Content-Signal: ai-train=no, search=yes, ai-input=yes
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 ```
 
 This means public search crawling is allowed, AI assistants may use public page content as input for answering and citation, and AI training use is not approved.
@@ -36,9 +36,12 @@ This means public search crawling is allowed, AI assistants may use public page 
 - `middleware.ts`: performs standards-correct `Accept` negotiation, advertises clean Markdown alternates, and rewrites eligible requests.
 - `api/markdown.js`: serves Markdown with canonical, language, location, vary, and content policy headers.
 - `lib/markdown-negotiation.mjs`: shared Accept-header parsing and route resolution.
+- `.well-known/ai-catalog.json`: static Agentic Resource Discovery catalog for the public MCP, OpenAPI, agent skills, and API catalog.
 - `scripts/generate-markdown-companions.mjs`: structured parser generator with `--check` mode.
 - `scripts/validate-markdown-layer.mjs`: repeatable local validation.
 - Discovery updates in `llms.txt`, `llms-full.txt`, `.well-known/*`, `openapi.json`, and `vercel.json`.
+
+The ARD catalog is a non-executable discovery document. It does not add authentication, browser-side tools, commerce, agent registration, or permission to contact Vested KSA. OAuth metadata is intentionally absent because Vested KSA has no protected public API or OAuth issuer. WebMCP and DNS-AID are intentionally not enabled while the public read-only MCP and HTTPS discovery layer already cover the business need and those additional surfaces would add unnecessary runtime or DNS obligations.
 
 ## How It Works
 
@@ -55,7 +58,7 @@ If a generated Markdown companion exists, middleware rewrites the request to `/a
 - `Content-Location: /services.md`
 - `Content-Language: en`
 - `Link: <https://vestedksa.com/services>; rel="canonical"`
-- `Content-Signal: ai-train=no, search=yes, ai-input=yes`
+- `Content-Signal: search=yes, ai-input=yes, ai-train=no`
 
 Canonical HTML and HEAD responses advertise the page-specific companion:
 
@@ -170,7 +173,7 @@ Rollback can be done by reverting the Markdown-layer commit and redeploying the 
 - Validated production deployment: `dpl_87FMyqfXKRBA32kxRhSnQZ1hFjgY`
 - Authenticated preview deployment: `dpl_Hwz7BKMNAYDS1A3Y7S8xx3LDytKn`
 - Production alias: `https://vestedksa.com`
-- Content policy: `ai-train=no, search=yes, ai-input=yes`
+- Content policy: `search=yes, ai-input=yes, ai-train=no`
 - Scope: standards-correct Accept negotiation, clean direct `.md` URLs, canonical HTML/HEAD alternate links, complete direct response headers, and expanded regression tests.
 - Rollback target: `dpl_3r4HXdSiKhfxtDMQswe31GT8Euyc`
 - Cost: free, using the existing Vercel Hobby project and no managed Markdown provider.

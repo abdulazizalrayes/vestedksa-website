@@ -3,7 +3,7 @@ title: "Why Saudi Arabia | Vested KSA"
 description: "Explore Saudi Arabia's Vision 2030 opportunity, priority sectors, investment environment, and market-entry considerations for international companies."
 canonical: "https://vestedksa.com/why-saudi"
 language: "en"
-content_signal: "ai-train=no, search=yes, ai-input=yes"
+content_signal: "search=yes, ai-input=yes, ai-train=no"
 source_html: "/why-saudi.html"
 markdown_sidecar: "/markdown/why-saudi.md"
 direct_markdown: "/why-saudi.md"
@@ -110,9 +110,7 @@ The rules are clear, transparent, and enforced. Saudi Arabia is not an opaque ma
   "description": "Saudi Arabia is undergoing the world's most ambitious economic transformation, creating unprecedented opportunities for international companies. Discover Vision 2030 and why now is the time to invest.",
   "url": "https://vestedksa.com/why-saudi",
   "publisher": {
-    "@type": "Organization",
-    "name": "Vested KSA",
-    "url": "https://vestedksa.com"
+    "@id": "https://vestedksa.com/#organization"
   }
 }
 ```
@@ -150,12 +148,7 @@ The rules are clear, transparent, and enforced. Saudi Arabia is not an opaque ma
   "description": "Saudi Arabia is undergoing the world's most ambitious economic transformation, creating unprecedented opportunities for international companies.",
   "url": "https://vestedksa.com/why-saudi",
   "publisher": {
-    "@type": "Organization",
-    "name": "Vested KSA",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://vestedksa.com/og-image.png"
-    }
+    "@id": "https://vestedksa.com/#organization"
   }
 }
 ```

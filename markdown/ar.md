@@ -3,7 +3,7 @@ title: "فستد السعودية | شريك العمليات في المملك�
 description: "فستد السعودية شريك عمليات للشركات الدولية التي تدخل السوق السعودي. نؤسس ونشغل وندير الأعمال غير الأساسية حتى تركزوا على النمو."
 canonical: "https://vestedksa.com/ar"
 language: "ar"
-content_signal: "ai-train=no, search=yes, ai-input=yes"
+content_signal: "search=yes, ai-input=yes, ai-train=no"
 source_html: "/ar/index.html"
 markdown_sidecar: "/markdown/ar.md"
 direct_markdown: "/ar.md"
@@ -122,30 +122,32 @@ $1.5T
 ```json
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": [
+    "Organization",
+    "ProfessionalService"
+  ],
   "@id": "https://vestedksa.com/#organization",
   "name": "Vested KSA",
   "legalName": "Vest KSA Co.",
   "alternateName": [
     "Vested",
-    "Vest KSA Co.",
-    "Vested Saudi Arabia"
+    "Vested Saudi Arabia",
+    "Vest KSA Co."
   ],
   "slogan": "Market-entry and operations partner in Saudi Arabia",
   "url": "https://vestedksa.com",
-  "inLanguage": "ar",
   "image": "https://vestedksa.com/og-image.png",
   "logo": "https://vestedksa.com/favicon.svg",
   "areaServed": {
     "@type": "Country",
     "name": "Saudi Arabia"
   },
-  "availableLanguage": [
-    "Arabic",
-    "English",
-    "Chinese"
+  "knowsLanguage": [
+    "en",
+    "ar",
+    "zh-Hans"
   ],
-  "description": "شريك عمليات للشركات الدولية التي تدخل السوق السعودي، يشمل التأسيس والامتثال والموارد البشرية والمالية والتشغيل المحلي.",
+  "description": "Vested KSA is a Saudi market-entry and operations partner for international companies entering, establishing, hiring, registering vendors, and operating locally in Saudi Arabia.",
   "email": "hello@vestedksa.com",
   "address": {
     "@type": "PostalAddress",

@@ -80,6 +80,18 @@
         {
           "key": "Strict-Transport-Security",
           "value": "max-age=31536000; includeSubDomains; preload"
+        },
+        {
+          "key": "Content-Signal",
+          "value": "search=yes, ai-input=yes, ai-train=no"
+        },
+        {
+          "key": "Content-Security-Policy-Report-Only",
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com; frame-src https://www.googletagmanager.com; report-uri /api/csp-report; report-to csp-endpoint"
+        },
+        {
+          "key": "Reporting-Endpoints",
+          "value": "csp-endpoint=\"https://vestedksa.com/api/csp-report\""
         }
       ]
     },
@@ -126,6 +138,19 @@
       ]
     },
     {
+      "source": "/.well-known/ai-catalog.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
       "source": "/markdown/(.*)\\.md",
       "headers": [
         {
@@ -138,7 +163,7 @@
         },
         {
           "key": "Content-Signal",
-          "value": "ai-train=no, search=yes, ai-input=yes"
+          "value": "search=yes, ai-input=yes, ai-train=no"
         },
         {
           "key": "Cache-Control",

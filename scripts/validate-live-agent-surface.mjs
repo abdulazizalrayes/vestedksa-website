@@ -4,7 +4,7 @@ import { XMLParser } from "fast-xml-parser";
 
 const ROOT = process.cwd();
 const BASE_URL = String(process.env.BASE_URL || "https://vestedksa.com").replace(/\/+$/, "");
-const CONTENT_SIGNAL = "ai-train=no, search=yes, ai-input=yes";
+const CONTENT_SIGNAL = "search=yes, ai-input=yes, ai-train=no";
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, "markdown", "manifest.json"), "utf8"));
 const failures = [];
 let htmlBytes = 0;
@@ -227,6 +227,7 @@ const canonicalDataFiles = fs.readdirSync(path.join(ROOT, "data"))
 const discoveryJson = [
   "/openapi.json",
   "/markdown/manifest.json",
+  "/.well-known/ai-catalog.json",
   "/.well-known/agent-card.json",
   "/.well-known/api-catalog",
   "/.well-known/mcp.json",

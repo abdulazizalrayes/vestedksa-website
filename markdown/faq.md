@@ -3,7 +3,7 @@ title: "FAQ | Vested KSA"
 description: "Frequently asked questions about establishing and operating your business in Saudi Arabia. Clear answers from Vested KSA."
 canonical: "https://vestedksa.com/faq"
 language: "en"
-content_signal: "ai-train=no, search=yes, ai-input=yes"
+content_signal: "search=yes, ai-input=yes, ai-train=no"
 source_html: "/faq.html"
 markdown_sidecar: "/markdown/faq.md"
 direct_markdown: "/faq.md"
@@ -57,9 +57,7 @@ Clear answers to the most common questions about establishing your business in S
   "description": "Frequently asked questions about establishing and operating your business in Saudi Arabia. Clear answers from Vested KSA.",
   "url": "https://vestedksa.com/faq",
   "publisher": {
-    "@type": "Organization",
-    "name": "Vested KSA",
-    "url": "https://vestedksa.com"
+    "@id": "https://vestedksa.com/#organization"
   },
   "mainEntity": [
     {

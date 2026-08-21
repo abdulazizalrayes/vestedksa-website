@@ -3,7 +3,7 @@ title: "Insights | Vested KSA"
 description: "Guides, analysis, and updates for international companies entering Saudi Arabia. Market insights, compliance guides, and strategic analysis."
 canonical: "https://vestedksa.com/insights"
 language: "en"
-content_signal: "ai-train=no, search=yes, ai-input=yes"
+content_signal: "search=yes, ai-input=yes, ai-train=no"
 source_html: "/insights.html"
 markdown_sidecar: "/markdown/insights.md"
 direct_markdown: "/insights.md"
@@ -217,12 +217,7 @@ We respect your privacy. Unsubscribe at any time. Questions? Reach us at hello@v
   "description": "Guides, analysis, and updates for international companies entering Saudi Arabia.",
   "url": "https://vestedksa.com/insights",
   "publisher": {
-    "@type": "Organization",
-    "name": "Vested KSA",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://vestedksa.com/og-image.png"
-    }
+    "@id": "https://vestedksa.com/#organization"
   }
 }
 ```

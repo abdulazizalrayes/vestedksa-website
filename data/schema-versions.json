@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "2026-06-29",
+  "schemaVersion": "2026-08-21",
   "resourceType": "schema-version-registry",
   "company": "Vested KSA",
-  "apiLayerVersion": "2.0.0",
+  "apiLayerVersion": "2.1.0",
   "resources": [
     {"path": "/data/company.json", "schemaVersion": "2026-06-20", "stability": "stable"},
     {"path": "/data/services.json", "schemaVersion": "2026-06-20", "stability": "stable"},
@@ -14,10 +14,10 @@
     {"path": "/data/decision-trees.json", "schemaVersion": "2026-06-29", "stability": "stable"},
     {"path": "/data/entity-glossary.json", "schemaVersion": "2026-06-29", "stability": "stable"},
     {"path": "/data/source-map.json", "schemaVersion": "2026-06-29", "stability": "stable"},
-    {"path": "/data/analytics-events.json", "schemaVersion": "2026-06-29", "stability": "stable"},
+    {"path": "/data/analytics-events.json", "schemaVersion": "2026-08-20", "stability": "stable"},
     {"path": "/data/procurement-routing.json", "schemaVersion": "2026-06-29", "stability": "stable"},
-    {"path": "/data/agent-manifest.json", "schemaVersion": "2026-06-29", "stability": "stable"},
-    {"path": "/data/changelog.json", "schemaVersion": "2026-06-29", "stability": "stable"}
+    {"path": "/data/agent-manifest.json", "schemaVersion": "2026-08-21", "stability": "stable"},
+    {"path": "/data/changelog.json", "schemaVersion": "2026-08-21", "stability": "stable"}
   ],
   "versioningRules": [
     "Patch updates may clarify copy, add examples, or add non-breaking fields.",

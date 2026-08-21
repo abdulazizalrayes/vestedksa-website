@@ -3,7 +3,7 @@ title: "Contact | Vested KSA"
 description: "Get in touch with Vested KSA. Whether you're exploring Saudi Arabia or ready to launch, we're here to help. Contact us today."
 canonical: "https://vestedksa.com/contact"
 language: "en"
-content_signal: "ai-train=no, search=yes, ai-input=yes"
+content_signal: "search=yes, ai-input=yes, ai-train=no"
 source_html: "/contact.html"
 markdown_sidecar: "/markdown/contact.md"
 direct_markdown: "/contact.md"
@@ -51,9 +51,7 @@ Prefer to schedule a call? Email us directly and we'll arrange a time that works
   "description": "Get in touch with Vested KSA. Whether you're exploring Saudi Arabia or ready to launch, we're here to help. Contact us today.",
   "url": "https://vestedksa.com/contact",
   "publisher": {
-    "@type": "Organization",
-    "name": "Vested KSA",
-    "url": "https://vestedksa.com"
+    "@id": "https://vestedksa.com/#organization"
   }
 }
 ```
@@ -91,18 +89,7 @@ Prefer to schedule a call? Email us directly and we'll arrange a time that works
   "description": "Get in touch with Vested KSA. Whether you're exploring Saudi Arabia or ready to launch, we're here to help.",
   "url": "https://vestedksa.com/contact",
   "publisher": {
-    "@type": "Organization",
-    "name": "Vested KSA",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://vestedksa.com/og-image.png"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Customer Support",
-      "email": "hello@vestedksa.com",
-      "areaServed": "SA"
-    }
+    "@id": "https://vestedksa.com/#organization"
   }
 }
 ```

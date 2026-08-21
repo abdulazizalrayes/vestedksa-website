@@ -1,11 +1,11 @@
 {
-  "schemaVersion": "2026-06-29",
+  "schemaVersion": "2026-08-20",
   "resourceType": "analytics-event-taxonomy",
   "company": "Vested KSA",
   "privacyRules": [
     "Do not log names, emails, phone numbers, passports, IDs, bank details, confidential documents, or full inquiry messages in analytics events.",
     "Use page path, service interest, country, language, source, and coarse route classification only.",
-    "Server logs for MCP should record tool names and broad user-agent class, not full prompts or private inquiry details.",
+    "Server logs for agent surfaces should record route paths, tool or resource names, and broad user-agent class, not IP addresses, full user agents, query strings, prompts, or private inquiry details.",
     "Contact form submission analytics should record success/failure and service interest, not message body."
   ],
   "keyEvents": [
@@ -60,7 +60,10 @@
     "mcp_resource_read",
     "openapi_read",
     "llms_read",
-    "answer_asset_read"
+    "answer_asset_read",
+    "markdown_representation_read",
+    "crawler_visit",
+    "inquiry_preparation"
   ],
   "funnelStages": [
     {
@@ -89,7 +92,8 @@
         "lead_cta_click",
         "lead_form_start",
         "mcp_tool_call:match_project_scope",
-        "mcp_tool_call:prepare_project_inquiry"
+        "mcp_tool_call:prepare_project_inquiry",
+        "inquiry_preparation"
       ]
     },
     {

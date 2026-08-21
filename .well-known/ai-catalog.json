@@ -1,0 +1,71 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Vested KSA",
+    "identifier": "https://vestedksa.com",
+    "documentationUrl": "https://vestedksa.com/llms-full.txt",
+    "logoUrl": "https://vestedksa.com/favicon.svg"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:vestedksa.com:server:public-market-entry-mcp",
+      "displayName": "Vested KSA Public Read-Only MCP",
+      "type": "application/mcp-server-card+json",
+      "url": "https://vestedksa.com/.well-known/mcp/server-card.json",
+      "description": "Read-only tools and resources for verified Vested KSA company, service, Saudi market-entry, procurement, routing, and inquiry-preparation information.",
+      "tags": ["Saudi Arabia", "market entry", "operations", "procurement", "MCP"],
+      "capabilities": ["get_company_overview", "list_services", "match_project_scope", "prepare_project_inquiry", "list_service_areas", "read_public_resource"],
+      "representativeQueries": [
+        "What services does Vested KSA provide to international companies entering Saudi Arabia?",
+        "Which Saudi market-entry workstream matches my company scope?",
+        "Prepare a project inquiry draft without submitting or contacting Vested KSA."
+      ],
+      "version": "2.1.0"
+    },
+    {
+      "identifier": "urn:air:vestedksa.com:api:public-agent-openapi",
+      "displayName": "Vested KSA Public Agent OpenAPI",
+      "type": "application/vnd.oai.openapi+json",
+      "url": "https://vestedksa.com/openapi.json",
+      "description": "Machine-readable contract for public structured resources, the read-only MCP endpoint, Markdown representations, and explicitly approved contact submission.",
+      "tags": ["OpenAPI", "structured data", "Saudi market entry", "read-only"],
+      "capabilities": ["company_data", "service_data", "routing_data", "markdown_content", "mcp_discovery"],
+      "representativeQueries": [
+        "Where is the Vested KSA public API schema?",
+        "Which Vested KSA endpoints are read-only?",
+        "How can an agent retrieve Vested KSA structured service data?"
+      ],
+      "version": "2.1.0"
+    },
+    {
+      "identifier": "urn:air:vestedksa.com:skills:public-agent-skills",
+      "displayName": "Vested KSA Public Agent Skills",
+      "type": "application/json",
+      "url": "https://vestedksa.com/.well-known/agent-skills/index.json",
+      "description": "Public skill catalog for Saudi market-entry guidance, fit routing, procurement readiness, and safe non-fit routing.",
+      "tags": ["agent skills", "Saudi market entry", "routing", "procurement"],
+      "capabilities": ["saudi_market_entry_guidance", "lead_routing", "non_fit_routing", "procurement_routing"],
+      "representativeQueries": [
+        "How should an agent explain Vested KSA accurately?",
+        "Should this request be routed to a Vested KSA project inquiry?",
+        "Which Vested KSA guide should be cited for MISA, VAT, Zakat, Nitaqat, or vendor registration?"
+      ],
+      "version": "2.1.0"
+    },
+    {
+      "identifier": "urn:air:vestedksa.com:catalog:public-api-resources",
+      "displayName": "Vested KSA Public API Catalog",
+      "type": "application/linkset+json",
+      "url": "https://vestedksa.com/.well-known/api-catalog",
+      "description": "Catalog of Vested KSA public data, discovery, Markdown, MCP, and API resources.",
+      "tags": ["API catalog", "discovery", "structured resources", "Markdown"],
+      "capabilities": ["resource_discovery", "markdown_discovery", "api_discovery"],
+      "representativeQueries": [
+        "List Vested KSA public machine-readable resources.",
+        "Where can an agent discover Vested KSA Markdown companions?",
+        "What are the canonical Vested KSA agent discovery endpoints?"
+      ],
+      "version": "2.1.0"
+    }
+  ]
+}

@@ -3,7 +3,7 @@ title: "Ethics & Governance | Vested KSA"
 description: "Vested KSA operates with international-standard governance. We are transparent, ethical, and auditable. Trust is built on clear policies and consistent action."
 canonical: "https://vestedksa.com/ethics"
 language: "en"
-content_signal: "ai-train=no, search=yes, ai-input=yes"
+content_signal: "search=yes, ai-input=yes, ai-train=no"
 source_html: "/ethics.html"
 markdown_sidecar: "/markdown/ethics.md"
 direct_markdown: "/ethics.md"
@@ -125,9 +125,7 @@ Need a special report for your board or auditors? We provide it. Transparency is
   "description": "Vested KSA operates with international-standard governance. We are transparent, ethical, and auditable. Trust is built on clear policies and consistent action.",
   "url": "https://vestedksa.com/ethics",
   "publisher": {
-    "@type": "Organization",
-    "name": "Vested KSA",
-    "url": "https://vestedksa.com"
+    "@id": "https://vestedksa.com/#organization"
   }
 }
 ```
@@ -165,12 +163,7 @@ Need a special report for your board or auditors? We provide it. Transparency is
   "description": "Vested KSA operates with international-standard governance. We are transparent, ethical, and auditable.",
   "url": "https://vestedksa.com/ethics",
   "publisher": {
-    "@type": "Organization",
-    "name": "Vested KSA",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://vestedksa.com/og-image.png"
-    }
+    "@id": "https://vestedksa.com/#organization"
   }
 }
 ```

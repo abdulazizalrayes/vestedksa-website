@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "mapVersion": "2026-07-29",
+  "mapVersion": "2026-08-20",
   "title": "Vested KSA Website Architecture",
   "description": "Authoritative machine-readable map of the Vested KSA public website, agent-readiness layer, data contracts, runtime flows, integrations, deployment boundaries, and change guidance.",
   "identityLock": {
@@ -65,7 +65,7 @@
     }
   },
   "systemProfile": {
-    "architectureStyle": "Static multipage website with Vercel edge middleware and three Node.js serverless endpoints",
+    "architectureStyle": "Static multipage website with Vercel edge middleware and four Node.js serverless endpoints",
     "framework": "None",
     "rendering": "Prebuilt static HTML",
     "packageType": "Private repository package; no public CLI or npm package",
@@ -85,13 +85,13 @@
     ],
     "metrics": {
       "canonicalHtmlPages": 20,
-      "sitemapUrls": 46,
+      "sitemapUrls": 20,
       "insightGuides": 8,
       "structuredDataResources": 15,
       "markdownCompanions": 20,
       "mcpTools": 11,
       "mcpResources": 15,
-      "serverlessEndpoints": 3,
+      "serverlessEndpoints": 4,
       "publicLanguages": 3
     }
   },
@@ -495,6 +495,14 @@
           "transport": "HTTPS JSON-RPC"
         },
         "purpose": "Read-only company, service, routing, answer-engine, procurement, and inquiry-preparation interface"
+      },
+      {
+        "id": "csp-report-api",
+        "path": "/api/csp-report",
+        "file": "api/csp-report.js",
+        "runtime": "Node.js serverless",
+        "sideEffect": "Writes a sanitized report-only security event to Vercel runtime logs",
+        "purpose": "Receive bounded CSP violation reports without storing IP addresses, user agents, query strings, or personal information"
       }
     ]
   },
@@ -532,7 +540,7 @@
       "Details",
       "Relevant public JSON-LD"
     ],
-    "contentSignal": "ai-train=no, search=yes, ai-input=yes",
+    "contentSignal": "search=yes, ai-input=yes, ai-train=no",
     "directSidecarRobots": "noindex, follow",
     "negotiation": {
       "supportedRanges": [
@@ -615,6 +623,7 @@
     ],
     "agent": [
       ".well-known/agent-card.json",
+      ".well-known/ai-catalog.json",
       ".well-known/api-catalog.json",
       ".well-known/mcp.json",
       ".well-known/mcp/server-card.json",
@@ -646,8 +655,8 @@
     "client": {
       "ga4MeasurementId": "G-7STG2HDV42",
       "gtmContainerId": "GTM-WL2FN4PR",
-      "consentMechanism": "Page-level cookie banner using localStorage",
-      "globalTracker": "analytics-loader.js on all insight guides, plus language-switcher.js and page-level event helpers"
+      "consentMechanism": "One consent-aware analytics-loader.js on all 20 canonical pages; analytics and advertising storage default to denied and GA4/GTM load only after acceptance",
+      "globalTracker": "analytics-loader.js plus language-switcher.js and page-level event helpers"
     },
     "keyEvents": [
       "lead_form_submit",
@@ -664,10 +673,13 @@
       "mcp_resource_read",
       "openapi_read",
       "llms_read",
-      "answer_asset_read"
+      "answer_asset_read",
+      "markdown_representation_read",
+      "crawler_visit",
+      "inquiry_preparation"
     ],
-    "serverObservability": "Privacy-safe JSON logs from /api/mcp in Vercel logs",
-    "privacyRule": "Do not log names, emails, phones, full prompts, inquiry messages, IDs, financial data, or confidential documents."
+    "serverObservability": "Privacy-safe JSON logs from middleware, /api/mcp, /api/markdown, and /api/csp-report; optional Vested-only GA4 Measurement Protocol delivery when GA4_API_SECRET is configured",
+    "privacyRule": "Do not log IP addresses, full user agents, query strings, names, emails, phones, full prompts, inquiry messages, IDs, financial data, or confidential documents."
   },
   "externalIntegrations": [
     {
@@ -733,6 +745,9 @@
       "CONTACT_FROM",
       "CONTACT_DESTINATION"
     ],
+    "optionalAgentTelemetry": [
+      "GA4_API_SECRET"
+    ],
     "valuesRecordedHere": false
   },
   "buildAndRelease": {
@@ -742,20 +757,19 @@
     },
     "packageScripts": {
       "generate:markdown": "Generate deterministic Markdown companions",
-      "test": "Run Accept negotiation, route resolution, Markdown API header, HEAD, and method unit tests",
+      "test": "Run consent, CSP reporting, telemetry privacy, Accept negotiation, route resolution, Markdown API header, HEAD, and method unit tests",
       "check:markdown": "Fail when generated Markdown artifacts are stale",
       "indexnow:dry-run": "Preview the IndexNow submission payload",
       "indexnow:submit": "Submit sitemap URLs to IndexNow",
       "validate:markdown-layer": "Validate coverage, headers, routing, content exclusions, and optional HTML hashes",
+      "validate:site-integrity": "Validate sitemap purity, canonical and entity consistency, consent gating, crawler policy, security reporting, telemetry coverage, and image budget",
       "validate:agent-readiness": "Validate discovery, JSON, OpenAPI, MCP runtime safety, robots, and Vercel config",
       "validate:deployment-output": "Validate Vercel build inventory and reject duplicate/private/internal artifacts",
-      "validate:live": "Validate production HTML, Markdown negotiation, sidecars, discovery, MCP, and duplicate paths"
+      "validate:live": "Validate production HTML, Markdown negotiation, sidecars, discovery, MCP, and duplicate paths",
+      "validate:release": "Run the complete local unit, integrity, agent-readiness, and Markdown validation gate"
     },
     "releaseSequence": [
-      "npm test",
-      "npm run check:markdown",
-      "npm run validate:markdown-layer",
-      "npm run validate:agent-readiness",
+      "npm run validate:release",
       "npm audit --omit=dev",
       "vercel build --prod",
       "npm run validate:deployment-output",
@@ -855,6 +869,13 @@
       "description": "Exposes eleven typed tools and fifteen public resources without external submission."
     },
     {
+      "id": "csp-report-api",
+      "layer": "application",
+      "name": "CSP report collector",
+      "kind": "serverless-function",
+      "description": "Receives bounded report-only CSP violations and writes sanitized security telemetry."
+    },
+    {
       "id": "html-jsonld",
       "layer": "content",
       "name": "HTML and JSON-LD",
@@ -887,7 +908,7 @@
       "layer": "discovery",
       "name": "Sitemap and robots",
       "kind": "discovery",
-      "description": "Forty-six public sitemap URLs and explicit crawler/private-path policy."
+      "description": "Twenty canonical indexable HTML sitemap URLs and an explicit search/input-versus-training crawler policy."
     },
     {
       "id": "llms-discovery",
@@ -901,7 +922,7 @@
       "layer": "discovery",
       "name": "Agent and API discovery",
       "kind": "discovery",
-      "description": "Agent card, API catalog, MCP cards, skills, OpenAPI, and auth guidance."
+      "description": "ARD catalog, agent card, API catalog, MCP cards, skills, OpenAPI, and explicit anonymous-access auth guidance."
     },
     {
       "id": "markdown-manifest",
@@ -1089,7 +1110,7 @@
         {
           "from": "llms-discovery",
           "to": "agent-discovery",
-          "action": "Locate OpenAPI, MCP, skills, and API catalog"
+          "action": "Locate the ARD catalog, OpenAPI, MCP, skills, and API catalog"
         },
         {
           "from": "agent-discovery",
@@ -1196,7 +1217,21 @@
           "from": "mcp-api",
           "to": "vercel-deploy",
           "action": "Write broad, privacy-safe runtime log event"
+        },
+        {
+          "from": "accept-middleware",
+          "to": "vercel-deploy",
+          "action": "Write privacy-safe crawler and public agent-resource events"
+        },
+        {
+          "from": "csp-report-api",
+          "to": "vercel-deploy",
+          "action": "Write sanitized report-only security events"
         }
+      ],
+      "invariants": [
+        "Client analytics stays disabled until consent is accepted",
+        "Server telemetry excludes IP addresses, full user agents, query strings, prompts, and inquiry content"
       ]
     },
     {
@@ -1317,7 +1352,7 @@
     {
       "id": "content-signal",
       "severity": "high",
-      "rule": "Public content policy remains ai-train=no, search=yes, ai-input=yes unless the owner changes it."
+      "rule": "Public content policy remains search=yes, ai-input=yes, ai-train=no unless the owner changes it."
     },
     {
       "id": "agent-read-only",

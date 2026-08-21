@@ -3,336 +3,43 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://vestedksa.com/</loc>
+    <lastmod>2026-08-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://vestedksa.com/ar" />
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://vestedksa.com/zh" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/" />
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://vestedksa.com/ar</loc>
+    <lastmod>2026-08-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://vestedksa.com/ar" />
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://vestedksa.com/zh" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/" />
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vestedksa.com/zh</loc>
+    <lastmod>2026-08-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://vestedksa.com/ar" />
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://vestedksa.com/zh" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/" />
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
-  <url>
-    <loc>https://vestedksa.com/about</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/about" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/about" />
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/ksa-entry-checklist.txt</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/ksa-entry-checklist.txt" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://vestedksa.com/ksa-entry-checklist-ar.txt" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://vestedksa.com/ksa-entry-checklist-zh.txt" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/ksa-entry-checklist.txt" />
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/ksa-entry-checklist-ar.txt</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/ksa-entry-checklist.txt" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://vestedksa.com/ksa-entry-checklist-ar.txt" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://vestedksa.com/ksa-entry-checklist-zh.txt" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/ksa-entry-checklist.txt" />
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/ksa-entry-checklist-zh.txt</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/ksa-entry-checklist.txt" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://vestedksa.com/ksa-entry-checklist-ar.txt" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://vestedksa.com/ksa-entry-checklist-zh.txt" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/ksa-entry-checklist.txt" />
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/ksa-90-day-launch-plan.txt</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/ksa-vendor-registration-pack.txt</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/ksa-due-diligence-request-list.txt</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/.well-known/entity-profile.json</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/data/company.json</loc>
-    <lastmod>2026-06-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/data/services.json</loc>
-    <lastmod>2026-06-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/data/capabilities.json</loc>
-    <lastmod>2026-06-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/data/service-areas.json</loc>
-    <lastmod>2026-06-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/data/project-inquiry-schema.json</loc>
-    <lastmod>2026-06-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/data/agent-routing.json</loc>
-    <lastmod>2026-06-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/data/answer-engine.json</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/data/decision-trees.json</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/data/entity-glossary.json</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/data/source-map.json</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/data/analytics-events.json</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/data/agent-manifest.json</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/data/schema-versions.json</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/data/changelog.json</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/data/procurement-routing.json</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/docs/advanced-analytics-playbook.md</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/docs/bing-indexnow.md</loc>
-    <lastmod>2026-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/openapi.json</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/.well-known/mcp.json</loc>
-    <lastmod>2026-06-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/services</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/services" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/services" />
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/why-saudi</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/why-saudi" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/why-saudi" />
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/ethics</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/ethics" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/ethics" />
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/insights</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/insights" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/insights" />
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/insights/ksa-market-entry-guide-2026</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/insights/ksa-market-entry-guide-2026" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/insights/ksa-market-entry-guide-2026" />
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/insights/foreign-ownership-saudi-arabia</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/insights/foreign-ownership-saudi-arabia" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/insights/foreign-ownership-saudi-arabia" />
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/insights/misa-licensing-commercial-registration-saudi-arabia</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/insights/misa-licensing-commercial-registration-saudi-arabia" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/insights/misa-licensing-commercial-registration-saudi-arabia" />
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/insights/vat-zakat-saudi-arabia</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/insights/vat-zakat-saudi-arabia" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/insights/vat-zakat-saudi-arabia" />
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/insights/saudi-e-invoicing-operating-controls</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/insights/saudi-e-invoicing-operating-controls" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/insights/saudi-e-invoicing-operating-controls" />
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/insights/regional-headquarters-rhq-saudi-arabia</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/insights/regional-headquarters-rhq-saudi-arabia" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/insights/regional-headquarters-rhq-saudi-arabia" />
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/insights/saudi-vendor-registration-aramco-pif</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/insights/saudi-vendor-registration-aramco-pif" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/insights/saudi-vendor-registration-aramco-pif" />
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/insights/saudization-nitaqat-hr-saudi-arabia</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/insights/saudization-nitaqat-hr-saudi-arabia" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/insights/saudization-nitaqat-hr-saudi-arabia" />
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/faq</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/faq" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/faq" />
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/contact</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/contact" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/contact" />
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/privacy</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/privacy" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/privacy" />
-    <lastmod>2026-06-12</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://vestedksa.com/terms</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vestedksa.com/terms" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestedksa.com/terms" />
-    <lastmod>2026-06-12</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
+  <url><loc>https://vestedksa.com/about</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/services</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/why-saudi</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/ethics</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/insights</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/insights/ksa-market-entry-guide-2026</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/insights/foreign-ownership-saudi-arabia</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/insights/misa-licensing-commercial-registration-saudi-arabia</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/insights/vat-zakat-saudi-arabia</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/insights/saudi-e-invoicing-operating-controls</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/insights/regional-headquarters-rhq-saudi-arabia</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/insights/saudi-vendor-registration-aramco-pif</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/insights/saudization-nitaqat-hr-saudi-arabia</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/faq</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/contact</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/privacy</loc><lastmod>2026-08-20</lastmod></url>
+  <url><loc>https://vestedksa.com/terms</loc><lastmod>2026-08-20</lastmod></url>
 </urlset>

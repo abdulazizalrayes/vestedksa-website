@@ -3,7 +3,7 @@ title: "Terms of Service - Vested KSA"
 description: "Terms of Service for Vested KSA - Review our terms and conditions for using our services and website."
 canonical: "https://vestedksa.com/terms"
 language: "en"
-content_signal: "ai-train=no, search=yes, ai-input=yes"
+content_signal: "search=yes, ai-input=yes, ai-train=no"
 source_html: "/terms.html"
 markdown_sidecar: "/markdown/terms.md"
 direct_markdown: "/terms.md"
@@ -122,9 +122,7 @@ BY ACCESSING AND USING THIS SITE, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS
   "description": "Terms of Service for Vested KSA - Review our terms and conditions for using our services and website.",
   "url": "https://vestedksa.com/terms",
   "publisher": {
-    "@type": "Organization",
-    "name": "Vested KSA",
-    "url": "https://vestedksa.com"
+    "@id": "https://vestedksa.com/#organization"
   }
 }
 ```

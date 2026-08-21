@@ -43,81 +43,30 @@
     <noscript>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     </noscript>
-
-    <!-- Analytics bootstrap -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){window.dataLayer.push(arguments);}
-
-        function loadAnalyticsScripts() {
-            if (window.__vestedAnalyticsLoaded) return;
-            window.__vestedAnalyticsLoaded = true;
-
-            var gtagScript = document.createElement('script');
-            gtagScript.async = true;
-            gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-7STG2HDV42';
-            document.head.appendChild(gtagScript);
-
-            gtag('js', new Date());
-            gtag('config', 'G-7STG2HDV42');
-
-            window.dataLayer.push({
-                'gtm.start': Date.now(),
-                event: 'gtm.js',
-            });
-
-            var gtmScript = document.createElement('script');
-            gtmScript.async = true;
-            gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WL2FN4PR';
-            document.head.appendChild(gtmScript);
-
-            ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
-                window.removeEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
-            });
-        }
-
-        function triggerAnalyticsLoad() {
-            loadAnalyticsScripts();
-        }
-
-        var passiveOnceOptions = { passive: true, once: true };
-
-        ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
-            window.addEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
-        });
-
-        window.addEventListener('load', () => {
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(loadAnalyticsScripts, { timeout: 2500 });
-            } else {
-                setTimeout(loadAnalyticsScripts, 1500);
-            }
-        }, { once: true });
-    </script>
+    <!-- Consent-aware analytics -->
+    <script src="/analytics-loader.js" defer></script>
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "ProfessionalService",
+        "@type": ["Organization", "ProfessionalService"],
         "@id": "https://vestedksa.com/#organization",
         "name": "Vested KSA",
         "legalName": "Vest KSA Co.",
         "alternateName": [
             "Vested",
-            "Vest KSA Co.",
-            "Vested Saudi Arabia"
+            "Vested Saudi Arabia",
+            "Vest KSA Co."
         ],
         "slogan": "Market-entry and operations partner in Saudi Arabia",
-        "description": "Vested KSA is a market-entry and operations partner in Saudi Arabia for international companies setting up, hiring, registering vendors, and running local back-office operations.",
+        "description": "Vested KSA is a Saudi market-entry and operations partner for international companies entering, establishing, hiring, registering vendors, and operating locally in Saudi Arabia.",
         "url": "https://vestedksa.com",
-        "inLanguage": "en",
         "image": "https://vestedksa.com/og-image.png",
         "logo": "https://vestedksa.com/favicon.svg",
         "email": "hello@vestedksa.com",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Tahliyah St, Olaya",
             "addressLocality": "Riyadh",
             "addressCountry": "SA"
         },
@@ -125,23 +74,10 @@
             "@type": "Country",
             "name": "Saudi Arabia"
         },
-        "foundingDate": "2024",
         "knowsLanguage": [
             "en",
             "ar",
             "zh-Hans"
-        ],
-        "founder": [
-            {
-                "@type": "Person",
-                "name": "Abdulkareem Alrammah",
-                "jobTitle": "CEO"
-            },
-            {
-                "@type": "Person",
-                "name": "Abdulaziz Khalid",
-                "jobTitle": "VP"
-            }
         ],
         "knowsAbout": [
             "Saudi market entry",
@@ -183,8 +119,7 @@
             ]
         },
         "sameAs": [
-            "https://www.linkedin.com/company/vested-ksa/",
-            "https://twitter.com/vestedksa"
+            "https://www.linkedin.com/company/vested-ksa/"
         ]
     }
     </script>
@@ -1083,7 +1018,7 @@
             }
         }
 
-        .footer-col h4 {
+        .footer-col h3 {
             font-size: 15px;
             font-weight: 600;
             color: #1D1D1F;
@@ -1340,8 +1275,6 @@
     </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL2FN4PR"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:#3b82f6;color:#fff;padding:8px 16px;z-index:10000;transition:top 0.3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
     <!-- Navigation -->
@@ -1379,7 +1312,7 @@
     </div>
 
     <!-- Hero Section -->
-    <section id="main-content" class="hero">
+    <section id="main-content" class="hero" role="main">
         <p class="hero-eyebrow">Saudi market-entry and local operations</p>
         <h1>Your Saudi operation, built before the first mistake.</h1>
         <p class="subtitle">Set up, operate, and scale with one accountable local partner.</p>
@@ -1638,15 +1571,10 @@
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.439-.103.25-.129.599-.129.949v5.417h-3.554s.047-8.787 0-9.703h3.554v1.374c.43-.664 1.199-1.608 2.925-1.608 2.136 0 3.74 1.393 3.74 4.391v5.546zM5.337 8.855c-1.144 0-1.915-.758-1.915-1.704 0-.951.77-1.707 1.972-1.707 1.2 0 1.913.756 1.938 1.704 0 .946-.738 1.707-1.995 1.707zm1.946 11.597H3.392V9.749h3.891v10.703zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
                             </svg>
                         </a>
-                        <a href="https://twitter.com/vestedksa" aria-label="X (Twitter)" title="X">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.6l-5.165-6.763-5.868 6.763h-3.31l7.732-8.835L.424 2.25h6.755l4.867 6.44 5.198-6.44zM17.534 20.307h1.832L6.455 3.98H4.553l13.981 16.327z"/>
-                            </svg>
-                        </a>
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h4>Company</h4>
+                    <h3>Company</h3>
                     <ul>
                         <li><a href="/about">About</a></li>
                         <li><a href="/services">Services</a></li>
@@ -1655,7 +1583,7 @@
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Resources</h4>
+                    <h3>Resources</h3>
                     <ul>
                         <li><a href="/insights">Insights</a></li>
                         <li><a href="/faq">FAQ</a></li>
@@ -1663,7 +1591,7 @@
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Location</h4>
+                    <h3>Location</h3>
                     <div class="footer-contact">
                         <a href="mailto:hello@vestedksa.com">hello@vestedksa.com</a><br>
                         Tahliyah St, Olaya<br>
@@ -1742,7 +1670,7 @@
         const cookieDecline = document.getElementById('cookieDecline');
 
         function showCookieBanner() {
-            if (!localStorage.getItem('cookieConsent')) {
+            if (!window.VestedConsent.getStatus()) {
                 setTimeout(() => {
                     cookieBanner.classList.add('show');
                 }, 1000);
@@ -1750,15 +1678,12 @@
         }
 
         cookieAccept.addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'accepted');
+            window.VestedConsent.accept();
             cookieBanner.classList.remove('show');
-            pushDataLayerEvent('cookie_consent_update', {
-                consent_status: 'accepted',
-            });
         });
 
         cookieDecline.addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'declined');
+            window.VestedConsent.decline();
             cookieBanner.classList.remove('show');
         });
 

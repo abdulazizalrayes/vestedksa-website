@@ -3,7 +3,7 @@ title: "Vested KSA | 沙特阿拉伯运营合作伙伴"
 description: "Vested KSA 是国际公司进入沙特阿拉伯的运营合作伙伴。我们协助设立、运营和管理非核心业务，让您专注于增长。"
 canonical: "https://vestedksa.com/zh"
 language: "zh-Hans"
-content_signal: "ai-train=no, search=yes, ai-input=yes"
+content_signal: "search=yes, ai-input=yes, ai-train=no"
 source_html: "/zh/index.html"
 markdown_sidecar: "/markdown/zh.md"
 direct_markdown: "/zh.md"
@@ -122,30 +122,32 @@ $1.5T
 ```json
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": [
+    "Organization",
+    "ProfessionalService"
+  ],
   "@id": "https://vestedksa.com/#organization",
   "name": "Vested KSA",
   "legalName": "Vest KSA Co.",
   "alternateName": [
     "Vested",
-    "Vest KSA Co.",
-    "Vested Saudi Arabia"
+    "Vested Saudi Arabia",
+    "Vest KSA Co."
   ],
   "slogan": "Market-entry and operations partner in Saudi Arabia",
   "url": "https://vestedksa.com",
-  "inLanguage": "zh-Hans",
   "image": "https://vestedksa.com/og-image.png",
   "logo": "https://vestedksa.com/favicon.svg",
   "areaServed": {
     "@type": "Country",
     "name": "Saudi Arabia"
   },
-  "availableLanguage": [
-    "Chinese",
-    "English",
-    "Arabic"
+  "knowsLanguage": [
+    "en",
+    "ar",
+    "zh-Hans"
   ],
-  "description": "Vested KSA supports international companies entering Saudi Arabia with company formation, compliance, HR, finance, and managed local operations.",
+  "description": "Vested KSA is a Saudi market-entry and operations partner for international companies entering, establishing, hiring, registering vendors, and operating locally in Saudi Arabia.",
   "email": "hello@vestedksa.com",
   "address": {
     "@type": "PostalAddress",

@@ -28,52 +28,7 @@
   <noscript>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </noscript>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){window.dataLayer.push(arguments);}
-
-    function loadAnalyticsScripts() {
-      if (window.__vestedAnalyticsLoaded) return;
-      window.__vestedAnalyticsLoaded = true;
-
-      const gtagScript = document.createElement('script');
-      gtagScript.async = true;
-      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-7STG2HDV42';
-      document.head.appendChild(gtagScript);
-
-      gtag('js', new Date());
-      gtag('config', 'G-7STG2HDV42');
-
-      window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
-
-      const gtmScript = document.createElement('script');
-      gtmScript.async = true;
-      gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WL2FN4PR';
-      document.head.appendChild(gtmScript);
-
-      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
-        window.removeEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
-      });
-    }
-
-    function triggerAnalyticsLoad() {
-      loadAnalyticsScripts();
-    }
-
-    const passiveOnceOptions = { passive: true, once: true };
-
-    ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((eventName) => {
-      window.addEventListener(eventName, triggerAnalyticsLoad, passiveOnceOptions);
-    });
-
-    window.addEventListener('load', () => {
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadAnalyticsScripts, { timeout: 2500 });
-      } else {
-        setTimeout(loadAnalyticsScripts, 1500);
-      }
-    }, { once: true });
-  </script>
+  <script src="/analytics-loader.js" defer></script>
   <style>
     * {
       margin: 0;
@@ -813,8 +768,6 @@
     </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL2FN4PR"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
     <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:#3b82f6;color:#fff;padding:8px 16px;z-index:10000;transition:top 0.3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
   <!-- Navigation -->
@@ -1059,9 +1012,6 @@
             <a href="https://www.linkedin.com/company/vested-ksa/" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.047-8.842 0-9.769h3.554v1.383c.43-.665 1.199-1.61 2.920-1.61 2.135 0 3.753 1.395 3.753 4.402v5.594zM5.337 5.433c-1.144 0-1.915-.759-1.915-1.71 0-.955.77-1.71 1.954-1.71 1.185 0 1.915.755 1.915 1.71 0 .951-.73 1.71-1.954 1.71zm1.946 14.019H3.391V9.683h3.892v9.769zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
             </a>
-            <a href="https://twitter.com/vestedksa" aria-label="X (Twitter)">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417a9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
-            </a>
           </div>
         </div>
         <div class="footer-col">
@@ -1108,12 +1058,12 @@
 
     // Cookie consent
     function acceptCookies() {
-      localStorage.setItem('cookieConsent', 'accepted');
+      window.VestedConsent.accept();
       document.getElementById('cookieBanner').classList.remove('show');
     }
 
     function initCookieBanner() {
-      if (!localStorage.getItem('cookieConsent')) {
+      if (!window.VestedConsent.getStatus()) {
         document.getElementById('cookieBanner').classList.add('show');
       }
     }
@@ -1159,12 +1109,7 @@
     "description": "Guides, analysis, and updates for international companies entering Saudi Arabia.",
     "url": "https://vestedksa.com/insights",
     "publisher": {
-      "@type": "Organization",
-      "name": "Vested KSA",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://vestedksa.com/og-image.png"
-      }
+      "@id": "https://vestedksa.com/#organization"
     }
   }
   </script>

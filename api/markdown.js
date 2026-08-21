@@ -1,7 +1,8 @@
 "use strict";
 
 const MARKDOWN_ASSETS = require("../lib/markdown-assets.cjs");
-const CONTENT_SIGNAL = "ai-train=no, search=yes, ai-input=yes";
+const { recordAgentEvent } = require("../lib/server-agent-telemetry.cjs");
+const CONTENT_SIGNAL = "search=yes, ai-input=yes, ai-train=no";
 
 module.exports = function handler(req, res) {
   if (req.method !== "GET" && req.method !== "HEAD") {
@@ -22,6 +23,11 @@ module.exports = function handler(req, res) {
     res.end(JSON.stringify({ error: "Markdown companion unavailable" }));
     return;
   }
+
+  recordAgentEvent(req, {
+    action: "markdown_representation_read",
+    resource: entry.path,
+  });
 
   res.statusCode = 200;
   res.setHeader("Content-Type", "text/markdown; charset=utf-8");

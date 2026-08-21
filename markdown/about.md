@@ -3,7 +3,7 @@ title: "About Vested | Operations Partner for International Companies in Saudi A
 description: "Learn about Vested KSA, the market-entry and operations partner helping international companies establish and operate in Saudi Arabia."
 canonical: "https://vestedksa.com/about"
 language: "en"
-content_signal: "ai-train=no, search=yes, ai-input=yes"
+content_signal: "search=yes, ai-input=yes, ai-train=no"
 source_html: "/about.html"
 markdown_sidecar: "/markdown/about.md"
 direct_markdown: "/about.md"
@@ -78,17 +78,7 @@ Expanded public resources for international companies evaluating Saudi ownership
   "description": "Learn about Vested KSA, the market-entry and operations partner helping international companies establish and operate in Saudi Arabia.",
   "url": "https://vestedksa.com/about",
   "organization": {
-    "@type": "Organization",
-    "@id": "https://vestedksa.com/#organization",
-    "name": "Vested KSA",
-    "legalName": "Vest KSA Co.",
-    "alternateName": [
-      "Vested",
-      "Vested Saudi Arabia",
-      "Vest KSA Co."
-    ],
-    "url": "https://vestedksa.com",
-    "description": "Market-entry and operations partner for international companies entering Saudi Arabia"
+    "@id": "https://vestedksa.com/#organization"
   }
 }
 ```

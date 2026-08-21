@@ -31,51 +31,25 @@
   <link rel="preconnect" href="https://www.googletagmanager.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="/language-switcher.js" defer></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){window.dataLayer.push(arguments);}
-    function loadAnalyticsScripts() {
-      if (window.__vestedAnalyticsLoaded) return;
-      window.__vestedAnalyticsLoaded = true;
-      var gtagScript = document.createElement('script');
-      gtagScript.async = true;
-      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-7STG2HDV42';
-      document.head.appendChild(gtagScript);
-      gtag('js', new Date());
-      gtag('config', 'G-7STG2HDV42');
-      window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
-      var gtmScript = document.createElement('script');
-      gtmScript.async = true;
-      gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WL2FN4PR';
-      document.head.appendChild(gtmScript);
-    }
-    window.addEventListener('load', function () {
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadAnalyticsScripts, { timeout: 2500 });
-      } else {
-        setTimeout(loadAnalyticsScripts, 1500);
-      }
-    }, { once: true });
-  </script>
+  <script src="/analytics-loader.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": ["Organization", "ProfessionalService"],
     "@id": "https://vestedksa.com/#organization",
     "name": "Vested KSA",
     "legalName": "Vest KSA Co.",
-    "alternateName": ["Vested", "Vest KSA Co.", "Vested Saudi Arabia"],
+    "alternateName": ["Vested", "Vested Saudi Arabia", "Vest KSA Co."],
     "slogan": "Market-entry and operations partner in Saudi Arabia",
     "url": "https://vestedksa.com",
-    "inLanguage": "ar",
     "image": "https://vestedksa.com/og-image.png",
     "logo": "https://vestedksa.com/favicon.svg",
     "areaServed": {
       "@type": "Country",
       "name": "Saudi Arabia"
     },
-    "availableLanguage": ["Arabic", "English", "Chinese"],
-    "description": "شريك عمليات للشركات الدولية التي تدخل السوق السعودي، يشمل التأسيس والامتثال والموارد البشرية والمالية والتشغيل المحلي.",
+    "knowsLanguage": ["en", "ar", "zh-Hans"],
+    "description": "Vested KSA is a Saudi market-entry and operations partner for international companies entering, establishing, hiring, registering vendors, and operating locally in Saudi Arabia.",
     "email": "hello@vestedksa.com",
     "address": {
       "@type": "PostalAddress",
@@ -379,7 +353,6 @@
   </style>
 </head>
 <body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL2FN4PR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <nav>
     <div class="nav-container">
       <a href="/ar" class="nav-wordmark">Vested</a>

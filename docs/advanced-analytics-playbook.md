@@ -24,6 +24,11 @@ Supporting events:
 - `openapi_read`
 - `llms_read`
 - `answer_asset_read`
+- `markdown_representation_read`
+- `crawler_visit`
+- `inquiry_preparation`
+
+Agent-surface events are emitted as privacy-safe JSON in Vercel runtime logs. When the Vested-only `GA4_API_SECRET` is configured, the same coarse events are also sent server-side to GA4 property `529693438` using measurement ID `G-7STG2HDV42`. The integration sends no cookies, IP addresses, full user agents, query strings, prompts, or inquiry content.
 
 ## Monthly Review
 
@@ -46,7 +51,7 @@ Supporting events:
    - Review language switch demand before adding more localized content.
 
 4. Vercel Logs
-   - Filter for `agent_readiness_event`.
+   - Filter for `agent_readiness_event` and `agent_surface_event`.
    - Filter paths containing `/api/mcp`, `/llms.txt`, `/openapi.json`, `/data/`, and `/.well-known/`.
    - Count MCP tools by `event.tool`.
    - Watch for repeated non-fit traffic such as internships, vendor pitches, paid links, and spam.
@@ -87,6 +92,7 @@ Use these filters in Vercel logs:
 
 ```text
 agent_readiness_event
+agent_surface_event
 /api/mcp
 /llms.txt
 /openapi.json
@@ -94,6 +100,20 @@ agent_readiness_event
 /data/source-map.json
 /.well-known/
 ```
+
+Useful log checks:
+
+```text
+"action":"crawler_visit"
+"action":"markdown_representation_read"
+"action":"llms_read"
+"action":"openapi_read"
+"action":"mcp_tool_call"
+"action":"mcp_resource_read"
+"action":"inquiry_preparation"
+```
+
+The optional `GA4_API_SECRET` must belong to the Vested KSA web stream only. Never store its value in this repository or reuse a secret from another company. Without it, Vercel runtime logging remains active and the public website behavior is unchanged.
 
 ## Search Console Checks
 

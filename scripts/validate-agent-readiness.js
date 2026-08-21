@@ -26,6 +26,7 @@ const requiredFiles = [
   "llms-full.txt",
   "llms-full.md",
   ".well-known/agent-card.json",
+  ".well-known/ai-catalog.json",
   ".well-known/api-catalog.json",
   ".well-known/mcp.json",
   ".well-known/mcp/server-card.json",
@@ -39,6 +40,7 @@ const requiredFiles = [
   "markdown/manifest.json",
   "middleware.ts",
   "api/markdown.js",
+  "api/csp-report.js",
   "lib/markdown-assets.cjs",
   "lib/markdown-negotiation.mjs",
   "scripts/generate-markdown-companions.mjs",
@@ -108,34 +110,38 @@ for (const file of jsonFiles) {
 ok("JSON files parse");
 
 const sitemap = read("sitemap.xml");
-[
-  "https://vestedksa.com/data/company.json",
-  "https://vestedksa.com/data/services.json",
-  "https://vestedksa.com/data/capabilities.json",
-  "https://vestedksa.com/data/service-areas.json",
-  "https://vestedksa.com/data/project-inquiry-schema.json",
-  "https://vestedksa.com/data/agent-routing.json",
-  "https://vestedksa.com/data/answer-engine.json",
-  "https://vestedksa.com/data/decision-trees.json",
-  "https://vestedksa.com/data/entity-glossary.json",
-  "https://vestedksa.com/data/source-map.json",
-  "https://vestedksa.com/data/analytics-events.json",
-  "https://vestedksa.com/data/agent-manifest.json",
-  "https://vestedksa.com/data/schema-versions.json",
-  "https://vestedksa.com/data/changelog.json",
-  "https://vestedksa.com/data/procurement-routing.json",
-  "https://vestedksa.com/openapi.json",
-  "https://vestedksa.com/.well-known/mcp.json",
-].forEach((url) => {
-  if (!sitemap.includes(url)) fail(`sitemap missing ${url}`);
+const canonicalSitemapUrls = [
+  "https://vestedksa.com/",
+  "https://vestedksa.com/ar",
+  "https://vestedksa.com/zh",
+  "https://vestedksa.com/about",
+  "https://vestedksa.com/services",
+  "https://vestedksa.com/why-saudi",
+  "https://vestedksa.com/ethics",
+  "https://vestedksa.com/insights",
+  ...insightHtmlFiles.map((file) => `https://vestedksa.com/${file.replace(/\.html$/, "")}`),
+  "https://vestedksa.com/faq",
+  "https://vestedksa.com/contact",
+  "https://vestedksa.com/privacy",
+  "https://vestedksa.com/terms",
+];
+canonicalSitemapUrls.forEach((url) => {
+  if (!sitemap.includes(`<loc>${url}</loc>`)) fail(`sitemap missing canonical page ${url}`);
 });
-ok("sitemap includes agent-readiness resources");
+if (/https:\/\/vestedksa\.com\/(?:data\/|\.well-known\/|openapi\.json|docs\/|[^<]+\.txt)/.test(sitemap)) {
+  fail("sitemap contains a non-HTML machine resource");
+}
+ok("sitemap contains only canonical indexable HTML pages");
 
 const robots = read("robots.txt");
-["Googlebot", "GPTBot", "ClaudeBot", "PerplexityBot", "/api/contact", "Content-Signal"].forEach((token) => {
+["OAI-SearchBot", "ChatGPT-User", "Claude-SearchBot", "Claude-User", "PerplexityBot", "/api/contact"].forEach((token) => {
   if (!robots.includes(token)) fail(`robots.txt missing ${token}`);
 });
-ok("robots includes crawler and private/contact guidance");
+for (const trainingBot of ["GPTBot", "Google-Extended", "ClaudeBot", "CCBot", "Bytespider"]) {
+  if (!robots.includes(`User-agent: ${trainingBot}\nDisallow: /`)) fail(`robots.txt does not block training bot ${trainingBot}`);
+}
+if (/^Content-Signal:/m.test(robots)) fail("robots.txt contains unsupported Content-Signal directive");
+ok("robots separates search/input crawlers from model-training crawlers");
 
 const indexNowKeyFile = "29b92482-dc1f-4e7d-8184-cf3de5f9937e.txt";
 const indexNowKey = read(indexNowKeyFile).trim();
@@ -172,6 +178,7 @@ const llms = read("llms.txt");
   "/data/procurement-routing.json",
   "/data/agent-manifest.json",
   "/openapi.json",
+  "/.well-known/ai-catalog.json",
   "/api/mcp",
   "/markdown/manifest.json",
   "/services.md",
@@ -199,6 +206,7 @@ const openapi = JSON.parse(read("openapi.json"));
   "/data/schema-versions.json",
   "/data/changelog.json",
   "/data/procurement-routing.json",
+  "/.well-known/ai-catalog.json",
   "/api/mcp",
   "/api/contact",
   "/markdown/manifest.json",
@@ -209,9 +217,25 @@ const openapi = JSON.parse(read("openapi.json"));
 });
 ok("OpenAPI includes data, MCP, and contact endpoints");
 
+const aiCatalog = JSON.parse(read(".well-known/ai-catalog.json"));
+if (aiCatalog.specVersion !== "1.0" || !Array.isArray(aiCatalog.entries) || aiCatalog.entries.length === 0) {
+  fail("ARD catalog must declare specVersion 1.0 and at least one entry");
+}
+for (const entry of aiCatalog.entries || []) {
+  if (!/^urn:air:vestedksa\.com:/.test(entry.identifier || "")) fail(`ARD entry has invalid Vested identifier: ${entry.identifier}`);
+  if (Boolean(entry.url) === Boolean(entry.data)) fail(`ARD entry ${entry.identifier} must contain exactly one of url or data`);
+  if (!Array.isArray(entry.representativeQueries) || entry.representativeQueries.length < 2 || entry.representativeQueries.length > 5) {
+    fail(`ARD entry ${entry.identifier} must contain 2-5 representativeQueries`);
+  }
+}
+ok("ARD catalog is domain-anchored and query-ready");
+
 const apiCatalog = JSON.parse(read(".well-known/api-catalog.json"));
 if (!Array.isArray(apiCatalog.linkset) || apiCatalog.linkset.length === 0) {
   fail("API catalog missing RFC 9264 linkset array");
+}
+if (apiCatalog.agenticResourceDiscovery !== "https://vestedksa.com/.well-known/ai-catalog.json") {
+  fail("API catalog missing ARD discovery URL");
 }
 ok("API catalog includes RFC 9264 linkset array");
 
@@ -259,15 +283,18 @@ for (const file of htmlFiles) {
 ok("core HTML pages include canonical and robots meta");
 
 const analyticsLoader = read("analytics-loader.js");
-["G-7STG2HDV42", "GTM-WL2FN4PR"].forEach((identifier) => {
+["G-7STG2HDV42", "GTM-WL2FN4PR", "analytics_storage", "VestedConsent"].forEach((identifier) => {
   if (!analyticsLoader.includes(identifier)) fail(`analytics-loader.js missing ${identifier}`);
 });
-for (const file of insightHtmlFiles) {
+for (const file of [...htmlFiles, "ar/index.html", "zh/index.html", ...insightHtmlFiles]) {
   if (!read(file).includes('<script src="/analytics-loader.js" defer></script>')) {
     fail(`${file} missing shared analytics loader`);
   }
+  if (/googletagmanager\.com\/(?:gtag|gtm|ns\.html)/.test(read(file))) {
+    fail(`${file} contains a direct analytics consent bypass`);
+  }
 }
-ok("all insight guides load the Vested analytics instrumentation");
+ok("all canonical pages use consent-aware Vested analytics instrumentation");
 
 const vercel = read("vercel.json");
 let vercelConfig;
@@ -295,6 +322,12 @@ if (!rewrites.some((rewrite) => rewrite.source === "/.well-known/api-catalog" &&
 }
 if (!headers.some((header) => header.source === "/:path*" && header.headers.some((item) => item.key === "X-Content-Type-Options"))) {
   fail("vercel.json missing global security headers");
+}
+if (!headers.some((header) => header.source === "/:path*" && header.headers.some((item) => item.key === "Content-Signal" && item.value === "search=yes, ai-input=yes, ai-train=no"))) {
+  fail("vercel.json missing global owner-approved Content-Signal header");
+}
+if (!headers.some((header) => header.source === "/:path*" && header.headers.some((item) => item.key === "Content-Security-Policy-Report-Only"))) {
+  fail("vercel.json missing report-only Content Security Policy");
 }
 if (!headers.some((header) => header.source === "/" && header.headers.some((item) => item.key === "X-Content-Type-Options"))) {
   fail("vercel.json missing root-page security headers");

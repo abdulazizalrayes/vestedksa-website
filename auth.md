@@ -37,6 +37,7 @@ If agent registration is added in the future, this file will be updated with the
 - `/data/agent-routing.json`
 - `/openapi.json`
 - `/.well-known/api-catalog`
+- `/.well-known/ai-catalog.json`
 - `/.well-known/mcp.json`
 - `/.well-known/mcp/server-card.json`
 - `/.well-known/mcp/server-cards.json`

@@ -50,8 +50,14 @@ for (const entry of manifest.entries) {
   assert.ok(outputFiles.includes(sidecar), `deployment is missing ${sidecar}`);
 }
 
+assert.ok(
+  outputFiles.includes("static/.well-known/ai-catalog.json"),
+  "deployment is missing the ARD catalog",
+);
+
 assert.ok(outputFiles.includes("functions/api/mcp.func/api/mcp.js"), "deployment is missing the MCP function");
 assert.ok(outputFiles.includes("functions/api/markdown.func/api/markdown.js"), "deployment is missing the Markdown function");
+assert.ok(outputFiles.includes("functions/api/csp-report.func/api/csp-report.js"), "deployment is missing the CSP report function");
 
 console.log(
   `Deployment output validation passed: ${outputFiles.length} files, ` +

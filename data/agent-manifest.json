@@ -1,15 +1,16 @@
 {
-  "schemaVersion": "2026-06-29",
+  "schemaVersion": "2026-08-21",
   "resourceType": "agent-manifest",
   "company": "Vested KSA",
   "domain": "vestedksa.com",
-  "apiLayerVersion": "2.0.0",
+  "apiLayerVersion": "2.1.0",
   "status": "public-read-only",
   "compatibility": {
     "v1ResourcesRemainAvailable": true,
     "breakingChanges": false,
     "preferredDiscoveryOrder": [
       "/llms.txt",
+      "/.well-known/ai-catalog.json",
       "/.well-known/agent-card.json",
       "/.well-known/mcp.json",
       "/data/agent-manifest.json",

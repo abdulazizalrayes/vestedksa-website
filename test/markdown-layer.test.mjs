@@ -13,7 +13,7 @@ import manifest from "../markdown/manifest.json" with { type: "json" };
 
 const require = createRequire(import.meta.url);
 const markdownHandler = require("../api/markdown.js");
-const CONTENT_SIGNAL = "ai-train=no, search=yes, ai-input=yes";
+const CONTENT_SIGNAL = "search=yes, ai-input=yes, ai-train=no";
 
 test("Accept parsing validates q-values", () => {
   assert.deepEqual(parseAcceptHeader("text/html, text/markdown;q=0.8")[1], {

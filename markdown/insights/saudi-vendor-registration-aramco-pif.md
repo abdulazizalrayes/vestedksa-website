@@ -3,7 +3,7 @@ title: "Saudi Vendor Registration: Aramco, SABIC, NEOM and PIF Companies | Veste
 description: "A practical guide to Saudi vendor registration readiness for Aramco, SABIC, NEOM, Red Sea Global, and PIF portfolio opportunities."
 canonical: "https://vestedksa.com/insights/saudi-vendor-registration-aramco-pif"
 language: "en"
-content_signal: "ai-train=no, search=yes, ai-input=yes"
+content_signal: "search=yes, ai-input=yes, ai-train=no"
 source_html: "/insights/saudi-vendor-registration-aramco-pif.html"
 markdown_sidecar: "/markdown/insights/saudi-vendor-registration-aramco-pif.md"
 direct_markdown: "/insights/saudi-vendor-registration-aramco-pif.md"

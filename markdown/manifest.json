@@ -2,7 +2,7 @@
   "schemaVersion": "2026-07-20",
   "company": "Vested KSA",
   "canonicalHost": "https://vestedksa.com",
-  "contentSignal": "ai-train=no, search=yes, ai-input=yes",
+  "contentSignal": "search=yes, ai-input=yes, ai-train=no",
   "generatedFrom": "/sitemap.xml",
   "coverageScope": "canonical indexable HTML pages in sitemap.xml",
   "entries": [

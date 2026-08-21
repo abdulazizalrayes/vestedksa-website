@@ -3,7 +3,7 @@ title: "Services - Vested KSA"
 description: "Explore Saudi market-entry services from Vested KSA: company formation, MISA licensing, PEO and HR, finance, legal, and vendor registration support."
 canonical: "https://vestedksa.com/services"
 language: "en"
-content_signal: "ai-train=no, search=yes, ai-input=yes"
+content_signal: "search=yes, ai-input=yes, ai-train=no"
 source_html: "/services.html"
 markdown_sidecar: "/markdown/services.md"
 direct_markdown: "/services.md"
@@ -152,7 +152,10 @@ Questions? Reach out: [hello@vestedksa.com](mailto:hello@vestedksa.com)
 ```json
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": [
+    "Organization",
+    "ProfessionalService"
+  ],
   "@id": "https://vestedksa.com/#organization",
   "name": "Vested KSA",
   "legalName": "Vest KSA Co.",
@@ -161,17 +164,28 @@ Questions? Reach out: [hello@vestedksa.com](mailto:hello@vestedksa.com)
     "Vested Saudi Arabia",
     "Vest KSA Co."
   ],
-  "description": "Market-entry and operations partner in Saudi Arabia for international companies setting up, hiring, registering vendors, and running local back-office operations.",
+  "description": "Vested KSA is a Saudi market-entry and operations partner for international companies entering, establishing, hiring, registering vendors, and operating locally in Saudi Arabia.",
   "url": "https://vestedksa.com",
+  "image": "https://vestedksa.com/og-image.png",
+  "logo": "https://vestedksa.com/favicon.svg",
   "email": "hello@vestedksa.com",
   "address": {
     "@type": "PostalAddress",
+    "addressLocality": "Riyadh",
     "addressCountry": "SA"
   },
   "areaServed": {
     "@type": "Country",
     "name": "Saudi Arabia"
-  }
+  },
+  "knowsLanguage": [
+    "en",
+    "ar",
+    "zh-Hans"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/company/vested-ksa/"
+  ]
 }
 ```
 

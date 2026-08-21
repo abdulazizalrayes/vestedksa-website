@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "node --test test/markdown-layer.test.mjs",
+    "test": "node --test test/*.test.mjs",
     "generate:markdown": "node scripts/generate-markdown-companions.mjs",
     "check:markdown": "node scripts/generate-markdown-companions.mjs --check",
     "indexnow:dry-run": "node scripts/submit-indexnow.mjs --dry-run",
     "indexnow:submit": "node scripts/submit-indexnow.mjs",
     "validate:markdown-layer": "node scripts/validate-markdown-layer.mjs",
     "validate:agent-readiness": "node scripts/validate-agent-readiness.js",
+    "validate:site-integrity": "node scripts/validate-site-integrity.mjs",
     "validate:deployment-output": "node scripts/validate-deployment-output.mjs",
-    "validate:live": "node scripts/validate-live-agent-surface.mjs"
+    "validate:live": "node scripts/validate-live-agent-surface.mjs",
+    "validate:release": "npm test && npm run validate:site-integrity && npm run validate:agent-readiness && npm run validate:markdown-layer"
   },
   "dependencies": {
     "@vercel/functions": "^2.2.13"

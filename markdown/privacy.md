@@ -3,7 +3,7 @@ title: "Privacy Policy - Vested KSA"
 description: "Privacy Policy for Vested KSA - Learn how we protect your data and privacy."
 canonical: "https://vestedksa.com/privacy"
 language: "en"
-content_signal: "ai-train=no, search=yes, ai-input=yes"
+content_signal: "search=yes, ai-input=yes, ai-train=no"
 source_html: "/privacy.html"
 markdown_sidecar: "/markdown/privacy.md"
 direct_markdown: "/privacy.md"
@@ -131,9 +131,7 @@ By using our Site and providing us with personal information, you consent to the
   "description": "Privacy Policy for Vested KSA - Learn how we protect your data and privacy.",
   "url": "https://vestedksa.com/privacy",
   "publisher": {
-    "@type": "Organization",
-    "name": "Vested KSA",
-    "url": "https://vestedksa.com"
+    "@id": "https://vestedksa.com/#organization"
   }
 }
 ```

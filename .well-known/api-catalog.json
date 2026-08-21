@@ -1,10 +1,11 @@
 {
-  "schemaVersion": "2026-06-29",
+  "schemaVersion": "2026-08-21",
   "name": "Vested KSA Public API Catalog",
   "description": "Public read-only data, discovery, answer-engine, analytics, versioning, and agent endpoints for Vested KSA.",
   "baseUrl": "https://vestedksa.com",
   "openapi": "https://vestedksa.com/openapi.json",
   "auth": "https://vestedksa.com/auth.md",
+  "agenticResourceDiscovery": "https://vestedksa.com/.well-known/ai-catalog.json",
   "mcp": {
     "endpoint": "https://vestedksa.com/api/mcp",
     "discovery": "https://vestedksa.com/.well-known/mcp.json",
@@ -75,6 +76,12 @@
         {
           "href": "https://vestedksa.com/.well-known/agent-skills/index.json",
           "type": "application/json"
+        }
+      ],
+      "ai-catalog": [
+        {
+          "href": "https://vestedksa.com/.well-known/ai-catalog.json",
+          "type": "application/ai-catalog+json"
         }
       ]
     }

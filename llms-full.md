@@ -101,6 +101,7 @@ Typical early work includes choosing the entry structure, preparing entity and l
 - Procurement routing: https://vestedksa.com/data/procurement-routing.json
 - OpenAPI: https://vestedksa.com/openapi.json
 - API catalog: https://vestedksa.com/.well-known/api-catalog
+- Agentic Resource Discovery catalog: https://vestedksa.com/.well-known/ai-catalog.json
 - MCP discovery: https://vestedksa.com/.well-known/mcp.json
 - MCP endpoint: https://vestedksa.com/api/mcp
 - Markdown companion manifest: https://vestedksa.com/markdown/manifest.json
@@ -116,7 +117,7 @@ Typical early work includes choosing the entry structure, preparing entity and l
 - Direct sidecars return `X-Robots-Tag: noindex, follow` to avoid duplicate SEO indexing.
 - Markdown companions preserve page title, description, canonical URL, language, public links, meaningful image alt text, headings, lists, tables, details, and relevant public JSON-LD.
 - Markdown companions exclude navigation, footers, forms, scripts, styles, hidden content, admin material, and internal notes.
-- Vested KSA content signal: `ai-train=no, search=yes, ai-input=yes`.
+- Vested KSA content signal: `search=yes, ai-input=yes, ai-train=no`.
 
 ## Agent Routing Rules
 

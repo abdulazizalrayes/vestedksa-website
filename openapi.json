@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Vested KSA Public Agent API",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "Public read-only data, answer-engine resources, analytics taxonomy, schema versioning, MCP, and approved contact documentation for Vested KSA. Vested KSA is a Saudi market-entry and operations partner for international companies."
   },
   "servers": [
@@ -172,6 +172,17 @@
         "responses": {
           "200": {
             "description": "Procurement, vendor-registration, supplier-onboarding, and non-fit vendor-pitch routing rules"
+          }
+        }
+      }
+    },
+    "/.well-known/ai-catalog.json": {
+      "get": {
+        "summary": "Get the Vested KSA Agentic Resource Discovery catalog",
+        "operationId": "getAgenticResourceDiscoveryCatalog",
+        "responses": {
+          "200": {
+            "description": "Static ARD catalog of public MCP, OpenAPI, agent-skill, and API-catalog resources"
           }
         }
       }

@@ -9,7 +9,7 @@
       "https://www.linkedin.com/company/vested-ksa/"
     ]
   },
-  "version": "2026-06-29",
+  "version": "2026-08-21",
   "defaultInputModes": [
     "text/plain",
     "text/html",
@@ -47,6 +47,13 @@
       "transport": "https",
       "url": "https://vestedksa.com/markdown/manifest.json",
       "description": "Canonical HTML pages return deterministic Markdown companions when requested with Accept: text/markdown. Browser HTML remains unchanged."
+    },
+    {
+      "name": "Agentic Resource Discovery",
+      "protocol": "ard",
+      "transport": "https",
+      "url": "https://vestedksa.com/.well-known/ai-catalog.json",
+      "description": "Static catalog of Vested KSA public MCP, OpenAPI, agent-skill, and API-catalog resources."
     }
   ],
   "mcp": {

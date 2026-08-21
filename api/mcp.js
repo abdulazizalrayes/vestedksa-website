@@ -2,6 +2,7 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
+const { recordAgentEvent } = require("../lib/server-agent-telemetry.cjs");
 
 const MAX_BODY_BYTES = 64 * 1024;
 const CURRENT_PROTOCOL_VERSION = "2025-11-25";
@@ -140,28 +141,7 @@ function readTextResource(name) {
 }
 
 function logAgentEvent(req, event) {
-  const record = {
-    type: "agent_readiness_event",
-    timestamp: new Date().toISOString(),
-    path: req.url,
-    method: req.method,
-    userAgentClass: classifyUserAgent(req.headers["user-agent"] || ""),
-    event,
-  };
-  console.log(JSON.stringify(record));
-}
-
-function classifyUserAgent(userAgent) {
-  const ua = String(userAgent).toLowerCase();
-  if (ua.includes("gptbot")) return "gptbot";
-  if (ua.includes("claudebot") || ua.includes("anthropic")) return "anthropic";
-  if (ua.includes("perplexity")) return "perplexity";
-  if (ua.includes("googlebot")) return "googlebot";
-  if (ua.includes("bingbot")) return "bingbot";
-  if (ua.includes("ccbot")) return "common-crawl";
-  if (ua.includes("bytespider")) return "bytespider";
-  if (ua.includes("bot") || ua.includes("crawler") || ua.includes("spider")) return "other-crawler";
-  return "browser-or-unknown";
+  recordAgentEvent(req, event);
 }
 
 function getServerMetadata() {
@@ -552,6 +532,14 @@ async function handleRpc(req, res) {
         submittedExternally: false,
         storesPersonalData: false,
       });
+      if (toolName === "prepare_project_inquiry") {
+        logAgentEvent(req, {
+          action: "inquiry_preparation",
+          tool: toolName,
+          submittedExternally: false,
+          storesPersonalData: false,
+        });
+      }
       sendJson(res, 200, rpcResult(id, {
         content: [{
           type: "text",

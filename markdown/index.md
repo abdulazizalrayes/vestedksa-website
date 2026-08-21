@@ -3,7 +3,7 @@ title: "Vested KSA | Market-Entry & Operations Partner in Saudi Arabia"
 description: "Vested KSA helps international companies enter and operate in Saudi Arabia through formation, PEO and HR, finance, legal, and vendor registration."
 canonical: "https://vestedksa.com/"
 language: "en"
-content_signal: "ai-train=no, search=yes, ai-input=yes"
+content_signal: "search=yes, ai-input=yes, ai-train=no"
 source_html: "/index.html"
 markdown_sidecar: "/markdown/index.md"
 direct_markdown: "/index.md"
@@ -138,25 +138,26 @@ Approval trails, payment controls, registrations, and document records are manag
 ```json
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": [
+    "Organization",
+    "ProfessionalService"
+  ],
   "@id": "https://vestedksa.com/#organization",
   "name": "Vested KSA",
   "legalName": "Vest KSA Co.",
   "alternateName": [
     "Vested",
-    "Vest KSA Co.",
-    "Vested Saudi Arabia"
+    "Vested Saudi Arabia",
+    "Vest KSA Co."
   ],
   "slogan": "Market-entry and operations partner in Saudi Arabia",
-  "description": "Vested KSA is a market-entry and operations partner in Saudi Arabia for international companies setting up, hiring, registering vendors, and running local back-office operations.",
+  "description": "Vested KSA is a Saudi market-entry and operations partner for international companies entering, establishing, hiring, registering vendors, and operating locally in Saudi Arabia.",
   "url": "https://vestedksa.com",
-  "inLanguage": "en",
   "image": "https://vestedksa.com/og-image.png",
   "logo": "https://vestedksa.com/favicon.svg",
   "email": "hello@vestedksa.com",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Tahliyah St, Olaya",
     "addressLocality": "Riyadh",
     "addressCountry": "SA"
   },
@@ -164,23 +165,10 @@ Approval trails, payment controls, registrations, and document records are manag
     "@type": "Country",
     "name": "Saudi Arabia"
   },
-  "foundingDate": "2024",
   "knowsLanguage": [
     "en",
     "ar",
     "zh-Hans"
-  ],
-  "founder": [
-    {
-      "@type": "Person",
-      "name": "Abdulkareem Alrammah",
-      "jobTitle": "CEO"
-    },
-    {
-      "@type": "Person",
-      "name": "Abdulaziz Khalid",
-      "jobTitle": "VP"
-    }
   ],
   "knowsAbout": [
     "Saudi market entry",
@@ -222,8 +210,7 @@ Approval trails, payment controls, registrations, and document records are manag
     ]
   },
   "sameAs": [
-    "https://www.linkedin.com/company/vested-ksa/",
-    "https://twitter.com/vestedksa"
+    "https://www.linkedin.com/company/vested-ksa/"
   ]
 }
 ```

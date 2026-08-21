@@ -7,7 +7,7 @@ const ROOT = process.cwd();
 const BASE_URL = "https://vestedksa.com";
 const OUT_DIR = path.join(ROOT, "markdown");
 const CHECK_MODE = process.argv.includes("--check");
-const CONTENT_SIGNAL = "ai-train=no, search=yes, ai-input=yes";
+const CONTENT_SIGNAL = "search=yes, ai-input=yes, ai-train=no";
 
 const BLOCK_TAGS = new Set([
   "article", "aside", "blockquote", "br", "details", "div", "dl", "figure", "h1", "h2", "h3",

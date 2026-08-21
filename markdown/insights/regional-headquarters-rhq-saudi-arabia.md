@@ -3,7 +3,7 @@ title: "Regional Headquarters (RHQ) Program in Saudi Arabia | Vested KSA"
 description: "A practical guide to Saudi Arabia's Regional Headquarters program for multinational companies evaluating RHQ licensing, local operations, and governance."
 canonical: "https://vestedksa.com/insights/regional-headquarters-rhq-saudi-arabia"
 language: "en"
-content_signal: "ai-train=no, search=yes, ai-input=yes"
+content_signal: "search=yes, ai-input=yes, ai-train=no"
 source_html: "/insights/regional-headquarters-rhq-saudi-arabia.html"
 markdown_sidecar: "/markdown/insights/regional-headquarters-rhq-saudi-arabia.md"
 direct_markdown: "/insights/regional-headquarters-rhq-saudi-arabia.md"
@@ -42,7 +42,7 @@ Common issues include treating RHQ as a branding exercise, underestimating local
 RHQ can be powerful when it matches a genuine regional operating mandate. Before applying, leadership should decide which activities will move to Saudi Arabia, who owns decisions locally, what evidence supports the RHQ substance, and how the entity will run day to day.
 ### Official sources
 - [Invest Saudi - Regional Headquarters (RHQ)](https://eservices.misa.gov.sa/en/rhq)
-- [MISA FAQ - RHQ program](https://misa.gov.sa/faq/)
+- [MISA Investor Guide 2026 - RHQ registration requirements](https://misa.gov.sa/app/uploads/2026/07/Investor-Guide_13-02_compressed_compressed.pdf)
 - [Invest Saudi - Investor Services Overview](https://eservices.misa.gov.sa/en/investorServicesOverview)
 This guide is general information, not legal or tax advice. Confirm RHQ eligibility and obligations with MISA, ZATCA, and qualified advisers before filing.
 Considering an RHQ or Saudi regional operating base?
@@ -54,7 +54,7 @@ Considering an RHQ or Saudi regional operating base?
 ### Links
 
 - [Invest Saudi - Regional Headquarters (RHQ)](https://eservices.misa.gov.sa/en/rhq)
-- [MISA FAQ - RHQ program](https://misa.gov.sa/faq/)
+- [MISA Investor Guide 2026 - RHQ registration requirements](https://misa.gov.sa/app/uploads/2026/07/Investor-Guide_13-02_compressed_compressed.pdf)
 - [Invest Saudi - Investor Services Overview](https://eservices.misa.gov.sa/en/investorServicesOverview)
 - [Download the Saudi market-entry checklist](https://vestedksa.com/ksa-entry-checklist.txt)
 - [Talk to Vested KSA](https://vestedksa.com/contact)
@@ -88,7 +88,7 @@ Considering an RHQ or Saudi regional operating base?
   ],
   "citation": [
     "https://eservices.misa.gov.sa/en/rhq",
-    "https://misa.gov.sa/faq/",
+    "https://misa.gov.sa/app/uploads/2026/07/Investor-Guide_13-02_compressed_compressed.pdf",
     "https://eservices.misa.gov.sa/en/investorServicesOverview"
   ]
 }
