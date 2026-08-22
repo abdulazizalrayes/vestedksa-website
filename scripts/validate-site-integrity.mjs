@@ -8,7 +8,7 @@ import * as parse5 from "parse5";
 
 const ROOT = process.cwd();
 const BASE_URL = "https://vestedksa.com";
-const ANALYTICS_LOADER_SRC = "/analytics-loader.js?v=20260822-2";
+const ANALYTICS_LOADER_SRC = "/analytics-loader.js?v=20260822-3";
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, "markdown/manifest.json"), "utf8"));
 const company = JSON.parse(fs.readFileSync(path.join(ROOT, "data/company.json"), "utf8"));
 

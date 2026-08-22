@@ -126,11 +126,14 @@
           : '';
       if (!eventName) return;
 
-      window.dataLayer.push({
-        event: eventName,
+      const payload = {
         page_path: window.location.pathname,
         language: document.documentElement.lang || 'en',
-      });
+      };
+      window.dataLayer.push({ event: eventName, ...payload });
+      if (window.VestedConsent.hasAnalyticsConsent()) {
+        window.gtag('event', eventName, payload);
+      }
     });
   }
 }());

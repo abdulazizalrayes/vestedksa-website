@@ -105,11 +105,32 @@ test("phone and WhatsApp clicks are tracked without contact details", () => {
   click("https://wa.me/966500067865?text=Vested%20KSA");
 
   const contactEvents = state.window.dataLayer.filter((item) => item.event?.endsWith("_click"));
+  const ga4Commands = state.window.dataLayer.filter((item) => item[0] === "event" && item[1]?.endsWith("_click"));
   assert.deepEqual(
     contactEvents.map((item) => item.event),
     ["phone_click", "whatsapp_click"],
   );
+  assert.deepEqual(
+    ga4Commands.map((item) => item[1]),
+    ["phone_click", "whatsapp_click"],
+  );
   assert.equal(contactEvents.every((item) => item.page_path === "/contact"), true);
-  assert.equal(JSON.stringify(contactEvents).includes("966500067865"), false);
-  assert.equal(JSON.stringify(contactEvents).includes("Vested%20KSA"), false);
+  assert.equal(ga4Commands.every((item) => item[2].page_path === "/contact"), true);
+  assert.equal(JSON.stringify([...contactEvents, ...ga4Commands]).includes("966500067865"), false);
+  assert.equal(JSON.stringify([...contactEvents, ...ga4Commands]).includes("Vested%20KSA"), false);
+});
+
+test("contact clicks are not sent to GA4 without analytics consent", () => {
+  const state = runLoader();
+  const clickHandler = state.documentListeners.get("click");
+  clickHandler({
+    target: {
+      closest() {
+        return { getAttribute: () => "https://wa.me/966500067865?text=Vested%20KSA" };
+      },
+    },
+  });
+
+  assert.equal(state.window.dataLayer.some((item) => item.event === "whatsapp_click"), true);
+  assert.equal(state.window.dataLayer.some((item) => item[0] === "event" && item[1] === "whatsapp_click"), false);
 });
