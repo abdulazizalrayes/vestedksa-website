@@ -172,7 +172,16 @@
       ]
     },
     {
-      "source": "/(.*)\\.(js|css|ico|png|jpg|jpeg|gif|svg|webp|woff|woff2)",
+      "source": "/(.*)\\.(js|css)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(ico|png|jpg|jpeg|gif|svg|webp|woff|woff2)",
       "headers": [
         {
           "key": "Cache-Control",

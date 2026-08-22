@@ -8,6 +8,7 @@ import * as parse5 from "parse5";
 
 const ROOT = process.cwd();
 const BASE_URL = "https://vestedksa.com";
+const ANALYTICS_LOADER_SRC = "/analytics-loader.js?v=20260822-2";
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, "markdown/manifest.json"), "utf8"));
 const company = JSON.parse(fs.readFileSync(path.join(ROOT, "data/company.json"), "utf8"));
 
@@ -74,7 +75,7 @@ for (const entry of manifest.entries) {
     }
     if (node.tagName !== "script") return;
     const src = attr(node, "src");
-    if (src === "/analytics-loader.js") analyticsLoaders.push(src);
+    if (src === ANALYTICS_LOADER_SRC) analyticsLoaders.push(src);
     if (src.includes("googletagmanager.com")) assert.fail(`${file} directly loads Google analytics outside the consent gate`);
     const scriptText = textContent(node);
     if (scriptText.includes("googletagmanager.com/gtag") || scriptText.includes("googletagmanager.com/gtm")) {
@@ -87,7 +88,7 @@ for (const entry of manifest.entries) {
   });
 
   assert.deepEqual(canonicals, [entry.canonical], `${file} must have one exact canonical URL`);
-  assert.deepEqual(analyticsLoaders, ["/analytics-loader.js"], `${file} must have one consent-aware analytics loader`);
+  assert.deepEqual(analyticsLoaders, [ANALYTICS_LOADER_SRC], `${file} must have one current consent-aware analytics loader`);
   assert.ok(phoneLinks.length > 0, `${file} must expose the verified Vested KSA phone link`);
   assert.ok(whatsAppLinks.length > 0, `${file} must expose the verified Vested KSA WhatsApp link`);
   for (const href of whatsAppLinks) {
@@ -156,6 +157,13 @@ const aiCatalogHeaders = vercel.headers.find((entry) => entry.source === "/.well
 const aiCatalogHeaderMap = Object.fromEntries(aiCatalogHeaders.map((header) => [header.key.toLowerCase(), header.value]));
 assert.equal(aiCatalogHeaderMap["content-type"], "application/json; charset=utf-8");
 assert.equal(aiCatalogHeaderMap["access-control-allow-origin"], "*");
+const mutableAssetHeaders = vercel.headers.find((entry) => entry.source === "/(.*)\\.(js|css)")?.headers || [];
+const mutableAssetHeaderMap = Object.fromEntries(mutableAssetHeaders.map((header) => [header.key.toLowerCase(), header.value]));
+assert.equal(
+  mutableAssetHeaderMap["cache-control"],
+  "public, max-age=300, must-revalidate",
+  "unversioned JavaScript and CSS must not use immutable browser caching",
+);
 
 const middleware = read("middleware.ts");
 for (const route of ["/llms.txt", "/openapi.json", "/data/:path*", "/.well-known/:path*"]) {

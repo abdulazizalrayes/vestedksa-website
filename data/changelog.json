@@ -5,6 +5,17 @@
   "changes": [
     {
       "date": "2026-08-22",
+      "version": "2.1.2",
+      "summary": "Versioned the consent-aware analytics loader and replaced year-long immutable browser caching for mutable JavaScript and CSS.",
+      "resourcesUpdated": [
+        "/analytics-loader.js",
+        "/vercel.json",
+        "/data/changelog.json"
+      ],
+      "breakingChanges": false
+    },
+    {
+      "date": "2026-08-22",
       "version": "2.1.1",
       "summary": "Added the verified Vested KSA telephone and WhatsApp contact channels plus privacy-safe phone and WhatsApp click events.",
       "resourcesUpdated": [

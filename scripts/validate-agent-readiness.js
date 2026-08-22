@@ -289,7 +289,7 @@ const analyticsLoader = read("analytics-loader.js");
   if (!analyticsLoader.includes(identifier)) fail(`analytics-loader.js missing ${identifier}`);
 });
 for (const file of [...htmlFiles, "ar/index.html", "zh/index.html", ...insightHtmlFiles]) {
-  if (!read(file).includes('<script src="/analytics-loader.js" defer></script>')) {
+  if (!read(file).includes('<script src="/analytics-loader.js?v=20260822-2" defer></script>')) {
     fail(`${file} missing shared analytics loader`);
   }
   if (/googletagmanager\.com\/(?:gtag|gtm|ns\.html)/.test(read(file))) {
