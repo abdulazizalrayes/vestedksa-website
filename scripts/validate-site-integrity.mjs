@@ -75,7 +75,10 @@ for (const entry of manifest.entries) {
     }
     if (node.tagName !== "script") return;
     const src = attr(node, "src");
-    if (src === ANALYTICS_LOADER_SRC) analyticsLoaders.push(src);
+    if (src === ANALYTICS_LOADER_SRC) {
+      analyticsLoaders.push(src);
+      assert.ok(!(node.attrs || []).some((item) => item.name === "defer"), `${file} must initialize consent before inline page scripts`);
+    }
     if (src.includes("googletagmanager.com")) assert.fail(`${file} directly loads Google analytics outside the consent gate`);
     const scriptText = textContent(node);
     if (scriptText.includes("googletagmanager.com/gtag") || scriptText.includes("googletagmanager.com/gtm")) {
