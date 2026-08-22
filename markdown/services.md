@@ -169,6 +169,7 @@ Questions? Reach out: [hello@vestedksa.com](mailto:hello@vestedksa.com)
   "image": "https://vestedksa.com/og-image.png",
   "logo": "https://vestedksa.com/favicon.svg",
   "email": "hello@vestedksa.com",
+  "telephone": "+966500067865",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Riyadh",

@@ -61,10 +61,17 @@ for (const entry of manifest.entries) {
   const document = parse5.parse(html);
   const canonicals = [];
   const analyticsLoaders = [];
+  const phoneLinks = [];
+  const whatsAppLinks = [];
   const jsonLd = [];
 
   walk(document, (node) => {
     if (node.tagName === "link" && attr(node, "rel") === "canonical") canonicals.push(attr(node, "href"));
+    if (node.tagName === "a") {
+      const href = attr(node, "href");
+      if (href === "tel:+966500067865") phoneLinks.push(href);
+      if (href.startsWith("https://wa.me/966500067865")) whatsAppLinks.push(href);
+    }
     if (node.tagName !== "script") return;
     const src = attr(node, "src");
     if (src === "/analytics-loader.js") analyticsLoaders.push(src);
@@ -81,6 +88,12 @@ for (const entry of manifest.entries) {
 
   assert.deepEqual(canonicals, [entry.canonical], `${file} must have one exact canonical URL`);
   assert.deepEqual(analyticsLoaders, ["/analytics-loader.js"], `${file} must have one consent-aware analytics loader`);
+  assert.ok(phoneLinks.length > 0, `${file} must expose the verified Vested KSA phone link`);
+  assert.ok(whatsAppLinks.length > 0, `${file} must expose the verified Vested KSA WhatsApp link`);
+  for (const href of whatsAppLinks) {
+    const message = new URL(href).searchParams.get("text") || "";
+    assert.match(message, /Vested KSA/i, `${file} WhatsApp message must identify Vested KSA`);
+  }
   assert.ok(!html.includes("https://twitter.com/vestedksa"), `${file} contains the retired X profile`);
   assert.ok(!html.includes("https://misa.gov.sa/faq/"), `${file} contains the retired MISA FAQ URL`);
 
@@ -103,6 +116,7 @@ const expectedEntity = {
   image: `${BASE_URL}/og-image.png`,
   logo: `${BASE_URL}/favicon.svg`,
   email: company.contact.email,
+  telephone: company.contact.telephone,
   address: {
     "@type": "PostalAddress",
     addressLocality: company.operatingBase.city,
@@ -161,5 +175,5 @@ assert.ok(heroBytes <= 170 * 1024, `hero image exceeds 170 KiB budget: ${heroByt
 console.log(
   `Site integrity validation passed: ${sitemapUrls.length} canonical pages, ` +
   `${entityFacts.length} consistent organization nodes, consent gate on every page, ` +
-  `crawler policy aligned, hero ${heroBytes} bytes.`
+  `phone and WhatsApp on every page, crawler policy aligned, hero ${heroBytes} bytes.`
 );

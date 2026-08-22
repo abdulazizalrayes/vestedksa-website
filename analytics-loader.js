@@ -110,4 +110,27 @@
       window.gtag('consent', 'update', consentPayload(false));
     }
   });
+
+  if (typeof document.addEventListener === 'function') {
+    document.addEventListener('click', function (event) {
+      const link = event.target && typeof event.target.closest === 'function'
+        ? event.target.closest('a[href]')
+        : null;
+      if (!link) return;
+
+      const href = String(link.getAttribute('href') || '').toLowerCase();
+      const eventName = href.startsWith('tel:')
+        ? 'phone_click'
+        : href.startsWith('https://wa.me/')
+          ? 'whatsapp_click'
+          : '';
+      if (!eventName) return;
+
+      window.dataLayer.push({
+        event: eventName,
+        page_path: window.location.pathname,
+        language: document.documentElement.lang || 'en',
+      });
+    });
+  }
 }());

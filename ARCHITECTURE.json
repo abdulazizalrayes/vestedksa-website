@@ -661,6 +661,8 @@
     "keyEvents": [
       "lead_form_submit",
       "email_click",
+      "phone_click",
+      "whatsapp_click",
       "checklist_download_click",
       "language_switch_click"
     ],
@@ -843,9 +845,9 @@
     {
       "id": "contact-form",
       "layer": "application",
-      "name": "Contact form",
+      "name": "Contact surfaces",
       "kind": "frontend",
-      "description": "Collects market-entry inquiry fields and posts to /api/contact."
+      "description": "Collects market-entry inquiry fields, exposes the verified phone number, and opens WhatsApp with a Vested KSA website source message."
     },
     {
       "id": "contact-api",

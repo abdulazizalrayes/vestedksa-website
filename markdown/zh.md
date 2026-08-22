@@ -104,6 +104,8 @@ $1.5T
 请发送您的业务概况和沙特市场目标，我们会建议合适的运营路径。
 ### 准备进入沙特市场？
 [hello@vestedksa.com](mailto:hello@vestedksa.com)
+[+966 50 006 7865](tel:+966500067865)
+[WhatsApp 咨询](https://wa.me/966500067865?text=%E6%82%A8%E5%A5%BD%20Vested%20KSA%EF%BC%8C%E6%88%91%E9%80%9A%E8%BF%87%20Vested%20KSA%20%E7%BD%91%E7%AB%99%E8%81%94%E7%B3%BB%E6%82%A8%EF%BC%8C%E5%B8%8C%E6%9C%9B%E5%92%A8%E8%AF%A2%E6%B2%99%E7%89%B9%E5%B8%82%E5%9C%BA%E8%BF%9B%E5%85%A5%E6%94%AF%E6%8C%81%E3%80%82)
 [下载简版清单](https://vestedksa.com/ksa-entry-checklist-zh.txt)
 
 ## Public Page Resources
@@ -113,6 +115,8 @@ $1.5T
 - [预约市场进入沟通](mailto:hello@vestedksa.com)
 - [下载沙特进入清单](https://vestedksa.com/ksa-entry-checklist-zh.txt)
 - [hello@vestedksa.com](mailto:hello@vestedksa.com)
+- [+966 50 006 7865](tel:+966500067865)
+- [WhatsApp 咨询](https://wa.me/966500067865?text=%E6%82%A8%E5%A5%BD%20Vested%20KSA%EF%BC%8C%E6%88%91%E9%80%9A%E8%BF%87%20Vested%20KSA%20%E7%BD%91%E7%AB%99%E8%81%94%E7%B3%BB%E6%82%A8%EF%BC%8C%E5%B8%8C%E6%9C%9B%E5%92%A8%E8%AF%A2%E6%B2%99%E7%89%B9%E5%B8%82%E5%9C%BA%E8%BF%9B%E5%85%A5%E6%94%AF%E6%8C%81%E3%80%82)
 - [下载简版清单](https://vestedksa.com/ksa-entry-checklist-zh.txt)
 
 ## Public Structured Data
@@ -149,6 +153,7 @@ $1.5T
   ],
   "description": "Vested KSA is a Saudi market-entry and operations partner for international companies entering, establishing, hiring, registering vendors, and operating locally in Saudi Arabia.",
   "email": "hello@vestedksa.com",
+  "telephone": "+966500067865",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Riyadh",

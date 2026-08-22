@@ -10,6 +10,7 @@ function runLoader(initialConsent = "") {
   if (initialConsent) storage.set("vested-ksa-cookie-consent", initialConsent);
   const appendedScripts = [];
   const listeners = new Map();
+  const documentListeners = new Map();
   const dispatchedEvents = [];
   const localStorage = {
     getItem(key) {
@@ -22,6 +23,7 @@ function runLoader(initialConsent = "") {
   const window = {
     dataLayer: [],
     localStorage,
+    location: { pathname: "/contact" },
     addEventListener(name, handler) {
       listeners.set(name, handler);
     },
@@ -30,6 +32,10 @@ function runLoader(initialConsent = "") {
     },
   };
   const document = {
+    documentElement: { lang: "en" },
+    addEventListener(name, handler) {
+      documentListeners.set(name, handler);
+    },
     createElement() {
       return {};
     },
@@ -46,7 +52,7 @@ function runLoader(initialConsent = "") {
     }
   }
   vm.runInNewContext(source, { window, document, localStorage, CustomEvent, Date });
-  return { window, storage, appendedScripts, dispatchedEvents };
+  return { window, storage, appendedScripts, dispatchedEvents, documentListeners };
 }
 
 test("unknown consent defaults denied and does not load analytics", () => {
@@ -82,4 +88,28 @@ test("stored acceptance restores analytics without waiting for interaction", () 
   const state = runLoader("accepted");
   assert.equal(state.appendedScripts.length, 2);
   assert.equal(state.window.VestedConsent.hasAnalyticsConsent(), true);
+});
+
+test("phone and WhatsApp clicks are tracked without contact details", () => {
+  const state = runLoader("accepted");
+  const clickHandler = state.documentListeners.get("click");
+  const click = (href) => clickHandler({
+    target: {
+      closest() {
+        return { getAttribute: () => href };
+      },
+    },
+  });
+
+  click("tel:+966500067865");
+  click("https://wa.me/966500067865?text=Vested%20KSA");
+
+  const contactEvents = state.window.dataLayer.filter((item) => item.event?.endsWith("_click"));
+  assert.deepEqual(
+    contactEvents.map((item) => item.event),
+    ["phone_click", "whatsapp_click"],
+  );
+  assert.equal(contactEvents.every((item) => item.page_path === "/contact"), true);
+  assert.equal(JSON.stringify(contactEvents).includes("966500067865"), false);
+  assert.equal(JSON.stringify(contactEvents).includes("Vested%20KSA"), false);
 });

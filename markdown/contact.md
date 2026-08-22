@@ -27,17 +27,22 @@ Whether you're exploring Saudi Arabia or ready to launch, we're here to help.
 **Email**
 [hello@vestedksa.com](mailto:hello@vestedksa.com)
 **Phone**
+[+966 50 006 7865](tel:+966500067865)
+**WhatsApp**
+[Message Vested KSA on WhatsApp](https://wa.me/966500067865?text=Hello%20Vested%20KSA%2C%20I%20am%20contacting%20you%20through%20the%20Vested%20KSA%20website%20regarding%20Saudi%20market-entry%20support.)
 **Location**
 Tahliyah St, Olaya Riyadh, Saudi Arabia
 Response time:
 We respond within 24 hours.
-Prefer to schedule a call? Email us directly and we'll arrange a time that works for you.
+Prefer a direct conversation? Call us or send a WhatsApp message and we'll arrange the right next step.
 
 ## Public Page Resources
 
 ### Links
 
 - [hello@vestedksa.com](mailto:hello@vestedksa.com)
+- [+966 50 006 7865](tel:+966500067865)
+- [Message Vested KSA on WhatsApp](https://wa.me/966500067865?text=Hello%20Vested%20KSA%2C%20I%20am%20contacting%20you%20through%20the%20Vested%20KSA%20website%20regarding%20Saudi%20market-entry%20support.)
 
 ## Public Structured Data
 

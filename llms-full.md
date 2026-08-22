@@ -76,6 +76,7 @@ Typical early work includes choosing the entry structure, preparing entity and l
 ## Contact
 
 - Email: hello@vestedksa.com
+- Phone / WhatsApp: +966 50 006 7865
 - Location: Riyadh, Kingdom of Saudi Arabia
 - Website: https://vestedksa.com
 - LinkedIn: https://www.linkedin.com/company/vested-ksa/

@@ -105,6 +105,8 @@ Approval trails, payment controls, registrations, and document records are manag
 [Download checklist](https://vestedksa.com/ksa-entry-checklist.txt)
 [Download 90-day launch plan](https://vestedksa.com/ksa-90-day-launch-plan.txt)
 [hello@vestedksa.com](mailto:hello@vestedksa.com)
+[+966 50 006 7865](tel:+966500067865)
+[WhatsApp](https://wa.me/966500067865?text=Hello%20Vested%20KSA%2C%20I%20am%20contacting%20you%20through%20the%20Vested%20KSA%20website%20regarding%20Saudi%20market-entry%20support.)
 
 ## Public Page Resources
 
@@ -130,6 +132,8 @@ Approval trails, payment controls, registrations, and document records are manag
 - [Download checklist](https://vestedksa.com/ksa-entry-checklist.txt)
 - [Download 90-day launch plan](https://vestedksa.com/ksa-90-day-launch-plan.txt)
 - [hello@vestedksa.com](mailto:hello@vestedksa.com)
+- [+966 50 006 7865](tel:+966500067865)
+- [WhatsApp](https://wa.me/966500067865?text=Hello%20Vested%20KSA%2C%20I%20am%20contacting%20you%20through%20the%20Vested%20KSA%20website%20regarding%20Saudi%20market-entry%20support.)
 
 ## Public Structured Data
 
@@ -156,6 +160,7 @@ Approval trails, payment controls, registrations, and document records are manag
   "image": "https://vestedksa.com/og-image.png",
   "logo": "https://vestedksa.com/favicon.svg",
   "email": "hello@vestedksa.com",
+  "telephone": "+966500067865",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Riyadh",

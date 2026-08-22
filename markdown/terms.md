@@ -99,7 +99,7 @@ If any provision of these Terms is determined to be invalid or unenforceable by 
 Vested KSA's failure to enforce any provision of these Terms shall not be construed as a waiver of such provision or the right to enforce it. The waiver of any one provision shall not constitute the waiver of any other provision.
 ### 18. Contact Information
 If you have any questions about these Terms or the Site, please contact us:
-**Vested KSA** Email: [hello@vestedksa.com](mailto:hello@vestedksa.com) Location: Tahliyah St, Olaya Riyadh, Saudi Arabia Website: [https://vestedksa.com](https://vestedksa.com/)
+**Vested KSA** Email: [hello@vestedksa.com](mailto:hello@vestedksa.com) Phone: [+966 50 006 7865](tel:+966500067865) WhatsApp: [Message Vested KSA](https://wa.me/966500067865?text=Hello%20Vested%20KSA%2C%20I%20am%20contacting%20you%20through%20the%20Vested%20KSA%20website%20regarding%20Saudi%20market-entry%20support.) Location: Tahliyah St, Olaya Riyadh, Saudi Arabia Website: [https://vestedksa.com](https://vestedksa.com/)
 ### 19. Acknowledgment
 BY ACCESSING AND USING THIS SITE, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS, UNDERSTAND THEM, AND AGREE TO BE BOUND BY THEM. IF YOU DO NOT AGREE WITH THESE TERMS, DO NOT USE THIS SITE.
 
@@ -108,6 +108,8 @@ BY ACCESSING AND USING THIS SITE, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS
 ### Links
 
 - [hello@vestedksa.com](mailto:hello@vestedksa.com)
+- [+966 50 006 7865](tel:+966500067865)
+- [Message Vested KSA](https://wa.me/966500067865?text=Hello%20Vested%20KSA%2C%20I%20am%20contacting%20you%20through%20the%20Vested%20KSA%20website%20regarding%20Saudi%20market-entry%20support.)
 - [https://vestedksa.com](https://vestedksa.com/)
 
 ## Public Structured Data

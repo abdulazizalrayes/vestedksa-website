@@ -10,6 +10,8 @@ Core GA4 key events:
 
 - `lead_form_submit`
 - `email_click`
+- `phone_click`
+- `whatsapp_click`
 - `checklist_download_click`
 - `language_switch_click`
 
@@ -46,7 +48,7 @@ Agent-surface events are emitted as privacy-safe JSON in Vercel runtime logs. Wh
 
 3. GA4
    - Review traffic and leads by country, source, medium, landing page, and service interest.
-   - Mark the four core conversion events as key events.
+   - Mark the six core conversion events as key events.
    - Segment traffic from GCC, United States, United Kingdom, China, India, Germany, and France.
    - Review language switch demand before adding more localized content.
 

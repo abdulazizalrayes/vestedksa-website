@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2026-08-20",
+  "schemaVersion": "2026-08-22",
   "resourceType": "analytics-event-taxonomy",
   "company": "Vested KSA",
   "privacyRules": [
@@ -25,6 +25,24 @@
       "name": "email_click",
       "status": "mark_as_key_event_in_ga4",
       "purpose": "Direct contact intent",
+      "recommendedParameters": [
+        "page_path",
+        "language"
+      ]
+    },
+    {
+      "name": "phone_click",
+      "status": "mark_as_key_event_in_ga4",
+      "purpose": "Tap-to-call contact intent",
+      "recommendedParameters": [
+        "page_path",
+        "language"
+      ]
+    },
+    {
+      "name": "whatsapp_click",
+      "status": "mark_as_key_event_in_ga4",
+      "purpose": "WhatsApp contact intent",
       "recommendedParameters": [
         "page_path",
         "language"
@@ -100,7 +118,9 @@
       "stage": "convert",
       "signals": [
         "lead_form_submit",
-        "email_click"
+        "email_click",
+        "phone_click",
+        "whatsapp_click"
       ]
     }
   ],

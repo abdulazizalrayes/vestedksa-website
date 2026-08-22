@@ -106,7 +106,7 @@ Our Site may contain links to third-party websites. This Privacy Policy applies 
 We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. We will notify you of material changes by updating the "Last updated" date at the top of this page. Your continued use of our Site following any changes constitutes your acceptance of the updated Privacy Policy.
 ### 13. Contact Us
 If you have questions about this Privacy Policy, wish to exercise your privacy rights, or want to report a privacy concern, please contact us:
-**Vested KSA** Email: [hello@vestedksa.com](mailto:hello@vestedksa.com) Location: Tahliyah St, Olaya Riyadh, Saudi Arabia Website: [https://vestedksa.com](https://vestedksa.com/)
+**Vested KSA** Email: [hello@vestedksa.com](mailto:hello@vestedksa.com) Phone: [+966 50 006 7865](tel:+966500067865) WhatsApp: [Message Vested KSA](https://wa.me/966500067865?text=Hello%20Vested%20KSA%2C%20I%20am%20contacting%20you%20through%20the%20Vested%20KSA%20website%20regarding%20Saudi%20market-entry%20support.) Location: Tahliyah St, Olaya Riyadh, Saudi Arabia Website: [https://vestedksa.com](https://vestedksa.com/)
 We will respond to your request within 30 days or as required by applicable law.
 ### 14. Your Consent
 By using our Site and providing us with personal information, you consent to the collection, use, and processing of your data as described in this Privacy Policy.
@@ -117,6 +117,8 @@ By using our Site and providing us with personal information, you consent to the
 
 - [Google Analytics opt-out browser extension](https://tools.google.com/dlpage/gaoptout)
 - [hello@vestedksa.com](mailto:hello@vestedksa.com)
+- [+966 50 006 7865](tel:+966500067865)
+- [Message Vested KSA](https://wa.me/966500067865?text=Hello%20Vested%20KSA%2C%20I%20am%20contacting%20you%20through%20the%20Vested%20KSA%20website%20regarding%20Saudi%20market-entry%20support.)
 - [https://vestedksa.com](https://vestedksa.com/)
 
 ## Public Structured Data

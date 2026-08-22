@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2026-06-20",
+  "schemaVersion": "2026-08-22",
   "name": "Vested KSA",
   "legalName": "Vest KSA Co.",
   "alternateNames": [
@@ -41,6 +41,13 @@
   ],
   "contact": {
     "email": "hello@vestedksa.com",
+    "telephone": "+966500067865",
+    "telephoneDisplay": "+966 50 006 7865",
+    "whatsApp": {
+      "number": "+966500067865",
+      "url": "https://wa.me/966500067865",
+      "prefilledMessagePurpose": "Identifies inquiries originating from the Vested KSA website."
+    },
     "contactPage": "https://vestedksa.com/contact"
   },
   "sameAs": [

@@ -958,7 +958,7 @@
     ];
 
     const components = [
-      { id: "human-browser", layer: "clients", name: "Human browser", kind: "client", description: "Ordinary visitors request static HTML, assets, forms, and public downloads.", files: ["20 canonical HTML pages", "6 public text downloads"], owner: "Vested KSA website" },
+      { id: "human-browser", layer: "clients", name: "Human browser", kind: "client", description: "Ordinary visitors request static HTML, assets, forms, public downloads, tap-to-call, and source-identified WhatsApp contact links.", files: ["20 canonical HTML pages", "6 public text downloads"], owner: "Vested KSA website" },
       { id: "search-crawlers", layer: "clients", name: "Search crawlers", kind: "crawler", description: "Google, Bing, and permitted crawlers consume HTML, robots, sitemap, and structured data.", files: ["robots.txt", "sitemap.xml"], owner: "Search operations" },
       { id: "ai-agents", layer: "clients", name: "AI and procurement agents", kind: "agent", description: "Agents consume llms files, Markdown, JSON, OpenAPI, and the read-only MCP endpoint.", files: ["llms.txt", "openapi.json", "/api/mcp"], owner: "Agent-readiness layer" },
 
@@ -967,7 +967,7 @@
       { id: "accept-middleware", layer: "edge", name: "Accept negotiation", kind: "middleware", description: "Selects HTML or Markdown by q-value and specificity, defaults ties to HTML, and advertises clean page-specific Markdown alternates.", files: ["middleware.ts", "lib/markdown-negotiation.mjs", "markdown-routes.ts"], owner: "Website source" },
 
       { id: "static-site", layer: "application", name: "Static multipage site", kind: "frontend", description: "Twenty canonical pages, three languages, eight guides, and six public downloads.", files: ["*.html", "ar/index.html", "zh/index.html", "insights/*.html"], owner: "Vested KSA website" },
-      { id: "contact-form", layer: "application", name: "Contact form", kind: "frontend", description: "Collects required market-entry inquiry fields and posts sanitized JSON.", files: ["contact.html"], owner: "Vested KSA lead intake" },
+      { id: "contact-form", layer: "application", name: "Contact surfaces", kind: "frontend", description: "Collects required market-entry inquiry fields, exposes the verified phone number, and opens WhatsApp with a Vested KSA website source message.", files: ["contact.html", "canonical page footers"], owner: "Vested KSA lead intake" },
       { id: "contact-api", layer: "application", name: "Contact API", kind: "serverless function", description: "Validates, rate-limits, sanitizes, and delivers approved inquiries over TLS SMTP.", files: ["api/contact.js"], owner: "Vested KSA lead delivery" },
       { id: "markdown-api", layer: "application", name: "Markdown API", kind: "serverless function", description: "Returns allowlisted Markdown with canonical, language, clean location, Vary, Content-Signal, direct noindex headers, and privacy-safe read telemetry.", files: ["api/markdown.js", "lib/markdown-assets.cjs", "lib/server-agent-telemetry.cjs"], owner: "Agent-readiness layer" },
       { id: "mcp-api", layer: "application", name: "Read-only MCP", kind: "serverless function", description: "Exposes eleven typed tools and fifteen public resources without external submission, with privacy-safe tool and resource telemetry.", files: ["api/mcp.js", "lib/server-agent-telemetry.cjs"], owner: "Agent-readiness layer" },
@@ -984,7 +984,7 @@
       { id: "markdown-manifest", layer: "discovery", name: "Markdown manifest", kind: "discovery", description: "Maps each canonical HTML route to its clean direct Markdown URL and legacy sidecar.", files: ["markdown/manifest.json"], owner: "Markdown generator" },
 
       { id: "smtp-service", layer: "external", name: "Private-email SMTP", kind: "external service", description: "Receives validated inquiry email from the contact function over TLS.", files: ["Environment variables only"], owner: "Vested KSA mailbox" },
-      { id: "ga4-gtm", layer: "external", name: "GA4 and GTM", kind: "external service", description: "Loads only after visitor consent for client events; optionally receives coarse server-side agent events through a Vested-only Measurement Protocol secret.", files: ["analytics-loader.js", "G-7STG2HDV42", "GTM-WL2FN4PR", "GA4_API_SECRET"], owner: "Vested analytics" },
+      { id: "ga4-gtm", layer: "external", name: "GA4 and GTM", kind: "external service", description: "Loads only after visitor consent for client events, including privacy-safe phone and WhatsApp clicks; optionally receives coarse server-side agent events through a Vested-only Measurement Protocol secret.", files: ["analytics-loader.js", "G-7STG2HDV42", "GTM-WL2FN4PR", "GA4_API_SECRET"], owner: "Vested analytics" },
       { id: "google-search", layer: "external", name: "Google Search Console", kind: "external service", description: "Sitemap, indexing, search performance, and rich-result operations.", files: ["googled1234567890.html"], owner: "Vested search property" },
       { id: "bing-indexnow", layer: "external", name: "Bing and IndexNow", kind: "external service", description: "Sitemap operations and explicit URL-change notifications.", files: ["scripts/submit-indexnow.mjs", "IndexNow key file"], owner: "Vested Bing property" },
 
