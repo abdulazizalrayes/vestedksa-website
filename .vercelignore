@@ -5,6 +5,5 @@ ARCHITECTURE.html
 ARCHITECTURE.json
 scripts/
 test/
-previews/
 node_modules/
 * [0-9].*

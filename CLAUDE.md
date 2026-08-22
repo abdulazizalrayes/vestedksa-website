@@ -117,3 +117,9 @@ If verification cannot be run, explain why and state the remaining risk.
 - Account for current continuation behavior: checkbox selections and plan-review context persist across wakes, dependency wakes have a reconciliation backstop, superseded user questions expire, and active heartbeat runs should not be treated as stale solely because they are long-running.
 - Distinguish current agent status from stale run cards. If dashboard live-run counts disagree with the authoritative agent summary, inspect run/task diagnostics before pausing, retrying, or deleting anything.
 - Use the redesigned environment-variable and secret-reference editor consistently across agents, projects, routines, and company environments. Keep company and user secret scopes explicit.
+
+## Owner-Deferred Trust Items
+
+- Do not publish or invent CR, VAT, license, certification, or similar legal identifiers. Revisit only after the owner provides approved Vested KSA details.
+- Client logos, testimonials, named client proof, and real or anonymized case studies remain postponed until the owner supplies approved evidence and publication permission.
+- Wikidata creation is explicitly postponed. Do not create or recreate an item until independent reliable sources establish notability and the owner approves the attempt.
