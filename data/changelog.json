@@ -5,6 +5,22 @@
   "changes": [
     {
       "date": "2026-08-22",
+      "version": "2.1.3",
+      "summary": "Initialized consent analytics before inline page scripts and added consent-gated direct GA4 delivery for privacy-safe phone and WhatsApp click events.",
+      "resourcesUpdated": [
+        "/analytics-loader.js",
+        "/data/changelog.json"
+      ],
+      "verification": {
+        "ga4Property": "529693438",
+        "event": "whatsapp_click",
+        "realtimeEventCount": 1,
+        "personalDataIncluded": false
+      },
+      "breakingChanges": false
+    },
+    {
+      "date": "2026-08-22",
       "version": "2.1.2",
       "summary": "Versioned the consent-aware analytics loader and replaced year-long immutable browser caching for mutable JavaScript and CSS.",
       "resourcesUpdated": [
