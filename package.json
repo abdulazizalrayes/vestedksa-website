@@ -13,6 +13,7 @@
     "validate:site-integrity": "node scripts/validate-site-integrity.mjs",
     "validate:deployment-output": "node scripts/validate-deployment-output.mjs",
     "validate:live": "node scripts/validate-live-agent-surface.mjs",
+    "report:agent-funnel": "node scripts/report-agent-funnel.mjs",
     "validate:release": "npm test && npm run validate:site-integrity && npm run validate:agent-readiness && npm run validate:markdown-layer"
   },
   "dependencies": {

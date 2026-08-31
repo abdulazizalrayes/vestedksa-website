@@ -6,6 +6,7 @@
     "Do not log names, emails, phone numbers, passports, IDs, bank details, confidential documents, or full inquiry messages in analytics events.",
     "Use page path, service interest, country, language, source, and coarse route classification only.",
     "Server logs for agent surfaces should record route paths, tool or resource names, and broad user-agent class, not IP addresses, full user agents, query strings, prompts, or private inquiry details.",
+    "Use only allowlisted fit outcomes and routing names, and exclude validation-probe traffic from commercial funnel reporting.",
     "Contact form submission analytics should record success/failure and service interest, not message body."
   ],
   "keyEvents": [
@@ -81,14 +82,41 @@
     "answer_asset_read",
     "markdown_representation_read",
     "crawler_visit",
-    "inquiry_preparation"
-    ,
+    "inquiry_preparation",
     "a2a_metadata_read",
     "a2a_message_send",
     "a2a_non_fit_routed",
     "a2a_inquiry_prepared",
     "a2a_error"
   ],
+  "agentFunnelReport": {
+    "command": "npm run report:agent-funnel",
+    "source": "Vested Vercel JSONL logs filtered to agent_readiness_event",
+    "dimensions": [
+      "action",
+      "agent_class",
+      "tool",
+      "fit_outcome",
+      "route"
+    ],
+    "excludesByDefault": [
+      "validation-probe traffic",
+      "prompts",
+      "personal information",
+      "IP addresses",
+      "full user agents",
+      "query strings"
+    ],
+    "hobbyLogRetention": "one hour",
+    "durableSink": {
+      "platform": "GA4 Measurement Protocol",
+      "propertyId": "529693438",
+      "measurementId": "G-7STG2HDV42",
+      "requiredEnvironmentVariable": "GA4_API_SECRET",
+      "approvalRequired": true,
+      "crossCompanyReuseAllowed": false
+    }
+  },
   "funnelStages": [
     {
       "stage": "discover",

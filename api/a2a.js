@@ -190,12 +190,17 @@ async function handlePost(req, res) {
       },
     };
 
-    recordAgentEvent(req, { action: "a2a_message_send", tool: result.skillId });
+    const telemetryDimensions = {
+      tool: result.skillId,
+      outcome: result.fit.classification,
+      route: result.fit.route,
+    };
+    recordAgentEvent(req, { action: "a2a_message_send", ...telemetryDimensions });
     if (result.fit.classification === "not_fit") {
-      recordAgentEvent(req, { action: "a2a_non_fit_routed", tool: result.skillId });
+      recordAgentEvent(req, { action: "a2a_non_fit_routed", ...telemetryDimensions });
     }
     if (result.inquiry.prepared) {
-      recordAgentEvent(req, { action: "a2a_inquiry_prepared", tool: result.skillId });
+      recordAgentEvent(req, { action: "a2a_inquiry_prepared", ...telemetryDimensions });
     }
     sendJson(res, 200, rpcResult(id, { message: responseMessage }));
   } catch (error) {

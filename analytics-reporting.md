@@ -38,6 +38,7 @@ Review these dimensions and metrics every month:
 - Vercel log hits for `/llms.txt`, `/openapi.json`, `/data/`, `/.well-known/`, `/api/mcp`, and `/api/a2a`.
 - MCP tool-call counts by tool name from privacy-safe server logs.
 - A2A Agent Concierge calls by selected skill and coarse fit outcome from privacy-safe server logs.
+- Exclude `validation-probe` traffic from commercial funnel counts so release checks do not look like demand.
 
 ## Recommended Segments
 
@@ -71,3 +72,16 @@ Use these operational checks until a dedicated approved logging sink is added:
 - Search Console URL inspection for `llms.txt`, `openapi.json`, `/data/company.json`, and guide pages.
 
 Do not log full prompts, personal information, private inquiry details, IDs, bank data, passports, confidential documents, full user agents, IP addresses, or query strings.
+
+## Agent Funnel Report
+
+Generate an aggregate from the authenticated Vested Vercel project. On the Hobby plan, run this within the one-hour runtime-log retention window:
+
+```bash
+npx vercel logs --project project-ivd9v --environment production --since 1h --query 'agent_readiness_event' --json --limit 1000 --no-branch \
+  | npm run --silent report:agent-funnel
+```
+
+The report counts discovery, A2A messages, good/maybe/not-fit outcomes, inquiry preparations, non-fit routes, errors, selected skills, and broad agent classes. It ignores raw Vercel envelope fields and excludes validation probes by default. Use `npm run --silent report:agent-funnel -- --json` for structured output. Do not treat request counts as unique people or companies.
+
+For durable trend reporting, configure `GA4_API_SECRET` on the Vested Vercel production project after owner approval. The server telemetry then sends the same allowlisted dimensions to Vested GA4 property `529693438` through Measurement Protocol with non-personalized ads enabled. Never reuse another company's GA4 secret or measurement ID.

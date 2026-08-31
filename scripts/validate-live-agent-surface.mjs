@@ -16,7 +16,9 @@ function fail(message) {
 
 async function fetchChecked(pathname, options = {}) {
   try {
-    return await fetch(`${BASE_URL}${pathname}`, { redirect: "manual", ...options });
+    const headers = new Headers(options.headers || {});
+    if (!headers.has("User-Agent")) headers.set("User-Agent", "Vested-Validation/1.0");
+    return await fetch(`${BASE_URL}${pathname}`, { redirect: "manual", ...options, headers });
   } catch (error) {
     fail(`${pathname}: request failed (${error.message})`);
     return null;

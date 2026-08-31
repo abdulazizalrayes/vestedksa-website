@@ -78,6 +78,7 @@ function markdownRewrite(request: Request, entry: (typeof MARKDOWN_ROUTES)[numbe
 
 function classifyUserAgent(userAgent: string) {
   const ua = userAgent.toLowerCase();
+  if (ua.includes('vested-validation')) return 'validation-probe';
   if (ua.includes('oai-searchbot')) return 'openai-search';
   if (ua.includes('chatgpt-user')) return 'openai-user';
   if (ua.includes('gptbot')) return 'openai-training';

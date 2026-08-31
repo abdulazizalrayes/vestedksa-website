@@ -104,6 +104,8 @@ test("A2A SendMessage returns a direct A2A 1.0 agent message with text and struc
     assert.equal(payload.result.message.parts[1].mediaType, "application/json");
     assert.equal(payload.result.message.parts[1].data.inquiry.submissionStatus, "not_submitted");
     assert.ok(logs.some((entry) => entry.includes('"action":"a2a_message_send"')));
+    assert.ok(logs.some((entry) => entry.includes('"outcome":"good_fit"')));
+    assert.ok(logs.some((entry) => entry.includes('"route":"prepare_market_entry_inquiry"')));
   } finally {
     console.log = originalLog;
   }

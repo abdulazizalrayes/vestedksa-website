@@ -144,6 +144,7 @@ Static file reads such as `/llms.txt`, `/openapi.json`, and `/data/company.json`
 Suggested checks:
 
 - Vercel logs filtered by `/api/a2a` and the coarse `a2a_*` event names.
+- `npm run report:agent-funnel` for a prompt-free aggregate of fit outcomes, routes, inquiry preparation, and errors; validation probes are excluded by default.
 - Vercel logs filtered by `/api/mcp`.
 - Vercel logs filtered by `/llms.txt`, `/openapi.json`, and `/data/`.
 - GA4 referrals containing AI tools or assistant browsers.
