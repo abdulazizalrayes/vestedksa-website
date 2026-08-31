@@ -90,6 +90,16 @@ Validation:
 
 The Concierge is deterministic and does not call a paid model. It is stateless, stores no conversation, and does not log prompts or personal information. It cannot submit forms, send email or WhatsApp, book meetings, write to CRM, or perform any contact action. Inquiry preparation produces an outline only; a later contact action remains separate and requires explicit approval of final content and destination.
 
+## Agent Endpoint Security
+
+Vested remains on Vercel DNS and edge hosting. Do not move the domain behind Cloudflare solely for agent rate limiting.
+
+The Vested Vercel project has one active Hobby-compatible edge rule named `vested-agent-api-rate-limit`. It matches only `POST` requests to `/api/a2a` and `/api/mcp`, uses a fixed 60-second window keyed by source IP, permits 60 requests per window, and returns `429` after the limit. GET and HEAD discovery requests are not limited by this rule, so crawler discovery and public metadata remain available.
+
+Both agent endpoints also enforce a 32 KiB body limit, reject non-JSON POST requests, and temporarily reject a source after five malformed, unsupported, or prompt-injection attempts within ten minutes. The application guard stores only an ephemeral salted source hash in a warm serverless instance; it does not log or persist IP addresses. Vercel's edge rule is the shared protection, while the application guard is a secondary safety brake.
+
+Bot Protection and JavaScript challenges remain disabled because they would obstruct legitimate AI agents. The AI-bot policy remains Allow, aligned with `search=yes, ai-input=yes, ai-train=no`. Vercel's platform DDoS mitigation remains active. No Cloudflare proxy, paid WAF, database, Redis service, or managed Markdown provider is required for this deterministic read-only surface.
+
 `/openapi.json` documents public data endpoints, MCP, and the contact endpoint.
 
 `/auth.md` explains that public read-only endpoints require no auth, while contact submission requires explicit user approval.

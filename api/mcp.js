@@ -2,9 +2,10 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
+const { blockedForMs, recordAbuse } = require("../lib/agent-abuse-guard.cjs");
 const { recordAgentEvent } = require("../lib/server-agent-telemetry.cjs");
 
-const MAX_BODY_BYTES = 64 * 1024;
+const MAX_BODY_BYTES = 32 * 1024;
 const CURRENT_PROTOCOL_VERSION = "2025-11-25";
 const SUPPORTED_PROTOCOL_VERSIONS = new Set([CURRENT_PROTOCOL_VERSION, "2024-11-05"]);
 
@@ -71,14 +72,18 @@ function rpcError(id, code, message, data) {
 function readBody(req) {
   return new Promise((resolve, reject) => {
     let body = "";
+    let exceeded = false;
     req.on("data", (chunk) => {
+      if (exceeded) return;
       body += chunk;
       if (Buffer.byteLength(body, "utf8") > MAX_BODY_BYTES) {
-        reject(new Error("Request body too large"));
-        req.destroy();
+        exceeded = true;
+        reject(Object.assign(new Error("Request body too large"), { statusCode: 413 }));
       }
     });
-    req.on("end", () => resolve(body));
+    req.on("end", () => {
+      if (!exceeded) resolve(body);
+    });
     req.on("error", reject);
   });
 }
@@ -438,7 +443,9 @@ async function handleRpc(req, res) {
     const raw = await readBody(req);
     payload = raw ? JSON.parse(raw) : {};
   } catch (error) {
-    sendJson(res, 400, rpcError(null, -32700, "Parse error", String(error.message || error)));
+    recordAbuse(req);
+    const status = error.statusCode || 400;
+    sendJson(res, status, rpcError(null, -32700, status === 413 ? "Request body too large" : "Parse error"));
     return;
   }
 
@@ -447,7 +454,14 @@ async function handleRpc(req, res) {
   const params = payload.params || {};
   const requestProtocolVersion = String(req.headers["mcp-protocol-version"] || "");
 
+  if (!payload || payload.jsonrpc !== "2.0" || typeof method !== "string") {
+    recordAbuse(req);
+    sendJson(res, 400, rpcError(id, -32600, "Request payload validation error"));
+    return;
+  }
+
   if (requestProtocolVersion && !SUPPORTED_PROTOCOL_VERSIONS.has(requestProtocolVersion)) {
+    recordAbuse(req);
     sendJson(res, 400, rpcError(id, -32600, `Unsupported MCP protocol version: ${requestProtocolVersion}`));
     return;
   }
@@ -551,8 +565,10 @@ async function handleRpc(req, res) {
       return;
     }
 
+    recordAbuse(req);
     sendJson(res, 200, rpcError(id, -32601, `Unknown method: ${method}`));
   } catch (error) {
+    if ((error.statusCode || 500) < 500) recordAbuse(req);
     sendJson(res, error.statusCode || 500, rpcError(id, -32000, error.message || "MCP request failed"));
   }
 }
@@ -579,6 +595,28 @@ module.exports = async function handler(req, res) {
   }
 
   if (req.method === "POST") {
+    res.setHeader("Cache-Control", "no-store");
+    const blockedMs = blockedForMs(req);
+    if (blockedMs > 0) {
+      res.setHeader("Retry-After", String(Math.max(1, Math.ceil(blockedMs / 1000))));
+      logAgentEvent(req, { action: "mcp_abuse_blocked" });
+      sendJson(res, 429, rpcError(null, -32029, "Too many invalid requests; retry later"));
+      return;
+    }
+
+    const contentLength = Number(req.headers["content-length"] || 0);
+    if (Number.isFinite(contentLength) && contentLength > MAX_BODY_BYTES) {
+      recordAbuse(req);
+      sendJson(res, 413, rpcError(null, -32700, "Request body too large"));
+      return;
+    }
+
+    if (!String(req.headers["content-type"] || "").toLowerCase().includes("application/json")) {
+      recordAbuse(req);
+      sendJson(res, 415, rpcError(null, -32600, "Content-Type must be application/json"));
+      return;
+    }
+
     await handleRpc(req, res);
     return;
   }

@@ -181,10 +181,16 @@ assert.ok(!telemetry.includes('headers["x-forwarded-for"]'), "agent telemetry mu
 assert.ok(!telemetry.includes("req.socket"), "agent telemetry must not inspect client sockets");
 
 const a2aApi = read("api/a2a.js");
+const mcpApi = read("api/mcp.js");
+const abuseGuard = read("lib/agent-abuse-guard.cjs");
 const concierge = read("lib/agent-concierge.cjs");
 assert.ok(a2aApi.includes('PROTOCOL_VERSION = "1.0"'), "A2A endpoint must pin the supported protocol version");
 assert.ok(a2aApi.includes('method !== "SendMessage"'), "A2A endpoint must expose only the declared direct-response method");
 assert.ok(a2aApi.includes('"Cache-Control", "no-store"'), "A2A message responses must not be cached");
+assert.ok(a2aApi.includes("32 * 1024"), "A2A endpoint must preserve the 32 KiB body limit");
+assert.ok(mcpApi.includes("32 * 1024"), "MCP endpoint must preserve the 32 KiB body limit");
+assert.ok(a2aApi.includes("blockedForMs") && mcpApi.includes("blockedForMs"), "agent endpoints must preserve the repeated-abuse safety brake");
+assert.ok(!abuseGuard.includes("console."), "agent abuse guard must not log source identifiers");
 assert.ok(!a2aApi.includes("api/contact"), "A2A endpoint must not call the contact endpoint");
 assert.ok(!concierge.includes("fetch("), "Agent Concierge must remain deterministic and free of external side effects");
 for (const token of ["storesConversation: false", "logsPromptOrPersonalData: false", "contactActionPerformed: false"]) {

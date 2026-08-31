@@ -320,10 +320,13 @@
             "description": "Invalid JSON, JSON-RPC envelope, or unsupported A2A version"
           },
           "413": {
-            "description": "Request body exceeds 64 KiB"
+            "description": "Request body exceeds 32 KiB"
           },
           "415": {
             "description": "Content-Type is not application/json"
+          },
+          "429": {
+            "description": "Per-IP edge limit or repeated-invalid-request safety limit exceeded"
           }
         }
       }
@@ -392,6 +395,15 @@
           },
           "400": {
             "description": "Invalid JSON-RPC request or unsupported MCP protocol version"
+          },
+          "413": {
+            "description": "Request body exceeds 32 KiB"
+          },
+          "415": {
+            "description": "Content-Type is not application/json"
+          },
+          "429": {
+            "description": "Per-IP edge limit or repeated-invalid-request safety limit exceeded"
           }
         }
       }

@@ -1,9 +1,10 @@
 "use strict";
 
 const { SKILLS, buildConciergeResponse, createMessageId } = require("../lib/agent-concierge.cjs");
+const { blockedForMs, recordAbuse } = require("../lib/agent-abuse-guard.cjs");
 const { recordAgentEvent } = require("../lib/server-agent-telemetry.cjs");
 
-const MAX_BODY_BYTES = 64 * 1024;
+const MAX_BODY_BYTES = 32 * 1024;
 const MAX_TEXT_LENGTH = 4000;
 const PROTOCOL_VERSION = "1.0";
 
@@ -130,8 +131,24 @@ function endpointMetadata() {
 
 async function handlePost(req, res) {
   res.setHeader("Cache-Control", "no-store");
+  const blockedMs = blockedForMs(req);
+  if (blockedMs > 0) {
+    res.setHeader("Retry-After", String(Math.max(1, Math.ceil(blockedMs / 1000))));
+    recordAgentEvent(req, { action: "a2a_abuse_blocked" });
+    sendJson(res, 429, rpcError(null, -32029, "Too many invalid requests; retry later"));
+    return;
+  }
+
+  const contentLength = Number(req.headers["content-length"] || 0);
+  if (Number.isFinite(contentLength) && contentLength > MAX_BODY_BYTES) {
+    recordAbuse(req);
+    sendJson(res, 413, rpcError(null, -32700, "Request body too large"));
+    return;
+  }
+
   const requestedVersion = String(req.headers["a2a-version"] || "");
   if (requestedVersion && requestedVersion !== PROTOCOL_VERSION) {
+    recordAbuse(req);
     res.setHeader("Content-Type", "application/problem+json; charset=utf-8");
     sendJson(res, 400, {
       type: "https://a2a-protocol.org/errors/version-not-supported",
@@ -144,6 +161,7 @@ async function handlePost(req, res) {
   }
 
   if (!String(req.headers["content-type"] || "").toLowerCase().includes("application/json")) {
+    recordAbuse(req);
     sendJson(res, 415, rpcError(null, -32600, "Content-Type must be application/json"));
     return;
   }
@@ -153,6 +171,7 @@ async function handlePost(req, res) {
     const raw = await readBody(req);
     payload = JSON.parse(raw);
   } catch (error) {
+    recordAbuse(req);
     const status = error.statusCode || 400;
     sendJson(res, status, rpcError(null, -32700, status === 413 ? "Request body too large" : "Invalid JSON payload"));
     return;
@@ -160,10 +179,12 @@ async function handlePost(req, res) {
 
   const id = payload?.id;
   if (!payload || payload.jsonrpc !== "2.0" || id === undefined || id === null || typeof payload.method !== "string") {
+    recordAbuse(req);
     sendJson(res, 400, rpcError(id, -32600, "Request payload validation error"));
     return;
   }
   if (payload.method !== "SendMessage") {
+    recordAbuse(req);
     sendJson(res, 200, rpcError(id, -32601, "Method not found"));
     return;
   }
@@ -176,6 +197,7 @@ async function handlePost(req, res) {
       throw Object.assign(new Error(`Unknown skillId: ${requestedSkill}`), { rpcCode: -32602 });
     }
     const result = buildConciergeResponse(text, { skillId: requestedSkill });
+    if (result.safety.promptInjectionDetected) recordAbuse(req);
     const responseMessage = {
       messageId: createMessageId(params.message.messageId, text),
       contextId: params.message.contextId || `vested-context-${createMessageId(params.message.messageId, text).slice(-24)}`,
@@ -205,6 +227,7 @@ async function handlePost(req, res) {
     sendJson(res, 200, rpcResult(id, { message: responseMessage }));
   } catch (error) {
     const code = error.rpcCode || -32603;
+    if (code === -32602 || code === -32005) recordAbuse(req);
     const message = code === -32005 ? "Content type not supported" : code === -32602 ? "Invalid parameters" : "Internal error";
     recordAgentEvent(req, { action: "a2a_error" });
     sendJson(res, code === -32603 ? 500 : 200, rpcError(id, code, message, error.message));

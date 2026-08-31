@@ -229,6 +229,13 @@ test("A2A rejects malformed JSON, missing request IDs, and wrong content types",
   assert.equal(wrongContentType.status, 415);
 });
 
+test("A2A rejects request bodies above 32 KiB", async () => {
+  const oversized = JSON.stringify({ value: "x".repeat(33 * 1024) });
+  const response = await invoke("POST", oversized, { "content-type": "application/json" });
+  assert.equal(response.status, 413);
+  assert.equal(JSON.parse(response.body).error.message, "Request body too large");
+});
+
 test("A2A metadata and HEAD responses advertise the stable public contract", async () => {
   const originalLog = console.log;
   console.log = () => {};

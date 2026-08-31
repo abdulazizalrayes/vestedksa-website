@@ -465,6 +465,7 @@
         "Advertise page-specific clean Markdown alternate Link headers on canonical HTML and HEAD responses",
         "Preserve root agent-discovery Link headers alongside the root Markdown alternate",
         "Apply noindex and Content-Signal headers to clean and legacy direct Markdown companions",
+        "Rate limit POST /api/a2a and POST /api/mcp at 60 requests per 60 seconds per source IP",
         "Cache immutable static assets"
       ]
     },
@@ -520,7 +521,13 @@
           "legacySupported": "2024-11-05",
           "transport": "HTTPS JSON-RPC"
         },
-        "purpose": "Read-only company, service, routing, answer-engine, procurement, and inquiry-preparation interface"
+        "purpose": "Read-only company, service, routing, answer-engine, procurement, and inquiry-preparation interface",
+        "protections": [
+          "Vercel edge rate limit shared with the A2A endpoint",
+          "32 KiB body limit",
+          "Strict JSON POST handling",
+          "Temporary per-instance block after five repeated invalid requests"
+        ]
       },
       {
         "id": "a2a-api",
@@ -534,7 +541,13 @@
           "method": "SendMessage"
         },
         "dependency": "lib/agent-concierge.cjs and verified public data/*.json",
-        "purpose": "Stateless, deterministic, cited market-entry conversation and inquiry preparation for other agents"
+        "purpose": "Stateless, deterministic, cited market-entry conversation and inquiry preparation for other agents",
+        "protections": [
+          "Vercel edge rate limit shared with the MCP endpoint",
+          "32 KiB body limit",
+          "Strict JSON and A2A protocol validation",
+          "Temporary per-instance block after five malformed or prompt-injection attempts"
+        ]
       },
       {
         "id": "csp-report-api",
@@ -766,7 +779,7 @@
   "externalIntegrations": [
     {
       "id": "vercel",
-      "role": "DNS, edge, static hosting, middleware, serverless functions, logs, deployment"
+      "role": "DNS, edge, static hosting, middleware, serverless functions, DDoS mitigation, agent API rate limiting, logs, deployment"
     },
     {
       "id": "github",
@@ -906,7 +919,7 @@
       "layer": "edge",
       "name": "Vercel edge",
       "kind": "infrastructure",
-      "description": "Applies redirects, rewrites, security headers, caching, and dispatch."
+      "description": "Applies redirects, rewrites, security headers, caching, dispatch, platform DDoS mitigation, and the Vested agent POST rate limit."
     },
     {
       "id": "accept-middleware",
@@ -1655,6 +1668,7 @@
   "knownConstraints": [
     "The site intentionally has no public CLI or npm package because current workflows are repository-local and HTTP-based.",
     "The contact rate limit is per warm serverless instance and is not a globally consistent distributed limit.",
+    "The agent API edge rate limit is enforced by Vercel per source IP; the additional malformed-request guard is ephemeral per warm serverless instance.",
     "The A2A Agent Concierge is intentionally deterministic and stateless; it does not invoke a paid model or maintain server-side conversation history.",
     "Static llms, OpenAPI, and data-file reads are observed through hosting/access analytics rather than a dedicated event sink.",
     "CR, VAT, license numbers, client logos, testimonials, case studies, certifications, exact coordinates, and Wikidata are intentionally not asserted.",
