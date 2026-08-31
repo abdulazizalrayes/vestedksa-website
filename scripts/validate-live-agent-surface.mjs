@@ -223,6 +223,56 @@ async function checkMcp() {
   }
 }
 
+async function checkA2a() {
+  const metadataResponse = await fetchChecked("/api/a2a", { headers: { Accept: "application/json" } });
+  const headResponse = await fetchChecked("/api/a2a", { method: "HEAD" });
+  if (!metadataResponse || !headResponse) return;
+  const metadata = await metadataResponse.json();
+  if (metadataResponse.status !== 200 || metadata.protocolVersion !== "1.0" || metadata.readOnly !== true || metadata.submissionAllowed !== false) {
+    fail("/api/a2a: public endpoint metadata is invalid");
+  }
+  if (headResponse.status !== 200 || headResponse.headers.get("a2a-version") !== "1.0" || !headResponse.headers.get("link")?.includes("agent-card.json")) {
+    fail("/api/a2a: HEAD discovery headers are invalid");
+  }
+  const response = await fetchChecked("/api/a2a", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "A2A-Version": "1.0",
+    },
+    body: JSON.stringify({
+      jsonrpc: "2.0",
+      id: 1,
+      method: "SendMessage",
+      params: {
+        message: {
+          messageId: "vested-live-validator",
+          role: "ROLE_USER",
+          parts: [{ text: "We are an international company entering Saudi Arabia and need a 90-day launch brief." }],
+        },
+        metadata: { skillId: "build_90_day_launch_brief" },
+        configuration: { acceptedOutputModes: ["application/json"] },
+      },
+    }),
+  });
+  if (!response) return;
+  const body = await response.json();
+  const message = body.result?.message;
+  const data = message?.parts?.find((part) => part.mediaType === "application/json")?.data;
+  if (response.status !== 200 || message?.role !== "ROLE_AGENT") {
+    fail("/api/a2a: A2A SendMessage failed");
+  }
+  if (response.headers.get("a2a-version") !== "1.0") {
+    fail("/api/a2a: A2A-Version response header missing");
+  }
+  if (response.headers.get("content-signal") !== CONTENT_SIGNAL) {
+    fail("/api/a2a: owner-approved Content-Signal missing");
+  }
+  if (data?.company !== "Vested KSA" || data?.inquiry?.submissionStatus !== "not_submitted" || data?.safety?.storesConversation !== false) {
+    fail("/api/a2a: identity or read-only safety contract failed");
+  }
+}
+
 const sitemapXml = fs.readFileSync(path.join(ROOT, "sitemap.xml"), "utf8");
 const sitemap = new XMLParser({ ignoreAttributes: false }).parse(sitemapXml);
 const sitemapUrls = new Set([].concat(sitemap?.urlset?.url || []).map((entry) => entry.loc));
@@ -249,6 +299,7 @@ const discoveryJson = [
 ];
 await Promise.all([...canonicalDataFiles, ...discoveryJson].map(checkJson));
 await checkMcp();
+await checkA2a();
 
 for (const pathname of [
   "/data/company%202.json",

@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "2026-08-22",
+  "schemaVersion": "2026-08-31",
   "resourceType": "schema-version-registry",
   "company": "Vested KSA",
-  "apiLayerVersion": "2.1.1",
+  "apiLayerVersion": "2.2.0",
   "resources": [
     {"path": "/data/company.json", "schemaVersion": "2026-08-22", "stability": "stable"},
     {"path": "/data/services.json", "schemaVersion": "2026-06-20", "stability": "stable"},
@@ -16,8 +16,9 @@
     {"path": "/data/source-map.json", "schemaVersion": "2026-06-29", "stability": "stable"},
     {"path": "/data/analytics-events.json", "schemaVersion": "2026-08-22", "stability": "stable"},
     {"path": "/data/procurement-routing.json", "schemaVersion": "2026-06-29", "stability": "stable"},
-    {"path": "/data/agent-manifest.json", "schemaVersion": "2026-08-21", "stability": "stable"},
-    {"path": "/data/changelog.json", "schemaVersion": "2026-08-21", "stability": "stable"}
+    {"path": "/data/agent-concierge.json", "schemaVersion": "2026-08-31", "stability": "stable"},
+    {"path": "/data/agent-manifest.json", "schemaVersion": "2026-08-31", "stability": "stable"},
+    {"path": "/data/changelog.json", "schemaVersion": "2026-08-31", "stability": "stable"}
   ],
   "versioningRules": [
     "Patch updates may clarify copy, add examples, or add non-breaking fields.",

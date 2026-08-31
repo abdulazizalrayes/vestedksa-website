@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2026-08-22",
+  "schemaVersion": "2026-08-31",
   "resourceType": "analytics-event-taxonomy",
   "company": "Vested KSA",
   "privacyRules": [
@@ -82,6 +82,12 @@
     "markdown_representation_read",
     "crawler_visit",
     "inquiry_preparation"
+    ,
+    "a2a_metadata_read",
+    "a2a_message_send",
+    "a2a_non_fit_routed",
+    "a2a_inquiry_prepared",
+    "a2a_error"
   ],
   "funnelStages": [
     {
@@ -111,6 +117,8 @@
         "lead_form_start",
         "mcp_tool_call:match_project_scope",
         "mcp_tool_call:prepare_project_inquiry",
+        "a2a_message_send",
+        "a2a_inquiry_prepared",
         "inquiry_preparation"
       ]
     },
@@ -145,7 +153,8 @@
         "/openapi.json",
         "/data/answer-engine.json",
         "/data/source-map.json",
-        "/api/mcp"
+        "/api/mcp",
+        "/api/a2a"
       ]
     },
     {

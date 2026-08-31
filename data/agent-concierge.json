@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "2026-08-31",
+  "resourceType": "agent-concierge-contract",
+  "company": "Vested KSA",
+  "name": "Vested KSA Agent Concierge",
+  "description": "A public, read-only advisory agent for Saudi market-entry fit, Vested KSA services, operating-readiness briefs, procurement readiness, and inquiry preparation.",
+  "status": "production-pilot",
+  "protocol": {
+    "name": "A2A",
+    "version": "1.0",
+    "binding": "JSONRPC",
+    "endpoint": "https://vestedksa.com/api/a2a",
+    "method": "SendMessage",
+    "agentCard": "https://vestedksa.com/.well-known/agent-card.json",
+    "inputModes": [
+      "text/plain"
+    ],
+    "outputModes": [
+      "text/plain",
+      "application/json"
+    ]
+  },
+  "skills": [
+    {
+      "id": "assess_market_entry_fit",
+      "purpose": "Classify a request as good fit, maybe fit, or not fit for Vested KSA."
+    },
+    {
+      "id": "explain_vested_services",
+      "purpose": "Explain the Vested KSA service model and match relevant workstreams."
+    },
+    {
+      "id": "compare_entry_paths",
+      "purpose": "Build a decision-oriented comparison brief without selecting or guaranteeing a legal structure."
+    },
+    {
+      "id": "build_90_day_launch_brief",
+      "purpose": "Prepare an indicative first-90-day Saudi operating-readiness brief."
+    },
+    {
+      "id": "identify_misa_hr_tax_requirements",
+      "purpose": "Identify licensing, registration, workforce, tax, e-invoicing, and control dependencies for verification."
+    },
+    {
+      "id": "prepare_vendor_readiness_plan",
+      "purpose": "Prepare a buyer-specific Saudi vendor-registration evidence and ownership plan."
+    },
+    {
+      "id": "prepare_project_inquiry",
+      "purpose": "Prepare a project inquiry outline without submitting or contacting Vested KSA."
+    },
+    {
+      "id": "explain_non_fit_routing",
+      "purpose": "Explain why careers, internships, vendor pitches, consumer requests, spam, and unrelated traffic must not use project inquiry routes."
+    }
+  ],
+  "responseContract": {
+    "includes": [
+      "fit classification and confidence",
+      "selected skill",
+      "matched service workstreams",
+      "recommendations",
+      "assumptions",
+      "missing information",
+      "risks",
+      "next steps",
+      "public Vested KSA sources",
+      "inquiry and approval status"
+    ],
+    "submissionStatus": "not_submitted",
+    "approvalRequiredForContact": true
+  },
+  "safety": {
+    "readOnly": true,
+    "storesConversations": false,
+    "logsPromptsOrPersonalData": false,
+    "submitsForms": false,
+    "sendsEmail": false,
+    "opensWhatsApp": false,
+    "booksMeetings": false,
+    "writesToCrm": false,
+    "providesLegalOrTaxAdvice": false,
+    "nonFitRequestsUseProjectInquiry": false
+  },
+  "contentSignal": "search=yes, ai-input=yes, ai-train=no",
+  "sourcePolicy": [
+    "Use only verified Vested KSA public data and cited public guides.",
+    "Do not invent legal identifiers, licenses, certifications, coordinates, clients, testimonials, case studies, approvals, outcomes, or timelines.",
+    "For regulated matters, identify dependencies and verification questions rather than asserting eligibility or providing legal or tax advice."
+  ]
+}

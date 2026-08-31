@@ -8,6 +8,21 @@
   },
   "entries": [
     {
+      "identifier": "urn:air:vestedksa.com:agent:market-entry-concierge",
+      "displayName": "Vested KSA Agent Concierge",
+      "type": "application/a2a-agent-card+json",
+      "url": "https://vestedksa.com/.well-known/agent-card.json",
+      "description": "A2A 1.0 read-only agent for Saudi market-entry fit, Vested KSA services, 90-day launch briefs, regulated workstream dependencies, procurement readiness, and inquiry preparation without contact submission.",
+      "tags": ["A2A", "Saudi Arabia", "market entry", "procurement", "lead qualification"],
+      "capabilities": ["assess_market_entry_fit", "explain_vested_services", "compare_entry_paths", "build_90_day_launch_brief", "identify_misa_hr_tax_requirements", "prepare_vendor_readiness_plan", "prepare_project_inquiry", "explain_non_fit_routing"],
+      "representativeQueries": [
+        "Assess whether our Saudi expansion is a fit for Vested KSA.",
+        "Build a cited 90-day Saudi launch brief without contacting anyone.",
+        "Prepare a project inquiry outline but do not submit it."
+      ],
+      "version": "1.0.0"
+    },
+    {
       "identifier": "urn:air:vestedksa.com:server:public-market-entry-mcp",
       "displayName": "Vested KSA Public Read-Only MCP",
       "type": "application/mcp-server-card+json",

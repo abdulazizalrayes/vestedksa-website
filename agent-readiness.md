@@ -23,6 +23,7 @@ Public structured data:
 - `/data/schema-versions.json`
 - `/data/changelog.json`
 - `/data/procurement-routing.json`
+- `/data/agent-concierge.json`
 
 Discovery:
 
@@ -37,12 +38,14 @@ Discovery:
 - `/.well-known/mcp/server-cards.json`
 - `/.well-known/agent-skills/index.json`
 - `/openapi.json`
+- `/api/a2a`
 - `/auth.md`
 - `/docs/advanced-analytics-playbook.md`
 - `/docs/bing-indexnow.md`
 
 MCP/API:
 
+- `/api/a2a` A2A 1.0 JSON-RPC endpoint for the Vested KSA Agent Concierge.
 - `/api/mcp` read-only MCP-style JSON-RPC endpoint.
 - `/api/contact` remains the contact endpoint, but OpenAPI and auth docs state that agents must not submit without explicit user approval.
 
@@ -73,6 +76,19 @@ Validation:
 - `get_entity_glossary`
 - `get_agent_manifest`
 - `match_procurement_scope`
+
+`/api/a2a` exposes the public Vested KSA Agent Concierge using the A2A 1.0 JSON-RPC binding and the standard `SendMessage` operation. It returns a direct `ROLE_AGENT` message with cited text and/or structured JSON. The Concierge supports:
+
+- `assess_market_entry_fit`
+- `explain_vested_services`
+- `compare_entry_paths`
+- `build_90_day_launch_brief`
+- `identify_misa_hr_tax_requirements`
+- `prepare_vendor_readiness_plan`
+- `prepare_project_inquiry`
+- `explain_non_fit_routing`
+
+The Concierge is deterministic and does not call a paid model. It is stateless, stores no conversation, and does not log prompts or personal information. It cannot submit forms, send email or WhatsApp, book meetings, write to CRM, or perform any contact action. Inquiry preparation produces an outline only; a later contact action remains separate and requires explicit approval of final content and destination.
 
 `/openapi.json` documents public data endpoints, MCP, and the contact endpoint.
 
@@ -127,6 +143,7 @@ Static file reads such as `/llms.txt`, `/openapi.json`, and `/data/company.json`
 
 Suggested checks:
 
+- Vercel logs filtered by `/api/a2a` and the coarse `a2a_*` event names.
 - Vercel logs filtered by `/api/mcp`.
 - Vercel logs filtered by `/llms.txt`, `/openapi.json`, and `/data/`.
 - GA4 referrals containing AI tools or assistant browsers.
@@ -161,6 +178,8 @@ curl -I https://vestedksa.com/.well-known/api-catalog
 curl -I https://vestedksa.com/.well-known/mcp.json
 curl -I https://vestedksa.com/api/mcp
 curl -s https://vestedksa.com/api/mcp
+curl -I https://vestedksa.com/api/a2a
+curl -s https://vestedksa.com/.well-known/agent-card.json
 ```
 
 Test MCP tools:
@@ -187,6 +206,17 @@ curl -s https://vestedksa.com/api/mcp \
   -d '{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"match_procurement_scope","arguments":{"request":"We need Aramco supplier registration and a Saudi vendor evidence pack"}}}'
 ```
 
+Test the A2A Agent Concierge:
+
+```bash
+curl -s https://vestedksa.com/api/a2a \
+  -H 'Content-Type: application/json' \
+  -H 'A2A-Version: 1.0' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"SendMessage","params":{"message":{"messageId":"example-1","role":"ROLE_USER","parts":[{"text":"We are a UK industrial company entering Saudi Arabia and need MISA, payroll, VAT, and vendor-registration support."}]},"configuration":{"acceptedOutputModes":["text/plain","application/json"]}}}'
+```
+
+The response must have `A2A-Version: 1.0`, `Content-Signal: search=yes, ai-input=yes, ai-train=no`, a direct `ROLE_AGENT` message, public Vested KSA sources, and `submissionStatus: not_submitted`.
+
 ## What To Copy To Other Companies
 
 Copy the structure, not the facts:
@@ -198,6 +228,8 @@ Copy the structure, not the facts:
 - `/openapi.json`
 - `/auth.md`
 - `/api/mcp.js`
+- `/api/a2a.js`
+- `/lib/agent-concierge.cjs`
 - `scripts/validate-agent-readiness.js`
 - this documentation structure
 - `/docs/advanced-analytics-playbook.md`

@@ -894,7 +894,7 @@
     <section class="metrics" aria-label="Architecture summary">
       <div class="metric"><span class="metric-value">20</span><span class="metric-label">Canonical pages</span></div>
       <div class="metric"><span class="metric-value">46</span><span class="metric-label">Sitemap URLs</span></div>
-      <div class="metric"><span class="metric-value">15</span><span class="metric-label">Structured resources</span></div>
+      <div class="metric"><span class="metric-value">16</span><span class="metric-label">Structured resources</span></div>
       <div class="metric"><span class="metric-value">20</span><span class="metric-label">Markdown companions</span></div>
       <div class="metric"><span class="metric-value">11</span><span class="metric-label">MCP tools</span></div>
       <div class="metric"><span class="metric-value">3</span><span class="metric-label">Public languages</span></div>
@@ -916,7 +916,7 @@
       <div class="diagram-panel">
         <div class="drift-banner">
           <span class="drift-mark">R</span>
-          <span><strong>Validated release:</strong> main commit <code>5e58ea2</code> contains standards-correct Markdown negotiation and clean direct companions. Production deployment <code>dpl_87FMyqfXKRBA32kxRhSnQZ1hFjgY</code> is ready and aliased to vestedksa.com.</span>
+          <span><strong>Validated architecture:</strong> Vested KSA combines unchanged public HTML with deterministic Markdown, structured data, read-only MCP, and an A2A 1.0 Agent Concierge. Production evidence and rollback are recorded in VES-406.</span>
         </div>
         <div class="diagram-scroll">
           <div class="diagram" id="diagram">
@@ -940,8 +940,8 @@
 
     <footer class="footer">
       <span><strong>Authority:</strong> ARCHITECTURE.json</span>
-      <span><strong>Source:</strong> 5e58ea2</span>
-      <span><strong>Audited:</strong> 2026-07-29</span>
+      <span><strong>Source:</strong> GitHub main</span>
+      <span><strong>Audited:</strong> 2026-08-31</span>
       <span><strong>Production:</strong> vestedksa.com</span>
     </footer>
   </main>
@@ -960,7 +960,7 @@
     const components = [
       { id: "human-browser", layer: "clients", name: "Human browser", kind: "client", description: "Ordinary visitors request static HTML, assets, forms, public downloads, tap-to-call, and source-identified WhatsApp contact links.", files: ["20 canonical HTML pages", "6 public text downloads"], owner: "Vested KSA website" },
       { id: "search-crawlers", layer: "clients", name: "Search crawlers", kind: "crawler", description: "Google, Bing, and permitted crawlers consume HTML, robots, sitemap, and structured data.", files: ["robots.txt", "sitemap.xml"], owner: "Search operations" },
-      { id: "ai-agents", layer: "clients", name: "AI and procurement agents", kind: "agent", description: "Agents consume llms files, Markdown, JSON, OpenAPI, and the read-only MCP endpoint.", files: ["llms.txt", "openapi.json", "/api/mcp"], owner: "Agent-readiness layer" },
+      { id: "ai-agents", layer: "clients", name: "AI and procurement agents", kind: "agent", description: "Agents consume llms files, Markdown, JSON, OpenAPI, read-only MCP, and the A2A Agent Concierge.", files: ["llms.txt", "openapi.json", "/api/mcp", "/api/a2a"], owner: "Agent-readiness layer" },
 
       { id: "vercel-dns", layer: "edge", name: "Vercel DNS", kind: "infrastructure", description: "Apex and www resolve through Vercel-managed nameservers.", files: ["vestedksa.com", "www.vestedksa.com"], owner: "Vercel project project-ivd9v" },
       { id: "vercel-edge", layer: "edge", name: "Vercel edge", kind: "infrastructure", description: "Applies redirects, rewrites, security headers, caching, and runtime dispatch.", files: ["vercel.json"], owner: "Vercel project project-ivd9v" },
@@ -970,17 +970,18 @@
       { id: "contact-form", layer: "application", name: "Contact surfaces", kind: "frontend", description: "Collects required market-entry inquiry fields, exposes the verified phone number, and opens WhatsApp with a Vested KSA website source message.", files: ["contact.html", "canonical page footers"], owner: "Vested KSA lead intake" },
       { id: "contact-api", layer: "application", name: "Contact API", kind: "serverless function", description: "Validates, rate-limits, sanitizes, and delivers approved inquiries over TLS SMTP.", files: ["api/contact.js"], owner: "Vested KSA lead delivery" },
       { id: "markdown-api", layer: "application", name: "Markdown API", kind: "serverless function", description: "Returns allowlisted Markdown with canonical, language, clean location, Vary, Content-Signal, direct noindex headers, and privacy-safe read telemetry.", files: ["api/markdown.js", "lib/markdown-assets.cjs", "lib/server-agent-telemetry.cjs"], owner: "Agent-readiness layer" },
-      { id: "mcp-api", layer: "application", name: "Read-only MCP", kind: "serverless function", description: "Exposes eleven typed tools and fifteen public resources without external submission, with privacy-safe tool and resource telemetry.", files: ["api/mcp.js", "lib/server-agent-telemetry.cjs"], owner: "Agent-readiness layer" },
+      { id: "mcp-api", layer: "application", name: "Read-only MCP", kind: "serverless function", description: "Exposes eleven typed tools and sixteen public resources without external submission, with privacy-safe tool and resource telemetry.", files: ["api/mcp.js", "lib/server-agent-telemetry.cjs"], owner: "Agent-readiness layer" },
+      { id: "a2a-api", layer: "application", name: "Agent Concierge", kind: "serverless function", description: "Implements A2A 1.0 JSON-RPC SendMessage with deterministic, cited, stateless market-entry guidance and no contact actions.", files: ["api/a2a.js", "lib/agent-concierge.cjs", "data/agent-concierge.json"], owner: "Agent-readiness layer" },
       { id: "csp-report-api", layer: "application", name: "CSP report collector", kind: "serverless function", description: "Receives bounded report-only CSP violations and logs only sanitized paths, origins, and directives.", files: ["api/csp-report.js"], owner: "Security observability" },
 
       { id: "html-jsonld", layer: "content", name: "HTML and JSON-LD", kind: "content", description: "Canonical public content with page-specific ProfessionalService, Service, Article, FAQ, breadcrumb, and page schemas.", files: ["20 canonical HTML files"], owner: "SEO and content" },
-      { id: "structured-data", layer: "content", name: "15 public JSON resources", kind: "data", description: "Canonical company, service, routing, answer-engine, analytics, versioning, and procurement contracts.", files: ["data/*.json"], owner: "Vested public data" },
+      { id: "structured-data", layer: "content", name: "16 public JSON resources", kind: "data", description: "Canonical company, service, routing, answer-engine, analytics, versioning, procurement, and Agent Concierge contracts.", files: ["data/*.json"], owner: "Vested public data" },
       { id: "markdown-companions", layer: "content", name: "20 Markdown companions", kind: "content", description: "Deterministic main-content representations generated from canonical, indexable sitemap pages.", files: ["markdown/*.md", "markdown/insights/*.md"], owner: "Markdown generator" },
       { id: "routing-contracts", layer: "content", name: "Routing and inquiry contracts", kind: "data", description: "Fit routing, procurement routing, and inquiry schema enforce qualification and approval boundaries.", files: ["data/agent-routing.json", "data/procurement-routing.json", "data/project-inquiry-schema.json"], owner: "Lead routing" },
 
       { id: "sitemap-robots", layer: "discovery", name: "Sitemap and robots", kind: "discovery", description: "Twenty canonical indexable HTML URLs plus explicit search/input-versus-training crawler policy.", files: ["sitemap.xml", "robots.txt"], owner: "Search operations" },
       { id: "llms-discovery", layer: "discovery", name: "LLM discovery", kind: "discovery", description: "Concise and full orientation files point assistants to canonical resources and safety rules.", files: ["llms.txt", "llms-full.txt", "llms-full.md"], owner: "Agent-readiness layer" },
-      { id: "agent-discovery", layer: "discovery", name: "Agent and API discovery", kind: "discovery", description: "ARD catalog, agent card, API catalog, MCP cards, agent skills, OpenAPI, and explicit anonymous-access auth guidance.", files: [".well-known/*", "openapi.json", "auth.md"], owner: "Agent-readiness layer" },
+      { id: "agent-discovery", layer: "discovery", name: "Agent and API discovery", kind: "discovery", description: "A2A Agent Card, ARD catalog, API catalog, MCP cards, agent skills, OpenAPI, and explicit anonymous-access auth guidance.", files: [".well-known/*", "openapi.json", "auth.md"], owner: "Agent-readiness layer" },
       { id: "markdown-manifest", layer: "discovery", name: "Markdown manifest", kind: "discovery", description: "Maps each canonical HTML route to its clean direct Markdown URL and legacy sidecar.", files: ["markdown/manifest.json"], owner: "Markdown generator" },
 
       { id: "smtp-service", layer: "external", name: "Private-email SMTP", kind: "external service", description: "Receives validated inquiry email from the contact function over TLS.", files: ["Environment variables only"], owner: "Vested KSA mailbox" },
@@ -989,8 +990,8 @@
       { id: "bing-indexnow", layer: "external", name: "Bing and IndexNow", kind: "external service", description: "Sitemap operations and explicit URL-change notifications.", files: ["scripts/submit-indexnow.mjs", "IndexNow key file"], owner: "Vested Bing property" },
 
       { id: "github", layer: "operations", name: "GitHub source", kind: "operations", description: "Repository, branch, commit history, and rollback source.", files: ["abdulazizalrayes/vestedksa-website"], owner: "Vested source owner" },
-      { id: "validation-suite", layer: "operations", name: "Validation suite", kind: "operations", description: "Determinism, schema, MCP, SEO, build inventory, live endpoint, and dependency checks.", files: ["scripts/validate-*.js", "scripts/validate-*.mjs"], owner: "Release engineering" },
-      { id: "vercel-deploy", layer: "operations", name: "Vercel deployment", kind: "operations", description: "Builds and publishes the exact validated artifact to vestedksa.com.", files: ["project-ivd9v", "dpl_87FMyqfXKRBA32kxRhSnQZ1hFjgY"], owner: "Vercel team" },
+      { id: "validation-suite", layer: "operations", name: "Validation suite", kind: "operations", description: "Determinism, schema, A2A, MCP, SEO, build inventory, live endpoint, and dependency checks.", files: ["scripts/validate-*.js", "scripts/validate-*.mjs"], owner: "Release engineering" },
+      { id: "vercel-deploy", layer: "operations", name: "Vercel deployment", kind: "operations", description: "Builds and publishes the exact validated artifact to vestedksa.com.", files: ["project-ivd9v", "VES-406 release evidence"], owner: "Vercel team" },
       { id: "paperclip-record", layer: "operations", name: "Paperclip VES-406", kind: "operations", description: "Stores identity lock, release evidence, cost, deployment, verification, and rollback.", files: ["VES-406"], owner: "Vested KSA workspace VES" }
     ];
 
@@ -1060,6 +1061,19 @@
         invariants: ["No form submission", "No email", "No personal-data storage", "Inquiry status stays not_submitted"]
       },
       {
+        id: "a2a-agent-concierge",
+        name: "A2A Agent Concierge",
+        trigger: "Another agent sends an A2A 1.0 SendMessage request",
+        steps: [
+          ["ai-agents", "agent-discovery", "Discover A2A interface and skills"],
+          ["agent-discovery", "a2a-api", "Send bounded text message"],
+          ["structured-data", "a2a-api", "Ground response and citations"],
+          ["routing-contracts", "a2a-api", "Apply fit and approval rules"],
+          ["a2a-api", "ai-agents", "Return direct text and structured data"]
+        ],
+        invariants: ["No contact actions", "No conversation or prompt storage", "No regulated-outcome guarantee", "Inquiry status stays not_submitted", "Content-Signal remains ai-train=no"]
+      },
+      {
         id: "approved-contact-inquiry",
         name: "Approved contact inquiry",
         trigger: "Human explicitly submits the contact form",
@@ -1081,6 +1095,7 @@
           ["static-site", "ga4-gtm", "After consent, send approved client event taxonomy"],
           ["accept-middleware", "vercel-deploy", "Write broad crawler and public resource event"],
           ["mcp-api", "vercel-deploy", "Write broad tool and resource event"],
+          ["a2a-api", "vercel-deploy", "Write skill and coarse fit event without prompt data"],
           ["csp-report-api", "vercel-deploy", "Write sanitized report-only security event"]
         ],
         invariants: ["No client analytics before consent", "No IPs, full user agents, query strings, names, emails, phones, full prompts, or messages in telemetry"]
@@ -1106,7 +1121,7 @@
       ["critical", "HTML default", "Canonical URLs return HTML for missing, ambiguous, or equally preferred HTML and Markdown Accept values."],
       ["high", "Markdown noindex", "Clean and legacy direct Markdown companions return X-Robots-Tag: noindex, follow."],
       ["high", "Content policy", "Keep search=yes, ai-input=yes, ai-train=no unless the owner changes it."],
-      ["critical", "Agent read-only", "MCP does not submit forms, send email, or contact Vested KSA."],
+      ["critical", "Agent read-only", "A2A and MCP do not submit forms, send email or WhatsApp, book meetings, write to CRM, or contact Vested KSA."],
       ["critical", "Contact approval", "Agents require explicit user approval before using /api/contact."],
       ["high", "Verified facts only", "Do not invent legal numbers, coordinates, certifications, social links, clients, testimonials, or cases."],
       ["critical", "Privacy", "Do not expose secrets or log personal and confidential inquiry data."],
@@ -1119,6 +1134,7 @@
       ["Public JSON", "data/*.json", "MCP, OpenAPI, search and AI agents", "Public, verified, privacy-safe, additive versioned facts only."],
       ["Contact request", "contact.html", "api/contact.js", "Required inquiry fields; honeypot must remain empty."],
       ["MCP JSON-RPC", "api/mcp.js", "MCP-capable agents", "JSON-RPC 2.0, MCP 2025-11-25 current, read-only tools and resources."],
+      ["A2A JSON-RPC", "api/a2a.js", "A2A-capable agents", "A2A 1.0 SendMessage returns a direct cited response without stored tasks or contact actions."],
       ["Analytics taxonomy", "data/analytics-events.json", "Page scripts, middleware, serverless functions, GA4, Vercel logs", "No IP addresses, full user agents, query strings, personal information, prompts, or inquiry content in events."]
     ];
 
@@ -1128,6 +1144,7 @@
       ["Change inquiry routing", "Inquiry schema + routing JSON + MCP + contact contract + OpenAPI."],
       ["Change Markdown behavior", "Generator + middleware + negotiation + Markdown API + discovery docs + unit/live tests."],
       ["Change MCP", "MCP function + discovery cards + OpenAPI + llms + manifest + schema registry."],
+      ["Change A2A Concierge", "A2A function + Concierge logic and contract + Agent Card + discovery + OpenAPI + tests."],
       ["Change analytics", "Analytics taxonomy + page trackers + reporting docs, with a privacy review."],
       ["Release", "Run all local/build/live gates, deploy exact artifact, submit IndexNow, record VES-406."]
     ];

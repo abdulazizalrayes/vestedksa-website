@@ -1,9 +1,9 @@
 {
-  "schemaVersion": "2026-08-21",
+  "schemaVersion": "2026-08-31",
   "resourceType": "agent-manifest",
   "company": "Vested KSA",
   "domain": "vestedksa.com",
-  "apiLayerVersion": "2.1.0",
+  "apiLayerVersion": "2.2.0",
   "status": "public-read-only",
   "compatibility": {
     "v1ResourcesRemainAvailable": true,
@@ -12,6 +12,7 @@
       "/llms.txt",
       "/.well-known/ai-catalog.json",
       "/.well-known/agent-card.json",
+      "/api/a2a",
       "/.well-known/mcp.json",
       "/data/agent-manifest.json",
       "/openapi.json"
@@ -45,6 +46,14 @@
       ]
     },
     {
+      "id": "agent-concierge",
+      "resources": [
+        "/data/agent-concierge.json",
+        "/.well-known/agent-card.json",
+        "/api/a2a"
+      ]
+    },
+    {
       "id": "operations-and-analytics",
       "resources": [
         "/data/analytics-events.json",
@@ -62,6 +71,16 @@
   "mcp": {
     "endpoint": "https://vestedksa.com/api/mcp",
     "readOnly": true,
+    "submissionAllowed": false,
+    "approvalRequiredForContact": true
+  },
+  "a2a": {
+    "endpoint": "https://vestedksa.com/api/a2a",
+    "agentCard": "https://vestedksa.com/.well-known/agent-card.json",
+    "protocolBinding": "JSONRPC",
+    "protocolVersion": "1.0",
+    "readOnly": true,
+    "stateful": false,
     "submissionAllowed": false,
     "approvalRequiredForContact": true
   },

@@ -169,7 +169,7 @@ assert.equal(
 );
 
 const middleware = read("middleware.ts");
-for (const route of ["/llms.txt", "/openapi.json", "/data/:path*", "/.well-known/:path*"]) {
+for (const route of ["/llms.txt", "/openapi.json", "/api/a2a", "/data/:path*", "/.well-known/:path*"]) {
   assert.ok(middleware.includes(`'${route}'`), `middleware telemetry coverage is missing ${route}`);
 }
 for (const event of ["crawler_visit", "markdown_representation_read", "llms_read", "openapi_read", "agent_resource_read"]) {
@@ -179,6 +179,17 @@ const telemetry = read("lib/server-agent-telemetry.cjs");
 assert.ok(telemetry.includes("GA4_API_SECRET"), "server-side agent telemetry delivery is missing");
 assert.ok(!telemetry.includes('headers["x-forwarded-for"]'), "agent telemetry must not record IP addresses");
 assert.ok(!telemetry.includes("req.socket"), "agent telemetry must not inspect client sockets");
+
+const a2aApi = read("api/a2a.js");
+const concierge = read("lib/agent-concierge.cjs");
+assert.ok(a2aApi.includes('PROTOCOL_VERSION = "1.0"'), "A2A endpoint must pin the supported protocol version");
+assert.ok(a2aApi.includes('method !== "SendMessage"'), "A2A endpoint must expose only the declared direct-response method");
+assert.ok(a2aApi.includes('"Cache-Control", "no-store"'), "A2A message responses must not be cached");
+assert.ok(!a2aApi.includes("api/contact"), "A2A endpoint must not call the contact endpoint");
+assert.ok(!concierge.includes("fetch("), "Agent Concierge must remain deterministic and free of external side effects");
+for (const token of ["storesConversation: false", "logsPromptOrPersonalData: false", "contactActionPerformed: false"]) {
+  assert.ok(concierge.includes(token), `Agent Concierge safety contract missing ${token}`);
+}
 
 const heroBytes = fs.statSync(path.join(ROOT, "assets/hero-market-entry-2026.jpg")).size;
 assert.ok(heroBytes <= 170 * 1024, `hero image exceeds 170 KiB budget: ${heroBytes} bytes`);

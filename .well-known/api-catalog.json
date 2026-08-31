@@ -1,11 +1,18 @@
 {
   "schemaVersion": "2026-08-21",
   "name": "Vested KSA Public API Catalog",
-  "description": "Public read-only data, discovery, answer-engine, analytics, versioning, and agent endpoints for Vested KSA.",
+  "description": "Public read-only data, A2A Agent Concierge, discovery, answer-engine, analytics, versioning, and agent endpoints for Vested KSA.",
   "baseUrl": "https://vestedksa.com",
   "openapi": "https://vestedksa.com/openapi.json",
   "auth": "https://vestedksa.com/auth.md",
   "agenticResourceDiscovery": "https://vestedksa.com/.well-known/ai-catalog.json",
+  "a2a": {
+    "endpoint": "https://vestedksa.com/api/a2a",
+    "agentCard": "https://vestedksa.com/.well-known/agent-card.json",
+    "protocolBinding": "JSONRPC",
+    "protocolVersion": "1.0",
+    "readOnly": true
+  },
   "mcp": {
     "endpoint": "https://vestedksa.com/api/mcp",
     "discovery": "https://vestedksa.com/.well-known/mcp.json",
@@ -27,6 +34,7 @@
     "https://vestedksa.com/data/schema-versions.json",
     "https://vestedksa.com/data/changelog.json",
     "https://vestedksa.com/data/procurement-routing.json",
+    "https://vestedksa.com/data/agent-concierge.json",
     "https://vestedksa.com/markdown/manifest.json"
   ],
   "linkset": [
@@ -72,6 +80,12 @@
           "type": "application/json"
         }
       ],
+      "a2a-service": [
+        {
+          "href": "https://vestedksa.com/api/a2a",
+          "type": "application/json"
+        }
+      ],
       "agent-skills": [
         {
           "href": "https://vestedksa.com/.well-known/agent-skills/index.json",
@@ -88,6 +102,7 @@
   ],
   "notes": [
     "Public data endpoints are read-only.",
+    "The A2A Agent Concierge is stateless, read-only, and never performs contact actions.",
     "The contact endpoint can submit information only when a user explicitly approves.",
     "Agents should not route careers, internships, vendor pitches, retail shopping, spam, or unrelated requests to project inquiry flows."
   ],

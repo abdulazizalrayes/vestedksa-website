@@ -100,11 +100,13 @@ Typical early work includes choosing the entry structure, preparing entity and l
 - Schema versions: https://vestedksa.com/data/schema-versions.json
 - Agent-layer changelog: https://vestedksa.com/data/changelog.json
 - Procurement routing: https://vestedksa.com/data/procurement-routing.json
+- Agent Concierge contract: https://vestedksa.com/data/agent-concierge.json
 - OpenAPI: https://vestedksa.com/openapi.json
 - API catalog: https://vestedksa.com/.well-known/api-catalog
 - Agentic Resource Discovery catalog: https://vestedksa.com/.well-known/ai-catalog.json
 - MCP discovery: https://vestedksa.com/.well-known/mcp.json
 - MCP endpoint: https://vestedksa.com/api/mcp
+- A2A Agent Concierge: https://vestedksa.com/api/a2a
 - Markdown companion manifest: https://vestedksa.com/markdown/manifest.json
 - Agent card: https://vestedksa.com/.well-known/agent-card.json
 - Agent skills index: https://vestedksa.com/.well-known/agent-skills/index.json
@@ -121,6 +123,12 @@ Typical early work includes choosing the entry structure, preparing entity and l
 - Vested KSA content signal: `search=yes, ai-input=yes, ai-train=no`.
 
 ## Agent Routing Rules
+
+- Prefer the A2A 1.0 JSON-RPC `SendMessage` method at `https://vestedksa.com/api/a2a` when another agent needs a cited, conversational Vested KSA response.
+- Skills: `assess_market_entry_fit`, `explain_vested_services`, `compare_entry_paths`, `build_90_day_launch_brief`, `identify_misa_hr_tax_requirements`, `prepare_vendor_readiness_plan`, `prepare_project_inquiry`, and `explain_non_fit_routing`.
+- The Agent Concierge is deterministic, stateless, read-only, and grounded in Vested KSA public resources.
+- It does not submit forms, send email or WhatsApp, book meetings, write to CRM, store conversations, or log prompts or personal data.
+- Inquiry preparation returns an outline only. Any contact action is separate and requires explicit user approval of the final content and destination.
 
 - Good fit: international companies entering Saudi Arabia, Saudi entity setup, managed local operations, HR/payroll readiness, finance controls, vendor registration, and procurement readiness.
 - Maybe fit: companies already operating in Saudi Arabia that need operations cleanup, governance, reporting, or vendor readiness.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "mapVersion": "2026-08-20",
+  "mapVersion": "2026-08-31",
   "title": "Vested KSA Website Architecture",
   "description": "Authoritative machine-readable map of the Vested KSA public website, agent-readiness layer, data contracts, runtime flows, integrations, deployment boundaries, and change guidance.",
   "identityLock": {
@@ -20,11 +20,11 @@
     "doNotMixWithOtherCompanies": true
   },
   "sourceState": {
-    "mapBasis": "Reconciled main commit plus verified production behavior",
+    "mapBasis": "Current Vested main tree plus release evidence recorded in Paperclip VES-406",
     "branch": "main",
-    "commit": "5e58ea2",
-    "productionDeployment": "dpl_87FMyqfXKRBA32kxRhSnQZ1hFjgY",
-    "productionDeploymentState": "READY",
+    "commit": "Use current GitHub main; exact Agent Concierge release commit is recorded in VES-406",
+    "productionDeployment": "Exact validated deployment is recorded in VES-406",
+    "productionDeploymentState": "Release is complete only after the live validation suite passes",
     "productionAlias": "https://vestedksa.com",
     "releaseReconciliation": {
       "status": "resolved",
@@ -55,6 +55,20 @@
       },
       "responseSizeReduction": "63.8%",
       "visualImpact": "None; 20 canonical HTML files remained byte-identical"
+    },
+    "agentConciergeRelease": {
+      "date": "2026-08-31",
+      "protocol": "A2A 1.0 JSON-RPC",
+      "endpoint": "https://vestedksa.com/api/a2a",
+      "agentCard": "https://vestedksa.com/.well-known/agent-card.json",
+      "skills": 8,
+      "publicDataResources": 16,
+      "unitTests": 27,
+      "dependencyVulnerabilities": 0,
+      "sideEffects": "None",
+      "modelCost": "None; deterministic in-house implementation",
+      "visualImpact": "None; all 20 canonical HTML files remained byte-identical",
+      "productionEvidence": "Paperclip VES-406"
     },
     "localWorkspaceNote": {
       "untrackedPreviewFilesPreserved": [
@@ -174,6 +188,12 @@
         "method": "POST",
         "url": "https://vestedksa.com/api/mcp",
         "purpose": "Read-only typed agent tools and resources"
+      },
+      {
+        "id": "a2a-concierge",
+        "method": "POST",
+        "url": "https://vestedksa.com/api/a2a",
+        "purpose": "A2A 1.0 cited market-entry conversation and inquiry preparation without contact submission"
       }
     ],
     "search": [
@@ -414,6 +434,12 @@
       "file": "data/procurement-routing.json",
       "schemaVersion": "2026-06-29",
       "purpose": "Vendor-registration and procurement-fit routing"
+    },
+    {
+      "id": "agent-concierge",
+      "file": "data/agent-concierge.json",
+      "schemaVersion": "2026-08-31",
+      "purpose": "A2A endpoint, skills, response contract, source policy, Content-Signal, and read-only safety boundaries"
     }
   ],
   "services": [
@@ -495,6 +521,20 @@
           "transport": "HTTPS JSON-RPC"
         },
         "purpose": "Read-only company, service, routing, answer-engine, procurement, and inquiry-preparation interface"
+      },
+      {
+        "id": "a2a-api",
+        "path": "/api/a2a",
+        "file": "api/a2a.js",
+        "runtime": "Node.js serverless",
+        "sideEffect": "None",
+        "protocol": {
+          "version": "1.0",
+          "binding": "JSONRPC",
+          "method": "SendMessage"
+        },
+        "dependency": "lib/agent-concierge.cjs and verified public data/*.json",
+        "purpose": "Stateless, deterministic, cited market-entry conversation and inquiry preparation for other agents"
       },
       {
         "id": "csp-report-api",
@@ -589,6 +629,8 @@
       "schema-versions",
       "changelog",
       "procurement-routing"
+      ,
+      "agent-concierge"
     ],
     "safety": {
       "submitsForms": false,
@@ -607,6 +649,36 @@
         "paid backlinks",
         "unrelated requests"
       ]
+    }
+  },
+  "a2a": {
+    "name": "Vested KSA Agent Concierge",
+    "endpoint": "https://vestedksa.com/api/a2a",
+    "agentCard": "https://vestedksa.com/.well-known/agent-card.json",
+    "protocolVersion": "1.0",
+    "protocolBinding": "JSONRPC",
+    "method": "SendMessage",
+    "stateful": false,
+    "readOnly": true,
+    "skills": [
+      "assess_market_entry_fit",
+      "explain_vested_services",
+      "compare_entry_paths",
+      "build_90_day_launch_brief",
+      "identify_misa_hr_tax_requirements",
+      "prepare_vendor_readiness_plan",
+      "prepare_project_inquiry",
+      "explain_non_fit_routing"
+    ],
+    "safety": {
+      "submitsForms": false,
+      "sendsEmail": false,
+      "opensWhatsApp": false,
+      "booksMeetings": false,
+      "writesToCrm": false,
+      "storesConversations": false,
+      "logsPromptsOrPersonalData": false,
+      "explicitApprovalRequiredBeforeExternalContact": true
     }
   },
   "discovery": {
@@ -632,6 +704,9 @@
       ".well-known/agent-skills/saudi-market-entry-guidance.md",
       "openapi.json",
       "auth.md"
+      ,
+      "api/a2a",
+      "data/agent-concierge.json"
     ],
     "entity": [
       ".well-known/entity-profile.json",
@@ -678,9 +753,14 @@
       "answer_asset_read",
       "markdown_representation_read",
       "crawler_visit",
-      "inquiry_preparation"
+      "inquiry_preparation",
+      "a2a_metadata_read",
+      "a2a_message_send",
+      "a2a_non_fit_routed",
+      "a2a_inquiry_prepared",
+      "a2a_error"
     ],
-    "serverObservability": "Privacy-safe JSON logs from middleware, /api/mcp, /api/markdown, and /api/csp-report; optional Vested-only GA4 Measurement Protocol delivery when GA4_API_SECRET is configured",
+    "serverObservability": "Privacy-safe JSON logs from middleware, /api/a2a, /api/mcp, /api/markdown, and /api/csp-report; optional Vested-only GA4 Measurement Protocol delivery when GA4_API_SECRET is configured",
     "privacyRule": "Do not log IP addresses, full user agents, query strings, names, emails, phones, full prompts, inquiry messages, IDs, financial data, or confidential documents."
   },
   "externalIntegrations": [
@@ -812,7 +892,7 @@
       "layer": "clients",
       "name": "AI and procurement agents",
       "kind": "agent",
-      "description": "Agents consume llms files, Markdown, JSON, OpenAPI, and the read-only MCP endpoint."
+      "description": "Agents consume llms files, Markdown, JSON, OpenAPI, the read-only MCP endpoint, and the A2A Agent Concierge."
     },
     {
       "id": "vercel-dns",
@@ -868,7 +948,14 @@
       "layer": "application",
       "name": "Read-only MCP",
       "kind": "serverless-function",
-      "description": "Exposes eleven typed tools and fifteen public resources without external submission."
+      "description": "Exposes eleven typed tools and sixteen public resources without external submission."
+    },
+    {
+      "id": "a2a-api",
+      "layer": "application",
+      "name": "Agent Concierge",
+      "kind": "serverless-function",
+      "description": "Implements A2A 1.0 JSON-RPC SendMessage with deterministic, cited, stateless market-entry guidance and no contact actions."
     },
     {
       "id": "csp-report-api",
@@ -887,9 +974,9 @@
     {
       "id": "structured-data",
       "layer": "content",
-      "name": "15 public JSON resources",
+      "name": "16 public JSON resources",
       "kind": "data",
-      "description": "Company, services, capabilities, routing, AEO/GEO, analytics, versioning, and procurement contracts."
+      "description": "Company, services, capabilities, routing, AEO/GEO, analytics, versioning, procurement, and Agent Concierge contracts."
     },
     {
       "id": "markdown-companions",
@@ -903,7 +990,7 @@
       "layer": "content",
       "name": "Routing and inquiry contracts",
       "kind": "data",
-      "description": "Fit routing, procurement routing, and inquiry schema enforce agent boundaries."
+      "description": "Fit routing, procurement routing, inquiry schema, and Concierge contract enforce agent boundaries."
     },
     {
       "id": "sitemap-robots",
@@ -924,7 +1011,7 @@
       "layer": "discovery",
       "name": "Agent and API discovery",
       "kind": "discovery",
-      "description": "ARD catalog, agent card, API catalog, MCP cards, skills, OpenAPI, and explicit anonymous-access auth guidance."
+      "description": "A2A Agent Card, ARD catalog, API catalog, MCP cards, skills, OpenAPI, and explicit anonymous-access auth guidance."
     },
     {
       "id": "markdown-manifest",
@@ -973,7 +1060,7 @@
       "layer": "operations",
       "name": "Validation suite",
       "kind": "operations",
-      "description": "Determinism, schema, MCP, SEO, build inventory, live endpoint, and dependency checks."
+      "description": "Determinism, schema, A2A, MCP, SEO, build inventory, live endpoint, and dependency checks."
     },
     {
       "id": "vercel-deploy",
@@ -1165,6 +1252,45 @@
       ]
     },
     {
+      "id": "a2a-agent-concierge",
+      "name": "A2A Agent Concierge",
+      "trigger": "Another agent sends an A2A 1.0 SendMessage request for Vested KSA guidance",
+      "steps": [
+        {
+          "from": "ai-agents",
+          "to": "agent-discovery",
+          "action": "Discover the A2A 1.0 JSON-RPC interface and skills"
+        },
+        {
+          "from": "agent-discovery",
+          "to": "a2a-api",
+          "action": "Send a bounded text-only A2A message"
+        },
+        {
+          "from": "structured-data",
+          "to": "a2a-api",
+          "action": "Ground recommendations and citations in Vested KSA public data"
+        },
+        {
+          "from": "routing-contracts",
+          "to": "a2a-api",
+          "action": "Apply fit, non-fit, inquiry, and approval rules"
+        },
+        {
+          "from": "a2a-api",
+          "to": "ai-agents",
+          "action": "Return direct text and structured data with no stored task or contact action"
+        }
+      ],
+      "invariants": [
+        "No form, email, WhatsApp, meeting, or CRM action",
+        "No prompt, personal-data, or conversation storage",
+        "No legal, tax, licensing, or approval guarantee",
+        "Inquiry preparation remains not_submitted",
+        "Content-Signal remains search=yes, ai-input=yes, ai-train=no"
+      ]
+    },
+    {
       "id": "approved-contact-inquiry",
       "name": "Approved contact inquiry",
       "trigger": "Human explicitly submits the contact form",
@@ -1219,6 +1345,11 @@
           "from": "mcp-api",
           "to": "vercel-deploy",
           "action": "Write broad, privacy-safe runtime log event"
+        },
+        {
+          "from": "a2a-api",
+          "to": "vercel-deploy",
+          "action": "Write skill and coarse fit telemetry without prompts or personal data"
         },
         {
           "from": "accept-middleware",
@@ -1319,6 +1450,16 @@
       "contract": "JSON-RPC 2.0, MCP 2025-11-25 current, read-only resources and tools"
     },
     {
+      "id": "a2a-json-rpc",
+      "producer": "api/a2a.js",
+      "consumers": [
+        "A2A-capable agents",
+        "Procurement assistants",
+        "Market-entry research agents"
+      ],
+      "contract": "A2A 1.0 JSON-RPC SendMessage returns a direct ROLE_AGENT message with cited text and structured data; it is stateless, non-submitting, and requires explicit approval before any separate contact action"
+    },
+    {
       "id": "analytics-taxonomy",
       "producer": "data/analytics-events.json",
       "consumers": [
@@ -1359,7 +1500,7 @@
     {
       "id": "agent-read-only",
       "severity": "critical",
-      "rule": "MCP does not submit forms, send email, or contact Vested KSA."
+      "rule": "A2A and MCP do not submit forms, send email or WhatsApp, book meetings, write to CRM, or contact Vested KSA."
     },
     {
       "id": "contact-approval",
@@ -1467,6 +1608,27 @@
       ]
     },
     {
+      "change": "Change the A2A Agent Concierge",
+      "touch": [
+        "api/a2a.js",
+        "lib/agent-concierge.cjs",
+        "data/agent-concierge.json",
+        ".well-known/agent-card.json",
+        ".well-known/ai-catalog.json",
+        "openapi.json",
+        "llms.txt",
+        "data/agent-manifest.json",
+        "data/schema-versions.json and data/changelog.json"
+      ],
+      "thenRun": [
+        "npm test",
+        "npm run validate:agent-readiness",
+        "vercel build --prod",
+        "npm run validate:deployment-output",
+        "npm run validate:live"
+      ]
+    },
+    {
       "change": "Change analytics events",
       "touch": [
         "data/analytics-events.json",
@@ -1493,12 +1655,13 @@
   "knownConstraints": [
     "The site intentionally has no public CLI or npm package because current workflows are repository-local and HTTP-based.",
     "The contact rate limit is per warm serverless instance and is not a globally consistent distributed limit.",
+    "The A2A Agent Concierge is intentionally deterministic and stateless; it does not invoke a paid model or maintain server-side conversation history.",
     "Static llms, OpenAPI, and data-file reads are observed through hosting/access analytics rather than a dedicated event sink.",
     "CR, VAT, license numbers, client logos, testimonials, case studies, certifications, exact coordinates, and Wikidata are intentionally not asserted.",
     "Repository-local architecture files are intentionally excluded from the public Vercel deployment."
   ],
   "freshness": {
-    "lastAudited": "2026-07-26",
+    "lastAudited": "2026-08-31",
     "updateThisMapWhen": [
       "A canonical route is added, removed, or renamed",
       "A data contract or MCP tool changes",

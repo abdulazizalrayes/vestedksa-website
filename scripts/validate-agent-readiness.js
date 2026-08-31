@@ -22,6 +22,7 @@ const requiredFiles = [
   "data/schema-versions.json",
   "data/changelog.json",
   "data/procurement-routing.json",
+  "data/agent-concierge.json",
   "llms.txt",
   "llms-full.txt",
   "llms-full.md",
@@ -54,6 +55,9 @@ const requiredFiles = [
   "29b92482-dc1f-4e7d-8184-cf3de5f9937e.txt",
   "vercel.json",
   "api/mcp.js",
+  "api/a2a.js",
+  "lib/agent-concierge.cjs",
+  "test/a2a-agent.test.mjs",
 ];
 
 const jsonFiles = requiredFiles.filter((file) => file.endsWith(".json"));
@@ -178,10 +182,12 @@ const llms = read("llms.txt");
   "/data/answer-engine.json",
   "/data/source-map.json",
   "/data/procurement-routing.json",
+  "/data/agent-concierge.json",
   "/data/agent-manifest.json",
   "/openapi.json",
   "/.well-known/ai-catalog.json",
   "/api/mcp",
+  "/api/a2a",
   "/markdown/manifest.json",
   "/services.md",
   "/docs/bing-indexnow.md",
@@ -208,8 +214,10 @@ const openapi = JSON.parse(read("openapi.json"));
   "/data/schema-versions.json",
   "/data/changelog.json",
   "/data/procurement-routing.json",
+  "/data/agent-concierge.json",
   "/.well-known/ai-catalog.json",
   "/api/mcp",
+  "/api/a2a",
   "/api/contact",
   "/markdown/manifest.json",
   "/markdown/{sidecar}.md",
@@ -253,6 +261,26 @@ ok("auth.md has expected Auth.md heading");
 const agentCard = JSON.parse(read(".well-known/agent-card.json"));
 if (!Array.isArray(agentCard.supportedInterfaces) || agentCard.supportedInterfaces.length === 0) {
   fail("agent-card.json missing supportedInterfaces");
+}
+if (agentCard.supportedInterfaces[0]?.url !== "https://vestedksa.com/api/a2a" ||
+    agentCard.supportedInterfaces[0]?.protocolBinding !== "JSONRPC" ||
+    agentCard.supportedInterfaces[0]?.protocolVersion !== "1.0") {
+  fail("agent-card.json must prefer the A2A 1.0 JSON-RPC interface");
+}
+if (agentCard.provider?.organization !== "Vested KSA" || agentCard.capabilities?.streaming !== false) {
+  fail("agent-card.json has an invalid provider or capability declaration");
+}
+for (const skill of [
+  "assess_market_entry_fit",
+  "explain_vested_services",
+  "compare_entry_paths",
+  "build_90_day_launch_brief",
+  "identify_misa_hr_tax_requirements",
+  "prepare_vendor_readiness_plan",
+  "prepare_project_inquiry",
+  "explain_non_fit_routing",
+]) {
+  if (!agentCard.skills?.some((entry) => entry.id === skill)) fail(`agent-card.json missing A2A skill ${skill}`);
 }
 ok("agent card lists supported interfaces");
 
@@ -336,7 +364,7 @@ if (!headers.some((header) => header.source === "/" && header.headers.some((item
 }
 const middleware = read("middleware.ts");
 const markdownNegotiation = read("lib/markdown-negotiation.mjs");
-if (!middleware.includes("ROOT_DISCOVERY_LINKS") || !middleware.includes("/.well-known/mcp.json")) {
+if (!middleware.includes("ROOT_DISCOVERY_LINKS") || !middleware.includes("/.well-known/mcp.json") || !middleware.includes("/api/a2a")) {
   fail("middleware.ts missing root agent-discovery Link header");
 }
 if (!headers.some((header) => header.source === "/markdown/(.*)\\.md" && header.headers.some((item) => item.key === "X-Robots-Tag" && item.value === "noindex, follow"))) {
@@ -540,7 +568,92 @@ async function validateMcpRuntime() {
   ok("MCP runtime tools route and read safely");
 }
 
+function callA2a(payload, headers = {}) {
+  return new Promise((resolve, reject) => {
+    const handler = require(path.join(root, "api", "a2a.js"));
+    const req = new EventEmitter();
+    req.method = "POST";
+    req.url = "/api/a2a";
+    req.headers = {
+      "content-type": "application/json",
+      "a2a-version": "1.0",
+      "user-agent": "agent-readiness-validator",
+      ...headers,
+    };
+    req.destroy = reject;
+
+    const res = {
+      statusCode: 200,
+      headers: {},
+      setHeader(name, value) {
+        this.headers[name.toLowerCase()] = value;
+      },
+      end(body) {
+        try {
+          resolve({
+            statusCode: this.statusCode,
+            headers: this.headers,
+            body: body ? JSON.parse(body) : null,
+          });
+        } catch (error) {
+          reject(error);
+        }
+      },
+    };
+
+    handler(req, res).catch(reject);
+    process.nextTick(() => {
+      req.emit("data", JSON.stringify(payload));
+      req.emit("end");
+    });
+  });
+}
+
+async function validateA2aRuntime() {
+  const response = await callA2a({
+    jsonrpc: "2.0",
+    id: 1,
+    method: "SendMessage",
+    params: {
+      message: {
+        messageId: "agent-readiness-validation",
+        role: "ROLE_USER",
+        parts: [{ text: "We are an international company entering Saudi Arabia and need MISA, payroll, VAT, and vendor-registration support." }],
+      },
+      configuration: { acceptedOutputModes: ["application/json"] },
+    },
+  });
+  const message = response.body?.result?.message;
+  const data = message?.parts?.find((part) => part.mediaType === "application/json")?.data;
+  if (response.statusCode !== 200 || response.headers["a2a-version"] !== "1.0" || message?.role !== "ROLE_AGENT") {
+    fail("A2A SendMessage did not return a valid A2A 1.0 direct agent message");
+  }
+  if (data?.company !== "Vested KSA" || data?.inquiry?.submissionStatus !== "not_submitted" || data?.safety?.storesConversation !== false) {
+    fail("A2A Agent Concierge did not preserve Vested identity and read-only safety boundaries");
+  }
+
+  const nonFit = await callA2a({
+    jsonrpc: "2.0",
+    id: 2,
+    method: "SendMessage",
+    params: {
+      message: {
+        messageId: "agent-readiness-non-fit",
+        role: "ROLE_USER",
+        parts: [{ text: "I want to sell you paid backlinks and software marketing services." }],
+      },
+      configuration: { acceptedOutputModes: ["application/json"] },
+    },
+  });
+  const nonFitData = nonFit.body?.result?.message?.parts?.[0]?.data;
+  if (nonFitData?.fit?.classification !== "not_fit" || nonFitData?.inquiry?.prepared !== false) {
+    fail("A2A Agent Concierge did not route a vendor pitch away from project inquiry");
+  }
+  ok("A2A runtime is protocol-correct, grounded, stateless, and non-submitting");
+}
+
 validateMcpRuntime()
+  .then(validateA2aRuntime)
   .then(() => {
     if (process.exitCode) {
       process.exit(process.exitCode);

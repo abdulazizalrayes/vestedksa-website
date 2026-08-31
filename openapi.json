@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Vested KSA Public Agent API",
-    "version": "2.1.0",
-    "description": "Public read-only data, answer-engine resources, analytics taxonomy, schema versioning, MCP, and approved contact documentation for Vested KSA. Vested KSA is a Saudi market-entry and operations partner for international companies."
+    "version": "2.2.0",
+    "description": "Public read-only data, A2A Agent Concierge, answer-engine resources, analytics taxonomy, schema versioning, MCP, and approved contact documentation for Vested KSA. Vested KSA is a Saudi market-entry and operations partner for international companies."
   },
   "servers": [
     {
@@ -176,6 +176,17 @@
         }
       }
     },
+    "/data/agent-concierge.json": {
+      "get": {
+        "summary": "Get the Vested KSA Agent Concierge contract",
+        "operationId": "getAgentConciergeContract",
+        "responses": {
+          "200": {
+            "description": "A2A endpoint, skills, response contract, source policy, Content-Signal, and safety boundaries"
+          }
+        }
+      }
+    },
     "/.well-known/ai-catalog.json": {
       "get": {
         "summary": "Get the Vested KSA Agentic Resource Discovery catalog",
@@ -183,6 +194,136 @@
         "responses": {
           "200": {
             "description": "Static ARD catalog of public MCP, OpenAPI, agent-skill, and API-catalog resources"
+          }
+        }
+      }
+    },
+    "/api/a2a": {
+      "get": {
+        "summary": "Get Vested KSA Agent Concierge endpoint metadata",
+        "operationId": "getA2aConciergeMetadata",
+        "responses": {
+          "200": {
+            "description": "A2A 1.0 JSON-RPC endpoint metadata and read-only safety status"
+          }
+        }
+      },
+      "head": {
+        "summary": "Inspect Vested KSA Agent Concierge headers",
+        "operationId": "headA2aConcierge",
+        "responses": {
+          "200": {
+            "description": "A2A-Version, Content-Signal, CORS, and discovery Link headers without a response body"
+          }
+        }
+      },
+      "post": {
+        "summary": "Send a read-only message to the Vested KSA Agent Concierge",
+        "description": "A2A 1.0 JSON-RPC SendMessage. Returns a direct agent Message with cited text and/or structured data. The endpoint is deterministic and stateless; it never submits forms, sends email or WhatsApp, books meetings, writes to CRM, or stores conversations. Any later contact action requires separate explicit user approval.",
+        "operationId": "sendA2aConciergeMessage",
+        "parameters": [
+          {
+            "name": "A2A-Version",
+            "in": "header",
+            "required": false,
+            "description": "A2A protocol version. If supplied, it must be 1.0.",
+            "schema": {
+              "type": "string",
+              "const": "1.0"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["jsonrpc", "id", "method", "params"],
+                "properties": {
+                  "jsonrpc": {
+                    "type": "string",
+                    "const": "2.0"
+                  },
+                  "id": {},
+                  "method": {
+                    "type": "string",
+                    "const": "SendMessage"
+                  },
+                  "params": {
+                    "type": "object",
+                    "required": ["message"],
+                    "properties": {
+                      "message": {
+                        "type": "object",
+                        "required": ["messageId", "role", "parts"],
+                        "properties": {
+                          "messageId": { "type": "string", "maxLength": 200 },
+                          "contextId": { "type": "string" },
+                          "role": { "type": "string", "const": "ROLE_USER" },
+                          "parts": {
+                            "type": "array",
+                            "minItems": 1,
+                            "maxItems": 8,
+                            "items": {
+                              "type": "object",
+                              "required": ["text"],
+                              "properties": {
+                                "text": { "type": "string", "maxLength": 4000 }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "configuration": {
+                        "type": "object",
+                        "properties": {
+                          "acceptedOutputModes": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": ["text/plain", "text/markdown", "application/json", "text/*", "application/*", "*/*"]
+                            }
+                          }
+                        }
+                      },
+                      "metadata": {
+                        "type": "object",
+                        "properties": {
+                          "skillId": {
+                            "type": "string",
+                            "enum": [
+                              "assess_market_entry_fit",
+                              "explain_vested_services",
+                              "compare_entry_paths",
+                              "build_90_day_launch_brief",
+                              "identify_misa_hr_tax_requirements",
+                              "prepare_vendor_readiness_plan",
+                              "prepare_project_inquiry",
+                              "explain_non_fit_routing"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A2A JSON-RPC result containing a direct ROLE_AGENT Message, or a JSON-RPC validation/method error"
+          },
+          "400": {
+            "description": "Invalid JSON, JSON-RPC envelope, or unsupported A2A version"
+          },
+          "413": {
+            "description": "Request body exceeds 64 KiB"
+          },
+          "415": {
+            "description": "Content-Type is not application/json"
           }
         }
       }
@@ -414,6 +555,8 @@
     }
   },
   "x-agent-rules": [
+    "Use /api/a2a for cited, read-only market-entry conversation and deterministic inquiry preparation.",
+    "The A2A Agent Concierge never submits, contacts, stores conversations, or logs prompts and personal data.",
     "Use public data and MCP tools for understanding and inquiry preparation.",
     "Do not submit /api/contact without explicit user approval.",
     "Do not include sensitive personal data or confidential documents in initial inquiry preparation.",

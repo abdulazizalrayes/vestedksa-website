@@ -1,8 +1,33 @@
 {
-  "schemaVersion": "2026-08-22",
+  "schemaVersion": "2026-08-31",
   "resourceType": "public-agent-layer-changelog",
   "company": "Vested KSA",
   "changes": [
+    {
+      "date": "2026-08-31",
+      "version": "2.2.0",
+      "summary": "Added the public A2A 1.0 Vested KSA Agent Concierge for deterministic, cited market-entry guidance, fit and non-fit routing, vendor readiness, 90-day briefs, and inquiry preparation without contact submission or conversation storage.",
+      "resourcesAdded": [
+        "/api/a2a",
+        "/data/agent-concierge.json"
+      ],
+      "resourcesUpdated": [
+        "/.well-known/agent-card.json",
+        "/.well-known/ai-catalog.json",
+        "/.well-known/api-catalog",
+        "/openapi.json",
+        "/llms.txt",
+        "/data/agent-manifest.json",
+        "/data/analytics-events.json"
+      ],
+      "safety": {
+        "readOnly": true,
+        "storesConversations": false,
+        "logsPromptsOrPersonalData": false,
+        "submitsOrContacts": false
+      },
+      "breakingChanges": false
+    },
     {
       "date": "2026-08-22",
       "version": "2.1.3",

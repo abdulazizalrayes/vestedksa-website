@@ -44,6 +44,7 @@
     "schema-versions",
     "changelog",
     "procurement-routing",
+    "agent-concierge",
     "markdown-manifest"
   ],
   "safety": [

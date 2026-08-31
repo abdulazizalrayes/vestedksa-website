@@ -24,6 +24,7 @@ const RESOURCE_DATA = {
   "schema-versions": require("../data/schema-versions.json"),
   changelog: require("../data/changelog.json"),
   "procurement-routing": require("../data/procurement-routing.json"),
+  "agent-concierge": require("../data/agent-concierge.json"),
 };
 
 const PUBLIC_RESOURCE_ALIASES = {

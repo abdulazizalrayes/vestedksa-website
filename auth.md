@@ -8,6 +8,8 @@ Vested KSA does not currently support agent registration, delegated agent accoun
 
 Agents can use the public read-only resources without registering. Agents must not submit contact forms, send email, or contact Vested KSA unless the user explicitly approves the final inquiry and destination.
 
+The A2A Agent Concierge at `/api/a2a` is anonymous, read-only, stateless, and limited to public advisory responses. It does not create an agent account, persist conversation state, or grant contact permissions.
+
 ## Supported Agent Registration Flows
 
 - `anonymous`: not required for public read-only resources
@@ -42,6 +44,7 @@ If agent registration is added in the future, this file will be updated with the
 - `/.well-known/mcp/server-card.json`
 - `/.well-known/mcp/server-cards.json`
 - `/api/mcp`
+- `/api/a2a`
 
 ## Contact Submission
 

@@ -35,8 +35,9 @@ Review these dimensions and metrics every month:
 - Checklist downloads by page path and source.
 - Email clicks and contact-form starts compared with successful submissions.
 - Search Console queries, impressions, clicks, average position, and indexed pages.
-- Vercel log hits for `/llms.txt`, `/openapi.json`, `/data/`, `/.well-known/`, and `/api/mcp`.
+- Vercel log hits for `/llms.txt`, `/openapi.json`, `/data/`, `/.well-known/`, `/api/mcp`, and `/api/a2a`.
 - MCP tool-call counts by tool name from privacy-safe server logs.
+- A2A Agent Concierge calls by selected skill and coarse fit outcome from privacy-safe server logs.
 
 ## Recommended Segments
 
@@ -63,9 +64,10 @@ Use these operational checks until a dedicated approved logging sink is added:
 
 - Vercel logs containing `agent_readiness_event`.
 - Vercel logs where path contains `/api/mcp`.
+- Vercel logs where path contains `/api/a2a` and events `a2a_metadata_read`, `a2a_message_send`, `a2a_non_fit_routed`, `a2a_inquiry_prepared`, or `a2a_error`.
 - Vercel logs where path contains `/llms.txt`, `/openapi.json`, `/data/`, or `/.well-known/`.
 - Vercel logs where path contains `/data/answer-engine.json`, `/data/source-map.json`, `/data/agent-manifest.json`, or `/data/procurement-routing.json`.
 - GA4 referral/source reports for AI assistants and agent browsers.
 - Search Console URL inspection for `llms.txt`, `openapi.json`, `/data/company.json`, and guide pages.
 
-Do not log full prompts, personal information, private inquiry details, IDs, bank data, passports, or confidential documents.
+Do not log full prompts, personal information, private inquiry details, IDs, bank data, passports, confidential documents, full user agents, IP addresses, or query strings.

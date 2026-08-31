@@ -44,6 +44,7 @@ export const config = {
     '/llms-full.txt',
     '/llms-full.md',
     '/openapi.json',
+    '/api/a2a',
     '/data/:path*',
     '/.well-known/:path*',
   ],
@@ -57,6 +58,7 @@ const ROOT_DISCOVERY_LINKS = [
   '</.well-known/ai-catalog.json>; rel="ai-catalog"; type="application/ai-catalog+json"',
   '</.well-known/mcp.json>; rel="mcp-discovery"; type="application/json"',
   '</.well-known/agent-card.json>; rel="agent-card"; type="application/json"',
+  '</api/a2a>; rel="service"; type="application/json"',
   '</.well-known/agent-skills/index.json>; rel="agent-skills"; type="application/json"',
 ];
 
