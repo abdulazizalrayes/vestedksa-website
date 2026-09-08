@@ -5,10 +5,19 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "functions": {
+    "api/demand-review.js": {
+      "maxDuration": 30
+    },
     "api/*.js": {
       "maxDuration": 10
     }
   },
+  "crons": [
+    {
+      "path": "/api/demand-review",
+      "schedule": "15 3 * * *"
+    }
+  ],
   "redirects": [
     {
       "source": "/:path*",

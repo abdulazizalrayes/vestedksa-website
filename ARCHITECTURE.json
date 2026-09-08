@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "mapVersion": "2026-08-31",
+  "mapVersion": "2026-09-08",
   "title": "Vested KSA Website Architecture",
   "description": "Authoritative machine-readable map of the Vested KSA public website, agent-readiness layer, data contracts, runtime flows, integrations, deployment boundaries, and change guidance.",
   "identityLock": {
@@ -79,7 +79,7 @@
     }
   },
   "systemProfile": {
-    "architectureStyle": "Static multipage website with Vercel edge middleware and four Node.js serverless endpoints",
+    "architectureStyle": "Static multipage website with Vercel edge middleware, public agent APIs, and a private Vested-only demand-learning pipeline",
     "framework": "None",
     "rendering": "Prebuilt static HTML",
     "packageType": "Private repository package; no public CLI or npm package",
@@ -105,7 +105,7 @@
       "markdownCompanions": 20,
       "mcpTools": 11,
       "mcpResources": 15,
-      "serverlessEndpoints": 4,
+      "serverlessEndpoints": 6,
       "publicLanguages": 3
     }
   },
@@ -534,19 +534,39 @@
         "path": "/api/a2a",
         "file": "api/a2a.js",
         "runtime": "Node.js serverless",
-        "sideEffect": "None",
+        "sideEffect": "Returns no contact action; eligible client demand is separately redacted and written asynchronously to private Vested Blob storage",
         "protocol": {
           "version": "1.0",
           "binding": "JSONRPC",
           "method": "SendMessage"
         },
-        "dependency": "lib/agent-concierge.cjs and verified public data/*.json",
-        "purpose": "Stateless, deterministic, cited market-entry conversation and inquiry preparation for other agents",
+        "dependency": "lib/agent-concierge.cjs, lib/agent-localization.cjs, lib/demand-capture.cjs, and verified public data/*.json",
+        "purpose": "Stateless, deterministic, bilingual cited market-entry conversation and inquiry preparation for other agents, with isolated sanitized demand capture",
         "protections": [
           "Vercel edge rate limit shared with the MCP endpoint",
           "32 KiB body limit",
           "Strict JSON and A2A protocol validation",
           "Temporary per-instance block after five malformed or prompt-injection attempts"
+        ]
+      },
+      {
+        "id": "demand-review-api",
+        "path": "/api/demand-review",
+        "file": "api/demand-review.js",
+        "runtime": "Node.js serverless with a daily Vercel Cron trigger",
+        "methods": ["GET", "POST"],
+        "publicDiscovery": false,
+        "authentication": "Exact bearer CRON_SECRET or DEMAND_REVIEW_TOKEN",
+        "sideEffect": "Stores private statistical reports and owner feedback, sends private daily/weekly report email, and deletes expired private objects",
+        "purpose": "Vested-only demand analysis, bounded unsupervised clustering, retention, and owner review",
+        "protections": [
+          "Private Vercel Blob only",
+          "No public OpenAPI, MCP, A2A, Markdown, llms, sitemap, or agent-card resource",
+          "16 KiB owner-feedback body limit",
+          "Timing-safe bearer comparison",
+          "X-Robots-Tag noindex, nofollow, noarchive",
+          "No-store cache policy",
+          "No automatic public answer, service, availability, or price changes"
         ]
       },
       {
@@ -673,6 +693,8 @@
     "method": "SendMessage",
     "stateful": false,
     "readOnly": true,
+    "responseLanguages": ["en", "ar"],
+    "ambiguityPolicy": "Supplier wording without explicit Saudi buyer registration need or explicit inbound sales intent remains maybe_fit and cannot prepare an inquiry.",
     "skills": [
       "assess_market_entry_fit",
       "explain_vested_services",
@@ -690,8 +712,51 @@
       "booksMeetings": false,
       "writesToCrm": false,
       "storesConversations": false,
+      "storesSanitizedDemandSignals": true,
+      "sanitizedDemandRetentionDays": 90,
       "logsPromptsOrPersonalData": false,
       "explicitApprovalRequiredBeforeExternalContact": true
+    }
+  },
+  "privateDemandLearning": {
+    "documentation": "docs/demand-learning.md",
+    "storage": {
+      "provider": "Vercel Private Blob",
+      "storeId": "store_ZjYAmEOEFgdPRT3y",
+      "storeName": "vested-demand-intelligence",
+      "region": "iad1",
+      "project": "project-ivd9v",
+      "connectedEnvironments": ["production"],
+      "company": "Vested KSA",
+      "publicAccess": false,
+      "localOrICloudStorage": false,
+      "eventPattern": "One immutable private JSON object per eligible interaction",
+      "eventRetentionDays": 90,
+      "reportAndFeedbackRetentionDays": 180
+    },
+    "sources": ["Eligible A2A questions", "Successful Vested contact inquiries"],
+    "exclusions": ["Raw conversations", "Personal identifiers", "Confidential information", "Careers", "Internships", "Training", "Inbound supplier pitches", "Spam", "Synthetic validation", "Suspected poisoned input"],
+    "approvedAttributes": ["Language", "Fit", "Route", "Service", "Topic", "Allowlisted public platform or buyer", "Broad geography", "Sector", "Contextual team size", "Contextual timeline", "Answer adequacy"],
+    "statisticalBaseline": true,
+    "clustering": {
+      "method": "TF-IDF cosine similarity connected components",
+      "minimumRecords": 20,
+      "minimumClusterSize": 3,
+      "minimumDistinctDays": 2,
+      "modelActuallyTrained": false,
+      "persistentModel": false
+    },
+    "schedule": {
+      "cron": "Daily at 03:15 UTC / 06:15 Riyadh",
+      "daily": "Previous completed Riyadh day",
+      "weekly": "Monday review of previous seven completed Riyadh days"
+    },
+    "governance": {
+      "automaticallyRetrainsPublicAgent": false,
+      "automaticallyPublishesAnswers": false,
+      "automaticallyChangesOffering": false,
+      "ownerApprovalRequired": true,
+      "publicExposure": false
     }
   },
   "discovery": {
@@ -968,7 +1033,21 @@
       "layer": "application",
       "name": "Agent Concierge",
       "kind": "serverless-function",
-      "description": "Implements A2A 1.0 JSON-RPC SendMessage with deterministic, cited, stateless market-entry guidance and no contact actions."
+      "description": "Implements bilingual A2A 1.0 JSON-RPC SendMessage with deterministic, cited, stateless market-entry guidance, client-only routing and isolated sanitized demand capture."
+    },
+    {
+      "id": "demand-sanitizer",
+      "layer": "application",
+      "name": "Demand sanitizer",
+      "kind": "private-processing",
+      "description": "Redacts identifiers, extracts approved demand attributes, excludes non-fit, synthetic and poisoned traffic, and creates deterministic Vested-only records."
+    },
+    {
+      "id": "demand-review-api",
+      "layer": "application",
+      "name": "Private demand review",
+      "kind": "serverless-function",
+      "description": "Produces private daily statistics, bounded clustering, Monday question/answer review, retention cleanup and authenticated owner feedback."
     },
     {
       "id": "csp-report-api",
@@ -1038,7 +1117,28 @@
       "layer": "external",
       "name": "Private-email SMTP",
       "kind": "external-service",
-      "description": "Receives validated contact inquiry email over TLS."
+      "description": "Receives validated contact inquiry email and private sanitized demand reports over TLS."
+    },
+    {
+      "id": "private-blob",
+      "layer": "external",
+      "name": "Vested Private Blob",
+      "kind": "private-storage",
+      "description": "Private store store_ZjYAmEOEFgdPRT3y in iad1 stores Vested-only sanitized demand events for 90 days and private reports/feedback for 180 days; it is connected only to the Vested production project and has no public delivery path."
+    },
+    {
+      "id": "vercel-cron",
+      "layer": "external",
+      "name": "Vercel Cron",
+      "kind": "scheduler",
+      "description": "Invokes the authenticated private demand review once daily at 06:15 Riyadh time."
+    },
+    {
+      "id": "owner-feedback",
+      "layer": "external",
+      "name": "Vested owner feedback",
+      "kind": "private-input",
+      "description": "Records sanitized owner assessment and improved-answer guidance without granting publication or training permission."
     },
     {
       "id": "ga4-gtm",
@@ -1073,7 +1173,7 @@
       "layer": "operations",
       "name": "Validation suite",
       "kind": "operations",
-      "description": "Determinism, schema, A2A, MCP, SEO, build inventory, live endpoint, and dependency checks."
+      "description": "Determinism, schema, A2A, bilingual routing, redaction, isolation, retention, poison resistance, clustering, MCP, SEO, build inventory, live endpoint, and dependency checks."
     },
     {
       "id": "vercel-deploy",
@@ -1297,10 +1397,57 @@
       ],
       "invariants": [
         "No form, email, WhatsApp, meeting, or CRM action",
-        "No prompt, personal-data, or conversation storage",
+        "No raw prompt, personal-data, or conversation storage",
+        "Only sanitized genuine client-demand records enter the isolated private store",
+        "English and Arabic routing use the same client-only fit boundary",
         "No legal, tax, licensing, or approval guarantee",
         "Inquiry preparation remains not_submitted",
         "Content-Signal remains search=yes, ai-input=yes, ai-train=no"
+      ]
+    },
+    {
+      "id": "private-demand-learning",
+      "name": "Private demand learning and owner review",
+      "trigger": "An eligible client or potential-client A2A question or successful contact inquiry is processed",
+      "steps": [
+        {
+          "from": "a2a-api",
+          "to": "demand-sanitizer",
+          "action": "Classify source quality and remove personal, confidential, synthetic, non-fit and poisoned content"
+        },
+        {
+          "from": "contact-api",
+          "to": "demand-sanitizer",
+          "action": "Extract only approved demand from a successfully delivered inquiry"
+        },
+        {
+          "from": "demand-sanitizer",
+          "to": "private-blob",
+          "action": "Store one immutable sanitized Vested-only event"
+        },
+        {
+          "from": "vercel-cron",
+          "to": "demand-review-api",
+          "action": "Generate daily baseline and Monday weekly question/answer review"
+        },
+        {
+          "from": "demand-review-api",
+          "to": "smtp-service",
+          "action": "Deliver private evidence report for owner review"
+        },
+        {
+          "from": "owner-feedback",
+          "to": "private-blob",
+          "action": "Store sanitized owner guidance without publication or retraining permission"
+        }
+      ],
+      "invariants": [
+        "No private learning record is exposed through A2A, MCP, Markdown, llms, OpenAPI, sitemap, or public URLs",
+        "No local server or iCloud production storage",
+        "Synthetic, spam, non-fit, internship, career, supplier-pitch and poisoned requests do not influence demand analysis",
+        "Statistical counting is not labelled model training",
+        "Clustering runs only at the documented evidence threshold and does not train or update a model",
+        "No recommendation changes public content, services, prices or availability without owner approval"
       ]
     },
     {
@@ -1482,6 +1629,18 @@
         "Monthly reporting"
       ],
       "contract": "No personal information or full inquiry content in events"
+    },
+    {
+      "id": "private-demand-record",
+      "producer": "lib/demand-intelligence.cjs through A2A and successful contact capture",
+      "consumers": ["Private Vested Blob", "Demand reporting only"],
+      "contract": "Vested-only sanitized genuine-demand record with no raw conversation, personal identifier, source identity, confidential data or public exposure"
+    },
+    {
+      "id": "private-demand-report",
+      "producer": "api/demand-review.js and lib/demand-reporting.cjs",
+      "consumers": ["Vested owner private email", "Authorized owner-feedback workflow"],
+      "contract": "Counts, period, uncertainty, evidence source, question/answer review, clustering status and explicit no-automatic-change governance"
     }
   ],
   "invariants": [
@@ -1529,6 +1688,16 @@
       "id": "privacy",
       "severity": "critical",
       "rule": "Do not expose secrets or log personal and confidential inquiry data."
+    },
+    {
+      "id": "demand-learning-isolation",
+      "severity": "critical",
+      "rule": "Keep sanitized Vested demand records private and separate from public answers, public agent resources, other companies, local storage and iCloud."
+    },
+    {
+      "id": "no-automatic-learning-change",
+      "severity": "critical",
+      "rule": "Demand analysis and owner feedback never retrain the public agent or alter services, pricing, availability or public copy automatically."
     },
     {
       "id": "deployment-integrity",
@@ -1655,6 +1824,25 @@
       ]
     },
     {
+      "change": "Change private demand learning",
+      "touch": [
+        "lib/demand-intelligence.cjs",
+        "lib/demand-storage.cjs",
+        "lib/demand-reporting.cjs",
+        "lib/demand-capture.cjs",
+        "api/demand-review.js",
+        "docs/demand-learning.md",
+        "Vested-only Vercel Blob and secret bindings"
+      ],
+      "thenRun": [
+        "npm run validate:demand-learning",
+        "npm run validate:release",
+        "Confirm private endpoint denies anonymous access",
+        "Confirm no learning records appear in public discovery",
+        "Verify retention and first-week owner review"
+      ]
+    },
+    {
       "change": "Release to production",
       "touch": [
         "Only the intended Vested files"
@@ -1669,18 +1857,22 @@
     "The site intentionally has no public CLI or npm package because current workflows are repository-local and HTTP-based.",
     "The contact rate limit is per warm serverless instance and is not a globally consistent distributed limit.",
     "The agent API edge rate limit is enforced by Vercel per source IP; the additional malformed-request guard is ephemeral per warm serverless instance.",
-    "The A2A Agent Concierge is intentionally deterministic and stateless; it does not invoke a paid model or maintain server-side conversation history.",
+    "The A2A Agent Concierge is intentionally deterministic and stateless; it does not invoke a paid model or maintain server-side conversation history. A separate private layer stores only sanitized confirmed good-fit demand records.",
+    "Vercel Private Blob is an object-per-event low-volume pilot. Hobby limits bound cost but can stop writes when exhausted.",
+    "Deterministic redaction cannot guarantee recognition of every personal name or novel Arabic phrasing; detected sensitive or confidential context is excluded entirely.",
+    "Owner email replies require an authorized operator to attach feedback to a record; inbound mailbox automation is not enabled.",
     "Static llms, OpenAPI, and data-file reads are observed through hosting/access analytics rather than a dedicated event sink.",
     "CR, VAT, license numbers, client logos, testimonials, case studies, certifications, exact coordinates, and Wikidata are intentionally not asserted.",
     "Repository-local architecture files are intentionally excluded from the public Vercel deployment."
   ],
   "freshness": {
-    "lastAudited": "2026-08-31",
+    "lastAudited": "2026-09-08",
     "updateThisMapWhen": [
       "A canonical route is added, removed, or renamed",
       "A data contract or MCP tool changes",
       "Hosting, DNS, repository, analytics, SMTP, or Paperclip ownership changes",
       "A new external service or secret class is introduced",
+      "Demand attributes, redaction, clustering thresholds, retention, private storage or report delivery change",
       "The release pipeline or validation commands change",
       "A visual feature materially changes page behavior",
       "A release changes the production commit or deployment ID"
@@ -1690,6 +1882,7 @@
       "npm run check:markdown",
       "npm run validate:markdown-layer",
       "npm run validate:agent-readiness",
+      "npm run validate:demand-learning",
       "vercel build --prod",
       "npm run validate:deployment-output",
       "npm run validate:live"

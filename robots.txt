@@ -6,27 +6,33 @@ Disallow: /private
 Disallow: /internal
 Disallow: /.vercel
 Disallow: /api/contact
+Disallow: /api/demand-review
 
 # Search and user-directed AI retrieval are allowed.
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /api/contact
+Disallow: /api/demand-review
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /api/contact
+Disallow: /api/demand-review
 
 User-agent: Claude-SearchBot
 Allow: /
 Disallow: /api/contact
+Disallow: /api/demand-review
 
 User-agent: Claude-User
 Allow: /
 Disallow: /api/contact
+Disallow: /api/demand-review
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /api/contact
+Disallow: /api/demand-review
 
 # Model-training crawlers are blocked under Vested KSA's ai-train=no policy.
 User-agent: GPTBot

@@ -38,6 +38,7 @@ const requiredFiles = [
   "docs/advanced-analytics-playbook.md",
   "docs/bing-indexnow.md",
   "docs/markdown-for-agents.md",
+  "docs/demand-learning.md",
   "markdown/manifest.json",
   "middleware.ts",
   "api/markdown.js",
@@ -56,8 +57,20 @@ const requiredFiles = [
   "vercel.json",
   "api/mcp.js",
   "api/a2a.js",
+  "api/demand-review.js",
   "lib/agent-concierge.cjs",
+  "lib/agent-localization.cjs",
+  "lib/demand-capture.cjs",
+  "lib/demand-intelligence.cjs",
+  "lib/demand-mailer.cjs",
+  "lib/demand-reporting.cjs",
+  "lib/demand-storage.cjs",
+  "scripts/report-demand-learning.mjs",
   "test/a2a-agent.test.mjs",
+  "test/demand-intelligence.test.mjs",
+  "test/demand-reporting.test.mjs",
+  "test/demand-review.test.mjs",
+  "test/demand-storage.test.mjs",
 ];
 
 const jsonFiles = requiredFiles.filter((file) => file.endsWith(".json"));
@@ -147,6 +160,9 @@ for (const trainingBot of ["GPTBot", "Google-Extended", "ClaudeBot", "CCBot", "B
 if (!/^Content-Signal: search=yes, ai-input=yes, ai-train=no$/m.test(robots)) {
   fail("robots.txt missing owner-approved Content-Signal policy");
 }
+if ((robots.match(/^Disallow: \/api\/demand-review$/gm) || []).length < 6) {
+  fail("robots.txt must block the private demand review for the global and user-directed crawler groups");
+}
 ok("robots separates search/input crawlers from model-training crawlers and publishes Content-Signal");
 
 const indexNowKeyFile = "29b92482-dc1f-4e7d-8184-cf3de5f9937e.txt";
@@ -173,6 +189,32 @@ if (!contactApi.includes("X-Robots-Tag") || !contactApi.includes("noindex")) {
   fail("api/contact.js missing X-Robots-Tag noindex guidance");
 }
 ok("contact API declares noindex for crawlers");
+
+const privateDemandApi = read("api/demand-review.js");
+if (!privateDemandApi.includes("noindex, nofollow, noarchive") || !privateDemandApi.includes("private, no-store")) {
+  fail("private demand review is missing noindex or no-store controls");
+}
+for (const file of [
+  "sitemap.xml",
+  "llms.txt",
+  "llms-full.txt",
+  "llms-full.md",
+  "openapi.json",
+  ".well-known/agent-card.json",
+  ".well-known/ai-catalog.json",
+  ".well-known/api-catalog.json",
+  ".well-known/mcp.json",
+  ".well-known/mcp/server-card.json",
+  ".well-known/mcp/server-cards.json",
+  ".well-known/agent-skills/index.json",
+  "markdown/manifest.json",
+]) {
+  const content = read(file);
+  if (content.includes("/api/demand-review") || content.includes("vested-demand/v1/")) {
+    fail(`${file} exposes a private demand route or storage namespace`);
+  }
+}
+ok("private demand learning is noindex, no-store, robots-blocked, and absent from public discovery");
 
 const llms = read("llms.txt");
 [
@@ -649,7 +691,7 @@ async function validateA2aRuntime() {
   if (nonFitData?.fit?.classification !== "not_fit" || nonFitData?.inquiry?.prepared !== false) {
     fail("A2A Agent Concierge did not route a vendor pitch away from project inquiry");
   }
-  ok("A2A runtime is protocol-correct, grounded, stateless, and non-submitting");
+  ok("A2A runtime is protocol-correct, grounded, transaction-stateless, bilingual, privately demand-sanitized, and non-submitting");
 }
 
 validateMcpRuntime()

@@ -2,6 +2,7 @@
 
 const { SKILLS, buildConciergeResponse, createMessageId } = require("../lib/agent-concierge.cjs");
 const { blockedForMs, recordAbuse } = require("../lib/agent-abuse-guard.cjs");
+const { scheduleDemandCapture } = require("../lib/demand-capture.cjs");
 const { recordAgentEvent } = require("../lib/server-agent-telemetry.cjs");
 
 const MAX_BODY_BYTES = 32 * 1024;
@@ -193,10 +194,14 @@ async function handlePost(req, res) {
     const params = payload.params || {};
     const text = extractText(params.message);
     const requestedSkill = typeof params.metadata?.skillId === "string" ? params.metadata.skillId : "";
+    const requestedLanguage = typeof params.metadata?.language === "string" ? params.metadata.language.toLowerCase() : "";
     if (requestedSkill && !SKILLS.has(requestedSkill)) {
       throw Object.assign(new Error(`Unknown skillId: ${requestedSkill}`), { rpcCode: -32602 });
     }
-    const result = buildConciergeResponse(text, { skillId: requestedSkill });
+    if (requestedLanguage && !["ar", "en"].includes(requestedLanguage)) {
+      throw Object.assign(new Error(`Unsupported language: ${requestedLanguage}`), { rpcCode: -32602 });
+    }
+    const result = buildConciergeResponse(text, { skillId: requestedSkill, language: requestedLanguage });
     if (result.safety.promptInjectionDetected) recordAbuse(req);
     const responseMessage = {
       messageId: createMessageId(params.message.messageId, text),
@@ -207,6 +212,7 @@ async function handlePost(req, res) {
         company: "Vested KSA",
         skillId: result.skillId,
         fit: result.fit.classification,
+        language: result.language,
         submissionStatus: "not_submitted",
         approvalRequiredForContact: true,
       },
@@ -224,6 +230,18 @@ async function handlePost(req, res) {
     if (result.inquiry.prepared) {
       recordAgentEvent(req, { action: "a2a_inquiry_prepared", ...telemetryDimensions });
     }
+    scheduleDemandCapture(req, {
+      source: "a2a",
+      messageKey: `${params.message.contextId || ""}:${params.message.messageId}`,
+      question: text,
+      agentReply: result.text,
+      language: result.language,
+      fit: result.fit,
+      skillId: result.skillId,
+      matchedServices: result.matchedServices,
+      answerAdequacy: result.fit.classification === "good_fit" ? "answered" : "partial",
+      promptInjectionDetected: result.safety.promptInjectionDetected,
+    });
     sendJson(res, 200, rpcResult(id, { message: responseMessage }));
   } catch (error) {
     const code = error.rpcCode || -32603;

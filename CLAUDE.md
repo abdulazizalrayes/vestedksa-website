@@ -123,3 +123,13 @@ If verification cannot be run, explain why and state the remaining risk.
 - Do not publish or invent CR, VAT, license, certification, or similar legal identifiers. Revisit only after the owner provides approved Vested KSA details.
 - Client logos, testimonials, named client proof, and real or anonymized case studies remain postponed until the owner supplies approved evidence and publication permission.
 - Wikidata creation is explicitly postponed. Do not create or recreate an item until independent reliable sources establish notability and the owner approves the attempt.
+
+## Private Demand Learning
+
+- Demand-learning records belong only to Vested KSA and must stay in the private Blob store connected to Vercel project `project-ivd9v`. Never use a local server, repository file, iCloud, a public Blob, another company's database, or public agent resources as the production store.
+- Read `docs/demand-learning.md` before changing A2A capture, demand extraction, reporting, retention, owner feedback, Cron or Blob behavior.
+- Store only sanitized, confirmed good-fit client or potential-client demand. Exclude raw conversations, names, emails, phones, identifiers, confidential content, ambiguous supplier intent, careers, internships, training, inbound supplier pitches, spam, synthetic tests and suspected poisoned input.
+- The public concierge remains deterministic and separate. Demand records and owner feedback must never enter A2A, MCP, Markdown, llms files, OpenAPI or public answers.
+- Statistical summaries are not model training. The bounded TF-IDF similarity clustering is exploratory unsupervised analysis and must remain disabled below its evidence threshold.
+- Never change services, availability, pricing, public answers or page copy from a report automatically. Present evidence, uncertainty and source quality for owner approval.
+- Retain sanitized events for 90 days and private reports/feedback for 180 days. Run and verify deletion tests with every material change.

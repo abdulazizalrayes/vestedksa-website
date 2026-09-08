@@ -46,7 +46,10 @@ function requestBody(text, options = {}) {
         parts: options.parts || [{ text }],
         ...(options.contextId ? { contextId: options.contextId } : {}),
       },
-      ...(options.skillId ? { metadata: { skillId: options.skillId } } : {}),
+      ...(options.skillId || options.language ? { metadata: {
+        ...(options.skillId ? { skillId: options.skillId } : {}),
+        ...(options.language ? { language: options.language } : {}),
+      } } : {}),
       ...(options.outputModes ? { configuration: { acceptedOutputModes: options.outputModes } } : {}),
     },
   });
@@ -72,6 +75,40 @@ test("Agent Concierge routes vendor pitches away from project inquiries", () => 
   assert.equal(result.fit.classification, "not_fit");
   assert.equal(result.fit.shouldPrepareInquiry, false);
   assert.equal(result.inquiry.prepared, false);
+});
+
+test("Agent Concierge distinguishes a client supplier-registration need from an inbound supplier pitch", () => {
+  const client = buildConciergeResponse("We are an international supplier that needs vendor registration with Aramco in Saudi Arabia.");
+  assert.equal(client.fit.classification, "good_fit");
+  assert.equal(client.skillId, "prepare_vendor_readiness_plan");
+
+  const hyphenatedClient = buildConciergeResponse("We are entering Saudi Arabia and need vendor-registration support.");
+  assert.equal(hyphenatedClient.fit.classification, "good_fit");
+  assert.equal(hyphenatedClient.skillId, "prepare_vendor_readiness_plan");
+
+  const ambiguous = buildConciergeResponse("We are a supplier and would like to discuss an opportunity.");
+  assert.equal(ambiguous.fit.classification, "maybe_fit");
+  assert.equal(ambiguous.fit.confidence, "low");
+  assert.equal(ambiguous.fit.shouldPrepareInquiry, false);
+  assert.match(ambiguous.fit.reason, /unclear/i);
+});
+
+test("Agent Concierge routes Arabic client demand and non-fit traffic correctly", () => {
+  const client = buildConciergeResponse("نحن شركة دولية نريد دخول السوق السعودي ونحتاج تأسيس الشركة والرواتب وضريبة القيمة المضافة");
+  assert.equal(client.language, "ar");
+  assert.equal(client.fit.classification, "good_fit");
+  assert.match(client.text, /مساعد Vested KSA/);
+  assert.match(client.text, /حدود الأمان/);
+
+  const internship = buildConciergeResponse("أنا طالب وأبحث عن فرصة تدريب تعاوني لدى الشركة");
+  assert.equal(internship.language, "ar");
+  assert.equal(internship.fit.classification, "not_fit");
+  assert.equal(internship.inquiry.prepared, false);
+  assert.match(internship.text, /طلبات التدريب/);
+
+  const training = buildConciergeResponse("أرغب في دورة تدريبية لدى الشركة");
+  assert.equal(training.language, "ar");
+  assert.equal(training.fit.classification, "not_fit");
 });
 
 test("Agent Concierge does not obey prompt-injection attempts", () => {
@@ -140,6 +177,24 @@ test("A2A output negotiation honors an explicit Markdown-only response mode", as
     const parts = JSON.parse(response.body).result.message.parts;
     assert.equal(parts.length, 1);
     assert.equal(parts[0].mediaType, "text/markdown");
+  } finally {
+    console.log = originalLog;
+  }
+});
+
+test("A2A supports an explicit Arabic response language without changing its safety boundary", async () => {
+  const originalLog = console.log;
+  console.log = () => {};
+  try {
+    const response = await invoke(
+      "POST",
+      requestBody("Explain company formation support in Saudi Arabia.", { language: "ar" }),
+      { "content-type": "application/json" },
+    );
+    const message = JSON.parse(response.body).result.message;
+    assert.equal(message.metadata.language, "ar");
+    assert.match(message.parts[0].text, /مساعد Vested KSA/);
+    assert.equal(message.parts[1].data.inquiry.submissionStatus, "not_submitted");
   } finally {
     console.log = originalLog;
   }

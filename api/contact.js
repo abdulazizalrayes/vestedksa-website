@@ -1,5 +1,8 @@
 "use strict";
 
+const { assessFit, detectLanguage } = require("../lib/agent-concierge.cjs");
+const { scheduleDemandCapture } = require("../lib/demand-capture.cjs");
+
 const ALLOWED_ORIGINS = new Set([
   "https://vestedksa.com",
   "https://www.vestedksa.com",
@@ -16,6 +19,15 @@ const MAX_BODY_BYTES = 32 * 1024;
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 8;
 const RATE_LIMIT_MAX_KEYS = 1000;
+const CONTACT_SERVICE_IDS = {
+  formation: "company-formation-setup",
+  operations: "managed-local-operations",
+  hr: "hr-payroll-saudization",
+  finance: "finance-vat-zakat-controls",
+  legal: "legal-compliance-coordination",
+  workspace: "workspace-facilities",
+  outsourcing: "managed-local-operations",
+};
 
 function setCorsHeaders(req, res) {
   const origin = req.headers.origin;
@@ -383,6 +395,24 @@ module.exports = async function handler(req, res) {
     }
 
     await sendLeadAlertEmail(lead);
+
+    const demandText = `${lead.service} ${lead.message}`.toLowerCase();
+    const demandContext = `${lead.service} ${lead.country} ${lead.message}`.toLowerCase();
+    const language = detectLanguage(lead.message);
+    const fit = assessFit(demandText, language);
+    scheduleDemandCapture(req, {
+      source: "contact_inquiry",
+      messageKey: String(req.headers["idempotency-key"] || `${lead.service}:${lead.country}:${lead.message}`),
+      question: demandText,
+      demandContext,
+      agentReply: "",
+      language,
+      fit,
+      skillId: "contact_inquiry",
+      matchedServices: CONTACT_SERVICE_IDS[lead.service] ? [CONTACT_SERVICE_IDS[lead.service]] : [],
+      answerAdequacy: "unanswered",
+      promptInjectionDetected: false,
+    });
 
     json(res, 200, {
       ok: true,

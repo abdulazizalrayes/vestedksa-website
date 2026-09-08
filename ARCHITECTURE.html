@@ -916,7 +916,7 @@
       <div class="diagram-panel">
         <div class="drift-banner">
           <span class="drift-mark">R</span>
-          <span><strong>Validated architecture:</strong> Vested KSA combines unchanged public HTML with deterministic Markdown, structured data, read-only MCP, and an A2A 1.0 Agent Concierge. Production evidence and rollback are recorded in VES-406.</span>
+          <span><strong>Validated architecture:</strong> Vested KSA combines unchanged public HTML with deterministic Markdown, structured data, read-only MCP, a bilingual A2A 1.0 Agent Concierge, and isolated private demand learning. Production evidence and rollback are recorded in VES-406.</span>
         </div>
         <div class="diagram-scroll">
           <div class="diagram" id="diagram">
@@ -941,7 +941,7 @@
     <footer class="footer">
       <span><strong>Authority:</strong> ARCHITECTURE.json</span>
       <span><strong>Source:</strong> GitHub main</span>
-      <span><strong>Audited:</strong> 2026-08-31</span>
+      <span><strong>Audited:</strong> 2026-09-08</span>
       <span><strong>Production:</strong> vestedksa.com</span>
     </footer>
   </main>
@@ -968,10 +968,12 @@
 
       { id: "static-site", layer: "application", name: "Static multipage site", kind: "frontend", description: "Twenty canonical pages, three languages, eight guides, and six public downloads.", files: ["*.html", "ar/index.html", "zh/index.html", "insights/*.html"], owner: "Vested KSA website" },
       { id: "contact-form", layer: "application", name: "Contact surfaces", kind: "frontend", description: "Collects required market-entry inquiry fields, exposes the verified phone number, and opens WhatsApp with a Vested KSA website source message.", files: ["contact.html", "canonical page footers"], owner: "Vested KSA lead intake" },
-      { id: "contact-api", layer: "application", name: "Contact API", kind: "serverless function", description: "Validates, rate-limits, sanitizes, and delivers approved inquiries over TLS SMTP.", files: ["api/contact.js"], owner: "Vested KSA lead delivery" },
+      { id: "contact-api", layer: "application", name: "Contact API", kind: "serverless function", description: "Validates, rate-limits, sanitizes, and delivers approved inquiries over TLS SMTP, then extracts only approved private demand from successful inquiries.", files: ["api/contact.js", "lib/demand-capture.cjs"], owner: "Vested KSA lead delivery" },
       { id: "markdown-api", layer: "application", name: "Markdown API", kind: "serverless function", description: "Returns allowlisted Markdown with canonical, language, clean location, Vary, Content-Signal, direct noindex headers, and privacy-safe read telemetry.", files: ["api/markdown.js", "lib/markdown-assets.cjs", "lib/server-agent-telemetry.cjs"], owner: "Agent-readiness layer" },
       { id: "mcp-api", layer: "application", name: "Read-only MCP", kind: "serverless function", description: "Exposes eleven typed tools and sixteen public resources without external submission, with a 32 KiB request cap, repeated-invalid-request guard, and privacy-safe telemetry.", files: ["api/mcp.js", "lib/agent-abuse-guard.cjs", "lib/server-agent-telemetry.cjs"], owner: "Agent-readiness layer" },
-      { id: "a2a-api", layer: "application", name: "Agent Concierge", kind: "serverless function", description: "Implements A2A 1.0 JSON-RPC SendMessage with deterministic, cited, stateless guidance, a 32 KiB request cap, repeated-abuse guard, and no contact actions.", files: ["api/a2a.js", "lib/agent-abuse-guard.cjs", "lib/agent-concierge.cjs", "data/agent-concierge.json"], owner: "Agent-readiness layer" },
+      { id: "a2a-api", layer: "application", name: "Agent Concierge", kind: "serverless function", description: "Implements bilingual English/Arabic A2A 1.0 JSON-RPC SendMessage with deterministic cited guidance, ambiguity controls, a 32 KiB request cap, repeated-abuse guard, and no contact actions.", files: ["api/a2a.js", "lib/agent-abuse-guard.cjs", "lib/agent-concierge.cjs", "lib/agent-localization.cjs", "data/agent-concierge.json"], owner: "Agent-readiness layer" },
+      { id: "demand-sanitizer", layer: "application", name: "Demand sanitizer", kind: "private processing", description: "Redacts identifiers, extracts approved commercial demand, and excludes non-fit, synthetic, abusive, poisoned, internship, career, and supplier-pitch traffic.", files: ["lib/demand-intelligence.cjs", "lib/demand-capture.cjs"], owner: "Private demand learning" },
+      { id: "demand-review-api", layer: "application", name: "Private demand review", kind: "serverless function", description: "Produces daily statistics, bounded unsupervised clustering, Monday question/answer review, retention cleanup, and authenticated owner feedback without public exposure.", files: ["api/demand-review.js", "lib/demand-reporting.cjs", "lib/demand-storage.cjs"], owner: "Vested owner review" },
       { id: "csp-report-api", layer: "application", name: "CSP report collector", kind: "serverless function", description: "Receives bounded report-only CSP violations and logs only sanitized paths, origins, and directives.", files: ["api/csp-report.js"], owner: "Security observability" },
 
       { id: "html-jsonld", layer: "content", name: "HTML and JSON-LD", kind: "content", description: "Canonical public content with page-specific ProfessionalService, Service, Article, FAQ, breadcrumb, and page schemas.", files: ["20 canonical HTML files"], owner: "SEO and content" },
@@ -984,13 +986,16 @@
       { id: "agent-discovery", layer: "discovery", name: "Agent and API discovery", kind: "discovery", description: "A2A Agent Card, ARD catalog, API catalog, MCP cards, agent skills, OpenAPI, and explicit anonymous-access auth guidance.", files: [".well-known/*", "openapi.json", "auth.md"], owner: "Agent-readiness layer" },
       { id: "markdown-manifest", layer: "discovery", name: "Markdown manifest", kind: "discovery", description: "Maps each canonical HTML route to its clean direct Markdown URL and legacy sidecar.", files: ["markdown/manifest.json"], owner: "Markdown generator" },
 
-      { id: "smtp-service", layer: "external", name: "Private-email SMTP", kind: "external service", description: "Receives validated inquiry email from the contact function over TLS.", files: ["Environment variables only"], owner: "Vested KSA mailbox" },
+      { id: "smtp-service", layer: "external", name: "Private-email SMTP", kind: "external service", description: "Receives validated inquiry email and private sanitized demand reports over TLS.", files: ["Environment variables only"], owner: "Vested KSA mailbox" },
+      { id: "private-blob", layer: "external", name: "Vested Private Blob", kind: "private storage", description: "Store store_ZjYAmEOEFgdPRT3y in iad1 stores immutable sanitized Vested demand events for 90 days and reports/feedback for 180 days, with no public delivery path and a production-only project connection.", files: ["BLOB_READ_WRITE_TOKEN", "vested-demand/v1/*"], owner: "Vercel project project-ivd9v" },
+      { id: "vercel-cron", layer: "external", name: "Vercel Cron", kind: "scheduler", description: "Runs the private report at 03:15 UTC / 06:15 Riyadh each day and adds a seven-day review on Monday.", files: ["vercel.json", "CRON_SECRET"], owner: "Vercel project project-ivd9v" },
+      { id: "owner-feedback", layer: "external", name: "Vested owner feedback", kind: "private input", description: "Attaches sanitized owner guidance and improved-answer proposals without approving publication or agent training.", files: ["DEMAND_REVIEW_TOKEN"], owner: "Vested KSA owner" },
       { id: "ga4-gtm", layer: "external", name: "GA4 and GTM", kind: "external service", description: "Loads only after visitor consent for client events, including privacy-safe phone and WhatsApp clicks; optionally receives coarse server-side agent events through a Vested-only Measurement Protocol secret.", files: ["analytics-loader.js", "G-7STG2HDV42", "GTM-WL2FN4PR", "GA4_API_SECRET"], owner: "Vested analytics" },
       { id: "google-search", layer: "external", name: "Google Search Console", kind: "external service", description: "Sitemap, indexing, search performance, and rich-result operations.", files: ["googled1234567890.html"], owner: "Vested search property" },
       { id: "bing-indexnow", layer: "external", name: "Bing and IndexNow", kind: "external service", description: "Sitemap operations and explicit URL-change notifications.", files: ["scripts/submit-indexnow.mjs", "IndexNow key file"], owner: "Vested Bing property" },
 
       { id: "github", layer: "operations", name: "GitHub source", kind: "operations", description: "Repository, branch, commit history, and rollback source.", files: ["abdulazizalrayes/vestedksa-website"], owner: "Vested source owner" },
-      { id: "validation-suite", layer: "operations", name: "Validation suite", kind: "operations", description: "Determinism, schema, A2A, MCP, SEO, build inventory, live endpoint, and dependency checks.", files: ["scripts/validate-*.js", "scripts/validate-*.mjs"], owner: "Release engineering" },
+      { id: "validation-suite", layer: "operations", name: "Validation suite", kind: "operations", description: "Determinism, schema, bilingual routing, redaction, isolation, retention, poison resistance, clustering, A2A, MCP, SEO, build inventory, live endpoint, and dependency checks.", files: ["scripts/validate-*.js", "scripts/validate-*.mjs", "test/demand-*.test.mjs"], owner: "Release engineering" },
       { id: "vercel-deploy", layer: "operations", name: "Vercel deployment", kind: "operations", description: "Builds and publishes the exact validated artifact to vestedksa.com.", files: ["project-ivd9v", "VES-406 release evidence"], owner: "Vercel team" },
       { id: "paperclip-record", layer: "operations", name: "Paperclip VES-406", kind: "operations", description: "Stores identity lock, release evidence, cost, deployment, verification, and rollback.", files: ["VES-406"], owner: "Vested KSA workspace VES" }
     ];
@@ -1071,7 +1076,23 @@
           ["routing-contracts", "a2a-api", "Apply fit and approval rules"],
           ["a2a-api", "ai-agents", "Return direct text and structured data"]
         ],
-        invariants: ["No contact actions", "No conversation or prompt storage", "No regulated-outcome guarantee", "Inquiry status stays not_submitted", "Content-Signal remains ai-train=no"]
+        invariants: ["No contact actions", "No raw conversation, identifier, or confidential-project storage", "Only approved sanitized demand attributes may enter the private learning store", "No regulated-outcome guarantee", "Inquiry status stays not_submitted", "Content-Signal remains ai-train=no"]
+      },
+      {
+        id: "private-demand-learning",
+        name: "Private demand learning and owner review",
+        trigger: "A confirmed good-fit client or potential-client question is answered, or a good-fit approved contact inquiry is delivered",
+        steps: [
+          ["a2a-api", "demand-sanitizer", "Pass response context after answering"],
+          ["contact-api", "demand-sanitizer", "Pass inquiry context only after successful delivery"],
+          ["demand-sanitizer", "private-blob", "Persist redacted approved demand attributes"],
+          ["vercel-cron", "demand-review-api", "Run bounded daily analysis and Monday review"],
+          ["private-blob", "demand-review-api", "Read Vested-only retained records"],
+          ["demand-review-api", "smtp-service", "Send private evidence-backed report"],
+          ["owner-feedback", "demand-review-api", "Attach sanitized owner guidance"],
+          ["demand-review-api", "private-blob", "Store private report and feedback; apply retention"]
+        ],
+        invariants: ["Vested KSA only", "No raw conversation or personal identifiers", "Synthetic, spam, abuse, careers, internships, and supplier pitches are excluded", "No public API or agent access", "No automatic model retraining, publication, pricing, availability, or offering changes", "Counts are statistical reporting; clustering runs only above the evidence threshold", "Content-Signal remains ai-train=no"]
       },
       {
         id: "approved-contact-inquiry",
@@ -1125,6 +1146,9 @@
       ["critical", "Contact approval", "Agents require explicit user approval before using /api/contact."],
       ["high", "Verified facts only", "Do not invent legal numbers, coordinates, certifications, social links, clients, testimonials, or cases."],
       ["critical", "Privacy", "Do not expose secrets or log personal and confidential inquiry data."],
+      ["critical", "Private demand isolation", "Sanitized learning records remain inside the Vested Vercel project and are never exposed through HTML, Markdown, llms, OpenAPI, MCP, A2A, sitemap, or public structured data."],
+      ["high", "Learning retention", "Retain sanitized demand events for 90 days and reports or owner feedback for 180 days, then delete them during the bounded daily job."],
+      ["critical", "No automatic learning action", "Demand analysis never retrains the public agent, publishes an answer, adds an offering, claims availability, changes pricing, or changes production without owner approval."],
       ["high", "Deployment integrity", "Do not deploy if validation fails or duplicate numbered files enter the build."]
     ];
 
@@ -1135,6 +1159,9 @@
       ["Contact request", "contact.html", "api/contact.js", "Required inquiry fields; honeypot must remain empty."],
       ["MCP JSON-RPC", "api/mcp.js", "MCP-capable agents", "JSON-RPC 2.0, MCP 2025-11-25 current, read-only tools and resources."],
       ["A2A JSON-RPC", "api/a2a.js", "A2A-capable agents", "A2A 1.0 SendMessage returns a direct cited response without stored tasks or contact actions."],
+      ["Private demand event", "lib/demand-intelligence.cjs", "Vested Private Blob and demand reporting only", "Approved commercial attributes and sanitized question/answer text only; no names, emails, phone numbers, source identifiers, confidential details, synthetic activity, non-fit traffic, spam, abuse, or poisoning."],
+      ["Private demand report", "lib/demand-reporting.cjs", "Authenticated Vested owner review and private email only", "Counts include analysis period, uncertainty, genuine-versus-synthetic provenance, limitations, and modelTrained=false; clustering is bounded and threshold-gated."],
+      ["Owner demand feedback", "api/demand-review.js", "Private report history only", "Sanitized owner guidance and proposed improved reply; cannot approve publication, agent retraining, offering, pricing, or availability changes."],
       ["Analytics taxonomy", "data/analytics-events.json", "Page scripts, middleware, serverless functions, GA4, Vercel logs", "No IP addresses, full user agents, query strings, personal information, prompts, or inquiry content in events."]
     ];
 
@@ -1145,6 +1172,7 @@
       ["Change Markdown behavior", "Generator + middleware + negotiation + Markdown API + discovery docs + unit/live tests."],
       ["Change MCP", "MCP function + discovery cards + OpenAPI + llms + manifest + schema registry."],
       ["Change A2A Concierge", "A2A function + Concierge logic and contract + Agent Card + discovery + OpenAPI + tests."],
+      ["Change private demand learning", "Sanitizer + storage + reporting + private review API + retention + privacy, isolation, poisoning, bilingual, and release tests; keep all public discovery surfaces unchanged."],
       ["Change analytics", "Analytics taxonomy + page trackers + reporting docs, with a privacy review."],
       ["Release", "Run all local/build/live gates, deploy exact artifact, submit IndexNow, record VES-406."]
     ];

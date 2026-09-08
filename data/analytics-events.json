@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2026-08-31",
+  "schemaVersion": "2026-09-08",
   "resourceType": "analytics-event-taxonomy",
   "company": "Vested KSA",
   "privacyRules": [
@@ -8,6 +8,7 @@
     "Server logs for agent surfaces should record route paths, tool or resource names, and broad user-agent class, not IP addresses, full user agents, query strings, prompts, or private inquiry details.",
     "Use only allowlisted fit outcomes and routing names, and exclude validation-probe traffic from commercial funnel reporting.",
     "Contact form submission analytics should record success/failure and service interest, not message body."
+    ,"Demand-learning telemetry must contain only coarse capture outcomes; sanitized question and answer records belong only in the private Vested Blob store."
   ],
   "keyEvents": [
     {
@@ -87,8 +88,17 @@
     "a2a_message_send",
     "a2a_non_fit_routed",
     "a2a_inquiry_prepared",
-    "a2a_error"
+    "a2a_error",
+    "demand_learning_recorded",
+    "demand_learning_duplicate",
+    "demand_learning_excluded"
   ],
+  "privateDemandLearning": {
+    "analyticsPurpose": "Measure sanitized demand-capture operation without sending question or answer text to GA4.",
+    "allowedDimensions": ["fit_outcome", "route_name", "tool_name", "agent_class"],
+    "forbiddenDimensions": ["question", "agent_reply", "owner_reply", "record_id", "IP address", "email", "phone"],
+    "recordStore": "Private Vested-only Vercel Blob; never a public analytics event."
+  },
   "agentFunnelReport": {
     "command": "npm run report:agent-funnel",
     "source": "Vested Vercel JSONL logs filtered to agent_readiness_event",

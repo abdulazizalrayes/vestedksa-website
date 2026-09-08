@@ -13,12 +13,14 @@
     "url": "https://vestedksa.com"
   },
   "version": "1.0.0",
+  "supportedLanguages": ["en", "ar"],
   "documentationUrl": "https://vestedksa.com/agent-readiness.md",
   "iconUrl": "https://vestedksa.com/favicon.svg",
   "capabilities": {
     "streaming": false,
     "pushNotifications": false,
-    "extendedAgentCard": false
+    "extendedAgentCard": false,
+    "bilingualResponses": true
   },
   "defaultInputModes": [
     "text/plain"
@@ -27,6 +29,14 @@
     "text/plain",
     "application/json"
   ],
+  "privacy": {
+    "storesRawConversations": false,
+    "storesPersonalIdentifiers": false,
+    "storesSanitizedDemandSignals": true,
+    "sanitizedDemandRetentionDays": 90,
+    "recordsArePubliclyAccessible": false,
+    "automaticallyRetrainsAgent": false
+  },
   "skills": [
     {
       "id": "assess_market_entry_fit",

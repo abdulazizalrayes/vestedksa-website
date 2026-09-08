@@ -1,9 +1,9 @@
 {
-  "schemaVersion": "2026-08-31",
+  "schemaVersion": "2026-09-08",
   "resourceType": "agent-concierge-contract",
   "company": "Vested KSA",
   "name": "Vested KSA Agent Concierge",
-  "description": "A public, read-only advisory agent for Saudi market-entry fit, Vested KSA services, operating-readiness briefs, procurement readiness, and inquiry preparation.",
+  "description": "A bilingual English and Arabic public, read-only advisory agent for Saudi market-entry fit, Vested KSA services, operating-readiness briefs, procurement readiness, and inquiry preparation.",
   "status": "production-pilot",
   "protocol": {
     "name": "A2A",
@@ -18,7 +18,9 @@
     "outputModes": [
       "text/plain",
       "application/json"
-    ]
+    ],
+    "responseLanguages": ["en", "ar"],
+    "languageSelection": "Explicit metadata.language when it is en or ar; otherwise deterministic script detection with English as the conservative fallback."
   },
   "skills": [
     {
@@ -73,6 +75,9 @@
   "safety": {
     "readOnly": true,
     "storesConversations": false,
+    "storesSanitizedDemandSignals": true,
+    "rawConversationRetentionDays": 0,
+    "sanitizedDemandRetentionDays": 90,
     "logsPromptsOrPersonalData": false,
     "submitsForms": false,
     "sendsEmail": false,
@@ -81,6 +86,16 @@
     "writesToCrm": false,
     "providesLegalOrTaxAdvice": false,
     "nonFitRequestsUseProjectInquiry": false
+  },
+  "privateDemandLearning": {
+    "separateFromPublicAnswers": true,
+    "automaticallyRetrainsPublicAgent": false,
+    "publiclyAccessible": false,
+    "eligibleTraffic": "Confirmed good-fit client or potential-client questions and successful good-fit contact inquiries only.",
+    "excludedTraffic": ["ambiguous supplier intent", "sensitive or confidential context", "careers", "internships", "training", "vendor pitches", "spam", "suspected prompt injection", "synthetic validation"],
+    "storedContent": "Sanitized question, deterministic agent reply, approved demand attributes, fit and answer-adequacy metadata.",
+    "neverStored": ["raw conversation", "names", "email addresses", "telephone numbers", "source identifiers", "IP addresses", "confidential attachments"],
+    "ownerApprovalRequiredForChanges": true
   },
   "contentSignal": "search=yes, ai-input=yes, ai-train=no",
   "sourcePolicy": [
