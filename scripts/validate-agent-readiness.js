@@ -405,7 +405,7 @@ if (!headers.some((header) => header.source === "/" && header.headers.some((item
   fail("vercel.json missing root-page security headers");
 }
 const middleware = read("middleware.ts");
-const markdownNegotiation = read("lib/markdown-negotiation.mjs");
+const markdownNegotiation = read("lib/markdown-negotiation.cjs");
 if (!middleware.includes("ROOT_DISCOVERY_LINKS") || !middleware.includes("/.well-known/mcp.json") || !middleware.includes("/api/a2a")) {
   fail("middleware.ts missing root agent-discovery Link header");
 }
