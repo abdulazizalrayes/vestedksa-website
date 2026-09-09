@@ -104,6 +104,9 @@ If verification cannot be run, explain why and state the remaining risk.
 
 ## Cloud Paperclip Operations
 
+- Owner authorization: use `abdulaziz.alrayes@gmail.com` for Paperclip/Cloudflare Access login and retrieve only the matching one-time code from that mailbox. Complete normal sign-in on the owner's behalf without requesting authorization again. Never record codes, cookies, or credentials. Reconfirmed 2026-09-09.
+- Live audit 2026-09-09: authenticated VES account menu showed `deployment/v2026.831.1-cloud-models-20260904`, commit `0a47a1a72af0e1a9092b85de708c06ad4454dae6`. All 28 agents idle, zero current errors and blocked tasks. The live OpenCode selector includes big-pickle but still omits deepseek-v4-flash-free; do not silently substitute a helper.
+
 - This repository and its Paperclip work belong only to Vested KSA. Do not mix agents, tasks, credentials, instructions, workspaces, or account ownership with another company.
 - The cloud Paperclip instance is `https://ai.eijarat.com`. Treat it as a changing external system: before Paperclip work, verify the running release through `/api/health` or the signed-in account menu, confirm the Vested KSA dashboard loads, and check the authoritative agent/task status. Do not assume behavior from an older release.
 - The shared cloud service was reported upgraded to stable `v2026.824.1` on 2026-08-28. Reverify `/api/health`, the live version, and the authenticated Vested workspace before every Paperclip operation instead of treating this notice as permanent.

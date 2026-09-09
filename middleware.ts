@@ -5,7 +5,7 @@ import {
   resolveMarkdownEntry,
   resolveSidecarEntry,
   selectRepresentation,
-} from './lib/markdown-negotiation.mjs';
+} from './lib/markdown-negotiation.cjs';
 import { MARKDOWN_ROUTES } from './markdown-routes';
 
 const manifest = {
@@ -13,6 +13,7 @@ const manifest = {
 };
 
 export const config = {
+  runtime: 'nodejs',
   matcher: [
     '/',
     '/ar',
