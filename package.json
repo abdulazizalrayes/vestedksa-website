@@ -2,6 +2,9 @@
   "name": "vestedksa-website",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "test": "node --test test/*.test.mjs",
     "generate:markdown": "node scripts/generate-markdown-companions.mjs",
@@ -20,10 +23,10 @@
   },
   "dependencies": {
     "@vercel/blob": "^2.8.0",
-    "@vercel/functions": "^2.2.13"
+    "@vercel/functions": "^3.9.6"
   },
   "devDependencies": {
-    "fast-xml-parser": "^5.10.1",
-    "parse5": "^7.2.1"
+    "fast-xml-parser": "^5.11.1",
+    "parse5": "^8.0.1"
   }
 }

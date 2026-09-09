@@ -154,6 +154,7 @@ const globalHeaders = vercel.headers.find((entry) => entry.source === "/:path*")
 const globalHeaderMap = Object.fromEntries(globalHeaders.map((header) => [header.key.toLowerCase(), header.value]));
 assert.equal(globalHeaderMap["content-signal"], "search=yes, ai-input=yes, ai-train=no");
 assert.match(globalHeaderMap["content-security-policy-report-only"] || "", /report-uri \/api\/csp-report/);
+assert.match(globalHeaderMap["content-security-policy"] || "", /default-src 'self'/);
 assert.equal(globalHeaderMap["reporting-endpoints"], 'csp-endpoint="https://vestedksa.com/api/csp-report"');
 assert.ok(fs.existsSync(path.join(ROOT, "api/csp-report.js")), "CSP reporting endpoint is missing");
 const aiCatalogHeaders = vercel.headers.find((entry) => entry.source === "/.well-known/ai-catalog.json")?.headers || [];

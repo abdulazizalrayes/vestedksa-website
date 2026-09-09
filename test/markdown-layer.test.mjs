@@ -69,6 +69,7 @@ test("HTML and HEAD metadata advertise the page-specific clean Markdown URL", ()
   assert.equal(headers.Vary, "Accept");
   assert.equal(headers["Content-Signal"], CONTENT_SIGNAL);
   assert.match(headers["Content-Security-Policy-Report-Only"], /report-uri \/api\/csp-report/);
+  assert.match(headers["Content-Security-Policy"], /default-src 'self'/);
   assert.equal(
     headers["Reporting-Endpoints"],
     'csp-endpoint="https://vestedksa.com/api/csp-report"',
