@@ -13,7 +13,6 @@ const manifest = {
 };
 
 export const config = {
-  runtime: 'nodejs',
   matcher: [
     '/',
     '/ar',
