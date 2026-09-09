@@ -105,12 +105,21 @@ function escapeMarkdown(value) {
     .replace(/_/g, "\\_");
 }
 
+function escapeMarkdownCode(value) {
+  return String(value || "").replace(/\\/g, "\\\\").replace(/`/g, "\\`");
+}
+
+function escapeMarkdownTableCell(value) {
+  return String(value || "").replace(/\\/g, "\\\\").replace(/\|/g, "\\|");
+}
+
 function absoluteUrl(href, canonical) {
-  if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("javascript:")) return href;
+  if (!href || href.startsWith("#")) return href;
   try {
-    return new URL(href, canonical).toString();
+    const parsed = new URL(href, canonical);
+    return new Set(["http:", "https:", "mailto:", "tel:"]).has(parsed.protocol) ? parsed.toString() : "";
   } catch {
-    return href;
+    return "";
   }
 }
 
@@ -128,7 +137,7 @@ function renderInline(node, canonical) {
   }
   if (node.tagName === "strong" || node.tagName === "b") return text ? `**${text}**` : "";
   if (node.tagName === "em" || node.tagName === "i") return text ? `_${text}_` : "";
-  if (node.tagName === "code") return text ? `\`${text.replace(/`/g, "\\`")}\`` : "";
+  if (node.tagName === "code") return text ? `\`${escapeMarkdownCode(text)}\`` : "";
   if (node.tagName === "img") {
     const alt = normalizeText(attr(node, "alt"));
     const src = absoluteUrl(attr(node, "src"), canonical);
@@ -141,7 +150,7 @@ function renderTable(node, canonical) {
   const rows = findAll(node, (item) => item.tagName === "tr").map((row) => {
     return (row.childNodes || [])
       .filter((cell) => cell.tagName === "th" || cell.tagName === "td")
-      .map((cell) => normalizeText(renderInline(cell, canonical)).replace(/\|/g, "\\|"));
+      .map((cell) => escapeMarkdownTableCell(normalizeText(renderInline(cell, canonical))));
   }).filter((row) => row.length);
 
   if (!rows.length) return "";
@@ -258,7 +267,7 @@ function extractPublicLinks(main, canonical) {
         text: normalizeText(textContent(node)),
         href: absoluteUrl(attr(node, "href"), canonical),
       }))
-      .filter((item) => item.text && item.href && !item.href.startsWith("#") && !item.href.startsWith("javascript:")),
+      .filter((item) => item.text && item.href && !item.href.startsWith("#")),
     (item) => `${item.text}\n${item.href}`
   );
 }
@@ -416,8 +425,14 @@ function buildMarkdownForPage(url) {
 function writeIfChanged(file, content) {
   const absolute = path.join(ROOT, file);
   fs.mkdirSync(path.dirname(absolute), { recursive: true });
-  if (fs.existsSync(absolute) && fs.readFileSync(absolute, "utf8") === content) return false;
-  fs.writeFileSync(absolute, content);
+  try {
+    if (fs.readFileSync(absolute, "utf8") === content) return false;
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+  }
+  const temporary = `${absolute}.${process.pid}.tmp`;
+  fs.writeFileSync(temporary, content);
+  fs.renameSync(temporary, absolute);
   return true;
 }
 

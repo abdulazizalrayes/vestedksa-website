@@ -3,7 +3,18 @@ import path from "node:path";
 import { XMLParser } from "fast-xml-parser";
 
 const ROOT = process.cwd();
-const BASE_URL = String(process.env.BASE_URL || "https://vestedksa.com").replace(/\/+$/, "");
+const baseUrl = new URL(String(process.env.BASE_URL || "https://vestedksa.com"));
+const allowedPreviewHost = /^project-ivd9v-[a-z0-9-]+-abdulazizalrayes-3914s-projects\.vercel\.app$/;
+if (
+  baseUrl.protocol !== "https:" ||
+  !(["vestedksa.com", "www.vestedksa.com"].includes(baseUrl.hostname) || allowedPreviewHost.test(baseUrl.hostname)) ||
+  baseUrl.username ||
+  baseUrl.password ||
+  baseUrl.port
+) {
+  throw new Error("BASE_URL must be the Vested KSA production domain or its approved Vercel preview host.");
+}
+const BASE_URL = baseUrl.origin;
 const CONTENT_SIGNAL = "search=yes, ai-input=yes, ai-train=no";
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, "markdown", "manifest.json"), "utf8"));
 const failures = [];
@@ -16,9 +27,14 @@ function fail(message) {
 
 async function fetchChecked(pathname, options = {}) {
   try {
+    if (typeof pathname !== "string" || !pathname.startsWith("/") || pathname.startsWith("//")) {
+      throw new Error("request path must be root-relative");
+    }
+    const requestUrl = new URL(pathname, `${BASE_URL}/`);
+    if (requestUrl.origin !== BASE_URL) throw new Error("request escaped the approved Vested KSA origin");
     const headers = new Headers(options.headers || {});
     if (!headers.has("User-Agent")) headers.set("User-Agent", "Vested-Validation/1.0");
-    return await fetch(`${BASE_URL}${pathname}`, { redirect: "manual", ...options, headers });
+    return await fetch(requestUrl, { redirect: "manual", ...options, headers });
   } catch (error) {
     fail(`${pathname}: request failed (${error.message})`);
     return null;

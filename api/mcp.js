@@ -102,7 +102,18 @@ function normalizePublicResourceName(value) {
   const input = String(value || "").trim();
   if (!input) return "";
 
-  const withoutOrigin = input.replace(/^https?:\/\/(?:www\.)?vestedksa\.com/i, "");
+  let withoutOrigin = input;
+  if (/^https?:\/\//i.test(input)) {
+    let resourceUrl;
+    try {
+      resourceUrl = new URL(input);
+    } catch {
+      return "";
+    }
+    if (!["vestedksa.com", "www.vestedksa.com"].includes(resourceUrl.hostname.toLowerCase())) return "";
+    if (!["http:", "https:"].includes(resourceUrl.protocol) || resourceUrl.username || resourceUrl.password || resourceUrl.port) return "";
+    withoutOrigin = resourceUrl.pathname;
+  }
   const withoutLeadingSlash = withoutOrigin.replace(/^\/+/, "");
 
   if (withoutLeadingSlash.startsWith("data/")) {

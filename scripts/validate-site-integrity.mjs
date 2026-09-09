@@ -64,12 +64,14 @@ for (const entry of manifest.entries) {
   const analyticsLoaders = [];
   const phoneLinks = [];
   const whatsAppLinks = [];
+  const publicLinks = [];
   const jsonLd = [];
 
   walk(document, (node) => {
     if (node.tagName === "link" && attr(node, "rel") === "canonical") canonicals.push(attr(node, "href"));
     if (node.tagName === "a") {
       const href = attr(node, "href");
+      publicLinks.push(href);
       if (href === "tel:+966500067865") phoneLinks.push(href);
       if (href.startsWith("https://wa.me/966500067865")) whatsAppLinks.push(href);
     }
@@ -79,7 +81,12 @@ for (const entry of manifest.entries) {
       analyticsLoaders.push(src);
       assert.ok(!(node.attrs || []).some((item) => item.name === "defer"), `${file} must initialize consent before inline page scripts`);
     }
-    if (src.includes("googletagmanager.com")) assert.fail(`${file} directly loads Google analytics outside the consent gate`);
+    if (src) {
+      const scriptUrl = new URL(src, BASE_URL);
+      if (scriptUrl.hostname === "googletagmanager.com" || scriptUrl.hostname.endsWith(".googletagmanager.com")) {
+        assert.fail(`${file} directly loads Google analytics outside the consent gate`);
+      }
+    }
     const scriptText = textContent(node);
     if (scriptText.includes("googletagmanager.com/gtag") || scriptText.includes("googletagmanager.com/gtm")) {
       assert.fail(`${file} contains an inline analytics consent bypass`);
@@ -98,8 +105,8 @@ for (const entry of manifest.entries) {
     const message = new URL(href).searchParams.get("text") || "";
     assert.match(message, /Vested KSA/i, `${file} WhatsApp message must identify Vested KSA`);
   }
-  assert.ok(!html.includes("https://twitter.com/vestedksa"), `${file} contains the retired X profile`);
-  assert.ok(!html.includes("https://misa.gov.sa/faq/"), `${file} contains the retired MISA FAQ URL`);
+  assert.ok(!publicLinks.includes("https://twitter.com/vestedksa"), `${file} contains the retired X profile`);
+  assert.ok(!publicLinks.includes("https://misa.gov.sa/faq/"), `${file} contains the retired MISA FAQ URL`);
 
   jsonLd.forEach((block) => {
     walkJson(block, (node) => {

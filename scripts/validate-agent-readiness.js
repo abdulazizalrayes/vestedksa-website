@@ -362,7 +362,7 @@ for (const file of [...htmlFiles, "ar/index.html", "zh/index.html", ...insightHt
   if (!read(file).includes('<script src="/analytics-loader.js?v=20260822-3"></script>')) {
     fail(`${file} missing shared analytics loader`);
   }
-  if (/googletagmanager\.com\/(?:gtag|gtm|ns\.html)/.test(read(file))) {
+  if (["googletagmanager.com/gtag", "googletagmanager.com/gtm", "googletagmanager.com/ns.html"].some((value) => read(file).includes(value))) {
     fail(`${file} contains a direct analytics consent bypass`);
   }
 }
@@ -540,6 +540,19 @@ async function validateMcpRuntime() {
   const readResult = JSON.parse(resourceRead.body.result.content[0].text);
   if (readResult.name !== "company" || !readResult.text.includes("Vested KSA")) {
     fail("MCP read_public_resource returned unexpected company content");
+  }
+
+  const foreignResourceRead = await callMcp({
+    jsonrpc: "2.0",
+    id: 1.5,
+    method: "tools/call",
+    params: {
+      name: "read_public_resource",
+      arguments: { resource: "https://vestedksa.com.attacker.example/data/company.json" },
+    },
+  });
+  if (foreignResourceRead.statusCode !== 404 || !foreignResourceRead.body.error) {
+    fail("MCP read_public_resource must reject lookalike or foreign origins");
   }
 
   const nonFit = await callMcp({

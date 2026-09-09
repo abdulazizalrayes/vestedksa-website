@@ -28,10 +28,21 @@ if (!/^[A-Za-z0-9-]{8,128}$/.test(key)) {
 
 const sitemapXml = fs.readFileSync(path.join(ROOT, "sitemap.xml"), "utf8");
 const sitemap = new XMLParser({ ignoreAttributes: false }).parse(sitemapXml);
+
+function isEligibleUrl(value) {
+  if (typeof value !== "string") return false;
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" && url.hostname === HOST && !url.username && !url.password && !url.port;
+  } catch {
+    return false;
+  }
+}
+
 const urls = []
   .concat(sitemap?.urlset?.url || [])
   .map((entry) => entry.loc)
-  .filter((url) => typeof url === "string" && url.startsWith(`https://${HOST}/`));
+  .filter(isEligibleUrl);
 
 if (!urls.length) fail("No IndexNow-eligible URLs found in sitemap.xml.");
 if (urls.length > 10000) fail("IndexNow supports up to 10,000 URLs per request.");
