@@ -11,6 +11,10 @@ const BASE_URL = "https://vestedksa.com";
 const ANALYTICS_LOADER_SRC = "/analytics-loader.js?v=20260822-3";
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, "markdown/manifest.json"), "utf8"));
 const company = JSON.parse(fs.readFileSync(path.join(ROOT, "data/company.json"), "utf8"));
+const RETIRED_LINKS = [
+  { hostname: "twitter.com", pathname: "/vestedksa" },
+  { hostname: "misa.gov.sa", pathname: "/faq/" },
+];
 
 function read(file) {
   return fs.readFileSync(path.join(ROOT, file), "utf8");
@@ -105,8 +109,18 @@ for (const entry of manifest.entries) {
     const message = new URL(href).searchParams.get("text") || "";
     assert.match(message, /Vested KSA/i, `${file} WhatsApp message must identify Vested KSA`);
   }
-  assert.ok(!publicLinks.includes("https://twitter.com/vestedksa"), `${file} contains the retired X profile`);
-  assert.ok(!publicLinks.includes("https://misa.gov.sa/faq/"), `${file} contains the retired MISA FAQ URL`);
+  for (const href of publicLinks) {
+    let link;
+    try {
+      link = new URL(href, BASE_URL);
+    } catch {
+      continue;
+    }
+    assert.ok(
+      !RETIRED_LINKS.some((retired) => link.hostname === retired.hostname && link.pathname === retired.pathname),
+      `${file} contains a retired public link`,
+    );
+  }
 
   jsonLd.forEach((block) => {
     walkJson(block, (node) => {

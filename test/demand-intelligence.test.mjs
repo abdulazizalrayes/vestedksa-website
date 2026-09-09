@@ -28,7 +28,7 @@ test("demand text redacts direct identifiers and declared names before persisten
 
 test("demand text preserves only canonical Vested links and removes query data", () => {
   const sanitized = sanitizeDemandText("Read https://vestedksa.com/services?email=person@example.com and https://private.example/project/123");
-  assert.equal(sanitized.text.includes("https://vestedksa.com/services"), true);
+  assert.equal(sanitized.text, "Read https://vestedksa.com/services and [REDACTED_URL]");
   assert.equal(sanitized.text.includes("?email="), false);
   assert.equal(sanitized.text.includes("private.example"), false);
   assert.match(sanitized.text, /\[REDACTED_URL\]/);
