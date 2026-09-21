@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@vercel/blob": "^2.8.0",
-    "@vercel/functions": "^3.9.6"
+    "@vercel/functions": "^3.9.8"
   },
   "devDependencies": {
     "fast-xml-parser": "^5.11.1",
