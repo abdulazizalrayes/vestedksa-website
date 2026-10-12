@@ -22,7 +22,7 @@
     "validate:release": "npm test && npm run validate:site-integrity && npm run validate:agent-readiness && npm run validate:markdown-layer"
   },
   "dependencies": {
-    "@vercel/blob": "^2.8.0",
+    "@vercel/blob": "^2.8.1",
     "@vercel/functions": "^3.9.6"
   },
   "devDependencies": {
