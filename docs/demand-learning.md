@@ -176,18 +176,12 @@ files, or credentials are written locally. The script is excluded from deploymen
 It neither changes the API owner token nor uses the cron endpoint.
 
 The configured delivery mailbox is `hello@vestedksa.com`, not the owner's Gmail.
-The weekly report generated on 26 October was verified in that mailbox using
-read-only IMAP subject/date headers. Daily emails are intentionally suppressed
+Verify delivery using read-only IMAP subject/date headers. Daily emails are intentionally suppressed
 when no genuine demand is captured; weekly reports still send.
 
-The 1 November daily and 26 October weekly reports contained zero genuine
-records, zero synthetic records, no recommendations, and `insufficient_data`
-clustering. This is captured activity only, not a market-demand estimate.
-
-An owner-authorized contact API test labelled `VES-E2E-20261101 TEST ONLY`
-returned success and was independently verified in the Vested mailbox. It used
-the validation-probe user agent and is not genuine demand. This establishes API
-delivery, not browser conversion-event receipt in GA4.
+Keep report results and owner review evidence in the private company workspace,
+not this repository. Verify browser form success, mailbox receipt and the
+corresponding GA4 key event separately. Mark tests and exclude them from demand.
 
 SMTP response listeners are cleaned after each response and after errors;
 regression tests cover 30 successive replies and failed reads in both mail paths.
