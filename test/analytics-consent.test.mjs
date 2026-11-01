@@ -5,13 +5,22 @@ import test from "node:test";
 
 const source = fs.readFileSync(new URL("../analytics-loader.js", import.meta.url), "utf8");
 
-function runLoader(initialConsent = "") {
+function runLoader(initialConsent = "", { language = "en", existingBanner = false, readyState = "complete" } = {}) {
   const storage = new Map();
   if (initialConsent) storage.set("vested-ksa-cookie-consent", initialConsent);
   const appendedScripts = [];
   const listeners = new Map();
   const documentListeners = new Map();
   const dispatchedEvents = [];
+  const bodyNodes = [];
+  function element(tag) {
+    return { tag, children: [], listeners: {}, attributes: {},
+      appendChild(node) { this.children.push(node); },
+      setAttribute(name, value) { this.attributes[name] = value; },
+      addEventListener(name, handler) { this.listeners[name] = handler; },
+      remove() { this.removed = true; },
+    };
+  }
   const localStorage = {
     getItem(key) {
       return storage.get(key) || null;
@@ -32,16 +41,19 @@ function runLoader(initialConsent = "") {
     },
   };
   const document = {
-    documentElement: { lang: "en" },
+    documentElement: { lang: language },
+    readyState,
+    getElementById(id) { return id === (existingBanner === true ? "cookieBanner" : existingBanner) ? {} : null; },
+    body: { appendChild(node) { bodyNodes.push(node); } },
     addEventListener(name, handler) {
       documentListeners.set(name, handler);
     },
-    createElement() {
-      return {};
+    createElement(tag) {
+      return element(tag);
     },
     head: {
       appendChild(node) {
-        appendedScripts.push(node.src);
+        if (node.tag === "script") appendedScripts.push(node.src);
       },
     },
   };
@@ -52,8 +64,39 @@ function runLoader(initialConsent = "") {
     }
   }
   vm.runInNewContext(source, { window, document, localStorage, CustomEvent, Date });
-  return { window, storage, appendedScripts, dispatchedEvents, documentListeners };
+  return { window, storage, appendedScripts, dispatchedEvents, documentListeners, bodyNodes };
 }
+
+test("direct entries offer consent without loading analytics and both choices dismiss", () => {
+  for (const [index, expected] of [[0, "accepted"], [1, "declined"]]) {
+    const state = runLoader();
+    assert.equal(state.bodyNodes.length, 1);
+    assert.equal(state.appendedScripts.length, 0);
+    const banner = state.bodyNodes[0];
+    banner.children[1].children[index].listeners.click();
+    assert.equal(state.window.VestedConsent.getStatus(), expected);
+    assert.equal(banner.removed, true);
+    assert.equal(state.appendedScripts.length, index === 0 ? 2 : 0);
+  }
+});
+
+test("consent prompt respects previous choices and the existing homepage banner", () => {
+  for (const choice of ["accepted", "declined"]) assert.equal(runLoader(choice).bodyNodes.length, 0);
+  assert.equal(runLoader("", { existingBanner: true }).bodyNodes.length, 0);
+  assert.equal(runLoader("", { existingBanner: "cookieConsent" }).bodyNodes.length, 0);
+  const loading = runLoader("", { readyState: "loading" });
+  assert.equal(loading.bodyNodes.length, 0);
+  loading.documentListeners.get("DOMContentLoaded")();
+  assert.equal(loading.bodyNodes.length, 1);
+});
+
+test("direct consent offers Arabic RTL and Chinese labels", () => {
+  const arabic = runLoader("", { language: "ar" }).bodyNodes[0];
+  assert.equal(arabic.dir, "rtl");
+  assert.equal(arabic.children[1].children[0].textContent, "قبول");
+  const chinese = runLoader("", { language: "zh-Hans" }).bodyNodes[0];
+  assert.equal(chinese.children[1].children[1].textContent, "拒绝");
+});
 
 test("unknown consent defaults denied and does not load analytics", () => {
   const state = runLoader();

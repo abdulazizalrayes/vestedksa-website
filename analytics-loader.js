@@ -93,6 +93,47 @@
     },
   });
 
+  function showDirectEntryConsent() {
+    if (readConsent() || document.getElementById('cookieBanner') || document.getElementById('cookieConsent')) return;
+    const language = document.documentElement.lang || 'en';
+    const copy = language.startsWith('ar')
+      ? ['نستخدم ملفات تعريف ارتباط اختيارية لقياس استخدام الموقع. يمكنك القبول أو الرفض.', 'قبول', 'رفض', 'تفضيلات الخصوصية']
+      : language.startsWith('zh')
+        ? ['我们使用可选 Cookie 来衡量网站使用情况。您可以接受或拒绝。', '接受', '拒绝', '隐私偏好']
+        : ['We use optional analytics cookies to measure website usage. You can accept or decline.', 'Accept', 'Decline', 'Privacy preferences'];
+    const banner = document.createElement('section');
+    banner.id = 'vested-direct-consent';
+    banner.setAttribute('role', 'region');
+    banner.setAttribute('aria-label', copy[3]);
+    if (language.startsWith('ar')) banner.dir = 'rtl';
+    const style = document.createElement('style');
+    style.textContent = '#vested-direct-consent{position:fixed;inset-inline-start:20px;bottom:20px;box-sizing:border-box;width:380px;max-width:calc(100% - 40px);max-height:calc(100dvh - 40px);overflow:auto;padding:20px;background:#1d1d1f;color:#fff;border-radius:8px;z-index:500;font:14px/1.6 Inter,Arial,sans-serif;letter-spacing:0;box-shadow:0 4px 20px #0003}#vested-direct-consent p{margin:0 0 16px;color:inherit;font:inherit}#vested-direct-consent div{display:flex;gap:12px;flex-wrap:wrap}#vested-direct-consent button{min-height:44px;padding:8px 16px;border:1px solid #fff;border-radius:6px;font:500 14px/1.4 Inter,Arial,sans-serif;letter-spacing:0;background:transparent;color:#fff;cursor:pointer}#vested-direct-consent button:first-child{background:#0071e3;border-color:#0071e3}#vested-direct-consent button:focus-visible{outline:3px solid #fff;outline-offset:3px}';
+    const paragraph = document.createElement('p');
+    paragraph.textContent = copy[0];
+    const actions = document.createElement('div');
+    [accept, decline].forEach(function (choice, index) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = copy[index + 1];
+      button.addEventListener('click', function () {
+        choice();
+        banner.remove();
+        style.remove();
+      });
+      actions.appendChild(button);
+    });
+    banner.appendChild(paragraph);
+    banner.appendChild(actions);
+    document.head.appendChild(style);
+    document.body.appendChild(banner);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', showDirectEntryConsent, { once: true });
+  } else {
+    showDirectEntryConsent();
+  }
+
   // Prevent legacy inline loaders from bypassing this consent gate.
   window.__vestedAnalyticsLoaded = true;
 
