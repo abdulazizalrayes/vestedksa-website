@@ -166,3 +166,32 @@ Do not report improvement percentages until a pre-change baseline and post-chang
 - Private Blob object-per-event storage is designed for low-volume pilot demand, not high-volume streaming analytics.
 - Multi-source coordinated poisoning cannot be eliminated without stronger identity or reputation signals; duplicate caps, multi-day thresholds and owner approval reduce its influence.
 - Owner email replies require an authorized operator to attach feedback to the record; inbound mailbox automation is intentionally not enabled.
+# Private Access Verification (1 November 2026)
+
+Run `node scripts/check-private-demand-report.mjs` with the existing authorized
+Vercel CLI session. This verifies the Vested repository, team, project, and
+production-only private Blob binding before reading the latest daily and weekly
+aggregate reports. Credentials stay in process memory; no raw events, report
+files, or credentials are written locally. The script is excluded from deployment.
+It neither changes the API owner token nor uses the cron endpoint.
+
+The configured delivery mailbox is `hello@vestedksa.com`, not the owner's Gmail.
+The weekly report generated on 26 October was verified in that mailbox using
+read-only IMAP subject/date headers. Daily emails are intentionally suppressed
+when no genuine demand is captured; weekly reports still send.
+
+The 1 November daily and 26 October weekly reports contained zero genuine
+records, zero synthetic records, no recommendations, and `insufficient_data`
+clustering. This is captured activity only, not a market-demand estimate.
+
+An owner-authorized contact API test labelled `VES-E2E-20261101 TEST ONLY`
+returned success and was independently verified in the Vested mailbox. It used
+the validation-probe user agent and is not genuine demand. This establishes API
+delivery, not browser conversion-event receipt in GA4.
+
+SMTP response listeners are cleaned after each response and after errors;
+regression tests cover 30 successive replies and failed reads in both mail paths.
+The security override for Zod 4.6.6 addresses GHSA-mrhx-c7xc-m3w5 until the
+upstream CLI configuration dependency updates its pin. Undici is updated within
+major version 6 to 6.29.1. Recheck `npm audit` before removing the override.
+

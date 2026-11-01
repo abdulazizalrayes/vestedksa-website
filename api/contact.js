@@ -166,10 +166,7 @@ function formatSmtpDataBlock(message) {
 async function readSmtpResponse(socket) {
   const chunks = [];
   while (true) {
-    const chunk = await new Promise((resolve, reject) => {
-      socket.once("data", resolve);
-      socket.once("error", reject);
-    });
+    const [chunk] = await require("node:events").once(socket, "data");
     const text = chunk.toString("utf8");
     chunks.push(text);
     const lines = text.split(/\r?\n/).filter(Boolean);
