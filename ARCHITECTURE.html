@@ -1113,7 +1113,7 @@
         name: "Privacy-safe analytics",
         trigger: "A consenting visitor interacts, an agent reads a public surface, or a report-only CSP violation occurs",
         steps: [
-          ["static-site", "ga4-gtm", "After consent, send approved client event taxonomy"],
+          ["static-site", "ga4-gtm", "Homepage or localized direct-entry prompt obtains consent before approved client events; stored choices are respected"],
           ["accept-middleware", "vercel-deploy", "Write broad crawler and public resource event"],
           ["mcp-api", "vercel-deploy", "Write broad tool and resource event"],
           ["a2a-api", "vercel-deploy", "Write skill and coarse fit event without prompt data"],

@@ -809,7 +809,7 @@
     "client": {
       "ga4MeasurementId": "G-7STG2HDV42",
       "gtmContainerId": "GTM-WL2FN4PR",
-      "consentMechanism": "One consent-aware analytics-loader.js on all 20 canonical pages; analytics and advertising storage default to denied and GA4/GTM load only after acceptance",
+      "consentMechanism": "One consent-aware analytics-loader.js on all 20 canonical pages; analytics and advertising storage default to denied and GA4/GTM load only after acceptance. Direct-entry pages without the homepage banner receive an English, Arabic, or Chinese accept/decline prompt; stored choices suppress it.",
       "globalTracker": "analytics-loader.js plus language-switcher.js and page-level event helpers"
     },
     "keyEvents": [
