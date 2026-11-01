@@ -20,6 +20,7 @@
     "doNotMixWithOtherCompanies": true
   },
   "sourceState": {
+    "privateReportAccess": "scripts/check-private-demand-report.mjs uses existing authenticated Vercel CLI access, verifies the exact production-only private store and repository, and reads aggregate reports in memory without rotating secrets or persisting private data locally.",
     "mapBasis": "Current Vested main tree plus release evidence recorded in Paperclip VES-406",
     "branch": "main",
     "commit": "Use current GitHub main; exact Agent Concierge release commit is recorded in VES-406",
