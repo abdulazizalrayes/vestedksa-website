@@ -841,7 +841,7 @@
       "a2a_inquiry_prepared",
       "a2a_error"
     ],
-    "serverObservability": "Privacy-safe JSON logs from middleware, /api/a2a, /api/mcp, /api/markdown, and /api/csp-report; optional Vested-only GA4 Measurement Protocol delivery when GA4_API_SECRET is configured",
+    "serverObservability": "Privacy-safe JSON logs from middleware, /api/a2a, /api/mcp, /api/markdown, and /api/csp-report; optional Vested-only GA4 Measurement Protocol delivery when GA4_API_SECRET is configured. Kimi, Meta and Apple retrieval/training tokens have distinct coarse classes. User-agent classes are self-declared, not verified provider identities or proof of recommendations.",
     "privacyRule": "Do not log IP addresses, full user agents, query strings, names, emails, phones, full prompts, inquiry messages, IDs, financial data, or confidential documents."
   },
   "externalIntegrations": [

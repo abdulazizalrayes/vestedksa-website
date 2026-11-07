@@ -59,7 +59,32 @@ only, not provider-origin connectivity. Verify the deployed robots bytes and
 Content-Signal after deployment. Revert the crawler-policy release commit or
 restore the prior Vercel deployment to roll back. Public HTML is unchanged.
 
-## Primary references
+## Attribution review: 2026-11-07
+
+- Exact Vested GA4 property 529693438 was accessible in the owner's Chrome
+  profile. Traffic acquisition, October 10-November 6: one direct session,
+  one owner_qa / verification session, and no named AI referral source.
+  There were also 1,846 events with session source / medium not set. These
+  events are not evidence of 1,846 people, sessions, leads or recommendations.
+- A bounded production log query returned 50 request envelopes, containing
+  56 telemetry records dated November 6 04:42-November 7 14:02 UTC. This is
+  a returned sample, not guaranteed full historical coverage. Envelope
+  summaries must not be counted again alongside their nested log messages.
+- The sample contains classes openai-user (1), anthropic-user (1),
+  perplexity (1), googlebot (2), bingbot (1), other-crawler (48), and
+  browser-or-unknown (2). These are event counts, not unique visits.
+  Provider identity and genuine-versus-synthetic provenance are unverified.
+  Older unlabelled QA could be included. No organic-visit claim is justified.
+- Limited public search found Vested's homepage and a domain-registration
+  listing, not a verifiable AI answer citing or recommending Vested.
+  Private conversations and untracked/direct referrals remain unobservable.
+- Fixed missing Kimi, Meta and Apple coarse classifications in middleware
+  and server telemetry, including distinct training labels. No permissions
+  are granted by classification; robots and Content-Signal are unchanged.
+- No raw logs, full user agents, IP addresses or conversation content are
+  retained in this evidence. No paid monitoring or new data store was added.
+
+## Provider documentation
 
 - https://developers.openai.com/api/docs/bots
 - https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler
