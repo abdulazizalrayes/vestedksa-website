@@ -47,6 +47,13 @@ Access permission is not proof of indexing, citations, ranking or real visits.
 Run npm run validate:release and npm run validate:live. The crawler-policy unit
 tests use robots-parser against every sitemap URL, private paths, and training
 controls, including the Applebot/Applebot-Extended specificity case.
+The live validator checks the deployed robots policy for 14 documented
+retrieval identities and nine training controls, runs 42 simulated crawler
+requests, and checks all canonical HTML pages for noindex, nosnippet, none and
+max-snippet:0 barriers in parsed meta tags and response headers. Training-only
+scoped restrictions are not treated as search failures. Requests have bounded
+timeouts and are labelled Vested-Validation. This runs on demand, not a new
+scheduled service; unit regressions run in the existing release CI.
 HTTP smoke checks using crawler User-Agent strings test this network vantage
 only, not provider-origin connectivity. Verify the deployed robots bytes and
 Content-Signal after deployment. Revert the crawler-policy release commit or

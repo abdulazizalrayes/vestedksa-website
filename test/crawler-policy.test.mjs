@@ -3,12 +3,10 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import robotsParser from "robots-parser";
 import { XMLParser } from "fast-xml-parser";
+import { retrievalBots as retrieval, trainingBots as training, privatePaths } from "../scripts/lib/crawler-access-checks.mjs";
 
 const origin = "https://vestedksa.com";
 const policy = robotsParser(origin + "/robots.txt", fs.readFileSync(new URL("../robots.txt", import.meta.url), "utf8"));
-const retrieval = ["Googlebot","bingbot","Applebot","OAI-SearchBot","ChatGPT-User","Claude-SearchBot","Claude-User","PerplexityBot","Perplexity-User","Kimi-SearchBot","Kimi-User","meta-webindexer","meta-externalfetcher","facebookexternalhit"];
-const training = ["GPTBot","Google-Extended","ClaudeBot","anthropic-ai","CCBot","Bytespider","KimiBot","meta-externalagent","Applebot-Extended"];
-const privatePaths = ["/admin", "/private", "/internal", "/.vercel", "/api/contact", "/api/demand-review"];
 const sitemap = fs.readFileSync(new URL("../sitemap.xml", import.meta.url), "utf8");
 const canonicalUrls = new XMLParser().parse(sitemap).urlset.url.map(entry => entry.loc);
 

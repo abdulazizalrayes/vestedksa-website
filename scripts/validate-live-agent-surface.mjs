@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { XMLParser } from "fast-xml-parser";
+import robotsParser from "robots-parser";
+import { citationBarriers, retrievalBots, trainingBots, privatePaths } from "./lib/crawler-access-checks.mjs";
 
 const ROOT = process.cwd();
 const baseUrl = new URL(String(process.env.BASE_URL || "https://vestedksa.com"));
@@ -34,7 +36,7 @@ async function fetchChecked(pathname, options = {}) {
     if (requestUrl.origin !== BASE_URL) throw new Error("request escaped the approved Vested KSA origin");
     const headers = new Headers(options.headers || {});
     if (!headers.has("User-Agent")) headers.set("User-Agent", "Vested-Validation/1.0");
-    return await fetch(requestUrl, { redirect: "manual", ...options, headers });
+    return await fetch(requestUrl, { redirect: "manual", signal: AbortSignal.timeout(20000), ...options, headers });
   } catch (error) {
     fail(`${pathname}: request failed (${error.message})`);
     return null;
@@ -108,6 +110,12 @@ async function checkCanonicalEntry(entry) {
   ) return;
 
   const html = await htmlResponse.text();
+  for (const barrier of citationBarriers(html, htmlResponse.headers.get("x-robots-tag"))) {
+    fail(`${pagePath}: citation/indexing barrier: ${barrier}`);
+  }
+  for (const barrier of citationBarriers("", htmlHeadResponse.headers.get("x-robots-tag"))) {
+    fail(`HEAD ${pagePath}: citation/indexing barrier: ${barrier}`);
+  }
   const markdown = await markdownResponse.text();
   htmlBytes += Buffer.byteLength(html);
   markdownBytes += Buffer.byteLength(markdown);
@@ -304,6 +312,42 @@ for (const entry of manifest.entries) {
   if (!sitemapUrls.has(entry.canonical)) fail(`${entry.canonical}: canonical page missing from sitemap`);
 }
 
+async function checkCrawlerAccess() {
+  const response = await fetchChecked("/robots.txt");
+  if (!response) return;
+  if (response.status !== 200) { fail("robots.txt: expected 200"); return; }
+  const text = await response.text();
+  if (!text.includes(`Content-Signal: ${CONTENT_SIGNAL}`) || response.headers.get("content-signal") !== CONTENT_SIGNAL) {
+    fail("robots.txt: missing owner-approved no-training policy");
+  }
+  const policy = robotsParser(`${BASE_URL}/robots.txt`, text);
+  for (const bot of retrievalBots) {
+    for (const entry of manifest.entries) {
+      if (policy.isAllowed(`${BASE_URL}${entry.path}`, bot) !== true) fail(`${bot}: robots blocks ${entry.path}`);
+    }
+    for (const pathname of privatePaths) {
+      if (policy.isAllowed(`${BASE_URL}${pathname}`, bot) !== false) fail(`${bot}: robots permits private path ${pathname}`);
+    }
+    for (const [pathname, accept] of [["/", "text/html"], ["/services", "text/markdown"], ["/llms.txt", "text/plain"]]) {
+      const page = await fetchChecked(pathname, { headers: { "User-Agent": `${bot}/1.0 Vested-Validation/1.0`, Accept: accept } });
+      if (!page) continue;
+      if (page.status !== 200 || !page.headers.get("content-type")?.includes(accept) || page.headers.get("content-signal") !== CONTENT_SIGNAL) {
+        fail(`${bot} ${pathname}: crawler smoke check failed (${page.status})`);
+      }
+      const body = await page.text();
+      if (accept === "text/html") {
+        for (const barrier of citationBarriers(body, page.headers.get("x-robots-tag"))) fail(`${bot}: ${barrier}`);
+      }
+    }
+  }
+  for (const bot of trainingBots) {
+    for (const entry of manifest.entries) {
+      if (policy.isAllowed(`${BASE_URL}${entry.path}`, bot) !== false) fail(`${bot}: training not disallowed on ${entry.path}`);
+    }
+  }
+}
+
+await checkCrawlerAccess();
 await Promise.all(manifest.entries.map(checkCanonicalEntry));
 await checkAcceptMatrix();
 
@@ -346,5 +390,6 @@ console.log(
   `Live agent surface passed: ${manifest.entries.length}/${manifest.entries.length} canonical pages, ` +
   `${canonicalDataFiles.length} data resources, ${discoveryJson.length} discovery resources, ` +
   `0 failures, ${htmlBytes} HTML bytes, ${markdownBytes} Markdown bytes, ` +
-  `${reduction}% aggregate Markdown size reduction.`
+  `${reduction}% aggregate Markdown size reduction. ` +
+  `${retrievalBots.length} simulated crawler identities passed; no provider-origin crawl or recommendation is implied.`
 );
