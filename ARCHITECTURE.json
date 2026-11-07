@@ -796,12 +796,14 @@
       "publicSearch": "allowed",
       "aiInput": "allowed",
       "aiTraining": "not allowed",
+      "policyVerification": "test/crawler-policy.test.mjs validates every canonical page and private path for documented Google, Bing, Apple, OpenAI, Anthropic, Perplexity, Kimi and Meta retrieval tokens. Training controls include KimiBot, meta-externalagent and Applebot-Extended. Unknown retrieval clients use the wildcard; no invented DeepSeek or Jev tokens.",
       "blockedPaths": [
         "/admin",
         "/private",
         "/internal",
         "/.vercel",
-        "/api/contact"
+        "/api/contact",
+        "/api/demand-review"
       ]
     }
   },
