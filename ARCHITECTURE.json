@@ -928,7 +928,7 @@
       "validate:site-integrity": "Validate sitemap purity, canonical and entity consistency, consent gating, crawler policy, security reporting, telemetry coverage, and image budget",
       "validate:agent-readiness": "Validate discovery, JSON, OpenAPI, MCP runtime safety, robots, and Vercel config",
       "validate:deployment-output": "Validate Vercel build inventory and reject duplicate/private/internal artifacts",
-      "validate:live": "Validate production HTML, Markdown negotiation, sidecars, discovery, MCP, and duplicate paths",
+      "validate:live": "Validate production HTML, Markdown negotiation, sidecars, discovery, MCP, and duplicate paths; check live robots permissions, 14 simulated crawler identities, training opt-outs, and canonical indexing/snippet barriers with bounded request timeouts",
       "validate:release": "Run the complete local unit, integrity, agent-readiness, and Markdown validation gate"
     },
     "releaseSequence": [
