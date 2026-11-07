@@ -163,11 +163,11 @@ assert.match(
   /^Content-Signal: search=yes, ai-input=yes, ai-train=no$/m,
   "robots.txt must publish the owner-approved Content-Signal policy",
 );
-for (const bot of ["GPTBot", "Google-Extended", "ClaudeBot", "CCBot", "Bytespider"]) {
+for (const bot of ["GPTBot", "Google-Extended", "ClaudeBot", "CCBot", "Bytespider", "KimiBot", "meta-externalagent", "Applebot-Extended"]) {
   assert.match(robots, new RegExp(`User-agent: ${bot}\\nDisallow: /(?:\\n|$)`), `${bot} must be blocked under ai-train=no`);
 }
-for (const bot of ["OAI-SearchBot", "ChatGPT-User", "Claude-SearchBot", "Claude-User", "PerplexityBot"]) {
-  assert.match(robots, new RegExp(`User-agent: ${bot}\\nAllow: /`), `${bot} must remain available for search or user-directed retrieval`);
+for (const bot of ["Googlebot", "bingbot", "Applebot", "OAI-SearchBot", "ChatGPT-User", "Claude-SearchBot", "Claude-User", "PerplexityBot", "Perplexity-User", "Kimi-SearchBot", "Kimi-User", "meta-webindexer", "meta-externalfetcher", "facebookexternalhit"]) {
+  assert.match(robots, new RegExp(`User-agent: ${bot}\\nContent-Signal: search=yes, ai-input=yes, ai-train=no\\nAllow: /`), `${bot} must remain available for search or user-directed retrieval`);
 }
 
 const vercel = JSON.parse(read("vercel.json"));
