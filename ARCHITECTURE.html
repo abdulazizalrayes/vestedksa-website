@@ -1114,7 +1114,7 @@
         trigger: "A consenting visitor interacts, an agent reads a public surface, or a report-only CSP violation occurs",
         steps: [
           ["static-site", "ga4-gtm", "Homepage or localized direct-entry prompt obtains consent before approved client events; stored choices are respected"],
-          ["accept-middleware", "vercel-deploy", "Write broad crawler and public resource event"],
+          ["accept-middleware", "vercel-deploy", "Write coarse crawler and public resource events, including Kimi, Meta and Apple; self-declared identity does not prove provider origin or recommendation"],
           ["mcp-api", "vercel-deploy", "Write broad tool and resource event"],
           ["a2a-api", "vercel-deploy", "Write skill and coarse fit event without prompt data"],
           ["csp-report-api", "vercel-deploy", "Write sanitized report-only security event"]
