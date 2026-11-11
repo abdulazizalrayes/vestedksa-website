@@ -1106,7 +1106,7 @@
           ["contact-api", "contact-form", "Return safe result"],
           ["contact-form", "ga4-gtm", "Record conversion after success"]
         ],
-        invariants: ["Agent submission requires explicit approval", "Analytics excludes personal fields and message body"]
+        invariants: ["Agent submission requires explicit approval", "Analytics excludes personal fields and message body", "Contact events include validated current-page campaign labels and target only Vested GA4; no session reset or historical replay (docs/contact-attribution.md)"]
       },
       {
         id: "analytics-event",

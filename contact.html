@@ -756,6 +756,23 @@
 
   <script>
     function pushDataLayerEvent(eventName, payload = {}) {
+      if (eventName === 'lead_form_start' || eventName === 'lead_form_submit') {
+        const query = new URLSearchParams(window.location.search);
+        const campaign = {};
+        for (const [queryKey, eventKey] of [
+          ['utm_source', 'campaign_source'],
+          ['utm_medium', 'campaign_medium'],
+          ['utm_campaign', 'campaign_name'],
+        ]) {
+          const values = query.getAll(queryKey);
+          const value = values.length === 1 ? values[0] : '';
+          // Only bounded campaign labels, never arbitrary query or form content.
+          if (/^[a-zA-Z][a-zA-Z0-9_-]{0,99}$/.test(value) && !/\d{9,}/.test(value)) {
+            campaign[eventKey] = value;
+          }
+        }
+        payload = { ...payload, ...campaign, send_to: 'G-7STG2HDV42' };
+      }
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: eventName, ...payload });
       if (typeof window.gtag === 'function') {
