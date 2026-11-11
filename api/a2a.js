@@ -4,6 +4,7 @@ const { SKILLS, buildConciergeResponse, createMessageId } = require("../lib/agen
 const { blockedForMs, recordAbuse } = require("../lib/agent-abuse-guard.cjs");
 const { scheduleDemandCapture } = require("../lib/demand-capture.cjs");
 const { recordAgentEvent } = require("../lib/server-agent-telemetry.cjs");
+const { isQaRequest } = require("../lib/qa-traffic.cjs");
 
 const MAX_BODY_BYTES = 32 * 1024;
 const MAX_TEXT_LENGTH = 4000;
@@ -220,6 +221,7 @@ async function handlePost(req, res) {
 
     const telemetryDimensions = {
       tool: result.skillId,
+      trafficType: isQaRequest({ message: text }) ? "synthetic" : undefined,
       outcome: result.fit.classification,
       route: result.fit.route,
     };

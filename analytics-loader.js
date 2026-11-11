@@ -3,6 +3,34 @@
   const LEGACY_CONSENT_KEY = 'cookieConsent';
   const GA4_ID = 'G-7STG2HDV42';
   const GTM_ID = 'GTM-WL2FN4PR';
+  const QA_KEY = 'vested-ksa-qa-until';
+  let qaDetected = false;
+
+  function isQaTraffic() {
+    const query = new URLSearchParams(window.location.search || '');
+    const labelled = query.getAll('utm_source').some(value => value.toLowerCase() === 'owner_qa') ||
+      query.getAll('utm_campaign').some(value => /^(?:vested_(?:delivery|attribution)_\d{8}|VES-E2E-\d{8})$/i.test(value));
+    qaDetected = qaDetected || labelled || (typeof navigator !== 'undefined' && /Vested-Validation/i.test(navigator.userAgent || ''));
+    if (readConsent() === 'accepted') {
+      try {
+        const until = Number(sessionStorage.getItem(QA_KEY));
+        if (until > Date.now() && until <= Date.now() + 30 * 60 * 1000) qaDetected = true;
+        if (qaDetected) sessionStorage.setItem(QA_KEY, String(Date.now() + 30 * 60 * 1000));
+        else sessionStorage.removeItem(QA_KEY);
+      } catch (_error) { /* Current-page QA classification still applies. */ }
+    }
+    return qaDetected;
+  }
+
+  function qaEventName(name) {
+    return isQaTraffic() && !name.startsWith('qa_') ? `qa_${name}` : name;
+  }
+
+  window.VestedAnalytics = Object.freeze({
+    isQaTraffic,
+    eventName: qaEventName,
+    markQa: function () { qaDetected = true; isQaTraffic(); },
+  });
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () {
@@ -81,6 +109,7 @@
   function decline() {
     persistConsent('declined');
     window.gtag('consent', 'update', consentPayload(false));
+    try { sessionStorage.removeItem(QA_KEY); } catch (_error) { /* No storage available. */ }
     notify('declined');
   }
 
@@ -138,6 +167,7 @@
   window.__vestedAnalyticsLoaded = true;
 
   if (readConsent() === 'accepted') {
+    isQaTraffic();
     window.gtag('consent', 'update', consentPayload(true));
     loadAnalyticsScripts();
   }
@@ -160,12 +190,13 @@
       if (!link) return;
 
       const href = String(link.getAttribute('href') || '').toLowerCase();
-      const eventName = href.startsWith('tel:')
+      let eventName = href.startsWith('tel:')
         ? 'phone_click'
         : href.startsWith('https://wa.me/')
           ? 'whatsapp_click'
           : '';
       if (!eventName) return;
+      eventName = qaEventName(eventName);
 
       const payload = {
         page_path: window.location.pathname,

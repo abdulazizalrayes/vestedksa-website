@@ -5,7 +5,7 @@ import test from "node:test";
 
 const source = fs.readFileSync(new URL("../analytics-loader.js", import.meta.url), "utf8");
 
-function runLoader(initialConsent = "", { language = "en", existingBanner = false, readyState = "complete" } = {}) {
+function runLoader(initialConsent = "", { language = "en", existingBanner = false, readyState = "complete", search = "", session = new Map(), userAgent = "Mozilla/5.0" } = {}) {
   const storage = new Map();
   if (initialConsent) storage.set("vested-ksa-cookie-consent", initialConsent);
   const appendedScripts = [];
@@ -32,7 +32,7 @@ function runLoader(initialConsent = "", { language = "en", existingBanner = fals
   const window = {
     dataLayer: [],
     localStorage,
-    location: { pathname: "/contact" },
+    location: { pathname: "/contact", search },
     addEventListener(name, handler) {
       listeners.set(name, handler);
     },
@@ -63,7 +63,8 @@ function runLoader(initialConsent = "", { language = "en", existingBanner = fals
       this.detail = options.detail;
     }
   }
-  vm.runInNewContext(source, { window, document, localStorage, CustomEvent, Date });
+  const sessionStorage = { getItem: key => session.get(key) || null, setItem: (key, value) => session.set(key, value), removeItem: key => session.delete(key) };
+  vm.runInNewContext(source, { window, document, localStorage, sessionStorage, CustomEvent, Date, URLSearchParams, navigator: { userAgent } });
   return { window, storage, appendedScripts, dispatchedEvents, documentListeners, bodyNodes };
 }
 
@@ -78,6 +79,36 @@ test("direct entries offer consent without loading analytics and both choices di
     assert.equal(banner.removed, true);
     assert.equal(state.appendedScripts.length, index === 0 ? 2 : 0);
   }
+});
+
+test("Vested QA is separated across consented navigation without persisting before consent", () => {
+  const session = new Map();
+  const unknown = runLoader("", { search: "?utm_source=owner_qa", session });
+  assert.equal(unknown.window.VestedAnalytics.eventName("lead_form_submit"), "qa_lead_form_submit");
+  assert.equal(session.size, 0);
+  const qa = runLoader("accepted", { search: "?utm_source=owner_qa", session });
+  for (const name of ["lead_form_submit", "email_click", "phone_click", "whatsapp_click", "checklist_download_click", "language_switch_click"]) {
+    assert.equal(qa.window.VestedAnalytics.eventName(name), `qa_${name}`);
+    assert.equal(qa.window.VestedAnalytics.eventName(`qa_${name}`), `qa_${name}`);
+  }
+  assert.equal(runLoader("accepted", { session }).window.VestedAnalytics.isQaTraffic(), true);
+  qa.window.VestedConsent.decline();
+  assert.equal(session.size, 0);
+  assert.equal(runLoader("accepted", { search: "?utm_source=google" }).window.VestedAnalytics.eventName("lead_form_submit"), "lead_form_submit");
+  session.set("vested-ksa-qa-until", String(Date.now() - 1));
+  assert.equal(runLoader("accepted", { session }).window.VestedAnalytics.isQaTraffic(), false);
+  assert.equal(session.size, 0);
+});
+
+test("known Vested campaigns and explicit QA labels are diagnostic only", () => {
+  assert.equal(runLoader("accepted", { userAgent: "Mozilla/5.0 Vested-Validation/1.0" }).window.VestedAnalytics.eventName("whatsapp_click"), "qa_whatsapp_click");
+  for (const campaign of ["vested_delivery_20261111", "vested_attribution_20261111", "VES-E2E-20261101"]) {
+    const state = runLoader("accepted", { search: `?utm_campaign=${campaign}` });
+    assert.equal(state.window.VestedAnalytics.eventName("lead_form_submit"), "qa_lead_form_submit");
+  }
+  const state = runLoader("accepted");
+  state.window.VestedAnalytics.markQa();
+  assert.equal(state.window.VestedAnalytics.isQaTraffic(), true);
 });
 
 test("consent prompt respects previous choices and the existing homepage banner", () => {

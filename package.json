@@ -17,6 +17,7 @@
     "validate:deployment-output": "node scripts/validate-deployment-output.mjs",
     "validate:live": "node scripts/validate-live-agent-surface.mjs",
     "report:agent-funnel": "node scripts/report-agent-funnel.mjs",
+    "report:genuine-conversions": "node scripts/report-genuine-conversions.mjs",
     "report:demand-learning": "node scripts/report-demand-learning.mjs",
     "validate:demand-learning": "node --test test/demand-*.test.mjs",
     "validate:release": "npm test && npm run validate:site-integrity && npm run validate:agent-readiness && npm run validate:markdown-layer"

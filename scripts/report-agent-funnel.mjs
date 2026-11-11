@@ -51,7 +51,7 @@ export function summarizeTelemetry(input, options = {}) {
       ignoredLines += 1;
       continue;
     }
-    if (record.userAgentClass === "validation-probe" && !includeValidation) {
+    if ((record.userAgentClass === "validation-probe" || record.event?.trafficType === "synthetic") && !includeValidation) {
       excludedValidationEvents += 1;
       continue;
     }

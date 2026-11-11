@@ -216,6 +216,19 @@ test("A2A telemetry does not log prompts or personal information", async () => {
   }
 });
 
+test("labelled A2A QA is excluded from commercial telemetry and learning", async () => {
+  const originalLog = console.log;
+  const logs = [];
+  console.log = value => logs.push(JSON.parse(String(value)));
+  try {
+    const response = await invoke("POST", requestBody("SYNTHETIC OWNER-APPROVED TEST. We need Saudi company formation."), { "content-type": "application/json" });
+    assert.equal(response.status, 200);
+    assert.equal(logs.find(row => row.event?.action === "a2a_message_send").event.trafficType, "synthetic");
+    assert.equal(logs.find(row => row.event?.action === "demand_learning_excluded").event.trafficType, "synthetic");
+    assert.equal(logs.some(row => row.event?.action === "demand_learning_recorded"), false);
+  } finally { console.log = originalLog; }
+});
+
 test("A2A validates version, method, message role, parts, and media types", async () => {
   const wrongVersion = await invoke("POST", requestBody("Hello"), {
     "content-type": "application/json",
