@@ -10,7 +10,7 @@
     const query = new URLSearchParams(window.location.search || '');
     const labelled = query.getAll('utm_source').some(value => value.toLowerCase() === 'owner_qa') ||
       query.getAll('utm_campaign').some(value => /^(?:vested_(?:delivery|attribution)_\d{8}|VES-E2E-\d{8})$/i.test(value));
-    qaDetected = qaDetected || labelled;
+    qaDetected = qaDetected || labelled || (typeof navigator !== 'undefined' && /Vested-Validation/i.test(navigator.userAgent || ''));
     if (readConsent() === 'accepted') {
       try {
         const until = Number(sessionStorage.getItem(QA_KEY));

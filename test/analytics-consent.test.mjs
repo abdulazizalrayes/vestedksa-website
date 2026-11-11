@@ -5,7 +5,7 @@ import test from "node:test";
 
 const source = fs.readFileSync(new URL("../analytics-loader.js", import.meta.url), "utf8");
 
-function runLoader(initialConsent = "", { language = "en", existingBanner = false, readyState = "complete", search = "", session = new Map() } = {}) {
+function runLoader(initialConsent = "", { language = "en", existingBanner = false, readyState = "complete", search = "", session = new Map(), userAgent = "Mozilla/5.0" } = {}) {
   const storage = new Map();
   if (initialConsent) storage.set("vested-ksa-cookie-consent", initialConsent);
   const appendedScripts = [];
@@ -64,7 +64,7 @@ function runLoader(initialConsent = "", { language = "en", existingBanner = fals
     }
   }
   const sessionStorage = { getItem: key => session.get(key) || null, setItem: (key, value) => session.set(key, value), removeItem: key => session.delete(key) };
-  vm.runInNewContext(source, { window, document, localStorage, sessionStorage, CustomEvent, Date, URLSearchParams });
+  vm.runInNewContext(source, { window, document, localStorage, sessionStorage, CustomEvent, Date, URLSearchParams, navigator: { userAgent } });
   return { window, storage, appendedScripts, dispatchedEvents, documentListeners, bodyNodes };
 }
 
@@ -101,6 +101,7 @@ test("Vested QA is separated across consented navigation without persisting befo
 });
 
 test("known Vested campaigns and explicit QA labels are diagnostic only", () => {
+  assert.equal(runLoader("accepted", { userAgent: "Mozilla/5.0 Vested-Validation/1.0" }).window.VestedAnalytics.eventName("whatsapp_click"), "qa_whatsapp_click");
   for (const campaign of ["vested_delivery_20261111", "vested_attribution_20261111", "VES-E2E-20261101"]) {
     const state = runLoader("accepted", { search: `?utm_campaign=${campaign}` });
     assert.equal(state.window.VestedAnalytics.eventName("lead_form_submit"), "qa_lead_form_submit");
