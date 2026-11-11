@@ -8,7 +8,9 @@ UTM labels, and an explicit Vested `send_to`. Labels must be unique per key,
 1-100 ASCII letters/digits/underscore/hyphen, start with a letter, and contain
 no run of nine digits. Invalid or missing labels are omitted, not invented.
 Do not put personal information in campaign labels. No arbitrary query string,
-form text, new cookies or new storage is added by this change.
+form text or new cookies are added by the attribution change. The subsequent
+QA isolation layer adds a consented tab-local expiry timestamp, described in
+`docs/qa-exclusion.md`, and routes QA events to separate diagnostic names.
 
 This is a forward-looking attribution hardening, not a proven root-cause repair
 for the existing QA event. Google's session campaign can differ from event

@@ -28,6 +28,11 @@ The existing deterministic A2A endpoint remains the public conversation layer. I
 
 Successful contact inquiries also contribute a sanitized demand record after SMTP delivery. Contact names, email addresses and telephone numbers are never copied to demand storage.
 
+Labelled Vested QA URLs, strict QA flags and explicit owner-approved test
+messages are excluded even without a validation user-agent. QA messages remain
+delivery diagnostics with marked email subjects, never genuine demand.
+See `docs/qa-exclusion.md` for conversion-report exclusions and historical limits.
+
 The production store is Vercel Private Blob within the existing Vested Vercel project. It is not a local server, local file, iCloud folder, public blob, public API, A2A resource, MCP resource or Markdown asset. Hobby use is free within Vercel's included limits. Hobby accounts do not incur automatic overage charges; storage becomes unavailable if the allowance is exhausted.
 
 ## Stored Data

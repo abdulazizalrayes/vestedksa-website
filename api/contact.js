@@ -2,6 +2,7 @@
 
 const { assessFit, detectLanguage } = require("../lib/agent-concierge.cjs");
 const { scheduleDemandCapture } = require("../lib/demand-capture.cjs");
+const { isQaRequest } = require("../lib/qa-traffic.cjs");
 
 const ALLOWED_ORIGINS = new Set([
   "https://vestedksa.com",
@@ -128,6 +129,7 @@ function parseBody(raw, contentType) {
 
 function cleanLead(fields) {
   return {
+    qaTest: isQaRequest(fields),
     name: sanitizeText(fields.name, 120),
     email: sanitizeEmail(fields.email),
     company: sanitizeText(fields.company, 160),
@@ -257,9 +259,9 @@ async function sendLeadAlertEmail(record) {
     socket.once("error", reject);
   });
 
-  const subject = `New Vested KSA inquiry: ${record.company || record.name}`;
+  const subject = `${record.qaTest ? "[QA TEST - NOT A LEAD] " : ""}New Vested KSA inquiry: ${record.company || record.name}`;
   const bodyLines = [
-    "New Vested KSA inquiry received.",
+    record.qaTest ? "Synthetic QA test. Exclude from genuine leads; no sales follow-up." : "New Vested KSA inquiry received.",
     "",
     "Lead",
     `- Name: ${formatValue(record.name)}`,
@@ -398,6 +400,7 @@ module.exports = async function handler(req, res) {
     const language = detectLanguage(lead.message);
     const fit = assessFit(demandText, language);
     scheduleDemandCapture(req, {
+      synthetic: lead.qaTest,
       source: "contact_inquiry",
       messageKey: String(req.headers["idempotency-key"] || `${lead.service}:${lead.country}:${lead.message}`),
       question: demandText,

@@ -1639,6 +1639,7 @@
 
     <script>
         function pushDataLayerEvent(eventName, payload = {}) {
+            eventName = window.VestedAnalytics?.eventName(eventName) || eventName;
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({ event: eventName, ...payload });
             if (typeof window.gtag === 'function') {

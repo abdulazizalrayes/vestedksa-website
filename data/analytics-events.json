@@ -2,6 +2,12 @@
   "schemaVersion": "2026-09-08",
   "resourceType": "analytics-event-taxonomy",
   "company": "Vested KSA",
+  "qaExclusion": {
+    "clientEvents": "Labelled QA events use qa_ prefixed diagnostic event names, never the six business key-event names. Do not mark qa_ events as key events.",
+    "labels": ["utm_source=owner_qa", "Vested delivery/attribution or VES-E2E dated campaigns", "explicit VES-QA or synthetic owner-approved test messages"],
+    "genuineConversionReport": "npm run report:genuine-conversions consumes Vested-only aggregate GA4 export rows; excludes QA and separates unattributed legacy records as unverified.",
+    "historicalLimit": "Existing GA4 raw totals are not retroactively rewritten. Unlabelled historical tests cannot be reliably identified."
+  },
   "privacyRules": [
     "Do not log names, emails, phone numbers, passports, IDs, bank details, confidential documents, or full inquiry messages in analytics events.",
     "Use page path, service interest, country, language, source, and coarse route classification only.",

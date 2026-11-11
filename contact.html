@@ -773,6 +773,7 @@
         }
         payload = { ...payload, ...campaign, send_to: 'G-7STG2HDV42' };
       }
+      eventName = window.VestedAnalytics?.eventName(eventName) || eventName;
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: eventName, ...payload });
       if (typeof window.gtag === 'function') {
@@ -833,6 +834,10 @@
       data.pageUrl = window.location.href;
       data.referrer = document.referrer || '';
       data.userAgent = navigator.userAgent || '';
+      if (/\bsynthetic owner-approved test\b|\bVES-QA-\d{8}-/i.test(data.message || '')) {
+        window.VestedAnalytics?.markQa();
+      }
+      data.qaTest = window.VestedAnalytics?.isQaTraffic() === true;
 
       // Disable button and show loading state
       button.disabled = true;

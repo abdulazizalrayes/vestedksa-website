@@ -53,6 +53,15 @@ test("duplicate influence is capped before recommendations", () => {
   assert.equal(summary.evidence.duplicateInfluenceCapped, 5);
 });
 
+test("legacy explicitly labelled QA is excluded even if old evidence marked it genuine", () => {
+  const summary = summarizeDemand([
+    record(1),
+    record(2, { question: "SYNTHETIC OWNER-APPROVED TEST ONLY. Saudi company formation." }),
+  ]);
+  assert.equal(summary.evidence.includedGenuineRecords, 1);
+  assert.equal(summary.evidence.excludedNonGenuineOrWrongCompany, 1);
+});
+
 test("unsupervised clustering activates only with enough multi-day clean evidence", () => {
   assert.equal(clusterDemand(Array.from({ length: 10 }, (_, index) => record(index))).status, "insufficient_data");
   const clusters = clusterDemand(Array.from({ length: 24 }, (_, index) => record(index)));

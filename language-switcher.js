@@ -9,6 +9,7 @@
   const currentLocale = currentPath.startsWith('/ar') ? 'ar' : currentPath.startsWith('/zh') ? 'zh' : 'en';
 
   function reportEvent(eventName, payload) {
+    eventName = window.VestedAnalytics?.eventName(eventName) || eventName;
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: eventName, ...payload });
     if (typeof window.gtag === 'function') {

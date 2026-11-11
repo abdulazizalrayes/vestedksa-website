@@ -16,8 +16,13 @@ function run(search) {
   const commands = [];
   const window = { location: { search }, addEventListener() {}, VestedConsent: { getStatus: () => 'accepted' },
     gtag(...args) { commands.push(args); } };
-  const document = { querySelectorAll: () => [], addEventListener() {} };
-  const context = vm.createContext({ window, document, URLSearchParams });
+  const document = { querySelectorAll: () => [], addEventListener() {}, readyState: 'loading',
+    head: { appendChild() {} }, createElement: () => ({}) };
+  const context = vm.createContext({ window, document, URLSearchParams,
+    localStorage: { getItem: () => 'accepted' },
+    sessionStorage: { getItem: () => null, setItem() {}, removeItem() {} } });
+  vm.runInContext(fs.readFileSync(new URL('../analytics-loader.js', import.meta.url), 'utf8'), context);
+  commands.length = 0;
   vm.runInContext(source, context);
   return { context, window, commands };
 }
@@ -28,7 +33,7 @@ test('existing approved QA URL supplies campaign fields without sending a reques
     state.context.pushDataLayerEvent(event, { form_name: 'contact' });
     const [command, name, payload] = state.commands.at(-1);
     assert.equal(command, 'event');
-    assert.equal(name, event);
+    assert.equal(name, `qa_${event}`);
     assert.equal(payload.campaign_source, 'owner_qa');
     assert.equal(payload.campaign_medium, 'verification');
     assert.equal(payload.campaign_name, 'vested_delivery_20261111');
@@ -48,8 +53,8 @@ test('missing, duplicate, personal and malformed campaign values are not forward
   }
 });
 
-test('other analytics events remain unchanged', () => {
-  const state = run('?utm_source=owner_qa');
+test('genuine analytics events remain unchanged', () => {
+  const state = run('?utm_source=google');
   state.context.pushDataLayerEvent('view_key_page', { page_type: 'contact' });
   assert.deepEqual(JSON.parse(JSON.stringify(state.commands[0])),
     ['event', 'view_key_page', { page_type: 'contact' }]);
