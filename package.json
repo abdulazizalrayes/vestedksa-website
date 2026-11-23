@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@vercel/blob": "^2.8.0",
-    "@vercel/functions": "^3.9.6"
+    "@vercel/functions": "^3.11.3"
   },
   "overrides": {
     "@vercel/cli-config": {
